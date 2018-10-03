@@ -13,4 +13,5 @@
 
 # Generated files
 .tmp/
-openapi.yml
+openapi.yaml
+openapi-generator*jar
