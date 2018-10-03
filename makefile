@@ -5,4 +5,5 @@ client:
 # Generate client
 # Checkout https://github.com/OpenAPITools/openapi-generator/releases
 	export OPENAPI_GENERATOR_VERSION=v3.3.0
+	chmod +x ./openapi-generator
 	./openapi-generator generate -i openapi.yaml -g go -o ./client
