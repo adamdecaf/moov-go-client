@@ -105,9 +105,16 @@ func (a *OAuth2ApiService) CheckOAuthClientCredentials(ctx context.Context, auth
 /*
 OAuth2ApiService Create OAuth2 client credentials
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param optional nil or *CreateOAuth2ClientOpts - Optional Parameters:
+ * @param "Cookie" (optional.String) -  moov_auth Cookie
 @return OAuth2Clients
 */
-func (a *OAuth2ApiService) CreateOAuth2Client(ctx context.Context) (OAuth2Clients, *http.Response, error) {
+
+type CreateOAuth2ClientOpts struct {
+    Cookie optional.String
+}
+
+func (a *OAuth2ApiService) CreateOAuth2Client(ctx context.Context, localVarOptionals *CreateOAuth2ClientOpts) (OAuth2Clients, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody     interface{}
@@ -150,6 +157,7 @@ func (a *OAuth2ApiService) CreateOAuth2Client(ctx context.Context) (OAuth2Client
 			} else {
 				key = auth.Key
 			}
+			localVarHeaderParams["Cookie"] = key
 		}
 	}
 

@@ -32,12 +32,14 @@ CustomersApiService Create a new Customer object
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param customer A JSON object containing a new Customer
  * @param optional nil or *AddCustomersOpts - Optional Parameters:
+ * @param "Cookie" (optional.String) -  moov_auth Cookie
  * @param "XIdempotencyKey" (optional.String) -  Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests.
  * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
 @return Customer
 */
 
 type AddCustomersOpts struct {
+    Cookie optional.String
     XIdempotencyKey optional.String
     XRequestId optional.String
 }
@@ -93,6 +95,7 @@ func (a *CustomersApiService) AddCustomers(ctx context.Context, customer Custome
 			} else {
 				key = auth.Key
 			}
+			localVarHeaderParams["Cookie"] = key
 		}
 	}
 
@@ -156,10 +159,14 @@ CustomersApiService Permanently deletes a customer and associated depositories a
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param customerId Customer ID
  * @param optional nil or *DeleteCustomerOpts - Optional Parameters:
+ * @param "Authorization" (optional.String) -  OAuth2 Bearer token
+ * @param "Cookie" (optional.String) -  moov_auth Cookie
  * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
 */
 
 type DeleteCustomerOpts struct {
+    Authorization optional.String
+    Cookie optional.String
     XRequestId optional.String
 }
 
@@ -197,6 +204,9 @@ func (a *CustomersApiService) DeleteCustomer(ctx context.Context, customerId str
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
+	if localVarOptionals != nil && localVarOptionals.Authorization.IsSet() {
+		localVarHeaderParams["Authorization"] = parameterToString(localVarOptionals.Authorization.Value(), "")
+	}
 	if localVarOptionals != nil && localVarOptionals.XRequestId.IsSet() {
 		localVarHeaderParams["X-Request-Id"] = parameterToString(localVarOptionals.XRequestId.Value(), "")
 	}
@@ -209,6 +219,7 @@ func (a *CustomersApiService) DeleteCustomer(ctx context.Context, customerId str
 			} else {
 				key = auth.Key
 			}
+			localVarHeaderParams["Cookie"] = key
 		}
 	}
 
@@ -244,6 +255,7 @@ CustomersApiService Get a Customer by ID
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param customerId Customer ID
  * @param optional nil or *GetCustomerByIDOpts - Optional Parameters:
+ * @param "Cookie" (optional.String) -  moov_auth Cookie
  * @param "Offset" (optional.Int32) -  The number of items to skip before starting to collect the result set
  * @param "Limit" (optional.Int32) -  The number of items to return
  * @param "Expand" (optional.String) -  Return nested objects rather than ID's in the response body.
@@ -252,6 +264,7 @@ CustomersApiService Get a Customer by ID
 */
 
 type GetCustomerByIDOpts struct {
+    Cookie optional.String
     Offset optional.Int32
     Limit optional.Int32
     Expand optional.String
@@ -314,6 +327,7 @@ func (a *CustomersApiService) GetCustomerByID(ctx context.Context, customerId st
 			} else {
 				key = auth.Key
 			}
+			localVarHeaderParams["Cookie"] = key
 		}
 	}
 
@@ -366,6 +380,7 @@ func (a *CustomersApiService) GetCustomerByID(ctx context.Context, customerId st
 CustomersApiService Gets a list of Customers
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *GetCustomersOpts - Optional Parameters:
+ * @param "Cookie" (optional.String) -  moov_auth Cookie
  * @param "Offset" (optional.Int32) -  The number of items to skip before starting to collect the result set
  * @param "Limit" (optional.Int32) -  The number of items to return
  * @param "Expand" (optional.String) -  Return nested objects rather than ID's in the response body.
@@ -374,6 +389,7 @@ CustomersApiService Gets a list of Customers
 */
 
 type GetCustomersOpts struct {
+    Cookie optional.String
     Offset optional.Int32
     Limit optional.Int32
     Expand optional.String
@@ -435,6 +451,7 @@ func (a *CustomersApiService) GetCustomers(ctx context.Context, localVarOptional
 			} else {
 				key = auth.Key
 			}
+			localVarHeaderParams["Cookie"] = key
 		}
 	}
 
@@ -488,6 +505,7 @@ CustomersApiService Get a list of Depository accounts for a Customer
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param customerId Customer ID
  * @param optional nil or *GetDepositoriesByCustomerIDOpts - Optional Parameters:
+ * @param "Cookie" (optional.String) -  moov_auth Cookie
  * @param "Offset" (optional.Int32) -  The number of items to skip before starting to collect the result set
  * @param "Limit" (optional.Int32) -  The number of items to return
  * @param "Expand" (optional.String) -  Return nested objects rather than ID's in the response body.
@@ -496,6 +514,7 @@ CustomersApiService Get a list of Depository accounts for a Customer
 */
 
 type GetDepositoriesByCustomerIDOpts struct {
+    Cookie optional.String
     Offset optional.Int32
     Limit optional.Int32
     Expand optional.String
@@ -558,6 +577,7 @@ func (a *CustomersApiService) GetDepositoriesByCustomerID(ctx context.Context, c
 			} else {
 				key = auth.Key
 			}
+			localVarHeaderParams["Cookie"] = key
 		}
 	}
 
@@ -612,6 +632,7 @@ CustomersApiService Get a Depository accounts for a Customer based on it's ID
  * @param customerId Customer ID
  * @param depositoryId Depository ID
  * @param optional nil or *GetDepositoriesByIDOpts - Optional Parameters:
+ * @param "Cookie" (optional.String) -  moov_auth Cookie
  * @param "Offset" (optional.Int32) -  The number of items to skip before starting to collect the result set
  * @param "Limit" (optional.Int32) -  The number of items to return
  * @param "Expand" (optional.String) -  Return nested objects rather than ID's in the response body.
@@ -620,6 +641,7 @@ CustomersApiService Get a Depository accounts for a Customer based on it's ID
 */
 
 type GetDepositoriesByIDOpts struct {
+    Cookie optional.String
     Offset optional.Int32
     Limit optional.Int32
     Expand optional.String
@@ -683,6 +705,7 @@ func (a *CustomersApiService) GetDepositoriesByID(ctx context.Context, customerI
 			} else {
 				key = auth.Key
 			}
+			localVarHeaderParams["Cookie"] = key
 		}
 	}
 
@@ -737,12 +760,14 @@ CustomersApiService Updates the specified Customer by setting the values of the 
  * @param customerId Customer ID
  * @param customer A JSON object containing a new Customer
  * @param optional nil or *UpdateCustomerOpts - Optional Parameters:
+ * @param "Cookie" (optional.String) -  moov_auth Cookie
  * @param "XIdempotencyKey" (optional.String) -  Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests.
  * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
 @return Customer
 */
 
 type UpdateCustomerOpts struct {
+    Cookie optional.String
     XIdempotencyKey optional.String
     XRequestId optional.String
 }
@@ -799,6 +824,7 @@ func (a *CustomersApiService) UpdateCustomer(ctx context.Context, customerId str
 			} else {
 				key = auth.Key
 			}
+			localVarHeaderParams["Cookie"] = key
 		}
 	}
 

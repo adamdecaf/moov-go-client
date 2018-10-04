@@ -32,12 +32,14 @@ OriginatorsApiService Create a new Originator object
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param originator A JSON object containing a new Originator
  * @param optional nil or *AddOriginatorOpts - Optional Parameters:
+ * @param "Cookie" (optional.String) -  moov_auth Cookie
  * @param "XIdempotencyKey" (optional.String) -  Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests.
  * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
 @return Originator
 */
 
 type AddOriginatorOpts struct {
+    Cookie optional.String
     XIdempotencyKey optional.String
     XRequestId optional.String
 }
@@ -93,6 +95,7 @@ func (a *OriginatorsApiService) AddOriginator(ctx context.Context, originator Or
 			} else {
 				key = auth.Key
 			}
+			localVarHeaderParams["Cookie"] = key
 		}
 	}
 
@@ -156,10 +159,12 @@ OriginatorsApiService Permanently deletes an Originator and associated Customers
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param originatorId Originator ID
  * @param optional nil or *DeleteOriginatorOpts - Optional Parameters:
+ * @param "Cookie" (optional.String) -  moov_auth Cookie
  * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
 */
 
 type DeleteOriginatorOpts struct {
+    Cookie optional.String
     XRequestId optional.String
 }
 
@@ -209,6 +214,7 @@ func (a *OriginatorsApiService) DeleteOriginator(ctx context.Context, originator
 			} else {
 				key = auth.Key
 			}
+			localVarHeaderParams["Cookie"] = key
 		}
 	}
 
@@ -244,6 +250,7 @@ OriginatorsApiService Retrieves the details of an existing Originator. You need 
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param originatorId Originator ID
  * @param optional nil or *GetOriginatorByIDOpts - Optional Parameters:
+ * @param "Cookie" (optional.String) -  moov_auth Cookie
  * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
  * @param "Offset" (optional.Int32) -  The number of items to skip before starting to collect the result set
  * @param "Limit" (optional.Int32) -  The number of items to return
@@ -252,6 +259,7 @@ OriginatorsApiService Retrieves the details of an existing Originator. You need 
 */
 
 type GetOriginatorByIDOpts struct {
+    Cookie optional.String
     XRequestId optional.String
     Offset optional.Int32
     Limit optional.Int32
@@ -314,6 +322,7 @@ func (a *OriginatorsApiService) GetOriginatorByID(ctx context.Context, originato
 			} else {
 				key = auth.Key
 			}
+			localVarHeaderParams["Cookie"] = key
 		}
 	}
 
@@ -366,6 +375,7 @@ func (a *OriginatorsApiService) GetOriginatorByID(ctx context.Context, originato
 OriginatorsApiService Gets a list of Originators
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *GetOriginatorsOpts - Optional Parameters:
+ * @param "Cookie" (optional.String) -  moov_auth Cookie
  * @param "Offset" (optional.Int32) -  The number of items to skip before starting to collect the result set
  * @param "Limit" (optional.Int32) -  The number of items to return
  * @param "Expand" (optional.String) -  Return nested objects rather than ID's in the response body.
@@ -374,6 +384,7 @@ OriginatorsApiService Gets a list of Originators
 */
 
 type GetOriginatorsOpts struct {
+    Cookie optional.String
     Offset optional.Int32
     Limit optional.Int32
     Expand optional.String
@@ -435,6 +446,7 @@ func (a *OriginatorsApiService) GetOriginators(ctx context.Context, localVarOpti
 			} else {
 				key = auth.Key
 			}
+			localVarHeaderParams["Cookie"] = key
 		}
 	}
 
@@ -489,12 +501,14 @@ OriginatorsApiService Updates the specified Originator by setting the values of 
  * @param originatorId Originator ID
  * @param originator A JSON object containing a new Originator
  * @param optional nil or *UpdateOriginatorOpts - Optional Parameters:
+ * @param "Cookie" (optional.String) -  moov_auth Cookie
  * @param "XIdempotencyKey" (optional.String) -  Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests.
  * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
 @return Originator
 */
 
 type UpdateOriginatorOpts struct {
+    Cookie optional.String
     XIdempotencyKey optional.String
     XRequestId optional.String
 }
@@ -551,6 +565,7 @@ func (a *OriginatorsApiService) UpdateOriginator(ctx context.Context, originator
 			} else {
 				key = auth.Key
 			}
+			localVarHeaderParams["Cookie"] = key
 		}
 	}
 

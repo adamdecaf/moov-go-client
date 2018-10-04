@@ -32,6 +32,7 @@ DepositoriesApiService Create a new depository account for a Customer ID or Orig
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param depository A JSON object containing a new Depository
  * @param optional nil or *AddDepositoryOpts - Optional Parameters:
+ * @param "Cookie" (optional.String) -  moov_auth Cookie
  * @param "XIdempotencyKey" (optional.String) -  Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests.
  * @param "Expand" (optional.String) -  Return nested objects rather than ID's in the response body.
  * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
@@ -39,6 +40,7 @@ DepositoriesApiService Create a new depository account for a Customer ID or Orig
 */
 
 type AddDepositoryOpts struct {
+    Cookie optional.String
     XIdempotencyKey optional.String
     Expand optional.String
     XRequestId optional.String
@@ -98,6 +100,7 @@ func (a *DepositoriesApiService) AddDepository(ctx context.Context, depository D
 			} else {
 				key = auth.Key
 			}
+			localVarHeaderParams["Cookie"] = key
 		}
 	}
 
@@ -162,12 +165,14 @@ DepositoriesApiService Initiates micro deposits to be sent to the Depository ins
  * @param depositoryId Depository ID
  * @param optional nil or *CreateMicroDepositsOpts - Optional Parameters:
  * @param "Amounts" (optional.Interface of []string) -  amounts that have been deposited
+ * @param "Cookie" (optional.String) -  moov_auth Cookie
  * @param "XIdempotencyKey" (optional.String) -  Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests.
  * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
 */
 
 type CreateMicroDepositsOpts struct {
     Amounts optional.Interface
+    Cookie optional.String
     XIdempotencyKey optional.String
     XRequestId optional.String
 }
@@ -224,6 +229,7 @@ func (a *DepositoriesApiService) CreateMicroDeposits(ctx context.Context, deposi
 			} else {
 				key = auth.Key
 			}
+			localVarHeaderParams["Cookie"] = key
 		}
 	}
 
@@ -259,10 +265,12 @@ DepositoriesApiService Permanently deletes a depository and associated transfers
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param depositoryId Depository ID
  * @param optional nil or *DeleteDepositoryOpts - Optional Parameters:
+ * @param "Cookie" (optional.String) -  moov_auth Cookie
  * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
 */
 
 type DeleteDepositoryOpts struct {
+    Cookie optional.String
     XRequestId optional.String
 }
 
@@ -312,6 +320,7 @@ func (a *DepositoriesApiService) DeleteDepository(ctx context.Context, depositor
 			} else {
 				key = auth.Key
 			}
+			localVarHeaderParams["Cookie"] = key
 		}
 	}
 
@@ -346,6 +355,7 @@ func (a *DepositoriesApiService) DeleteDepository(ctx context.Context, depositor
 DepositoriesApiService A list of all Depository objects for the authentication context.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *GetDepositoriesOpts - Optional Parameters:
+ * @param "Cookie" (optional.String) -  moov_auth Cookie
  * @param "Offset" (optional.Int32) -  The number of items to skip before starting to collect the result set
  * @param "Limit" (optional.Int32) -  The number of items to return
  * @param "Expand" (optional.String) -  Return nested objects rather than ID's in the response body.
@@ -354,6 +364,7 @@ DepositoriesApiService A list of all Depository objects for the authentication c
 */
 
 type GetDepositoriesOpts struct {
+    Cookie optional.String
     Offset optional.Int32
     Limit optional.Int32
     Expand optional.String
@@ -415,6 +426,7 @@ func (a *DepositoriesApiService) GetDepositories(ctx context.Context, localVarOp
 			} else {
 				key = auth.Key
 			}
+			localVarHeaderParams["Cookie"] = key
 		}
 	}
 
@@ -468,6 +480,7 @@ DepositoriesApiService Get a Depository object for the supplied ID
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param depositoryId Depository ID
  * @param optional nil or *GetDepositoryByIDOpts - Optional Parameters:
+ * @param "Cookie" (optional.String) -  moov_auth Cookie
  * @param "Offset" (optional.Int32) -  The number of items to skip before starting to collect the result set
  * @param "Limit" (optional.Int32) -  The number of items to return
  * @param "Expand" (optional.String) -  Return nested objects rather than ID's in the response body.
@@ -476,6 +489,7 @@ DepositoriesApiService Get a Depository object for the supplied ID
 */
 
 type GetDepositoryByIDOpts struct {
+    Cookie optional.String
     Offset optional.Int32
     Limit optional.Int32
     Expand optional.String
@@ -538,6 +552,7 @@ func (a *DepositoriesApiService) GetDepositoryByID(ctx context.Context, deposito
 			} else {
 				key = auth.Key
 			}
+			localVarHeaderParams["Cookie"] = key
 		}
 	}
 
@@ -592,12 +607,14 @@ DepositoriesApiService Updates the specified Depository by setting the values of
  * @param depositoryId Depository ID
  * @param depository A JSON object containing a new Depository
  * @param optional nil or *UpdateDepositoryOpts - Optional Parameters:
+ * @param "Cookie" (optional.String) -  moov_auth Cookie
  * @param "XIdempotencyKey" (optional.String) -  Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests.
  * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
 @return Depository
 */
 
 type UpdateDepositoryOpts struct {
+    Cookie optional.String
     XIdempotencyKey optional.String
     XRequestId optional.String
 }
@@ -654,6 +671,7 @@ func (a *DepositoriesApiService) UpdateDepository(ctx context.Context, depositor
 			} else {
 				key = auth.Key
 			}
+			localVarHeaderParams["Cookie"] = key
 		}
 	}
 

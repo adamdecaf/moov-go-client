@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 
 # **AddFile**
-> File AddFile(ctx, file)
+> File AddFile(ctx, file, optional)
 Create a new File object
 
 ### Required Parameters
@@ -23,6 +23,15 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **file** | [**File**](File.md)|  | 
+ **optional** | ***AddFileOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a AddFileOpts struct
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **cookie** | **optional.String**| moov_auth Cookie | 
 
 ### Return type
 
@@ -40,7 +49,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **DeleteACHFile**
-> DeleteACHFile(ctx, fileId)
+> DeleteACHFile(ctx, fileId, optional)
 Permanently deletes a File and associated Batches. It cannot be undone.
 
 ### Required Parameters
@@ -49,6 +58,15 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **fileId** | **string**| File ID | 
+ **optional** | ***DeleteACHFileOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a DeleteACHFileOpts struct
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **cookie** | **optional.String**| moov_auth Cookie | 
 
 ### Return type
 
@@ -83,6 +101,7 @@ Optional parameters are passed through a pointer to a GetFileByIDOpts struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **cookie** | **optional.String**| moov_auth Cookie | 
  **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
 
 ### Return type
@@ -119,6 +138,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **cookie** | **optional.String**| moov_auth Cookie | 
 
 ### Return type
 
@@ -136,11 +156,22 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetFiles**
-> Files GetFiles(ctx, )
+> Files GetFiles(ctx, optional)
 Gets a list of Files
 
 ### Required Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **optional** | ***GetFilesOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a GetFilesOpts struct
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cookie** | **optional.String**| moov_auth Cookie | 
 
 ### Return type
 
@@ -158,7 +189,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UpdateFile**
-> File UpdateFile(ctx, fileId, fileHeader)
+> File UpdateFile(ctx, fileId, fileHeader, optional)
 Updates the specified File Header by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
 
 ### Required Parameters
@@ -168,6 +199,16 @@ Name | Type | Description  | Notes
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **fileId** | **string**| File ID | 
   **fileHeader** | [**FileHeader**](FileHeader.md)| A JSON object containing a new File | 
+ **optional** | ***UpdateFileOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a UpdateFileOpts struct
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **cookie** | **optional.String**| moov_auth Cookie | 
 
 ### Return type
 
@@ -203,6 +244,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **cookie** | **optional.String**| moov_auth Cookie | 
 
 ### Return type
 

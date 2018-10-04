@@ -32,12 +32,14 @@ TransfersApiService Create a new transfer between an Originator and a Customer. 
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param transfer A JSON object containing a new Transfer
  * @param optional nil or *AddTransferOpts - Optional Parameters:
+ * @param "Cookie" (optional.String) -  moov_auth Cookie
  * @param "XIdempotencyKey" (optional.String) -  Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests.
  * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
 @return Transfer
 */
 
 type AddTransferOpts struct {
+    Cookie optional.String
     XIdempotencyKey optional.String
     XRequestId optional.String
 }
@@ -93,6 +95,7 @@ func (a *TransfersApiService) AddTransfer(ctx context.Context, transfer Transfer
 			} else {
 				key = auth.Key
 			}
+			localVarHeaderParams["Cookie"] = key
 		}
 	}
 
@@ -156,12 +159,14 @@ TransfersApiService Create a new list of transfer, validate, build, and process.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param transfer A JSON array containing Transfers
  * @param optional nil or *AddTransfersOpts - Optional Parameters:
+ * @param "Cookie" (optional.String) -  moov_auth Cookie
  * @param "XIdempotencyKey" (optional.String) -  Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests.
  * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
 @return Transfers
 */
 
 type AddTransfersOpts struct {
+    Cookie optional.String
     XIdempotencyKey optional.String
     XRequestId optional.String
 }
@@ -217,6 +222,7 @@ func (a *TransfersApiService) AddTransfers(ctx context.Context, transfer []Trans
 			} else {
 				key = auth.Key
 			}
+			localVarHeaderParams["Cookie"] = key
 		}
 	}
 
@@ -280,10 +286,12 @@ TransfersApiService It is possible to recall (delete) a transfer before it has b
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param transferId Transfer ID
  * @param optional nil or *DeleteTransferByIDOpts - Optional Parameters:
+ * @param "Cookie" (optional.String) -  moov_auth Cookie
  * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
 */
 
 type DeleteTransferByIDOpts struct {
+    Cookie optional.String
     XRequestId optional.String
 }
 
@@ -333,6 +341,7 @@ func (a *TransfersApiService) DeleteTransferByID(ctx context.Context, transferId
 			} else {
 				key = auth.Key
 			}
+			localVarHeaderParams["Cookie"] = key
 		}
 	}
 
@@ -368,6 +377,7 @@ TransfersApiService Get a Transfer object for the supplied ID
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param transferId Transfer ID
  * @param optional nil or *GetTransferByIDOpts - Optional Parameters:
+ * @param "Cookie" (optional.String) -  moov_auth Cookie
  * @param "Offset" (optional.Int32) -  The number of items to skip before starting to collect the result set
  * @param "Limit" (optional.Int32) -  The number of items to return
  * @param "Expand" (optional.String) -  Return nested objects rather than ID's in the response body.
@@ -376,6 +386,7 @@ TransfersApiService Get a Transfer object for the supplied ID
 */
 
 type GetTransferByIDOpts struct {
+    Cookie optional.String
     Offset optional.Int32
     Limit optional.Int32
     Expand optional.String
@@ -438,6 +449,7 @@ func (a *TransfersApiService) GetTransferByID(ctx context.Context, transferId st
 			} else {
 				key = auth.Key
 			}
+			localVarHeaderParams["Cookie"] = key
 		}
 	}
 
@@ -491,6 +503,7 @@ TransfersApiService Get all Events associated with the Transfer object's for the
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param transferId Transfer ID
  * @param optional nil or *GetTransferEventsByIDOpts - Optional Parameters:
+ * @param "Cookie" (optional.String) -  moov_auth Cookie
  * @param "Offset" (optional.Int32) -  The number of items to skip before starting to collect the result set
  * @param "Limit" (optional.Int32) -  The number of items to return
  * @param "Expand" (optional.String) -  Return nested objects rather than ID's in the response body.
@@ -499,6 +512,7 @@ TransfersApiService Get all Events associated with the Transfer object's for the
 */
 
 type GetTransferEventsByIDOpts struct {
+    Cookie optional.String
     Offset optional.Int32
     Limit optional.Int32
     Expand optional.String
@@ -561,6 +575,7 @@ func (a *TransfersApiService) GetTransferEventsByID(ctx context.Context, transfe
 			} else {
 				key = auth.Key
 			}
+			localVarHeaderParams["Cookie"] = key
 		}
 	}
 
@@ -614,10 +629,12 @@ TransfersApiService Get the ACH files to be used in this transfer.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param transferId Transfer ID
  * @param optional nil or *GetTransferFilesOpts - Optional Parameters:
+ * @param "Cookie" (optional.String) -  moov_auth Cookie
  * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
 */
 
 type GetTransferFilesOpts struct {
+    Cookie optional.String
     XRequestId optional.String
 }
 
@@ -667,6 +684,7 @@ func (a *TransfersApiService) GetTransferFiles(ctx context.Context, transferId s
 			} else {
 				key = auth.Key
 			}
+			localVarHeaderParams["Cookie"] = key
 		}
 	}
 
@@ -712,10 +730,12 @@ TransfersApiService Get the NACHA return code and description
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param transferId Transfer ID
  * @param optional nil or *GetTransferNachaCodeOpts - Optional Parameters:
+ * @param "Cookie" (optional.String) -  moov_auth Cookie
  * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
 */
 
 type GetTransferNachaCodeOpts struct {
+    Cookie optional.String
     XRequestId optional.String
 }
 
@@ -765,6 +785,7 @@ func (a *TransfersApiService) GetTransferNachaCode(ctx context.Context, transfer
 			} else {
 				key = auth.Key
 			}
+			localVarHeaderParams["Cookie"] = key
 		}
 	}
 
@@ -799,6 +820,7 @@ func (a *TransfersApiService) GetTransferNachaCode(ctx context.Context, transfer
 TransfersApiService A list of all Transfer objects
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *GetTransfersOpts - Optional Parameters:
+ * @param "Cookie" (optional.String) -  moov_auth Cookie
  * @param "Offset" (optional.Int32) -  The number of items to skip before starting to collect the result set
  * @param "Limit" (optional.Int32) -  The number of items to return
  * @param "StartDate" (optional.Time) -  Filter objects created after this date. ISO-8601 format YYYY-MM-DD. Can optionally be used with endDate to specify a date range.
@@ -809,6 +831,7 @@ TransfersApiService A list of all Transfer objects
 */
 
 type GetTransfersOpts struct {
+    Cookie optional.String
     Offset optional.Int32
     Limit optional.Int32
     StartDate optional.Time
@@ -878,6 +901,7 @@ func (a *TransfersApiService) GetTransfers(ctx context.Context, localVarOptional
 			} else {
 				key = auth.Key
 			}
+			localVarHeaderParams["Cookie"] = key
 		}
 	}
 

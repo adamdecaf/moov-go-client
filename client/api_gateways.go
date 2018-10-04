@@ -31,12 +31,14 @@ GatewaysApiService Create a new Gateway object
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param gateway A JSON object containing a new Gateway
  * @param optional nil or *AddGatewayOpts - Optional Parameters:
+ * @param "Cookie" (optional.String) -  moov_auth Cookie
  * @param "XIdempotencyKey" (optional.String) -  Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests.
  * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
 @return Gateway
 */
 
 type AddGatewayOpts struct {
+    Cookie optional.String
     XIdempotencyKey optional.String
     XRequestId optional.String
 }
@@ -92,6 +94,7 @@ func (a *GatewaysApiService) AddGateway(ctx context.Context, gateway Gateway, lo
 			} else {
 				key = auth.Key
 			}
+			localVarHeaderParams["Cookie"] = key
 		}
 	}
 
@@ -153,9 +156,16 @@ func (a *GatewaysApiService) AddGateway(ctx context.Context, gateway Gateway, lo
 /*
 GatewaysApiService Gets a list of Gatways
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param optional nil or *GetGatewaysOpts - Optional Parameters:
+ * @param "Cookie" (optional.String) -  moov_auth Cookie
 @return Gateways
 */
-func (a *GatewaysApiService) GetGateways(ctx context.Context) (Gateways, *http.Response, error) {
+
+type GetGatewaysOpts struct {
+    Cookie optional.String
+}
+
+func (a *GatewaysApiService) GetGateways(ctx context.Context, localVarOptionals *GetGatewaysOpts) (Gateways, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody     interface{}
@@ -198,6 +208,7 @@ func (a *GatewaysApiService) GetGateways(ctx context.Context) (Gateways, *http.R
 			} else {
 				key = auth.Key
 			}
+			localVarHeaderParams["Cookie"] = key
 		}
 	}
 
