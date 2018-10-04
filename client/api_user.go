@@ -16,6 +16,7 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+	"github.com/antihax/optional"
 )
 
 // Linger please
@@ -28,8 +29,15 @@ type UserApiService service
 /*
 UserApiService Check if a cookie is valid and authentic for a user.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param optional nil or *CheckUserLoginOpts - Optional Parameters:
+ * @param "Cookie" (optional.String) -  moov_auth Cookie
 */
-func (a *UserApiService) CheckUserLogin(ctx context.Context) (*http.Response, error) {
+
+type CheckUserLoginOpts struct {
+    Cookie optional.String
+}
+
+func (a *UserApiService) CheckUserLogin(ctx context.Context, localVarOptionals *CheckUserLoginOpts) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody     interface{}
@@ -71,6 +79,7 @@ func (a *UserApiService) CheckUserLogin(ctx context.Context) (*http.Response, er
 			} else {
 				key = auth.Key
 			}
+			localVarHeaderParams["Cookie"] = key
 		}
 	}
 
@@ -104,9 +113,16 @@ func (a *UserApiService) CheckUserLogin(ctx context.Context) (*http.Response, er
 /*
 UserApiService Create a new user using an email address not seen before.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param optional nil or *CreateUserOpts - Optional Parameters:
+ * @param "User" (optional.Interface of User) - 
 @return User
 */
-func (a *UserApiService) CreateUser(ctx context.Context) (User, *http.Response, error) {
+
+type CreateUserOpts struct {
+    User optional.Interface
+}
+
+func (a *UserApiService) CreateUser(ctx context.Context, localVarOptionals *CreateUserOpts) (User, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody     interface{}
@@ -124,7 +140,7 @@ func (a *UserApiService) CreateUser(ctx context.Context) (User, *http.Response, 
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{}
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -140,6 +156,15 @@ func (a *UserApiService) CreateUser(ctx context.Context) (User, *http.Response, 
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
+	// body params
+	if localVarOptionals != nil && localVarOptionals.User.IsSet() {
+		localVarOptionalUser, localVarOptionalUserok := localVarOptionals.User.Value().(User)
+		if !localVarOptionalUserok {
+			return localVarReturnValue, nil, reportError("user should be User")
+		}
+		localVarPostBody = &localVarOptionalUser
+	}
+
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -198,9 +223,16 @@ func (a *UserApiService) CreateUser(ctx context.Context) (User, *http.Response, 
 /*
 UserApiService Attempt to login with an email and password
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param optional nil or *UserLoginOpts - Optional Parameters:
+ * @param "Login" (optional.Interface of Login) - 
 @return User
 */
-func (a *UserApiService) UserLogin(ctx context.Context) (User, *http.Response, error) {
+
+type UserLoginOpts struct {
+    Login optional.Interface
+}
+
+func (a *UserApiService) UserLogin(ctx context.Context, localVarOptionals *UserLoginOpts) (User, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody     interface{}
@@ -218,7 +250,7 @@ func (a *UserApiService) UserLogin(ctx context.Context) (User, *http.Response, e
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{}
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -234,6 +266,15 @@ func (a *UserApiService) UserLogin(ctx context.Context) (User, *http.Response, e
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
+	// body params
+	if localVarOptionals != nil && localVarOptionals.Login.IsSet() {
+		localVarOptionalLogin, localVarOptionalLoginok := localVarOptionals.Login.Value().(Login)
+		if !localVarOptionalLoginok {
+			return localVarReturnValue, nil, reportError("login should be Login")
+		}
+		localVarPostBody = &localVarOptionalLogin
+	}
+
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -292,8 +333,15 @@ func (a *UserApiService) UserLogin(ctx context.Context) (User, *http.Response, e
 /*
 UserApiService Invalidat a user's cookie(s).
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param optional nil or *UserLogoutOpts - Optional Parameters:
+ * @param "Cookie" (optional.String) -  moov_auth Cookie
 */
-func (a *UserApiService) UserLogout(ctx context.Context) (*http.Response, error) {
+
+type UserLogoutOpts struct {
+    Cookie optional.String
+}
+
+func (a *UserApiService) UserLogout(ctx context.Context, localVarOptionals *UserLogoutOpts) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody     interface{}
@@ -335,6 +383,7 @@ func (a *UserApiService) UserLogout(ctx context.Context) (*http.Response, error)
 			} else {
 				key = auth.Key
 			}
+			localVarHeaderParams["Cookie"] = key
 		}
 	}
 

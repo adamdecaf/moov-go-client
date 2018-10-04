@@ -32,6 +32,7 @@ Optional parameters are passed through a pointer to a AddTransferOpts struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **cookie** | **optional.String**| moov_auth Cookie | 
  **xIdempotencyKey** | **optional.String**| Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests. | 
  **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
 
@@ -68,6 +69,7 @@ Optional parameters are passed through a pointer to a AddTransfersOpts struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **cookie** | **optional.String**| moov_auth Cookie | 
  **xIdempotencyKey** | **optional.String**| Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests. | 
  **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
 
@@ -104,6 +106,7 @@ Optional parameters are passed through a pointer to a DeleteTransferByIDOpts str
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **cookie** | **optional.String**| moov_auth Cookie | 
  **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
 
 ### Return type
@@ -139,6 +142,7 @@ Optional parameters are passed through a pointer to a GetTransferByIDOpts struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **cookie** | **optional.String**| moov_auth Cookie | 
  **offset** | **optional.Int32**| The number of items to skip before starting to collect the result set | [default to 0]
  **limit** | **optional.Int32**| The number of items to return | [default to 25]
  **expand** | **optional.String**| Return nested objects rather than ID&#39;s in the response body. | 
@@ -177,6 +181,7 @@ Optional parameters are passed through a pointer to a GetTransferEventsByIDOpts 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **cookie** | **optional.String**| moov_auth Cookie | 
  **offset** | **optional.Int32**| The number of items to skip before starting to collect the result set | [default to 0]
  **limit** | **optional.Int32**| The number of items to return | [default to 25]
  **expand** | **optional.String**| Return nested objects rather than ID&#39;s in the response body. | 
@@ -215,6 +220,7 @@ Optional parameters are passed through a pointer to a GetTransferFilesOpts struc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **cookie** | **optional.String**| moov_auth Cookie | 
  **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
 
 ### Return type
@@ -250,6 +256,7 @@ Optional parameters are passed through a pointer to a GetTransferNachaCodeOpts s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **cookie** | **optional.String**| moov_auth Cookie | 
  **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
 
 ### Return type
@@ -283,6 +290,7 @@ Optional parameters are passed through a pointer to a GetTransfersOpts struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **cookie** | **optional.String**| moov_auth Cookie | 
  **offset** | **optional.Int32**| The number of items to skip before starting to collect the result set | [default to 0]
  **limit** | **optional.Int32**| The number of items to return | [default to 25]
  **startDate** | **optional.Time**| Filter objects created after this date. ISO-8601 format YYYY-MM-DD. Can optionally be used with endDate to specify a date range. | 

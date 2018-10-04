@@ -32,6 +32,7 @@ EventsApiService Get a Event by ID
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param eventId Event ID
  * @param optional nil or *GetEventByIDOpts - Optional Parameters:
+ * @param "Cookie" (optional.String) -  moov_auth Cookie
  * @param "Offset" (optional.Int32) -  The number of items to skip before starting to collect the result set
  * @param "Limit" (optional.Int32) -  The number of items to return
  * @param "Expand" (optional.String) -  Return nested objects rather than ID's in the response body.
@@ -40,6 +41,7 @@ EventsApiService Get a Event by ID
 */
 
 type GetEventByIDOpts struct {
+    Cookie optional.String
     Offset optional.Int32
     Limit optional.Int32
     Expand optional.String
@@ -102,6 +104,7 @@ func (a *EventsApiService) GetEventByID(ctx context.Context, eventId string, loc
 			} else {
 				key = auth.Key
 			}
+			localVarHeaderParams["Cookie"] = key
 		}
 	}
 
@@ -154,6 +157,7 @@ func (a *EventsApiService) GetEventByID(ctx context.Context, eventId string, loc
 EventsApiService Gets a list of Events
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *GetEventsOpts - Optional Parameters:
+ * @param "Cookie" (optional.String) -  moov_auth Cookie
  * @param "Offset" (optional.Int32) -  The number of items to skip before starting to collect the result set
  * @param "Limit" (optional.Int32) -  The number of items to return
  * @param "Expand" (optional.String) -  Return nested objects rather than ID's in the response body.
@@ -164,6 +168,7 @@ EventsApiService Gets a list of Events
 */
 
 type GetEventsOpts struct {
+    Cookie optional.String
     Offset optional.Int32
     Limit optional.Int32
     Expand optional.String
@@ -233,6 +238,7 @@ func (a *EventsApiService) GetEvents(ctx context.Context, localVarOptionals *Get
 			} else {
 				key = auth.Key
 			}
+			localVarHeaderParams["Cookie"] = key
 		}
 	}
 

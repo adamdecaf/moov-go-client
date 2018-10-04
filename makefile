@@ -7,3 +7,5 @@ client:
 	export OPENAPI_GENERATOR_VERSION=v3.3.0
 	chmod +x ./openapi-generator
 	./openapi-generator generate -i openapi.yaml -g go -o ./client
+	go build github.com/moov-io/go-client/client
+	go test ./...

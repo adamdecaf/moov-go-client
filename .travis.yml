@@ -1,8 +1,15 @@
-language: java
+language: go
 sudo: false
 os:
   - linux
-jdk:
-  - openjdk8
+go:
+  - 1.11
+env:
+  - GO111MODULE=on
+addons:
+  apt:
+    packages:
+      # From https://superuser.com/a/1156455
+      - oracle-java8-set-default
 script:
   - make client

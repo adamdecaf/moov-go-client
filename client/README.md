@@ -94,6 +94,7 @@ Class | Method | HTTP request | Description
  - [Files](docs/Files.md)
  - [Gateway](docs/Gateway.md)
  - [Gateways](docs/Gateways.md)
+ - [Login](docs/Login.md)
  - [OAuth2Client](docs/OAuth2Client.md)
  - [OAuth2Clients](docs/OAuth2Clients.md)
  - [Originator](docs/Originator.md)
@@ -107,14 +108,25 @@ Class | Method | HTTP request | Description
 ## Documentation For Authorization
 
 ## bearerAuth
-- **Type**: HTTP basic authentication
+- **Type**: OAuth
+- **Flow**: application
+- **Authorization URL**: 
+- **Scopes**: N/A
 
 Example
 ```golang
-auth := context.WithValue(context.Background(), sw.ContextBasicAuth, sw.BasicAuth{
-	UserName: "username",
-	Password: "password",
-})
+auth := context.WithValue(context.Background(), sw.ContextAccessToken, "ACCESSTOKENSTRING")
+r, err := client.Service.Operation(auth, args)
+```
+
+Or via OAuth2 module to automatically refresh tokens and perform user authentication.
+```golang
+import "golang.org/x/oauth2"
+
+/* Perform OAuth2 round trip request and obtain a token */
+
+tokenSource := oauth2cfg.TokenSource(createContext(httpClient), &token)
+auth := context.WithValue(oauth2.NoContext, sw.ContextOAuth2, tokenSource)
 r, err := client.Service.Operation(auth, args)
 ```
 ## cookieAuth

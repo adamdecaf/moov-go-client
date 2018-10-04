@@ -29,6 +29,7 @@ Optional parameters are passed through a pointer to a AddOriginatorOpts struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **cookie** | **optional.String**| moov_auth Cookie | 
  **xIdempotencyKey** | **optional.String**| Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests. | 
  **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
 
@@ -65,6 +66,7 @@ Optional parameters are passed through a pointer to a DeleteOriginatorOpts struc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **cookie** | **optional.String**| moov_auth Cookie | 
  **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
 
 ### Return type
@@ -100,6 +102,7 @@ Optional parameters are passed through a pointer to a GetOriginatorByIDOpts stru
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **cookie** | **optional.String**| moov_auth Cookie | 
  **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
  **offset** | **optional.Int32**| The number of items to skip before starting to collect the result set | [default to 0]
  **limit** | **optional.Int32**| The number of items to return | [default to 25]
@@ -136,6 +139,7 @@ Optional parameters are passed through a pointer to a GetOriginatorsOpts struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **cookie** | **optional.String**| moov_auth Cookie | 
  **offset** | **optional.Int32**| The number of items to skip before starting to collect the result set | [default to 0]
  **limit** | **optional.Int32**| The number of items to return | [default to 25]
  **expand** | **optional.String**| Return nested objects rather than ID&#39;s in the response body. | 
@@ -176,6 +180,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
+ **cookie** | **optional.String**| moov_auth Cookie | 
  **xIdempotencyKey** | **optional.String**| Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests. | 
  **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
 

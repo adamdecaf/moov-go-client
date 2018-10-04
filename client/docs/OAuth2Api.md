@@ -36,11 +36,22 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **CreateOAuth2Client**
-> OAuth2Clients CreateOAuth2Client(ctx, )
+> OAuth2Clients CreateOAuth2Client(ctx, optional)
 Create OAuth2 client credentials
 
 ### Required Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **optional** | ***CreateOAuth2ClientOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a CreateOAuth2ClientOpts struct
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cookie** | **optional.String**| moov_auth Cookie | 
 
 ### Return type
 
