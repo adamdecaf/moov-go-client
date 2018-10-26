@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **AddGateway**
-> Gateway AddGateway(ctx, uNKNOWNBASETYPE, optional)
+> Gateway AddGateway(ctx, optional)
 Create a new Gateway object
 
 ### Required Parameters
@@ -17,7 +17,6 @@ Create a new Gateway object
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **uNKNOWNBASETYPE** | [**UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md)| A JSON object containing a new Gateway | 
  **optional** | ***AddGatewayOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -25,10 +24,10 @@ Optional parameters are passed through a pointer to a AddGatewayOpts struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
  **cookie** | **optional.String**| moov_auth Cookie | 
  **xIdempotencyKey** | **optional.String**| Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests. | 
  **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **gateway** | [**optional.Interface of Gateway**](Gateway.md)|  | 
 
 ### Return type
 

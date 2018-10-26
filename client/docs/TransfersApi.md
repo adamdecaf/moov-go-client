@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 
 # **AddTransfer**
-> Transfer AddTransfer(ctx, uNKNOWNBASETYPE, optional)
+> Transfer AddTransfer(ctx, optional)
 Create a new transfer between an Originator and a Customer. Transfers cannot be modified. Instead delete the old and create a new transfer.
 
 ### Required Parameters
@@ -23,7 +23,6 @@ Create a new transfer between an Originator and a Customer. Transfers cannot be 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **uNKNOWNBASETYPE** | [**UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md)| A JSON object containing a new Transfer | 
  **optional** | ***AddTransferOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -31,10 +30,10 @@ Optional parameters are passed through a pointer to a AddTransferOpts struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
  **cookie** | **optional.String**| moov_auth Cookie | 
  **xIdempotencyKey** | **optional.String**| Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests. | 
  **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **transfer** | [**optional.Interface of Transfer**](Transfer.md)|  | 
 
 ### Return type
 
@@ -52,7 +51,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AddTransfers**
-> Transfers AddTransfers(ctx, transfer, optional)
+> Transfers AddTransfers(ctx, optional)
 Create a new list of transfer, validate, build, and process. Transfers cannot be modified.
 
 ### Required Parameters
@@ -60,7 +59,6 @@ Create a new list of transfer, validate, build, and process. Transfers cannot be
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **transfer** | [**[]Transfer**](array.md)| A JSON array containing Transfers | 
  **optional** | ***AddTransfersOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -68,10 +66,10 @@ Optional parameters are passed through a pointer to a AddTransfersOpts struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
  **cookie** | **optional.String**| moov_auth Cookie | 
  **xIdempotencyKey** | **optional.String**| Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests. | 
  **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **transfer** | [**optional.Interface of []Transfer**](array.md)|  | 
 
 ### Return type
 

@@ -1,7 +1,7 @@
 /*
  * Moov API
  *
- * _Note_: We're currently in pre-release of our API. We expect breaking changes before launching v1 so please join our [mailing list](https://groups.google.com/forum/#!forum/moov-users) for more updates and notices.  The Moov API is organized around [REST](http://en.wikipedia.org/wiki/Representational_State_Transfer). Our API has predictable, resource-oriented URLs, and uses HTTP response codes to indicate API errors. We use built-in HTTP features, like HTTP authentication and HTTP verbs, which are understood by off-the-shelf HTTP clients. We support [cross-origin resource sharing](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing), allowing you to interact securely with our API from client-side web applications (never expose your secret API key in any public website's client-side code). [JSON](http://www.json.org/) is returned by all API responses, including errors, although you can generate client code via [OpenAPI](https://swagger.io/) code generation to convert responses to appropriate language-specific objects.  The Moov API offers two methods of authentication, Cookie and OAuth2 access tokens. The cookie auth is designed for web browsers while the OAuth2 authentication is designed for automated access of our API.  When an API requires a token generated using OAuth (2-legged), no end user is involved. You generate the token by passing your client credentials (Client Id and Client Secret) in a simple call to Create access token (`/oauth2/token`). The operation returns a token that is valid for a few hours and can be renewed; when it expires, you just repeat the call and get a new token. Making additional token requests will keep generating tokens. There are no hard or soft limits.  Cookie auth is setup by provided (`/users/login`) a valid email and password combination. A `Set-Cookie` header is returned on success, which can be used in later calls. Cookie auth is required to generate OAuth2 client credentials.  The Moov API offers many services: - Automated Clearing House (ACH) origination and file management - Transfers and ACH Customer management. - X9 / Image Cash Ledger (ICL) specification support (image uplaod)  ACH is implemented a RESTful API enabling ACH transactions to be submitted and received without a deep understanding of a full NACHA file specification.  An *Originator* can initiate a *Transfer* as either a push (credit) or pull (debit) to a *Customer*. Originators and Customers must have a valid *Depository* account for a Transfer. A *Transfer* is initiated by an Originator to a Customer with an amount and flow of funds. ``` Originator                 ->   Gateway   ->   Customer  - OriginatorDepository                         - CustomerDepository  - Type   (Push or Pull)  - Amount (USD 12.43)  - Status (Pending)  ```  If you find a security related problem please contact us at [`security@moov.io`](mailto:security@moov.io). 
+ * _Note_: We're currently in pre-release of our API. We expect breaking changes before launching v1 so please join our [mailing list](https://groups.google.com/forum/#!forum/moov-users) for more updates and notices.  The Moov API is organized around [REST](http://en.wikipedia.org/wiki/Representational_State_Transfer). Our API has predictable, resource-oriented URLs, and uses HTTP response codes to indicate API errors. We use built-in HTTP features, like HTTP authentication and HTTP verbs, which are understood by off-the-shelf HTTP clients. We support [cross-origin resource sharing](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing), allowing you to interact securely with our API from client-side web applications (never expose your secret API key in any public website's client-side code). [JSON](http://www.json.org/) is returned by all API responses, including errors, although you can generate client code via [OpenAPI](https://swagger.io/) code generation to convert responses to appropriate language-specific objects.  The Moov API offers two methods of authentication, Cookie and OAuth2 access tokens. The cookie auth is designed for web browsers while the OAuth2 authentication is designed for automated access of our API.  When an API requires a token generated using OAuth (2-legged), no end user is involved. You generate the token by passing your client credentials (Client Id and Client Secret) in a simple call to Create access token (`/oauth2/token`). The operation returns a token that is valid for a few hours and can be renewed; when it expires, you just repeat the call and get a new token. Making additional token requests will keep generating tokens. There are no hard or soft limits.  Cookie auth is setup by provided (`/users/login`) a valid email and password combination. A `Set-Cookie` header is returned on success, which can be used in later calls. Cookie auth is required to generate OAuth2 client credentials.  The Moov API offers many services: - Automated Clearing House (ACH) origination and file management - Transfers and ACH Customer management. - X9 / Image Cash Ledger (ICL) specification support (image uplaod)  ACH is implemented a RESTful API enabling ACH transactions to be submitted and received without a deep understanding of a full NACHA file specification.  An *Originator* can initiate a *Transfer* as either a push (credit) or pull (debit) to a *Customer*. Originators and Customers must have a valid *Depository* account for a Transfer. A *Transfer* is initiated by an Originator to a Customer with an amount and flow of funds. ``` Originator                 ->   Gateway   ->   Customer  - OriginatorDepository                         - CustomerDepository  - Type   (Push or Pull)  - Amount (USD 12.43)  - Status (Pending)  ```  If you find a security related problem please contact us at [`security@moov.io`](mailto:security@moov.io).
  *
  * API version: v1
  * Contact: security@moov.io
@@ -12,12 +12,12 @@ package openapi
 
 import (
 	"context"
+	"fmt"
+	"github.com/antihax/optional"
 	"io/ioutil"
 	"net/http"
 	"net/url"
 	"strings"
-	"fmt"
-	"github.com/antihax/optional"
 )
 
 // Linger please
@@ -38,7 +38,7 @@ FilesApiService Add Batch to File
 
 type AddBatchToFileOpts struct {
 	XRequestId optional.String
-	Cookie optional.String
+	Cookie     optional.String
 }
 
 func (a *FilesApiService) AddBatchToFile(ctx context.Context, fileId string, localVarOptionals *AddBatchToFileOpts) (*http.Response, error) {
@@ -333,7 +333,7 @@ FilesApiService Delete a Batch from a File
 
 type DeleteFileBatchOpts struct {
 	XRequestId optional.String
-	Cookie optional.String
+	Cookie     optional.String
 }
 
 func (a *FilesApiService) DeleteFileBatch(ctx context.Context, fileId string, batchId string, localVarOptionals *DeleteFileBatchOpts) (*http.Response, error) {
@@ -427,7 +427,7 @@ FilesApiService Get a specific Batch on a FIle
 
 type GetFileBatchOpts struct {
 	XRequestId optional.String
-	Cookie optional.String
+	Cookie     optional.String
 }
 
 func (a *FilesApiService) GetFileBatch(ctx context.Context, fileId string, batchId string, localVarOptionals *GetFileBatchOpts) (Batch, *http.Response, error) {
@@ -539,7 +539,7 @@ FilesApiService Get the batches on a File.
 
 type GetFileBatchesOpts struct {
 	XRequestId optional.String
-	Cookie optional.String
+	Cookie     optional.String
 }
 
 func (a *FilesApiService) GetFileBatches(ctx context.Context, fileId string, localVarOptionals *GetFileBatchesOpts) (Batches, *http.Response, error) {
@@ -649,7 +649,7 @@ FilesApiService Retrieves the details of an existing File. You need only supply 
 */
 
 type GetFileByIDOpts struct {
-	Cookie optional.String
+	Cookie     optional.String
 	XRequestId optional.String
 }
 
@@ -761,7 +761,7 @@ FilesApiService Assembles the existing file (batches and controls) records, comp
 
 type GetFileContentsOpts struct {
 	XRequestId optional.String
-	Cookie optional.String
+	Cookie     optional.String
 }
 
 func (a *FilesApiService) GetFileContents(ctx context.Context, fileId string, localVarOptionals *GetFileContentsOpts) (string, *http.Response, error) {
@@ -968,17 +968,18 @@ func (a *FilesApiService) GetFiles(ctx context.Context, localVarOptionals *GetFi
 FilesApiService Updates the specified File Header by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param fileId File ID
- * @param uNKNOWNBASETYPE A JSON object containing a new File
  * @param optional nil or *UpdateFileOpts - Optional Parameters:
  * @param "Cookie" (optional.String) -  moov_auth Cookie
+ * @param "File" (optional.Interface of File) -
 @return File
 */
 
 type UpdateFileOpts struct {
 	Cookie optional.String
+	File   optional.Interface
 }
 
-func (a *FilesApiService) UpdateFile(ctx context.Context, fileId string, uNKNOWNBASETYPE UNKNOWN_BASE_TYPE, localVarOptionals *UpdateFileOpts) (File, *http.Response, error) {
+func (a *FilesApiService) UpdateFile(ctx context.Context, fileId string, localVarOptionals *UpdateFileOpts) (File, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Post")
 		localVarPostBody     interface{}
@@ -1014,7 +1015,14 @@ func (a *FilesApiService) UpdateFile(ctx context.Context, fileId string, uNKNOWN
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
-	localVarPostBody = &uNKNOWNBASETYPE
+	if localVarOptionals != nil && localVarOptionals.File.IsSet() {
+		localVarOptionalFile, localVarOptionalFileok := localVarOptionals.File.Value().(File)
+		if !localVarOptionalFileok {
+			return localVarReturnValue, nil, reportError("file should be File")
+		}
+		localVarPostBody = &localVarOptionalFile
+	}
+
 	if ctx != nil {
 		// API Key Authentication
 		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
@@ -1095,7 +1103,7 @@ FilesApiService Validates the existing file. You need only supply the unique Fil
 
 type ValidateFileOpts struct {
 	XRequestId optional.String
-	Cookie optional.String
+	Cookie     optional.String
 }
 
 func (a *FilesApiService) ValidateFile(ctx context.Context, fileId string, localVarOptionals *ValidateFileOpts) (File, *http.Response, error) {

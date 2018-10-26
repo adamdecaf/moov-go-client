@@ -92,6 +92,8 @@ Class | Method | HTTP request | Description
  - [BatchControl](docs/BatchControl.md)
  - [BatchHeader](docs/BatchHeader.md)
  - [Batches](docs/Batches.md)
+ - [Body](docs/Body.md)
+ - [Body1](docs/Body1.md)
  - [Customer](docs/Customer.md)
  - [Customers](docs/Customers.md)
  - [Depositories](docs/Depositories.md)

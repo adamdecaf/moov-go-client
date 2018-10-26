@@ -341,7 +341,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UpdateFile**
-> File UpdateFile(ctx, fileId, uNKNOWNBASETYPE, optional)
+> File UpdateFile(ctx, fileId, optional)
 Updates the specified File Header by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
 
 ### Required Parameters
@@ -350,7 +350,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **fileId** | **string**| File ID | 
-  **uNKNOWNBASETYPE** | [**UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md)| A JSON object containing a new File | 
  **optional** | ***UpdateFileOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -359,8 +358,8 @@ Optional parameters are passed through a pointer to a UpdateFileOpts struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
-
  **cookie** | **optional.String**| moov_auth Cookie | 
+ **file** | [**optional.Interface of File**](File.md)|  | 
 
 ### Return type
 

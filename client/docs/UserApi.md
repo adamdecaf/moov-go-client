@@ -45,7 +45,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **CreateUser**
-> User CreateUser(ctx, uNKNOWNBASETYPE)
+> User CreateUser(ctx, optional)
 Create a new user using an email address not seen before.
 
 ### Required Parameters
@@ -53,7 +53,14 @@ Create a new user using an email address not seen before.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **uNKNOWNBASETYPE** | [**UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md)| A Moov API User object | 
+ **optional** | ***CreateUserOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a CreateUserOpts struct
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **user** | [**optional.Interface of User**](User.md)|  | 
 
 ### Return type
 
@@ -71,7 +78,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UpdateUserProfile**
-> UpdateUserProfile(ctx, userId, optional)
+> UpdateUserProfile(ctx, userId, body1, optional)
 Update a User's profile information
 
 ### Required Parameters
@@ -80,6 +87,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **userId** | **string**| Moov API User ID | 
+  **body1** | [**Body1**](Body1.md)| User profile information | 
  **optional** | ***UpdateUserProfileOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -88,8 +96,8 @@ Optional parameters are passed through a pointer to a UpdateUserProfileOpts stru
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+
  **cookie** | **optional.String**| moov_auth Cookie | 
- **uNKNOWNBASETYPE** | [**optional.Interface of UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md)| User profile information | 
 
 ### Return type
 
@@ -102,12 +110,12 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UserLogin**
-> User UserLogin(ctx, uNKNOWNBASETYPE)
+> User UserLogin(ctx, body)
 Attempt to login with an email and password
 
 ### Required Parameters
@@ -115,7 +123,7 @@ Attempt to login with an email and password
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **uNKNOWNBASETYPE** | [**UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md)| Authenticating with an email and password | 
+  **body** | [**Body**](Body.md)| Authenticating with an email and password | 
 
 ### Return type
 
