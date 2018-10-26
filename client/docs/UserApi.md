@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CheckUserLogin**](UserApi.md#CheckUserLogin) | **Get** /v1/users/login | Check if a cookie is valid and authentic for a user.
 [**CreateUser**](UserApi.md#CreateUser) | **Post** /v1/users/create | Create a new user using an email address not seen before.
+[**UpdateUserProfile**](UserApi.md#UpdateUserProfile) | **Patch** /v1/users/{user_id} | Update a User&#39;s profile information
 [**UserLogin**](UserApi.md#UserLogin) | **Post** /v1/users/login | Attempt to login with an email and password
 [**UserLogout**](UserApi.md#UserLogout) | **Delete** /v1/users/login | Invalidat a user&#39;s cookie(s).
 
@@ -44,7 +45,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **CreateUser**
-> User CreateUser(ctx, optional)
+> User CreateUser(ctx, uNKNOWNBASETYPE)
 Create a new user using an email address not seen before.
 
 ### Required Parameters
@@ -52,14 +53,7 @@ Create a new user using an email address not seen before.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***CreateUserOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-Optional parameters are passed through a pointer to a CreateUserOpts struct
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **user** | [**optional.Interface of User**](User.md)|  | 
+  **uNKNOWNBASETYPE** | [**UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md)| A Moov API User object | 
 
 ### Return type
 
@@ -76,8 +70,44 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **UpdateUserProfile**
+> UpdateUserProfile(ctx, userId, optional)
+Update a User's profile information
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **userId** | **string**| Moov API User ID | 
+ **optional** | ***UpdateUserProfileOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a UpdateUserProfileOpts struct
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **cookie** | **optional.String**| moov_auth Cookie | 
+ **uNKNOWNBASETYPE** | [**optional.Interface of UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md)| User profile information | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **UserLogin**
-> User UserLogin(ctx, optional)
+> User UserLogin(ctx, uNKNOWNBASETYPE)
 Attempt to login with an email and password
 
 ### Required Parameters
@@ -85,14 +115,7 @@ Attempt to login with an email and password
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***UserLoginOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-Optional parameters are passed through a pointer to a UserLoginOpts struct
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **login** | [**optional.Interface of Login**](Login.md)|  | 
+  **uNKNOWNBASETYPE** | [**UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md)| Authenticating with an email and password | 
 
 ### Return type
 

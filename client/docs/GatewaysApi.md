@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **AddGateway**
-> Gateway AddGateway(ctx, gateway, optional)
+> Gateway AddGateway(ctx, uNKNOWNBASETYPE, optional)
 Create a new Gateway object
 
 ### Required Parameters
@@ -17,7 +17,7 @@ Create a new Gateway object
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **gateway** | [**Gateway**](Gateway.md)| A JSON object containing a new Gateway | 
+  **uNKNOWNBASETYPE** | [**UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md)| A JSON object containing a new Gateway | 
  **optional** | ***AddGatewayOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters

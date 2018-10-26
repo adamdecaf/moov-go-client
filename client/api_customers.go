@@ -1,7 +1,7 @@
 /*
  * Moov API
  *
- * The Moov API is organized around [REST](http://en.wikipedia.org/wiki/Representational_State_Transfer). Our API has predictable, resource-oriented URLs, and uses HTTP response codes to indicate API errors. We use built-in HTTP features, like HTTP authentication and HTTP verbs, which are understood by off-the-shelf HTTP clients. We support [cross-origin resource sharing](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing), allowing you to interact securely with our API from client-side web applications (never expose your secret API key in any public website's client-side code). [JSON](http://www.json.org/) is returned by all API responses, including errors, although you can generate client code via [OpenAPI](https://swagger.io/) code generation to convert responses to appropriate language-specific objects.  The Moov API offers two methods of authentication, Cookie and OAuth2 access tokens. The cookie auth is designed for web browsers while the OAuth2 authentication is designed for automated access of our API.  When an API requires a token generated using OAuth (2-legged), no end user is involved. You generate the token by passing your client credentials (Client Id and Client Secret) in a simple call to Create access token (`/oauth2/token`). The operation returns a token that’s good for about two weeks; when it expires, you just repeat the call and get a new token.  Cookie auth is setup by provided (`/users/login`) a valid email and password combination. A `Set-Cookie` header is returned on success, which can be used in later calls. Cookie auth is required to generate OAuth2 client credentials.  The Moov API offers many services: - Automated Clearing House (ACH) origination and file management - Transfers and ACH Customer management. - X9 / Image Cash Ledger (ICL) specification support (image uplaod)  ACH is implemented a RESTful API enabling ACH transactions to be submitted and received without a deep understanding of a full NACHA file specification.  An *Originator* can initiate a *Transfer* as either a push (credit) or pull (debit) to a *Customer*. Originators and Customers must have a valid *Depository* account for a Transfer. A *Transfer* is initiated by an Originator to a Customer with an amount and flow of funds. ``` Originator                 ->   Gateway   ->   Customer  - OriginatorDepository                         - CustomerDepository  - Type   (Push or Pull)  - Amount (USD 12.43)  - Status (Pending)  ```  If you find a problem (security or otherwise), please contact us at [`security@moov.io`](mailto:security@moov.io). 
+ * _Note_: We're currently in pre-release of our API. We expect breaking changes before launching v1 so please join our [mailing list](https://groups.google.com/forum/#!forum/moov-users) for more updates and notices.  The Moov API is organized around [REST](http://en.wikipedia.org/wiki/Representational_State_Transfer). Our API has predictable, resource-oriented URLs, and uses HTTP response codes to indicate API errors. We use built-in HTTP features, like HTTP authentication and HTTP verbs, which are understood by off-the-shelf HTTP clients. We support [cross-origin resource sharing](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing), allowing you to interact securely with our API from client-side web applications (never expose your secret API key in any public website's client-side code). [JSON](http://www.json.org/) is returned by all API responses, including errors, although you can generate client code via [OpenAPI](https://swagger.io/) code generation to convert responses to appropriate language-specific objects.  The Moov API offers two methods of authentication, Cookie and OAuth2 access tokens. The cookie auth is designed for web browsers while the OAuth2 authentication is designed for automated access of our API.  When an API requires a token generated using OAuth (2-legged), no end user is involved. You generate the token by passing your client credentials (Client Id and Client Secret) in a simple call to Create access token (`/oauth2/token`). The operation returns a token that is valid for a few hours and can be renewed; when it expires, you just repeat the call and get a new token. Making additional token requests will keep generating tokens. There are no hard or soft limits.  Cookie auth is setup by provided (`/users/login`) a valid email and password combination. A `Set-Cookie` header is returned on success, which can be used in later calls. Cookie auth is required to generate OAuth2 client credentials.  The Moov API offers many services: - Automated Clearing House (ACH) origination and file management - Transfers and ACH Customer management. - X9 / Image Cash Ledger (ICL) specification support (image uplaod)  ACH is implemented a RESTful API enabling ACH transactions to be submitted and received without a deep understanding of a full NACHA file specification.  An *Originator* can initiate a *Transfer* as either a push (credit) or pull (debit) to a *Customer*. Originators and Customers must have a valid *Depository* account for a Transfer. A *Transfer* is initiated by an Originator to a Customer with an amount and flow of funds. ``` Originator                 ->   Gateway   ->   Customer  - OriginatorDepository                         - CustomerDepository  - Type   (Push or Pull)  - Amount (USD 12.43)  - Status (Pending)  ```  If you find a security related problem please contact us at [`security@moov.io`](mailto:security@moov.io). 
  *
  * API version: v1
  * Contact: security@moov.io
@@ -30,7 +30,7 @@ type CustomersApiService service
 /*
 CustomersApiService Create a new Customer object
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param customer A JSON object containing a new Customer
+ * @param uNKNOWNBASETYPE A JSON object containing a new Customer
  * @param optional nil or *AddCustomersOpts - Optional Parameters:
  * @param "Cookie" (optional.String) -  moov_auth Cookie
  * @param "XIdempotencyKey" (optional.String) -  Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests.
@@ -39,19 +39,19 @@ CustomersApiService Create a new Customer object
 */
 
 type AddCustomersOpts struct {
-    Cookie optional.String
-    XIdempotencyKey optional.String
-    XRequestId optional.String
+	Cookie optional.String
+	XIdempotencyKey optional.String
+	XRequestId optional.String
 }
 
-func (a *CustomersApiService) AddCustomers(ctx context.Context, customer Customer, localVarOptionals *AddCustomersOpts) (Customer, *http.Response, error) {
+func (a *CustomersApiService) AddCustomers(ctx context.Context, uNKNOWNBASETYPE UNKNOWN_BASE_TYPE, localVarOptionals *AddCustomersOpts) (Customer, *http.Response, error) {
 	var (
-		localVarHttpMethod = strings.ToUpper("Post")
+		localVarHttpMethod   = strings.ToUpper("Post")
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue Customer
+		localVarReturnValue  Customer
 	)
 
 	// create path and map variables
@@ -85,7 +85,7 @@ func (a *CustomersApiService) AddCustomers(ctx context.Context, customer Custome
 		localVarHeaderParams["X-Request-Id"] = parameterToString(localVarOptionals.XRequestId.Value(), "")
 	}
 	// body params
-	localVarPostBody = &customer
+	localVarPostBody = &uNKNOWNBASETYPE
 	if ctx != nil {
 		// API Key Authentication
 		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
@@ -117,7 +117,7 @@ func (a *CustomersApiService) AddCustomers(ctx context.Context, customer Custome
 
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 		if err == nil {
 			return localVarReturnValue, localVarHttpResponse, err
 		}
@@ -125,28 +125,28 @@ func (a *CustomersApiService) AddCustomers(ctx context.Context, customer Custome
 
 	if localVarHttpResponse.StatusCode >= 300 {
 		newErr := GenericOpenAPIError{
-			body: localVarBody,
+			body:  localVarBody,
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 201 {
 			var v Customer
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-				if err != nil {
-					newErr.error = err.Error()
-					return localVarReturnValue, localVarHttpResponse, newErr
-				}
-				newErr.model = v
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
 				return localVarReturnValue, localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHttpResponse, newErr
 		}
 		if localVarHttpResponse.StatusCode == 400 {
 			var v Error
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-				if err != nil {
-					newErr.error = err.Error()
-					return localVarReturnValue, localVarHttpResponse, newErr
-				}
-				newErr.model = v
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
 				return localVarReturnValue, localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHttpResponse, newErr
 		}
 		return localVarReturnValue, localVarHttpResponse, newErr
 	}
@@ -165,14 +165,14 @@ CustomersApiService Permanently deletes a customer and associated depositories a
 */
 
 type DeleteCustomerOpts struct {
-    Authorization optional.String
-    Cookie optional.String
-    XRequestId optional.String
+	Authorization optional.String
+	Cookie optional.String
+	XRequestId optional.String
 }
 
 func (a *CustomersApiService) DeleteCustomer(ctx context.Context, customerId string, localVarOptionals *DeleteCustomerOpts) (*http.Response, error) {
 	var (
-		localVarHttpMethod = strings.ToUpper("Delete")
+		localVarHttpMethod   = strings.ToUpper("Delete")
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -241,7 +241,7 @@ func (a *CustomersApiService) DeleteCustomer(ctx context.Context, customerId str
 
 	if localVarHttpResponse.StatusCode >= 300 {
 		newErr := GenericOpenAPIError{
-			body: localVarBody,
+			body:  localVarBody,
 			error: localVarHttpResponse.Status,
 		}
 		return localVarHttpResponse, newErr
@@ -258,27 +258,25 @@ CustomersApiService Get a Customer by ID
  * @param "Cookie" (optional.String) -  moov_auth Cookie
  * @param "Offset" (optional.Int32) -  The number of items to skip before starting to collect the result set
  * @param "Limit" (optional.Int32) -  The number of items to return
- * @param "Expand" (optional.String) -  Return nested objects rather than ID's in the response body.
  * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
 @return Customer
 */
 
 type GetCustomerByIDOpts struct {
-    Cookie optional.String
-    Offset optional.Int32
-    Limit optional.Int32
-    Expand optional.String
-    XRequestId optional.String
+	Cookie optional.String
+	Offset optional.Int32
+	Limit optional.Int32
+	XRequestId optional.String
 }
 
 func (a *CustomersApiService) GetCustomerByID(ctx context.Context, customerId string, localVarOptionals *GetCustomerByIDOpts) (Customer, *http.Response, error) {
 	var (
-		localVarHttpMethod = strings.ToUpper("Get")
+		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue Customer
+		localVarReturnValue  Customer
 	)
 
 	// create path and map variables
@@ -295,9 +293,6 @@ func (a *CustomersApiService) GetCustomerByID(ctx context.Context, customerId st
 	if localVarOptionals != nil && localVarOptionals.Limit.IsSet() {
 		localVarQueryParams.Add("limit", parameterToString(localVarOptionals.Limit.Value(), ""))
 	}
-	if localVarOptionals != nil && localVarOptionals.Expand.IsSet() {
-		localVarQueryParams.Add("expand", parameterToString(localVarOptionals.Expand.Value(), ""))
-	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
 
@@ -349,7 +344,7 @@ func (a *CustomersApiService) GetCustomerByID(ctx context.Context, customerId st
 
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 		if err == nil {
 			return localVarReturnValue, localVarHttpResponse, err
 		}
@@ -357,18 +352,18 @@ func (a *CustomersApiService) GetCustomerByID(ctx context.Context, customerId st
 
 	if localVarHttpResponse.StatusCode >= 300 {
 		newErr := GenericOpenAPIError{
-			body: localVarBody,
+			body:  localVarBody,
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
 			var v Customer
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-				if err != nil {
-					newErr.error = err.Error()
-					return localVarReturnValue, localVarHttpResponse, newErr
-				}
-				newErr.model = v
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
 				return localVarReturnValue, localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHttpResponse, newErr
 		}
 		return localVarReturnValue, localVarHttpResponse, newErr
 	}
@@ -383,27 +378,25 @@ CustomersApiService Gets a list of Customers
  * @param "Cookie" (optional.String) -  moov_auth Cookie
  * @param "Offset" (optional.Int32) -  The number of items to skip before starting to collect the result set
  * @param "Limit" (optional.Int32) -  The number of items to return
- * @param "Expand" (optional.String) -  Return nested objects rather than ID's in the response body.
  * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
 @return Customers
 */
 
 type GetCustomersOpts struct {
-    Cookie optional.String
-    Offset optional.Int32
-    Limit optional.Int32
-    Expand optional.String
-    XRequestId optional.String
+	Cookie optional.String
+	Offset optional.Int32
+	Limit optional.Int32
+	XRequestId optional.String
 }
 
 func (a *CustomersApiService) GetCustomers(ctx context.Context, localVarOptionals *GetCustomersOpts) (Customers, *http.Response, error) {
 	var (
-		localVarHttpMethod = strings.ToUpper("Get")
+		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue Customers
+		localVarReturnValue  Customers
 	)
 
 	// create path and map variables
@@ -419,9 +412,6 @@ func (a *CustomersApiService) GetCustomers(ctx context.Context, localVarOptional
 	if localVarOptionals != nil && localVarOptionals.Limit.IsSet() {
 		localVarQueryParams.Add("limit", parameterToString(localVarOptionals.Limit.Value(), ""))
 	}
-	if localVarOptionals != nil && localVarOptionals.Expand.IsSet() {
-		localVarQueryParams.Add("expand", parameterToString(localVarOptionals.Expand.Value(), ""))
-	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
 
@@ -473,7 +463,7 @@ func (a *CustomersApiService) GetCustomers(ctx context.Context, localVarOptional
 
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 		if err == nil {
 			return localVarReturnValue, localVarHttpResponse, err
 		}
@@ -481,18 +471,18 @@ func (a *CustomersApiService) GetCustomers(ctx context.Context, localVarOptional
 
 	if localVarHttpResponse.StatusCode >= 300 {
 		newErr := GenericOpenAPIError{
-			body: localVarBody,
+			body:  localVarBody,
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
 			var v Customers
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-				if err != nil {
-					newErr.error = err.Error()
-					return localVarReturnValue, localVarHttpResponse, newErr
-				}
-				newErr.model = v
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
 				return localVarReturnValue, localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHttpResponse, newErr
 		}
 		return localVarReturnValue, localVarHttpResponse, newErr
 	}
@@ -508,27 +498,25 @@ CustomersApiService Get a list of Depository accounts for a Customer
  * @param "Cookie" (optional.String) -  moov_auth Cookie
  * @param "Offset" (optional.Int32) -  The number of items to skip before starting to collect the result set
  * @param "Limit" (optional.Int32) -  The number of items to return
- * @param "Expand" (optional.String) -  Return nested objects rather than ID's in the response body.
  * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
 @return Depositories
 */
 
 type GetDepositoriesByCustomerIDOpts struct {
-    Cookie optional.String
-    Offset optional.Int32
-    Limit optional.Int32
-    Expand optional.String
-    XRequestId optional.String
+	Cookie optional.String
+	Offset optional.Int32
+	Limit optional.Int32
+	XRequestId optional.String
 }
 
 func (a *CustomersApiService) GetDepositoriesByCustomerID(ctx context.Context, customerId string, localVarOptionals *GetDepositoriesByCustomerIDOpts) (Depositories, *http.Response, error) {
 	var (
-		localVarHttpMethod = strings.ToUpper("Get")
+		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue Depositories
+		localVarReturnValue  Depositories
 	)
 
 	// create path and map variables
@@ -545,9 +533,6 @@ func (a *CustomersApiService) GetDepositoriesByCustomerID(ctx context.Context, c
 	if localVarOptionals != nil && localVarOptionals.Limit.IsSet() {
 		localVarQueryParams.Add("limit", parameterToString(localVarOptionals.Limit.Value(), ""))
 	}
-	if localVarOptionals != nil && localVarOptionals.Expand.IsSet() {
-		localVarQueryParams.Add("expand", parameterToString(localVarOptionals.Expand.Value(), ""))
-	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
 
@@ -599,7 +584,7 @@ func (a *CustomersApiService) GetDepositoriesByCustomerID(ctx context.Context, c
 
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 		if err == nil {
 			return localVarReturnValue, localVarHttpResponse, err
 		}
@@ -607,18 +592,18 @@ func (a *CustomersApiService) GetDepositoriesByCustomerID(ctx context.Context, c
 
 	if localVarHttpResponse.StatusCode >= 300 {
 		newErr := GenericOpenAPIError{
-			body: localVarBody,
+			body:  localVarBody,
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
 			var v Depositories
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-				if err != nil {
-					newErr.error = err.Error()
-					return localVarReturnValue, localVarHttpResponse, newErr
-				}
-				newErr.model = v
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
 				return localVarReturnValue, localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHttpResponse, newErr
 		}
 		return localVarReturnValue, localVarHttpResponse, newErr
 	}
@@ -635,27 +620,25 @@ CustomersApiService Get a Depository accounts for a Customer based on it's ID
  * @param "Cookie" (optional.String) -  moov_auth Cookie
  * @param "Offset" (optional.Int32) -  The number of items to skip before starting to collect the result set
  * @param "Limit" (optional.Int32) -  The number of items to return
- * @param "Expand" (optional.String) -  Return nested objects rather than ID's in the response body.
  * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
 @return Depository
 */
 
 type GetDepositoriesByIDOpts struct {
-    Cookie optional.String
-    Offset optional.Int32
-    Limit optional.Int32
-    Expand optional.String
-    XRequestId optional.String
+	Cookie optional.String
+	Offset optional.Int32
+	Limit optional.Int32
+	XRequestId optional.String
 }
 
 func (a *CustomersApiService) GetDepositoriesByID(ctx context.Context, customerId string, depositoryId string, localVarOptionals *GetDepositoriesByIDOpts) (Depository, *http.Response, error) {
 	var (
-		localVarHttpMethod = strings.ToUpper("Get")
+		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue Depository
+		localVarReturnValue  Depository
 	)
 
 	// create path and map variables
@@ -673,9 +656,6 @@ func (a *CustomersApiService) GetDepositoriesByID(ctx context.Context, customerI
 	if localVarOptionals != nil && localVarOptionals.Limit.IsSet() {
 		localVarQueryParams.Add("limit", parameterToString(localVarOptionals.Limit.Value(), ""))
 	}
-	if localVarOptionals != nil && localVarOptionals.Expand.IsSet() {
-		localVarQueryParams.Add("expand", parameterToString(localVarOptionals.Expand.Value(), ""))
-	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
 
@@ -727,7 +707,7 @@ func (a *CustomersApiService) GetDepositoriesByID(ctx context.Context, customerI
 
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 		if err == nil {
 			return localVarReturnValue, localVarHttpResponse, err
 		}
@@ -735,18 +715,18 @@ func (a *CustomersApiService) GetDepositoriesByID(ctx context.Context, customerI
 
 	if localVarHttpResponse.StatusCode >= 300 {
 		newErr := GenericOpenAPIError{
-			body: localVarBody,
+			body:  localVarBody,
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
 			var v Depository
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-				if err != nil {
-					newErr.error = err.Error()
-					return localVarReturnValue, localVarHttpResponse, newErr
-				}
-				newErr.model = v
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
 				return localVarReturnValue, localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHttpResponse, newErr
 		}
 		return localVarReturnValue, localVarHttpResponse, newErr
 	}
@@ -758,7 +738,7 @@ func (a *CustomersApiService) GetDepositoriesByID(ctx context.Context, customerI
 CustomersApiService Updates the specified Customer by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param customerId Customer ID
- * @param customer A JSON object containing a new Customer
+ * @param uNKNOWNBASETYPE A JSON object containing a new Customer
  * @param optional nil or *UpdateCustomerOpts - Optional Parameters:
  * @param "Cookie" (optional.String) -  moov_auth Cookie
  * @param "XIdempotencyKey" (optional.String) -  Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests.
@@ -767,19 +747,19 @@ CustomersApiService Updates the specified Customer by setting the values of the 
 */
 
 type UpdateCustomerOpts struct {
-    Cookie optional.String
-    XIdempotencyKey optional.String
-    XRequestId optional.String
+	Cookie optional.String
+	XIdempotencyKey optional.String
+	XRequestId optional.String
 }
 
-func (a *CustomersApiService) UpdateCustomer(ctx context.Context, customerId string, customer Customer, localVarOptionals *UpdateCustomerOpts) (Customer, *http.Response, error) {
+func (a *CustomersApiService) UpdateCustomer(ctx context.Context, customerId string, uNKNOWNBASETYPE UNKNOWN_BASE_TYPE, localVarOptionals *UpdateCustomerOpts) (Customer, *http.Response, error) {
 	var (
-		localVarHttpMethod = strings.ToUpper("Patch")
+		localVarHttpMethod   = strings.ToUpper("Patch")
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue Customer
+		localVarReturnValue  Customer
 	)
 
 	// create path and map variables
@@ -814,7 +794,7 @@ func (a *CustomersApiService) UpdateCustomer(ctx context.Context, customerId str
 		localVarHeaderParams["X-Request-Id"] = parameterToString(localVarOptionals.XRequestId.Value(), "")
 	}
 	// body params
-	localVarPostBody = &customer
+	localVarPostBody = &uNKNOWNBASETYPE
 	if ctx != nil {
 		// API Key Authentication
 		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
@@ -846,7 +826,7 @@ func (a *CustomersApiService) UpdateCustomer(ctx context.Context, customerId str
 
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 		if err == nil {
 			return localVarReturnValue, localVarHttpResponse, err
 		}
@@ -854,28 +834,28 @@ func (a *CustomersApiService) UpdateCustomer(ctx context.Context, customerId str
 
 	if localVarHttpResponse.StatusCode >= 300 {
 		newErr := GenericOpenAPIError{
-			body: localVarBody,
+			body:  localVarBody,
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 201 {
 			var v Customer
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-				if err != nil {
-					newErr.error = err.Error()
-					return localVarReturnValue, localVarHttpResponse, newErr
-				}
-				newErr.model = v
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
 				return localVarReturnValue, localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHttpResponse, newErr
 		}
 		if localVarHttpResponse.StatusCode == 400 {
 			var v Error
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-				if err != nil {
-					newErr.error = err.Error()
-					return localVarReturnValue, localVarHttpResponse, newErr
-				}
-				newErr.model = v
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
 				return localVarReturnValue, localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHttpResponse, newErr
 		}
 		return localVarReturnValue, localVarHttpResponse, newErr
 	}

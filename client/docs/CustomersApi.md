@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 
 # **AddCustomers**
-> Customer AddCustomers(ctx, customer, optional)
+> Customer AddCustomers(ctx, uNKNOWNBASETYPE, optional)
 Create a new Customer object
 
 ### Required Parameters
@@ -22,7 +22,7 @@ Create a new Customer object
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **customer** | [**Customer**](Customer.md)| A JSON object containing a new Customer | 
+  **uNKNOWNBASETYPE** | [**UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md)| A JSON object containing a new Customer | 
  **optional** | ***AddCustomersOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -108,7 +108,6 @@ Name | Type | Description  | Notes
  **cookie** | **optional.String**| moov_auth Cookie | 
  **offset** | **optional.Int32**| The number of items to skip before starting to collect the result set | [default to 0]
  **limit** | **optional.Int32**| The number of items to return | [default to 25]
- **expand** | **optional.String**| Return nested objects rather than ID&#39;s in the response body. | 
  **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
 
 ### Return type
@@ -145,7 +144,6 @@ Name | Type | Description  | Notes
  **cookie** | **optional.String**| moov_auth Cookie | 
  **offset** | **optional.Int32**| The number of items to skip before starting to collect the result set | [default to 0]
  **limit** | **optional.Int32**| The number of items to return | [default to 25]
- **expand** | **optional.String**| Return nested objects rather than ID&#39;s in the response body. | 
  **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
 
 ### Return type
@@ -184,7 +182,6 @@ Name | Type | Description  | Notes
  **cookie** | **optional.String**| moov_auth Cookie | 
  **offset** | **optional.Int32**| The number of items to skip before starting to collect the result set | [default to 0]
  **limit** | **optional.Int32**| The number of items to return | [default to 25]
- **expand** | **optional.String**| Return nested objects rather than ID&#39;s in the response body. | 
  **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
 
 ### Return type
@@ -225,7 +222,6 @@ Name | Type | Description  | Notes
  **cookie** | **optional.String**| moov_auth Cookie | 
  **offset** | **optional.Int32**| The number of items to skip before starting to collect the result set | [default to 0]
  **limit** | **optional.Int32**| The number of items to return | [default to 25]
- **expand** | **optional.String**| Return nested objects rather than ID&#39;s in the response body. | 
  **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
 
 ### Return type
@@ -244,7 +240,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UpdateCustomer**
-> Customer UpdateCustomer(ctx, customerId, customer, optional)
+> Customer UpdateCustomer(ctx, customerId, uNKNOWNBASETYPE, optional)
 Updates the specified Customer by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
 
 ### Required Parameters
@@ -253,7 +249,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **customerId** | **string**| Customer ID | 
-  **customer** | [**Customer**](Customer.md)| A JSON object containing a new Customer | 
+  **uNKNOWNBASETYPE** | [**UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md)| A JSON object containing a new Customer | 
  **optional** | ***UpdateCustomerOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters

@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 
 # **AddTransfer**
-> Transfer AddTransfer(ctx, transfer, optional)
+> Transfer AddTransfer(ctx, uNKNOWNBASETYPE, optional)
 Create a new transfer between an Originator and a Customer. Transfers cannot be modified. Instead delete the old and create a new transfer.
 
 ### Required Parameters
@@ -23,7 +23,7 @@ Create a new transfer between an Originator and a Customer. Transfers cannot be 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **transfer** | [**Transfer**](Transfer.md)| A JSON object containing a new Transfer | 
+  **uNKNOWNBASETYPE** | [**UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md)| A JSON object containing a new Transfer | 
  **optional** | ***AddTransferOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -145,7 +145,6 @@ Name | Type | Description  | Notes
  **cookie** | **optional.String**| moov_auth Cookie | 
  **offset** | **optional.Int32**| The number of items to skip before starting to collect the result set | [default to 0]
  **limit** | **optional.Int32**| The number of items to return | [default to 25]
- **expand** | **optional.String**| Return nested objects rather than ID&#39;s in the response body. | 
  **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
 
 ### Return type
@@ -184,7 +183,6 @@ Name | Type | Description  | Notes
  **cookie** | **optional.String**| moov_auth Cookie | 
  **offset** | **optional.Int32**| The number of items to skip before starting to collect the result set | [default to 0]
  **limit** | **optional.Int32**| The number of items to return | [default to 25]
- **expand** | **optional.String**| Return nested objects rather than ID&#39;s in the response body. | 
  **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
 
 ### Return type
@@ -203,7 +201,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetTransferFiles**
-> GetTransferFiles(ctx, transferId, optional)
+> Files GetTransferFiles(ctx, transferId, optional)
 Get the ACH files to be used in this transfer.
 
 ### Required Parameters
@@ -225,7 +223,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**Files**](Files.md)
 
 ### Authorization
 
@@ -295,7 +293,6 @@ Name | Type | Description  | Notes
  **limit** | **optional.Int32**| The number of items to return | [default to 25]
  **startDate** | **optional.Time**| Filter objects created after this date. ISO-8601 format YYYY-MM-DD. Can optionally be used with endDate to specify a date range. | 
  **endDate** | **optional.Time**| Filter objects created before this date. ISO-8601 format YYYY-MM-DD. Can optionally be used with startDate to specify a date range. | 
- **expand** | **optional.String**| Return nested objects rather than ID&#39;s in the response body. | 
  **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
 
 ### Return type

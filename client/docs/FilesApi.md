@@ -4,14 +4,54 @@ All URIs are relative to *https://api.moov.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**AddBatchToFile**](FilesApi.md#AddBatchToFile) | **Post** /v1/ach/files/{file_id}/batches | Add Batch to File
 [**AddFile**](FilesApi.md#AddFile) | **Post** /v1/ach/files/create | Create a new File object
 [**DeleteACHFile**](FilesApi.md#DeleteACHFile) | **Delete** /v1/ach/files/{file_id} | Permanently deletes a File and associated Batches. It cannot be undone.
+[**DeleteFileBatch**](FilesApi.md#DeleteFileBatch) | **Delete** /v1/ach/files/{file_id}/batches/{batch_id} | Delete a Batch from a File
+[**GetFileBatch**](FilesApi.md#GetFileBatch) | **Get** /v1/ach/files/{file_id}/batches/{batch_id} | Get a specific Batch on a FIle
+[**GetFileBatches**](FilesApi.md#GetFileBatches) | **Get** /v1/ach/files/{file_id}/batches | Get the batches on a File.
 [**GetFileByID**](FilesApi.md#GetFileByID) | **Get** /v1/ach/files/{file_id} | Retrieves the details of an existing File. You need only supply the unique File identifier that was returned upon creation.
 [**GetFileContents**](FilesApi.md#GetFileContents) | **Get** /v1/ach/files/{file_id}/contents | Assembles the existing file (batches and controls) records, computes sequence numbers and totals. Returns plaintext file.
 [**GetFiles**](FilesApi.md#GetFiles) | **Get** /v1/ach/files | Gets a list of Files
 [**UpdateFile**](FilesApi.md#UpdateFile) | **Post** /v1/ach/files/{file_id} | Updates the specified File Header by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
 [**ValidateFile**](FilesApi.md#ValidateFile) | **Get** /v1/ach/files/{file_id}/validate | Validates the existing file. You need only supply the unique File identifier that was returned upon creation.
 
+
+# **AddBatchToFile**
+> AddBatchToFile(ctx, fileId, optional)
+Add Batch to File
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **fileId** | **string**| File ID | 
+ **optional** | ***AddBatchToFileOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a AddBatchToFileOpts struct
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **cookie** | **optional.String**| moov_auth Cookie | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AddFile**
 > File AddFile(ctx, file, optional)
@@ -22,7 +62,7 @@ Create a new File object
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **file** | [**File**](File.md)|  | 
+  **file** | [**File**](File.md)| Content of the ACH file (in json or raw text) | 
  **optional** | ***AddFileOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -80,6 +120,118 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **DeleteFileBatch**
+> DeleteFileBatch(ctx, fileId, batchId, optional)
+Delete a Batch from a File
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **fileId** | **string**| File ID | 
+  **batchId** | **string**| Batch ID | 
+ **optional** | ***DeleteFileBatchOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a DeleteFileBatchOpts struct
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **cookie** | **optional.String**| moov_auth Cookie | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **GetFileBatch**
+> Batch GetFileBatch(ctx, fileId, batchId, optional)
+Get a specific Batch on a FIle
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **fileId** | **string**| File ID | 
+  **batchId** | **string**| Batch ID | 
+ **optional** | ***GetFileBatchOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a GetFileBatchOpts struct
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **cookie** | **optional.String**| moov_auth Cookie | 
+
+### Return type
+
+[**Batch**](Batch.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **GetFileBatches**
+> Batches GetFileBatches(ctx, fileId, optional)
+Get the batches on a File.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **fileId** | **string**| File ID | 
+ **optional** | ***GetFileBatchesOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a GetFileBatchesOpts struct
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **cookie** | **optional.String**| moov_auth Cookie | 
+
+### Return type
+
+[**Batches**](Batches.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -189,7 +341,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UpdateFile**
-> File UpdateFile(ctx, fileId, fileHeader, optional)
+> File UpdateFile(ctx, fileId, uNKNOWNBASETYPE, optional)
 Updates the specified File Header by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
 
 ### Required Parameters
@@ -198,7 +350,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **fileId** | **string**| File ID | 
-  **fileHeader** | [**FileHeader**](FileHeader.md)| A JSON object containing a new File | 
+  **uNKNOWNBASETYPE** | [**UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md)| A JSON object containing a new File | 
  **optional** | ***UpdateFileOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters

@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **AddOriginator**
-> Originator AddOriginator(ctx, originator, optional)
+> Originator AddOriginator(ctx, uNKNOWNBASETYPE, optional)
 Create a new Originator object
 
 ### Required Parameters
@@ -20,7 +20,7 @@ Create a new Originator object
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **originator** | [**Originator**](Originator.md)| A JSON object containing a new Originator | 
+  **uNKNOWNBASETYPE** | [**UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md)| A JSON object containing a new Originator | 
  **optional** | ***AddOriginatorOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -106,7 +106,6 @@ Name | Type | Description  | Notes
  **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
  **offset** | **optional.Int32**| The number of items to skip before starting to collect the result set | [default to 0]
  **limit** | **optional.Int32**| The number of items to return | [default to 25]
- **expand** | **optional.String**| Return nested objects rather than ID&#39;s in the response body. | 
 
 ### Return type
 
@@ -142,7 +141,6 @@ Name | Type | Description  | Notes
  **cookie** | **optional.String**| moov_auth Cookie | 
  **offset** | **optional.Int32**| The number of items to skip before starting to collect the result set | [default to 0]
  **limit** | **optional.Int32**| The number of items to return | [default to 25]
- **expand** | **optional.String**| Return nested objects rather than ID&#39;s in the response body. | 
  **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
 
 ### Return type
@@ -161,7 +159,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UpdateOriginator**
-> Originator UpdateOriginator(ctx, originatorId, originator, optional)
+> Originator UpdateOriginator(ctx, originatorId, uNKNOWNBASETYPE, optional)
 Updates the specified Originator by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
 
 ### Required Parameters
@@ -170,7 +168,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **originatorId** | **string**| Originator ID | 
-  **originator** | [**Originator**](Originator.md)| A JSON object containing a new Originator | 
+  **uNKNOWNBASETYPE** | [**UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md)| A JSON object containing a new Originator | 
  **optional** | ***UpdateOriginatorOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters

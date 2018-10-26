@@ -13,17 +13,27 @@ import (
 	"time"
 )
 
-type Customer struct {
-	// Customer ID
-	Id string `json:"id,omitempty"`
-	// The customers email address
-	Email string `json:"email,omitempty"`
-	// The depository account to be used by default per transfer. ID must be a valid Customer Depository account
-	DefaultDepository string `json:"defaultDepository,omitempty"`
-	// Defines the status of the Customer
-	Status string `json:"status,omitempty"`
-	// Additional meta data to be used for display only
-	Metadata string `json:"metadata,omitempty"`
-	Created time.Time `json:"created,omitempty"`
-	Updated time.Time `json:"updated,omitempty"`
+type BatchHeader struct {
+	// Batch Header ID
+	Id string `json:"id"`
+	// Service Class Code - ACH Credits Only 220 and ACH Debits Only 225
+	ServiceClassCode int32 `json:"serviceClassCode"`
+	// Company originating the entries in the batch
+	CompanyName string `json:"companyName"`
+	// The 9 digit FEIN number (proceeded by a predetermined alpha or numeric character) of the entity in the company name field
+	CompanyDiscretionaryData string `json:"companyDiscretionaryData,omitempty"`
+	// Identifies the payment type (product) found within an ACH batch-using a 3-character code.
+	StandardEntryClassCode string `json:"standardEntryClassCode,omitempty"`
+	// A description of the entries contained in the batch. The Originator establishes the value of this field to provide a description of the purpose of the entry to be displayed back to the receive For example, \"GAS BILL,\" \"REG. SALARY,\" \"INS. PREM,\", \"SOC. SEC.,\" \"DTC,\" \"TRADE PAY,\" \"PURCHASE,\" etc. This field must contain the word \"REVERSAL\" (left justified) when the batch contains reversing entries. This field must contain the word \"RECLAIM\" (left justified) when the batch contains reclamation entries. This field must contain the word \"NONSETTLED\" (left justified) when the batch contains entries which could not settle. 
+	CompanyEntryDescription string `json:"companyEntryDescription,omitempty"`
+	// The Originator establishes this field as the date it would like to see displayed to the receiver for descriptive purposes. This field is never used to control timing of any computer or manual operation. It is solely for descriptive purposes. The RDFI should not assume any specific format. 
+	CompanyDescriptiveDate string `json:"companyDescriptiveDate,omitempty"`
+	// Date on which the entries are to settle
+	EffectiveEntryDate time.Time `json:"effectiveEntryDate,omitempty"`
+	// ODFI initiating the Entry. 0 ADV File prepared by an ACH Operator. 1 This code identifies the Originator as a depository financial institution. 2 This code identifies the Originator as a Federal Government entity or agency. 
+	OriginatorStatusCode int32 `json:"originatorStatusCode,omitempty"`
+	// First 8 digits of the originating DFI transit routing number
+	ODFIIdentification string `json:"ODFIIdentification"`
+	// BatchNumber is assigned in ascending sequence to each batch by the ODFI or its Sending Point in a given file of entries. Since the batch number in the Batch Header Record and the Batch Control Record is the same, the ascending sequence number should be assigned by batch and not by record. 
+	BatchNumber string `json:"batchNumber,omitempty"`
 }

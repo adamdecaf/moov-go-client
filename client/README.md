@@ -1,6 +1,6 @@
 # Go API client for openapi
 
-The Moov API is organized around [REST](http://en.wikipedia.org/wiki/Representational_State_Transfer). Our API has predictable, resource-oriented URLs, and uses HTTP response codes to indicate API errors. We use built-in HTTP features, like HTTP authentication and HTTP verbs, which are understood by off-the-shelf HTTP clients. We support [cross-origin resource sharing](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing), allowing you to interact securely with our API from client-side web applications (never expose your secret API key in any public website's client-side code). [JSON](http://www.json.org/) is returned by all API responses, including errors, although you can generate client code via [OpenAPI](https://swagger.io/) code generation to convert responses to appropriate language-specific objects.  The Moov API offers two methods of authentication, Cookie and OAuth2 access tokens. The cookie auth is designed for web browsers while the OAuth2 authentication is designed for automated access of our API.  When an API requires a token generated using OAuth (2-legged), no end user is involved. You generate the token by passing your client credentials (Client Id and Client Secret) in a simple call to Create access token (`/oauth2/token`). The operation returns a token that’s good for about two weeks; when it expires, you just repeat the call and get a new token.  Cookie auth is setup by provided (`/users/login`) a valid email and password combination. A `Set-Cookie` header is returned on success, which can be used in later calls. Cookie auth is required to generate OAuth2 client credentials.  The Moov API offers many services: - Automated Clearing House (ACH) origination and file management - Transfers and ACH Customer management. - X9 / Image Cash Ledger (ICL) specification support (image uplaod)  ACH is implemented a RESTful API enabling ACH transactions to be submitted and received without a deep understanding of a full NACHA file specification.  An *Originator* can initiate a *Transfer* as either a push (credit) or pull (debit) to a *Customer*. Originators and Customers must have a valid *Depository* account for a Transfer. A *Transfer* is initiated by an Originator to a Customer with an amount and flow of funds. ``` Originator                 ->   Gateway   ->   Customer  - OriginatorDepository                         - CustomerDepository  - Type   (Push or Pull)  - Amount (USD 12.43)  - Status (Pending)  ```  If you find a problem (security or otherwise), please contact us at [`security@moov.io`](mailto:security@moov.io). 
+_Note_: We're currently in pre-release of our API. We expect breaking changes before launching v1 so please join our [mailing list](https://groups.google.com/forum/#!forum/moov-users) for more updates and notices.  The Moov API is organized around [REST](http://en.wikipedia.org/wiki/Representational_State_Transfer). Our API has predictable, resource-oriented URLs, and uses HTTP response codes to indicate API errors. We use built-in HTTP features, like HTTP authentication and HTTP verbs, which are understood by off-the-shelf HTTP clients. We support [cross-origin resource sharing](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing), allowing you to interact securely with our API from client-side web applications (never expose your secret API key in any public website's client-side code). [JSON](http://www.json.org/) is returned by all API responses, including errors, although you can generate client code via [OpenAPI](https://swagger.io/) code generation to convert responses to appropriate language-specific objects.  The Moov API offers two methods of authentication, Cookie and OAuth2 access tokens. The cookie auth is designed for web browsers while the OAuth2 authentication is designed for automated access of our API.  When an API requires a token generated using OAuth (2-legged), no end user is involved. You generate the token by passing your client credentials (Client Id and Client Secret) in a simple call to Create access token (`/oauth2/token`). The operation returns a token that is valid for a few hours and can be renewed; when it expires, you just repeat the call and get a new token. Making additional token requests will keep generating tokens. There are no hard or soft limits.  Cookie auth is setup by provided (`/users/login`) a valid email and password combination. A `Set-Cookie` header is returned on success, which can be used in later calls. Cookie auth is required to generate OAuth2 client credentials.  The Moov API offers many services: - Automated Clearing House (ACH) origination and file management - Transfers and ACH Customer management. - X9 / Image Cash Ledger (ICL) specification support (image uplaod)  ACH is implemented a RESTful API enabling ACH transactions to be submitted and received without a deep understanding of a full NACHA file specification.  An *Originator* can initiate a *Transfer* as either a push (credit) or pull (debit) to a *Customer*. Originators and Customers must have a valid *Depository* account for a Transfer. A *Transfer* is initiated by an Originator to a Customer with an amount and flow of funds. ``` Originator                 ->   Gateway   ->   Customer  - OriginatorDepository                         - CustomerDepository  - Type   (Push or Pull)  - Amount (USD 12.43)  - Status (Pending)  ```  If you find a security related problem please contact us at [`security@moov.io`](mailto:security@moov.io). 
 
 ## Overview
 This API client was generated by the [OpenAPI Generator](https://openapi-generator.tech) project.  By using the [OpenAPI-spec](https://www.openapis.org/) from a remote server, you can easily generate an API client.
@@ -46,8 +46,12 @@ Class | Method | HTTP request | Description
 *DepositoriesApi* | [**UpdateDepository**](docs/DepositoriesApi.md#updatedepository) | **Patch** /v1/ach/depositories/{depositoryId} | Updates the specified Depository by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
 *EventsApi* | [**GetEventByID**](docs/EventsApi.md#geteventbyid) | **Get** /v1/ach/events/{eventId} | Get a Event by ID
 *EventsApi* | [**GetEvents**](docs/EventsApi.md#getevents) | **Get** /v1/ach/events | Gets a list of Events
+*FilesApi* | [**AddBatchToFile**](docs/FilesApi.md#addbatchtofile) | **Post** /v1/ach/files/{file_id}/batches | Add Batch to File
 *FilesApi* | [**AddFile**](docs/FilesApi.md#addfile) | **Post** /v1/ach/files/create | Create a new File object
 *FilesApi* | [**DeleteACHFile**](docs/FilesApi.md#deleteachfile) | **Delete** /v1/ach/files/{file_id} | Permanently deletes a File and associated Batches. It cannot be undone.
+*FilesApi* | [**DeleteFileBatch**](docs/FilesApi.md#deletefilebatch) | **Delete** /v1/ach/files/{file_id}/batches/{batch_id} | Delete a Batch from a File
+*FilesApi* | [**GetFileBatch**](docs/FilesApi.md#getfilebatch) | **Get** /v1/ach/files/{file_id}/batches/{batch_id} | Get a specific Batch on a FIle
+*FilesApi* | [**GetFileBatches**](docs/FilesApi.md#getfilebatches) | **Get** /v1/ach/files/{file_id}/batches | Get the batches on a File.
 *FilesApi* | [**GetFileByID**](docs/FilesApi.md#getfilebyid) | **Get** /v1/ach/files/{file_id} | Retrieves the details of an existing File. You need only supply the unique File identifier that was returned upon creation.
 *FilesApi* | [**GetFileContents**](docs/FilesApi.md#getfilecontents) | **Get** /v1/ach/files/{file_id}/contents | Assembles the existing file (batches and controls) records, computes sequence numbers and totals. Returns plaintext file.
 *FilesApi* | [**GetFiles**](docs/FilesApi.md#getfiles) | **Get** /v1/ach/files | Gets a list of Files
@@ -76,25 +80,35 @@ Class | Method | HTTP request | Description
 *TransfersApi* | [**GetTransfers**](docs/TransfersApi.md#gettransfers) | **Get** /v1/ach/transfers | A list of all Transfer objects
 *UserApi* | [**CheckUserLogin**](docs/UserApi.md#checkuserlogin) | **Get** /v1/users/login | Check if a cookie is valid and authentic for a user.
 *UserApi* | [**CreateUser**](docs/UserApi.md#createuser) | **Post** /v1/users/create | Create a new user using an email address not seen before.
+*UserApi* | [**UpdateUserProfile**](docs/UserApi.md#updateuserprofile) | **Patch** /v1/users/{user_id} | Update a User&#39;s profile information
 *UserApi* | [**UserLogin**](docs/UserApi.md#userlogin) | **Post** /v1/users/login | Attempt to login with an email and password
 *UserApi* | [**UserLogout**](docs/UserApi.md#userlogout) | **Delete** /v1/users/login | Invalidat a user&#39;s cookie(s).
 
 
 ## Documentation For Models
 
+ - [Addendum](docs/Addendum.md)
+ - [Batch](docs/Batch.md)
+ - [BatchControl](docs/BatchControl.md)
+ - [BatchHeader](docs/BatchHeader.md)
+ - [Batches](docs/Batches.md)
  - [Customer](docs/Customer.md)
  - [Customers](docs/Customers.md)
  - [Depositories](docs/Depositories.md)
  - [Depository](docs/Depository.md)
+ - [EntryDetail](docs/EntryDetail.md)
+ - [EntryDetails](docs/EntryDetails.md)
  - [Error](docs/Error.md)
  - [Event](docs/Event.md)
  - [Events](docs/Events.md)
  - [File](docs/File.md)
+ - [FileControl](docs/FileControl.md)
  - [FileHeader](docs/FileHeader.md)
  - [Files](docs/Files.md)
  - [Gateway](docs/Gateway.md)
  - [Gateways](docs/Gateways.md)
- - [Login](docs/Login.md)
+ - [IatBatch](docs/IatBatch.md)
+ - [IatBatchHeader](docs/IatBatchHeader.md)
  - [OAuth2Client](docs/OAuth2Client.md)
  - [OAuth2Clients](docs/OAuth2Clients.md)
  - [Originator](docs/Originator.md)
