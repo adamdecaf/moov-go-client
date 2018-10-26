@@ -13,9 +13,22 @@ Moov Docs: [docs.moov.io](https://docs.moov.io/en/latest/)
 
 This project is currently pre-production and could change without much notice, however we are looking for community feedback so please try out our code or give us feedback!
 
-## Getting Started / Install
+## Getting Started
 
-You can download the client (`go get -u github.com/moov-io/go-client/client`) and start building!
+If you're just looking to use this client in your project simply `go get -u github.com/moov-io/go-client/client` our code. Then checkout the [GoDoc](https://godoc.org/github.com/moov-io/go-client/client).
+
+### Generating a client
+
+To generate a client you need Maven `mvn`, `make`, and `wget` install. These should be available in your package manager:
+
+```
+# Linux / WSL
+$ sudo apt-get install -y make wget maven
+
+# Homebrew (macOS)
+$ brew install make wget
+$ brew cask install java && brew install maven
+```
 
 ## Getting Help
 
