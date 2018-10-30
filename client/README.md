@@ -47,7 +47,7 @@ Class | Method | HTTP request | Description
 *EventsApi* | [**GetEventByID**](docs/EventsApi.md#geteventbyid) | **Get** /v1/ach/events/{eventId} | Get a Event by ID
 *EventsApi* | [**GetEvents**](docs/EventsApi.md#getevents) | **Get** /v1/ach/events | Gets a list of Events
 *FilesApi* | [**AddBatchToFile**](docs/FilesApi.md#addbatchtofile) | **Post** /v1/ach/files/{file_id}/batches | Add Batch to File
-*FilesApi* | [**AddFile**](docs/FilesApi.md#addfile) | **Post** /v1/ach/files/create | Create a new File object
+*FilesApi* | [**CreateFile**](docs/FilesApi.md#createfile) | **Post** /v1/ach/files/create | Create a new File object
 *FilesApi* | [**DeleteACHFile**](docs/FilesApi.md#deleteachfile) | **Delete** /v1/ach/files/{file_id} | Permanently deletes a File and associated Batches. It cannot be undone.
 *FilesApi* | [**DeleteFileBatch**](docs/FilesApi.md#deletefilebatch) | **Delete** /v1/ach/files/{file_id}/batches/{batch_id} | Delete a Batch from a File
 *FilesApi* | [**GetFileBatch**](docs/FilesApi.md#getfilebatch) | **Get** /v1/ach/files/{file_id}/batches/{batch_id} | Get a specific Batch on a FIle

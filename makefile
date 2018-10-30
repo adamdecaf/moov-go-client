@@ -8,6 +8,8 @@ client:
 	chmod +x ./openapi-generator
 	rm -rf ./client
 	OPENAPI_GENERATOR_VERSION=3.3.1 ./openapi-generator generate -i openapi.yaml -g go -o ./client
-	go build github.com/moov-io/go-client/client
+#	OPENAPI_GENERATOR_VERSION=3.4.0-SNAPSHOT ./openapi-generator generate -i openapi.yaml -g go -o ./client
+#	OPENAPI_GENERATOR_VERSION=4.0.0-SNAPSHOT ./openapi-generator generate -i openapi.yaml -g go -o ./client
 	go fmt ./client
+	go build github.com/moov-io/go-client/client
 	go test ./...

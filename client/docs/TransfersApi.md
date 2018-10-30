@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 
 # **AddTransfer**
-> Transfer AddTransfer(ctx, optional)
+> Transfer AddTransfer(ctx, transfer, optional)
 Create a new transfer between an Originator and a Customer. Transfers cannot be modified. Instead delete the old and create a new transfer.
 
 ### Required Parameters
@@ -23,6 +23,7 @@ Create a new transfer between an Originator and a Customer. Transfers cannot be 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **transfer** | [**Transfer**](Transfer.md)|  | 
  **optional** | ***AddTransferOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -30,10 +31,9 @@ Optional parameters are passed through a pointer to a AddTransferOpts struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cookie** | **optional.String**| moov_auth Cookie | 
+
  **xIdempotencyKey** | **optional.String**| Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests. | 
  **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
- **transfer** | [**optional.Interface of Transfer**](Transfer.md)|  | 
 
 ### Return type
 
@@ -51,7 +51,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AddTransfers**
-> Transfers AddTransfers(ctx, optional)
+> Transfers AddTransfers(ctx, transfer, optional)
 Create a new list of transfer, validate, build, and process. Transfers cannot be modified.
 
 ### Required Parameters
@@ -59,6 +59,7 @@ Create a new list of transfer, validate, build, and process. Transfers cannot be
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **transfer** | [**[]Transfer**](array.md)|  | 
  **optional** | ***AddTransfersOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -66,10 +67,9 @@ Optional parameters are passed through a pointer to a AddTransfersOpts struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cookie** | **optional.String**| moov_auth Cookie | 
+
  **xIdempotencyKey** | **optional.String**| Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests. | 
  **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
- **transfer** | [**optional.Interface of []Transfer**](array.md)|  | 
 
 ### Return type
 
@@ -104,7 +104,6 @@ Optional parameters are passed through a pointer to a DeleteTransferByIDOpts str
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **cookie** | **optional.String**| moov_auth Cookie | 
  **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
 
 ### Return type
@@ -140,7 +139,6 @@ Optional parameters are passed through a pointer to a GetTransferByIDOpts struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **cookie** | **optional.String**| moov_auth Cookie | 
  **offset** | **optional.Int32**| The number of items to skip before starting to collect the result set | [default to 0]
  **limit** | **optional.Int32**| The number of items to return | [default to 25]
  **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
@@ -178,7 +176,6 @@ Optional parameters are passed through a pointer to a GetTransferEventsByIDOpts 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **cookie** | **optional.String**| moov_auth Cookie | 
  **offset** | **optional.Int32**| The number of items to skip before starting to collect the result set | [default to 0]
  **limit** | **optional.Int32**| The number of items to return | [default to 25]
  **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
@@ -216,7 +213,6 @@ Optional parameters are passed through a pointer to a GetTransferFilesOpts struc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **cookie** | **optional.String**| moov_auth Cookie | 
  **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
 
 ### Return type
@@ -252,7 +248,6 @@ Optional parameters are passed through a pointer to a GetTransferNachaCodeOpts s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **cookie** | **optional.String**| moov_auth Cookie | 
  **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
 
 ### Return type
@@ -286,7 +281,6 @@ Optional parameters are passed through a pointer to a GetTransfersOpts struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cookie** | **optional.String**| moov_auth Cookie | 
  **offset** | **optional.Int32**| The number of items to skip before starting to collect the result set | [default to 0]
  **limit** | **optional.Int32**| The number of items to return | [default to 25]
  **startDate** | **optional.Time**| Filter objects created after this date. ISO-8601 format YYYY-MM-DD. Can optionally be used with endDate to specify a date range. | 

@@ -32,7 +32,6 @@ EventsApiService Get a Event by ID
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param eventId Event ID
  * @param optional nil or *GetEventByIDOpts - Optional Parameters:
- * @param "Cookie" (optional.String) -  moov_auth Cookie
  * @param "Offset" (optional.Int32) -  The number of items to skip before starting to collect the result set
  * @param "Limit" (optional.Int32) -  The number of items to return
  * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
@@ -40,7 +39,6 @@ EventsApiService Get a Event by ID
 */
 
 type GetEventByIDOpts struct {
-	Cookie     optional.String
 	Offset     optional.Int32
 	Limit      optional.Int32
 	XRequestId optional.String
@@ -152,7 +150,6 @@ func (a *EventsApiService) GetEventByID(ctx context.Context, eventId string, loc
 EventsApiService Gets a list of Events
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *GetEventsOpts - Optional Parameters:
- * @param "Cookie" (optional.String) -  moov_auth Cookie
  * @param "Offset" (optional.Int32) -  The number of items to skip before starting to collect the result set
  * @param "Limit" (optional.Int32) -  The number of items to return
  * @param "StartDate" (optional.Time) -  Filter objects created after this date. ISO-8601 format YYYY-MM-DD. Can optionally be used with endDate to specify a date range.
@@ -162,7 +159,6 @@ EventsApiService Gets a list of Events
 */
 
 type GetEventsOpts struct {
-	Cookie     optional.String
 	Offset     optional.Int32
 	Limit      optional.Int32
 	StartDate  optional.Time

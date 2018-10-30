@@ -30,8 +30,15 @@ type OAuth2ApiService service
 OAuth2ApiService Verify OAuth2 Bearer token
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param authorization <ignored>
+ * @param optional nil or *CheckOAuthClientCredentialsOpts - Optional Parameters:
+ * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
 */
-func (a *OAuth2ApiService) CheckOAuthClientCredentials(ctx context.Context, authorization string) (*http.Response, error) {
+
+type CheckOAuthClientCredentialsOpts struct {
+	XRequestId optional.String
+}
+
+func (a *OAuth2ApiService) CheckOAuthClientCredentials(ctx context.Context, authorization string, localVarOptionals *CheckOAuthClientCredentialsOpts) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
@@ -63,6 +70,9 @@ func (a *OAuth2ApiService) CheckOAuthClientCredentials(ctx context.Context, auth
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XRequestId.IsSet() {
+		localVarHeaderParams["X-Request-Id"] = parameterToString(localVarOptionals.XRequestId.Value(), "")
 	}
 	localVarHeaderParams["Authorization"] = parameterToString(authorization, "")
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
@@ -106,12 +116,12 @@ func (a *OAuth2ApiService) CheckOAuthClientCredentials(ctx context.Context, auth
 OAuth2ApiService Create OAuth2 client credentials
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *CreateOAuth2ClientOpts - Optional Parameters:
- * @param "Cookie" (optional.String) -  moov_auth Cookie
+ * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
 @return OAuth2Clients
 */
 
 type CreateOAuth2ClientOpts struct {
-	Cookie optional.String
+	XRequestId optional.String
 }
 
 func (a *OAuth2ApiService) CreateOAuth2Client(ctx context.Context, localVarOptionals *CreateOAuth2ClientOpts) (OAuth2Clients, *http.Response, error) {
@@ -147,6 +157,9 @@ func (a *OAuth2ApiService) CreateOAuth2Client(ctx context.Context, localVarOptio
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XRequestId.IsSet() {
+		localVarHeaderParams["X-Request-Id"] = parameterToString(localVarOptionals.XRequestId.Value(), "")
 	}
 	if ctx != nil {
 		// API Key Authentication
@@ -220,6 +233,7 @@ func (a *OAuth2ApiService) CreateOAuth2Client(ctx context.Context, localVarOptio
 OAuth2ApiService Generate OAuth2 access token
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *CreateOAuth2TokenOpts - Optional Parameters:
+ * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
  * @param "GrantType" (optional.String) -  OAuth2 grant type (must be 'client_credentials')
  * @param "ClientId" (optional.String) -  OAuth2 client ID
  * @param "ClientSecret" (optional.String) -  OAuth2 client secret
@@ -227,6 +241,7 @@ OAuth2ApiService Generate OAuth2 access token
 */
 
 type CreateOAuth2TokenOpts struct {
+	XRequestId   optional.String
 	GrantType    optional.String
 	ClientId     optional.String
 	ClientSecret optional.String
@@ -274,6 +289,9 @@ func (a *OAuth2ApiService) CreateOAuth2Token(ctx context.Context, localVarOption
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XRequestId.IsSet() {
+		localVarHeaderParams["X-Request-Id"] = parameterToString(localVarOptionals.XRequestId.Value(), "")
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {

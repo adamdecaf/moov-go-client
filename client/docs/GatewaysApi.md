@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **AddGateway**
-> Gateway AddGateway(ctx, optional)
+> Gateway AddGateway(ctx, gateway, optional)
 Create a new Gateway object
 
 ### Required Parameters
@@ -17,6 +17,7 @@ Create a new Gateway object
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **gateway** | [**Gateway**](Gateway.md)|  | 
  **optional** | ***AddGatewayOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -24,10 +25,9 @@ Optional parameters are passed through a pointer to a AddGatewayOpts struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cookie** | **optional.String**| moov_auth Cookie | 
+
  **xIdempotencyKey** | **optional.String**| Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests. | 
  **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
- **gateway** | [**optional.Interface of Gateway**](Gateway.md)|  | 
 
 ### Return type
 
@@ -60,7 +60,7 @@ Optional parameters are passed through a pointer to a GetGatewaysOpts struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cookie** | **optional.String**| moov_auth Cookie | 
+ **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
 
 ### Return type
 

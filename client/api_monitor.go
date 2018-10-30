@@ -12,6 +12,7 @@ package openapi
 
 import (
 	"context"
+	"github.com/antihax/optional"
 	"io/ioutil"
 	"net/http"
 	"net/url"
@@ -28,8 +29,15 @@ type MonitorApiService service
 /*
 MonitorApiService Check that the moov-io/ach service is running
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param optional nil or *PingACHOpts - Optional Parameters:
+ * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
 */
-func (a *MonitorApiService) PingACH(ctx context.Context) (*http.Response, error) {
+
+type PingACHOpts struct {
+	XRequestId optional.String
+}
+
+func (a *MonitorApiService) PingACH(ctx context.Context, localVarOptionals *PingACHOpts) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
@@ -62,6 +70,9 @@ func (a *MonitorApiService) PingACH(ctx context.Context) (*http.Response, error)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
+	if localVarOptionals != nil && localVarOptionals.XRequestId.IsSet() {
+		localVarHeaderParams["X-Request-Id"] = parameterToString(localVarOptionals.XRequestId.Value(), "")
+	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
@@ -92,8 +103,15 @@ func (a *MonitorApiService) PingACH(ctx context.Context) (*http.Response, error)
 /*
 MonitorApiService Check that the moov-io/auth service is running
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param optional nil or *PingAuthOpts - Optional Parameters:
+ * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
 */
-func (a *MonitorApiService) PingAuth(ctx context.Context) (*http.Response, error) {
+
+type PingAuthOpts struct {
+	XRequestId optional.String
+}
+
+func (a *MonitorApiService) PingAuth(ctx context.Context, localVarOptionals *PingAuthOpts) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
@@ -126,6 +144,9 @@ func (a *MonitorApiService) PingAuth(ctx context.Context) (*http.Response, error
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
+	if localVarOptionals != nil && localVarOptionals.XRequestId.IsSet() {
+		localVarHeaderParams["X-Request-Id"] = parameterToString(localVarOptionals.XRequestId.Value(), "")
+	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
@@ -156,8 +177,15 @@ func (a *MonitorApiService) PingAuth(ctx context.Context) (*http.Response, error
 /*
 MonitorApiService Check that the moov-io/paygate service is running
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param optional nil or *PingPaygateOpts - Optional Parameters:
+ * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
 */
-func (a *MonitorApiService) PingPaygate(ctx context.Context) (*http.Response, error) {
+
+type PingPaygateOpts struct {
+	XRequestId optional.String
+}
+
+func (a *MonitorApiService) PingPaygate(ctx context.Context, localVarOptionals *PingPaygateOpts) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
@@ -189,6 +217,9 @@ func (a *MonitorApiService) PingPaygate(ctx context.Context) (*http.Response, er
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XRequestId.IsSet() {
+		localVarHeaderParams["X-Request-Id"] = parameterToString(localVarOptionals.XRequestId.Value(), "")
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {

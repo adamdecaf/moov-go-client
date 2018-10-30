@@ -29,22 +29,19 @@ type GatewaysApiService service
 /*
 GatewaysApiService Create a new Gateway object
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param gateway
  * @param optional nil or *AddGatewayOpts - Optional Parameters:
- * @param "Cookie" (optional.String) -  moov_auth Cookie
  * @param "XIdempotencyKey" (optional.String) -  Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests.
  * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
- * @param "Gateway" (optional.Interface of Gateway) -
 @return Gateway
 */
 
 type AddGatewayOpts struct {
-	Cookie          optional.String
 	XIdempotencyKey optional.String
 	XRequestId      optional.String
-	Gateway         optional.Interface
 }
 
-func (a *GatewaysApiService) AddGateway(ctx context.Context, localVarOptionals *AddGatewayOpts) (Gateway, *http.Response, error) {
+func (a *GatewaysApiService) AddGateway(ctx context.Context, gateway Gateway, localVarOptionals *AddGatewayOpts) (Gateway, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Post")
 		localVarPostBody     interface{}
@@ -85,14 +82,7 @@ func (a *GatewaysApiService) AddGateway(ctx context.Context, localVarOptionals *
 		localVarHeaderParams["X-Request-Id"] = parameterToString(localVarOptionals.XRequestId.Value(), "")
 	}
 	// body params
-	if localVarOptionals != nil && localVarOptionals.Gateway.IsSet() {
-		localVarOptionalGateway, localVarOptionalGatewayok := localVarOptionals.Gateway.Value().(Gateway)
-		if !localVarOptionalGatewayok {
-			return localVarReturnValue, nil, reportError("gateway should be Gateway")
-		}
-		localVarPostBody = &localVarOptionalGateway
-	}
-
+	localVarPostBody = &gateway
 	if ctx != nil {
 		// API Key Authentication
 		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
@@ -165,12 +155,12 @@ func (a *GatewaysApiService) AddGateway(ctx context.Context, localVarOptionals *
 GatewaysApiService Gets a list of Gatways
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *GetGatewaysOpts - Optional Parameters:
- * @param "Cookie" (optional.String) -  moov_auth Cookie
+ * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
 @return Gateways
 */
 
 type GetGatewaysOpts struct {
-	Cookie optional.String
+	XRequestId optional.String
 }
 
 func (a *GatewaysApiService) GetGateways(ctx context.Context, localVarOptionals *GetGatewaysOpts) (Gateways, *http.Response, error) {
@@ -206,6 +196,9 @@ func (a *GatewaysApiService) GetGateways(ctx context.Context, localVarOptionals 
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XRequestId.IsSet() {
+		localVarHeaderParams["X-Request-Id"] = parameterToString(localVarOptionals.XRequestId.Value(), "")
 	}
 	if ctx != nil {
 		// API Key Authentication

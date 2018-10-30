@@ -33,12 +33,10 @@ FilesApiService Add Batch to File
  * @param fileId File ID
  * @param optional nil or *AddBatchToFileOpts - Optional Parameters:
  * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
- * @param "Cookie" (optional.String) -  moov_auth Cookie
 */
 
 type AddBatchToFileOpts struct {
 	XRequestId optional.String
-	Cookie     optional.String
 }
 
 func (a *FilesApiService) AddBatchToFile(ctx context.Context, fileId string, localVarOptionals *AddBatchToFileOpts) (*http.Response, error) {
@@ -122,16 +120,16 @@ func (a *FilesApiService) AddBatchToFile(ctx context.Context, fileId string, loc
 FilesApiService Create a new File object
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param file Content of the ACH file (in json or raw text)
- * @param optional nil or *AddFileOpts - Optional Parameters:
- * @param "Cookie" (optional.String) -  moov_auth Cookie
+ * @param optional nil or *CreateFileOpts - Optional Parameters:
+ * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
 @return File
 */
 
-type AddFileOpts struct {
-	Cookie optional.String
+type CreateFileOpts struct {
+	XRequestId optional.String
 }
 
-func (a *FilesApiService) AddFile(ctx context.Context, file File, localVarOptionals *AddFileOpts) (File, *http.Response, error) {
+func (a *FilesApiService) CreateFile(ctx context.Context, file File, localVarOptionals *CreateFileOpts) (File, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Post")
 		localVarPostBody     interface{}
@@ -164,6 +162,9 @@ func (a *FilesApiService) AddFile(ctx context.Context, file File, localVarOption
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XRequestId.IsSet() {
+		localVarHeaderParams["X-Request-Id"] = parameterToString(localVarOptionals.XRequestId.Value(), "")
 	}
 	// body params
 	localVarPostBody = &file
@@ -240,11 +241,11 @@ FilesApiService Permanently deletes a File and associated Batches. It cannot be 
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param fileId File ID
  * @param optional nil or *DeleteACHFileOpts - Optional Parameters:
- * @param "Cookie" (optional.String) -  moov_auth Cookie
+ * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
 */
 
 type DeleteACHFileOpts struct {
-	Cookie optional.String
+	XRequestId optional.String
 }
 
 func (a *FilesApiService) DeleteACHFile(ctx context.Context, fileId string, localVarOptionals *DeleteACHFileOpts) (*http.Response, error) {
@@ -280,6 +281,9 @@ func (a *FilesApiService) DeleteACHFile(ctx context.Context, fileId string, loca
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XRequestId.IsSet() {
+		localVarHeaderParams["X-Request-Id"] = parameterToString(localVarOptionals.XRequestId.Value(), "")
 	}
 	if ctx != nil {
 		// API Key Authentication
@@ -328,12 +332,10 @@ FilesApiService Delete a Batch from a File
  * @param batchId Batch ID
  * @param optional nil or *DeleteFileBatchOpts - Optional Parameters:
  * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
- * @param "Cookie" (optional.String) -  moov_auth Cookie
 */
 
 type DeleteFileBatchOpts struct {
 	XRequestId optional.String
-	Cookie     optional.String
 }
 
 func (a *FilesApiService) DeleteFileBatch(ctx context.Context, fileId string, batchId string, localVarOptionals *DeleteFileBatchOpts) (*http.Response, error) {
@@ -421,13 +423,11 @@ FilesApiService Get a specific Batch on a FIle
  * @param batchId Batch ID
  * @param optional nil or *GetFileBatchOpts - Optional Parameters:
  * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
- * @param "Cookie" (optional.String) -  moov_auth Cookie
 @return Batch
 */
 
 type GetFileBatchOpts struct {
 	XRequestId optional.String
-	Cookie     optional.String
 }
 
 func (a *FilesApiService) GetFileBatch(ctx context.Context, fileId string, batchId string, localVarOptionals *GetFileBatchOpts) (Batch, *http.Response, error) {
@@ -533,13 +533,11 @@ FilesApiService Get the batches on a File.
  * @param fileId File ID
  * @param optional nil or *GetFileBatchesOpts - Optional Parameters:
  * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
- * @param "Cookie" (optional.String) -  moov_auth Cookie
 @return Batches
 */
 
 type GetFileBatchesOpts struct {
 	XRequestId optional.String
-	Cookie     optional.String
 }
 
 func (a *FilesApiService) GetFileBatches(ctx context.Context, fileId string, localVarOptionals *GetFileBatchesOpts) (Batches, *http.Response, error) {
@@ -643,13 +641,11 @@ FilesApiService Retrieves the details of an existing File. You need only supply 
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param fileId File ID
  * @param optional nil or *GetFileByIDOpts - Optional Parameters:
- * @param "Cookie" (optional.String) -  moov_auth Cookie
  * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
 @return File
 */
 
 type GetFileByIDOpts struct {
-	Cookie     optional.String
 	XRequestId optional.String
 }
 
@@ -755,13 +751,11 @@ FilesApiService Assembles the existing file (batches and controls) records, comp
  * @param fileId File ID
  * @param optional nil or *GetFileContentsOpts - Optional Parameters:
  * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
- * @param "Cookie" (optional.String) -  moov_auth Cookie
 @return string
 */
 
 type GetFileContentsOpts struct {
 	XRequestId optional.String
-	Cookie     optional.String
 }
 
 func (a *FilesApiService) GetFileContents(ctx context.Context, fileId string, localVarOptionals *GetFileContentsOpts) (string, *http.Response, error) {
@@ -864,12 +858,12 @@ func (a *FilesApiService) GetFileContents(ctx context.Context, fileId string, lo
 FilesApiService Gets a list of Files
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *GetFilesOpts - Optional Parameters:
- * @param "Cookie" (optional.String) -  moov_auth Cookie
+ * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
 @return Files
 */
 
 type GetFilesOpts struct {
-	Cookie optional.String
+	XRequestId optional.String
 }
 
 func (a *FilesApiService) GetFiles(ctx context.Context, localVarOptionals *GetFilesOpts) (Files, *http.Response, error) {
@@ -905,6 +899,9 @@ func (a *FilesApiService) GetFiles(ctx context.Context, localVarOptionals *GetFi
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XRequestId.IsSet() {
+		localVarHeaderParams["X-Request-Id"] = parameterToString(localVarOptionals.XRequestId.Value(), "")
 	}
 	if ctx != nil {
 		// API Key Authentication
@@ -968,18 +965,17 @@ func (a *FilesApiService) GetFiles(ctx context.Context, localVarOptionals *GetFi
 FilesApiService Updates the specified File Header by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param fileId File ID
+ * @param file
  * @param optional nil or *UpdateFileOpts - Optional Parameters:
- * @param "Cookie" (optional.String) -  moov_auth Cookie
- * @param "File" (optional.Interface of File) -
+ * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
 @return File
 */
 
 type UpdateFileOpts struct {
-	Cookie optional.String
-	File   optional.Interface
+	XRequestId optional.String
 }
 
-func (a *FilesApiService) UpdateFile(ctx context.Context, fileId string, localVarOptionals *UpdateFileOpts) (File, *http.Response, error) {
+func (a *FilesApiService) UpdateFile(ctx context.Context, fileId string, file File, localVarOptionals *UpdateFileOpts) (File, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Post")
 		localVarPostBody     interface{}
@@ -1014,15 +1010,11 @@ func (a *FilesApiService) UpdateFile(ctx context.Context, fileId string, localVa
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	// body params
-	if localVarOptionals != nil && localVarOptionals.File.IsSet() {
-		localVarOptionalFile, localVarOptionalFileok := localVarOptionals.File.Value().(File)
-		if !localVarOptionalFileok {
-			return localVarReturnValue, nil, reportError("file should be File")
-		}
-		localVarPostBody = &localVarOptionalFile
+	if localVarOptionals != nil && localVarOptionals.XRequestId.IsSet() {
+		localVarHeaderParams["X-Request-Id"] = parameterToString(localVarOptionals.XRequestId.Value(), "")
 	}
-
+	// body params
+	localVarPostBody = &file
 	if ctx != nil {
 		// API Key Authentication
 		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
@@ -1097,13 +1089,11 @@ FilesApiService Validates the existing file. You need only supply the unique Fil
  * @param fileId File ID
  * @param optional nil or *ValidateFileOpts - Optional Parameters:
  * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
- * @param "Cookie" (optional.String) -  moov_auth Cookie
 @return File
 */
 
 type ValidateFileOpts struct {
 	XRequestId optional.String
-	Cookie     optional.String
 }
 
 func (a *FilesApiService) ValidateFile(ctx context.Context, fileId string, localVarOptionals *ValidateFileOpts) (File, *http.Response, error) {

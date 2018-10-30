@@ -30,22 +30,19 @@ type OriginatorsApiService service
 /*
 OriginatorsApiService Create a new Originator object
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param originator
  * @param optional nil or *AddOriginatorOpts - Optional Parameters:
- * @param "Cookie" (optional.String) -  moov_auth Cookie
- * @param "XIdempotencyKey" (optional.String) -  Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests.
  * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
- * @param "Originator" (optional.Interface of Originator) -
+ * @param "XIdempotencyKey" (optional.String) -  Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests.
 @return Originator
 */
 
 type AddOriginatorOpts struct {
-	Cookie          optional.String
-	XIdempotencyKey optional.String
 	XRequestId      optional.String
-	Originator      optional.Interface
+	XIdempotencyKey optional.String
 }
 
-func (a *OriginatorsApiService) AddOriginator(ctx context.Context, localVarOptionals *AddOriginatorOpts) (Originator, *http.Response, error) {
+func (a *OriginatorsApiService) AddOriginator(ctx context.Context, originator Originator, localVarOptionals *AddOriginatorOpts) (Originator, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Post")
 		localVarPostBody     interface{}
@@ -79,21 +76,14 @@ func (a *OriginatorsApiService) AddOriginator(ctx context.Context, localVarOptio
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	if localVarOptionals != nil && localVarOptionals.XIdempotencyKey.IsSet() {
-		localVarHeaderParams["X-Idempotency-Key"] = parameterToString(localVarOptionals.XIdempotencyKey.Value(), "")
-	}
 	if localVarOptionals != nil && localVarOptionals.XRequestId.IsSet() {
 		localVarHeaderParams["X-Request-Id"] = parameterToString(localVarOptionals.XRequestId.Value(), "")
 	}
-	// body params
-	if localVarOptionals != nil && localVarOptionals.Originator.IsSet() {
-		localVarOptionalOriginator, localVarOptionalOriginatorok := localVarOptionals.Originator.Value().(Originator)
-		if !localVarOptionalOriginatorok {
-			return localVarReturnValue, nil, reportError("originator should be Originator")
-		}
-		localVarPostBody = &localVarOptionalOriginator
+	if localVarOptionals != nil && localVarOptionals.XIdempotencyKey.IsSet() {
+		localVarHeaderParams["X-Idempotency-Key"] = parameterToString(localVarOptionals.XIdempotencyKey.Value(), "")
 	}
-
+	// body params
+	localVarPostBody = &originator
 	if ctx != nil {
 		// API Key Authentication
 		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
@@ -167,12 +157,10 @@ OriginatorsApiService Permanently deletes an Originator and associated Customers
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param originatorId Originator ID
  * @param optional nil or *DeleteOriginatorOpts - Optional Parameters:
- * @param "Cookie" (optional.String) -  moov_auth Cookie
  * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
 */
 
 type DeleteOriginatorOpts struct {
-	Cookie     optional.String
 	XRequestId optional.String
 }
 
@@ -258,7 +246,6 @@ OriginatorsApiService Retrieves the details of an existing Originator. You need 
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param originatorId Originator ID
  * @param optional nil or *GetOriginatorByIDOpts - Optional Parameters:
- * @param "Cookie" (optional.String) -  moov_auth Cookie
  * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
  * @param "Offset" (optional.Int32) -  The number of items to skip before starting to collect the result set
  * @param "Limit" (optional.Int32) -  The number of items to return
@@ -266,7 +253,6 @@ OriginatorsApiService Retrieves the details of an existing Originator. You need 
 */
 
 type GetOriginatorByIDOpts struct {
-	Cookie     optional.String
 	XRequestId optional.String
 	Offset     optional.Int32
 	Limit      optional.Int32
@@ -378,18 +364,16 @@ func (a *OriginatorsApiService) GetOriginatorByID(ctx context.Context, originato
 OriginatorsApiService Gets a list of Originators
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *GetOriginatorsOpts - Optional Parameters:
- * @param "Cookie" (optional.String) -  moov_auth Cookie
+ * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
  * @param "Offset" (optional.Int32) -  The number of items to skip before starting to collect the result set
  * @param "Limit" (optional.Int32) -  The number of items to return
- * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
 @return Originators
 */
 
 type GetOriginatorsOpts struct {
-	Cookie     optional.String
+	XRequestId optional.String
 	Offset     optional.Int32
 	Limit      optional.Int32
-	XRequestId optional.String
 }
 
 func (a *OriginatorsApiService) GetOriginators(ctx context.Context, localVarOptionals *GetOriginatorsOpts) (Originators, *http.Response, error) {
@@ -497,22 +481,19 @@ func (a *OriginatorsApiService) GetOriginators(ctx context.Context, localVarOpti
 OriginatorsApiService Updates the specified Originator by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param originatorId Originator ID
+ * @param originator
  * @param optional nil or *UpdateOriginatorOpts - Optional Parameters:
- * @param "Cookie" (optional.String) -  moov_auth Cookie
  * @param "XIdempotencyKey" (optional.String) -  Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests.
  * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
- * @param "Originator" (optional.Interface of Originator) -
 @return Originator
 */
 
 type UpdateOriginatorOpts struct {
-	Cookie          optional.String
 	XIdempotencyKey optional.String
 	XRequestId      optional.String
-	Originator      optional.Interface
 }
 
-func (a *OriginatorsApiService) UpdateOriginator(ctx context.Context, originatorId string, localVarOptionals *UpdateOriginatorOpts) (Originator, *http.Response, error) {
+func (a *OriginatorsApiService) UpdateOriginator(ctx context.Context, originatorId string, originator Originator, localVarOptionals *UpdateOriginatorOpts) (Originator, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Patch")
 		localVarPostBody     interface{}
@@ -554,14 +535,7 @@ func (a *OriginatorsApiService) UpdateOriginator(ctx context.Context, originator
 		localVarHeaderParams["X-Request-Id"] = parameterToString(localVarOptionals.XRequestId.Value(), "")
 	}
 	// body params
-	if localVarOptionals != nil && localVarOptionals.Originator.IsSet() {
-		localVarOptionalOriginator, localVarOptionalOriginatorok := localVarOptionals.Originator.Value().(Originator)
-		if !localVarOptionalOriginatorok {
-			return localVarReturnValue, nil, reportError("originator should be Originator")
-		}
-		localVarPostBody = &localVarOptionalOriginator
-	}
-
+	localVarPostBody = &originator
 	if ctx != nil {
 		// API Key Authentication
 		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {

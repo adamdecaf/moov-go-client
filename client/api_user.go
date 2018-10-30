@@ -31,11 +31,11 @@ type UserApiService service
 UserApiService Check if a cookie is valid and authentic for a user.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *CheckUserLoginOpts - Optional Parameters:
- * @param "Cookie" (optional.String) -  moov_auth Cookie
+ * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
 */
 
 type CheckUserLoginOpts struct {
-	Cookie optional.String
+	XRequestId optional.String
 }
 
 func (a *UserApiService) CheckUserLogin(ctx context.Context, localVarOptionals *CheckUserLoginOpts) (*http.Response, error) {
@@ -70,6 +70,9 @@ func (a *UserApiService) CheckUserLogin(ctx context.Context, localVarOptionals *
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XRequestId.IsSet() {
+		localVarHeaderParams["X-Request-Id"] = parameterToString(localVarOptionals.XRequestId.Value(), "")
 	}
 	if ctx != nil {
 		// API Key Authentication
@@ -114,16 +117,17 @@ func (a *UserApiService) CheckUserLogin(ctx context.Context, localVarOptionals *
 /*
 UserApiService Create a new user using an email address not seen before.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param user
  * @param optional nil or *CreateUserOpts - Optional Parameters:
- * @param "User" (optional.Interface of User) -
+ * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
 @return User
 */
 
 type CreateUserOpts struct {
-	User optional.Interface
+	XRequestId optional.String
 }
 
-func (a *UserApiService) CreateUser(ctx context.Context, localVarOptionals *CreateUserOpts) (User, *http.Response, error) {
+func (a *UserApiService) CreateUser(ctx context.Context, user User, localVarOptionals *CreateUserOpts) (User, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Post")
 		localVarPostBody     interface{}
@@ -157,15 +161,11 @@ func (a *UserApiService) CreateUser(ctx context.Context, localVarOptionals *Crea
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	// body params
-	if localVarOptionals != nil && localVarOptionals.User.IsSet() {
-		localVarOptionalUser, localVarOptionalUserok := localVarOptionals.User.Value().(User)
-		if !localVarOptionalUserok {
-			return localVarReturnValue, nil, reportError("user should be User")
-		}
-		localVarPostBody = &localVarOptionalUser
+	if localVarOptionals != nil && localVarOptionals.XRequestId.IsSet() {
+		localVarHeaderParams["X-Request-Id"] = parameterToString(localVarOptionals.XRequestId.Value(), "")
 	}
-
+	// body params
+	localVarPostBody = &user
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -227,11 +227,11 @@ UserApiService Update a User's profile information
  * @param userId Moov API User ID
  * @param body1 User profile information
  * @param optional nil or *UpdateUserProfileOpts - Optional Parameters:
- * @param "Cookie" (optional.String) -  moov_auth Cookie
+ * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
 */
 
 type UpdateUserProfileOpts struct {
-	Cookie optional.String
+	XRequestId optional.String
 }
 
 func (a *UserApiService) UpdateUserProfile(ctx context.Context, userId string, body1 Body1, localVarOptionals *UpdateUserProfileOpts) (*http.Response, error) {
@@ -267,6 +267,9 @@ func (a *UserApiService) UpdateUserProfile(ctx context.Context, userId string, b
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XRequestId.IsSet() {
+		localVarHeaderParams["X-Request-Id"] = parameterToString(localVarOptionals.XRequestId.Value(), "")
 	}
 	// body params
 	localVarPostBody = &body1
@@ -324,9 +327,16 @@ func (a *UserApiService) UpdateUserProfile(ctx context.Context, userId string, b
 UserApiService Attempt to login with an email and password
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param body Authenticating with an email and password
+ * @param optional nil or *UserLoginOpts - Optional Parameters:
+ * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
 @return User
 */
-func (a *UserApiService) UserLogin(ctx context.Context, body Body) (User, *http.Response, error) {
+
+type UserLoginOpts struct {
+	XRequestId optional.String
+}
+
+func (a *UserApiService) UserLogin(ctx context.Context, body Body, localVarOptionals *UserLoginOpts) (User, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Post")
 		localVarPostBody     interface{}
@@ -359,6 +369,9 @@ func (a *UserApiService) UserLogin(ctx context.Context, body Body) (User, *http.
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XRequestId.IsSet() {
+		localVarHeaderParams["X-Request-Id"] = parameterToString(localVarOptionals.XRequestId.Value(), "")
 	}
 	// body params
 	localVarPostBody = &body
@@ -421,11 +434,11 @@ func (a *UserApiService) UserLogin(ctx context.Context, body Body) (User, *http.
 UserApiService Invalidat a user's cookie(s).
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *UserLogoutOpts - Optional Parameters:
- * @param "Cookie" (optional.String) -  moov_auth Cookie
+ * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
 */
 
 type UserLogoutOpts struct {
-	Cookie optional.String
+	XRequestId optional.String
 }
 
 func (a *UserApiService) UserLogout(ctx context.Context, localVarOptionals *UserLogoutOpts) (*http.Response, error) {
@@ -460,6 +473,9 @@ func (a *UserApiService) UserLogout(ctx context.Context, localVarOptionals *User
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XRequestId.IsSet() {
+		localVarHeaderParams["X-Request-Id"] = parameterToString(localVarOptionals.XRequestId.Value(), "")
 	}
 	if ctx != nil {
 		// API Key Authentication

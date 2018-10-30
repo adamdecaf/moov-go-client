@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 
 # **CheckOAuthClientCredentials**
-> CheckOAuthClientCredentials(ctx, authorization)
+> CheckOAuthClientCredentials(ctx, authorization, optional)
 Verify OAuth2 Bearer token
 
 ### Required Parameters
@@ -19,6 +19,15 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **authorization** | **string**| &lt;ignored&gt; | 
+ **optional** | ***CheckOAuthClientCredentialsOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a CheckOAuthClientCredentialsOpts struct
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
 
 ### Return type
 
@@ -51,7 +60,7 @@ Optional parameters are passed through a pointer to a CreateOAuth2ClientOpts str
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cookie** | **optional.String**| moov_auth Cookie | 
+ **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
 
 ### Return type
 
@@ -84,6 +93,7 @@ Optional parameters are passed through a pointer to a CreateOAuth2TokenOpts stru
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
  **grantType** | **optional.String**| OAuth2 grant type (must be &#39;client_credentials&#39;) | [default to client_credentials]
  **clientId** | **optional.String**| OAuth2 client ID | 
  **clientSecret** | **optional.String**| OAuth2 client secret | 

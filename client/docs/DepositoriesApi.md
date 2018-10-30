@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **AddDepository**
-> Depository AddDepository(ctx, optional)
+> Depository AddDepository(ctx, depository, optional)
 Create a new depository account for a Customer ID or Originator ID defined in the Parent parameter
 
 ### Required Parameters
@@ -21,6 +21,7 @@ Create a new depository account for a Customer ID or Originator ID defined in th
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **depository** | [**Depository**](Depository.md)|  | 
  **optional** | ***AddDepositoryOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -28,10 +29,9 @@ Optional parameters are passed through a pointer to a AddDepositoryOpts struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cookie** | **optional.String**| moov_auth Cookie | 
+
  **xIdempotencyKey** | **optional.String**| Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests. | 
  **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
- **depository** | [**optional.Interface of Depository**](Depository.md)|  | 
 
 ### Return type
 
@@ -67,7 +67,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **amounts** | [**optional.Interface of []string**](string.md)| amounts that have been deposited | 
- **cookie** | **optional.String**| moov_auth Cookie | 
  **xIdempotencyKey** | **optional.String**| Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests. | 
  **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
 
@@ -104,7 +103,6 @@ Optional parameters are passed through a pointer to a DeleteDepositoryOpts struc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **cookie** | **optional.String**| moov_auth Cookie | 
  **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
 
 ### Return type
@@ -138,7 +136,6 @@ Optional parameters are passed through a pointer to a GetDepositoriesOpts struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cookie** | **optional.String**| moov_auth Cookie | 
  **offset** | **optional.Int32**| The number of items to skip before starting to collect the result set | [default to 0]
  **limit** | **optional.Int32**| The number of items to return | [default to 25]
  **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
@@ -176,7 +173,6 @@ Optional parameters are passed through a pointer to a GetDepositoryByIDOpts stru
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **cookie** | **optional.String**| moov_auth Cookie | 
  **offset** | **optional.Int32**| The number of items to skip before starting to collect the result set | [default to 0]
  **limit** | **optional.Int32**| The number of items to return | [default to 25]
  **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
@@ -197,7 +193,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UpdateDepository**
-> Depository UpdateDepository(ctx, depositoryId, optional)
+> Depository UpdateDepository(ctx, depositoryId, depository, optional)
 Updates the specified Depository by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
 
 ### Required Parameters
@@ -206,6 +202,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **depositoryId** | **string**| Depository ID | 
+  **depository** | [**Depository**](Depository.md)|  | 
  **optional** | ***UpdateDepositoryOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -214,10 +211,9 @@ Optional parameters are passed through a pointer to a UpdateDepositoryOpts struc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **cookie** | **optional.String**| moov_auth Cookie | 
+
  **xIdempotencyKey** | **optional.String**| Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests. | 
  **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
- **depository** | [**optional.Interface of Depository**](Depository.md)|  | 
 
 ### Return type
 
