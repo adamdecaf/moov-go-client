@@ -61,6 +61,7 @@ Optional parameters are passed through a pointer to a CreateOAuth2ClientOpts str
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **xIdempotencyKey** | **optional.String**| Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests. | 
 
 ### Return type
 
@@ -94,6 +95,7 @@ Optional parameters are passed through a pointer to a CreateOAuth2TokenOpts stru
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **xIdempotencyKey** | **optional.String**| Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests. | 
  **grantType** | **optional.String**| OAuth2 grant type (must be &#39;client_credentials&#39;) | [default to client_credentials]
  **clientId** | **optional.String**| OAuth2 client ID | 
  **clientSecret** | **optional.String**| OAuth2 client secret | 

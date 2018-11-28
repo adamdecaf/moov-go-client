@@ -1,4 +1,4 @@
-# Body1
+# UserProfile
 
 ## Properties
 Name | Type | Description | Notes

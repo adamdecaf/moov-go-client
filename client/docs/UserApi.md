@@ -63,6 +63,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **xIdempotencyKey** | **optional.String**| Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests. | 
 
 ### Return type
 
@@ -80,7 +81,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UpdateUserProfile**
-> UpdateUserProfile(ctx, userId, body1, optional)
+> UpdateUserProfile(ctx, userId, userProfile, optional)
 Update a User's profile information
 
 ### Required Parameters
@@ -89,7 +90,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **userId** | **string**| Moov API User ID | 
-  **body1** | [**Body1**](Body1.md)| User profile information | 
+  **userProfile** | [**UserProfile**](UserProfile.md)| User profile information | 
  **optional** | ***UpdateUserProfileOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -99,6 +100,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
+ **xIdempotencyKey** | **optional.String**| Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests. | 
  **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
 
 ### Return type
@@ -117,7 +119,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UserLogin**
-> User UserLogin(ctx, body, optional)
+> User UserLogin(ctx, login, optional)
 Attempt to login with an email and password
 
 ### Required Parameters
@@ -125,7 +127,7 @@ Attempt to login with an email and password
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **body** | [**Body**](Body.md)| Authenticating with an email and password | 
+  **login** | [**Login**](Login.md)| Authenticating with an email and password | 
  **optional** | ***UserLoginOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -135,6 +137,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **xIdempotencyKey** | **optional.String**| Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests. | 
 
 ### Return type
 

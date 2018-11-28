@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Batch Header ID | 
+**Id** | **string** | Batch Header ID | [optional] 
 **ServiceClassCode** | **int32** | Service Class Code - ACH Credits Only 220 and ACH Debits Only 225 | 
 **CompanyName** | **string** | Company originating the entries in the batch | 
 **CompanyDiscretionaryData** | **string** | The 9 digit FEIN number (proceeded by a predetermined alpha or numeric character) of the entity in the company name field | [optional] 

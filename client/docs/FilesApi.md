@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 
 # **AddBatchToFile**
-> AddBatchToFile(ctx, fileId, optional)
+> AddBatchToFile(ctx, fileId, batch, optional)
 Add Batch to File
 
 ### Required Parameters
@@ -27,6 +27,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **fileId** | **string**| File ID | 
+  **batch** | [**Batch**](Batch.md)|  | 
  **optional** | ***AddBatchToFileOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -35,7 +36,9 @@ Optional parameters are passed through a pointer to a AddBatchToFileOpts struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+
  **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **xIdempotencyKey** | **optional.String**| Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests. | 
 
 ### Return type
 
@@ -47,13 +50,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **CreateFile**
-> File CreateFile(ctx, file, optional)
+> File CreateFile(ctx, createFile, optional)
 Create a new File object
 
 ### Required Parameters
@@ -61,7 +64,7 @@ Create a new File object
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **file** | [**File**](File.md)| Content of the ACH file (in json or raw text) | 
+  **createFile** | [**CreateFile**](CreateFile.md)| Content of the ACH file (in json or raw text) | 
  **optional** | ***CreateFileOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -71,6 +74,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **xIdempotencyKey** | **optional.String**| Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests. | 
 
 ### Return type
 
@@ -335,7 +339,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UpdateFile**
-> File UpdateFile(ctx, fileId, file, optional)
+> File UpdateFile(ctx, fileId, createFile, optional)
 Updates the specified File Header by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
 
 ### Required Parameters
@@ -344,7 +348,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **fileId** | **string**| File ID | 
-  **file** | [**File**](File.md)|  | 
+  **createFile** | [**CreateFile**](CreateFile.md)|  | 
  **optional** | ***UpdateFileOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -355,6 +359,7 @@ Name | Type | Description  | Notes
 
 
  **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **xIdempotencyKey** | **optional.String**| Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests. | 
 
 ### Return type
 
