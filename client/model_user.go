@@ -22,7 +22,7 @@ type User struct {
 	FirstName string `json:"firstName,omitempty"`
 	LastName  string `json:"lastName,omitempty"`
 	// Phone number associated to user
-	Phone map[string]interface{} `json:"phone,omitempty"`
+	Phone string `json:"phone,omitempty"`
 	// Company URL associated to user
 	CompanyUrl string `json:"companyUrl,omitempty"`
 	// Timestamp of when user was created

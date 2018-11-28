@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Email** | **string** | Email address associated to the user | [optional] 
 **FirstName** | **string** |  | [optional] 
 **LastName** | **string** |  | [optional] 
-**Phone** | [**map[string]interface{}**](map[string]interface{}.md) | Phone number associated to user | [optional] 
+**Phone** | **string** | Phone number associated to user | [optional] 
 **CompanyUrl** | **string** | Company URL associated to user | [optional] 
 **CreatedAt** | [**time.Time**](time.Time.md) | Timestamp of when user was created | [optional] 
 
