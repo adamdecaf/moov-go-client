@@ -45,7 +45,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **CreateUser**
-> User CreateUser(ctx, user, optional)
+> User CreateUser(ctx, createUser, optional)
 Create a new user using an email address not seen before.
 
 ### Required Parameters
@@ -53,7 +53,7 @@ Create a new user using an email address not seen before.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **user** | [**User**](User.md)|  | 
+  **createUser** | [**CreateUser**](CreateUser.md)|  | 
  **optional** | ***CreateUserOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
