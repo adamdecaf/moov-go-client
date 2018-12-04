@@ -45,7 +45,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **CreateOAuth2Client**
-> OAuth2Clients CreateOAuth2Client(ctx, optional)
+> []OAuth2Client CreateOAuth2Client(ctx, optional)
 Create OAuth2 client credentials
 
 ### Required Parameters
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OAuth2Clients**](OAuth2Clients.md)
+[**[]OAuth2Client**](OAuth2Client.md)
 
 ### Authorization
 
