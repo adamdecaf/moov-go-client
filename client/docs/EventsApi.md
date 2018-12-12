@@ -46,7 +46,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetEvents**
-> Events GetEvents(ctx, optional)
+> []Event GetEvents(ctx, optional)
 Gets a list of Events
 
 ### Required Parameters
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Events**](Events.md)
+[**[]Event**](Event.md)
 
 ### Authorization
 

@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 
 # **AddCustomers**
-> Customer AddCustomers(ctx, customer, optional)
+> Customer AddCustomers(ctx, createCustomer, optional)
 Create a new Customer object
 
 ### Required Parameters
@@ -22,7 +22,7 @@ Create a new Customer object
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **customer** | [**Customer**](Customer.md)|  | 
+  **createCustomer** | [**CreateCustomer**](CreateCustomer.md)|  | 
  **optional** | ***AddCustomersOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -123,7 +123,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetCustomers**
-> Customers GetCustomers(ctx, optional)
+> []Customer GetCustomers(ctx, optional)
 Gets a list of Customers
 
 ### Required Parameters
@@ -144,7 +144,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Customers**](Customers.md)
+[**[]Customer**](Customer.md)
 
 ### Authorization
 
@@ -158,7 +158,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetDepositoriesByCustomerID**
-> Depositories GetDepositoriesByCustomerID(ctx, customerId, optional)
+> []Depository GetDepositoriesByCustomerID(ctx, customerId, optional)
 Get a list of Depository accounts for a Customer
 
 ### Required Parameters
@@ -181,7 +181,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Depositories**](Depositories.md)
+[**[]Depository**](Depository.md)
 
 ### Authorization
 
@@ -234,7 +234,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UpdateCustomer**
-> Customer UpdateCustomer(ctx, customerId, customer, optional)
+> Customer UpdateCustomer(ctx, customerId, createCustomer, optional)
 Updates the specified Customer by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
 
 ### Required Parameters
@@ -243,7 +243,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **customerId** | **string**| Customer ID | 
-  **customer** | [**Customer**](Customer.md)|  | 
+  **createCustomer** | [**CreateCustomer**](CreateCustomer.md)|  | 
  **optional** | ***UpdateCustomerOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters

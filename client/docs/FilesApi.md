@@ -201,7 +201,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetFileBatches**
-> Batches GetFileBatches(ctx, fileId, optional)
+> []Batch GetFileBatches(ctx, fileId, optional)
 Get the batches on a File.
 
 ### Required Parameters
@@ -222,7 +222,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Batches**](Batches.md)
+[**[]Batch**](Batch.md)
 
 ### Authorization
 
@@ -306,7 +306,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetFiles**
-> Files GetFiles(ctx, optional)
+> []File GetFiles(ctx, optional)
 Gets a list of Files
 
 ### Required Parameters
@@ -325,7 +325,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Files**](Files.md)
+[**[]File**](File.md)
 
 ### Authorization
 

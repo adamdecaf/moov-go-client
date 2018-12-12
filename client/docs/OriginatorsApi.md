@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **AddOriginator**
-> Originator AddOriginator(ctx, originator, optional)
+> Originator AddOriginator(ctx, createOriginator, optional)
 Create a new Originator object
 
 ### Required Parameters
@@ -20,7 +20,7 @@ Create a new Originator object
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **originator** | [**Originator**](Originator.md)|  | 
+  **createOriginator** | [**CreateOriginator**](CreateOriginator.md)|  | 
  **optional** | ***AddOriginatorOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -120,7 +120,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetOriginators**
-> Originators GetOriginators(ctx, optional)
+> []Originator GetOriginators(ctx, optional)
 Gets a list of Originators
 
 ### Required Parameters
@@ -141,7 +141,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Originators**](Originators.md)
+[**[]Originator**](Originator.md)
 
 ### Authorization
 
@@ -155,7 +155,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UpdateOriginator**
-> Originator UpdateOriginator(ctx, originatorId, originator, optional)
+> Originator UpdateOriginator(ctx, originatorId, createOriginator, optional)
 Updates the specified Originator by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
 
 ### Required Parameters
@@ -164,7 +164,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **originatorId** | **string**| Originator ID | 
-  **originator** | [**Originator**](Originator.md)|  | 
+  **createOriginator** | [**CreateOriginator**](CreateOriginator.md)|  | 
  **optional** | ***UpdateOriginatorOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters

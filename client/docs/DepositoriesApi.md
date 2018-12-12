@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 
 # **AddDepository**
-> Depository AddDepository(ctx, depository, optional)
+> Depository AddDepository(ctx, createDepository, optional)
 Create a new depository account for a Customer ID or Originator ID defined in the Parent parameter
 
 ### Required Parameters
@@ -22,7 +22,7 @@ Create a new depository account for a Customer ID or Originator ID defined in th
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **depository** | [**Depository**](Depository.md)|  | 
+  **createDepository** | [**CreateDepository**](CreateDepository.md)|  | 
  **optional** | ***AddDepositoryOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -123,7 +123,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetDepositories**
-> Depositories GetDepositories(ctx, optional)
+> []Depository GetDepositories(ctx, optional)
 A list of all Depository objects for the authentication context.
 
 ### Required Parameters
@@ -144,7 +144,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Depositories**](Depositories.md)
+[**[]Depository**](Depository.md)
 
 ### Authorization
 
@@ -231,7 +231,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UpdateDepository**
-> Depository UpdateDepository(ctx, depositoryId, depository, optional)
+> Depository UpdateDepository(ctx, depositoryId, createDepository, optional)
 Updates the specified Depository by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
 
 ### Required Parameters
@@ -240,7 +240,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **depositoryId** | **string**| Depository ID | 
-  **depository** | [**Depository**](Depository.md)|  | 
+  **createDepository** | [**CreateDepository**](CreateDepository.md)|  | 
  **optional** | ***UpdateDepositoryOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
