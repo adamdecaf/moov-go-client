@@ -4,7 +4,7 @@ All URIs are relative to *https://api.moov.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AddDepository**](DepositoriesApi.md#AddDepository) | **Post** /v1/ach/depositories | Create a new depository account for a Customer ID or Originator ID defined in the Parent parameter
+[**AddDepository**](DepositoriesApi.md#AddDepository) | **Post** /v1/ach/depositories | Create a new depository account for the authenticated user
 [**ConfirmMicroDeposits**](DepositoriesApi.md#ConfirmMicroDeposits) | **Post** /v1/ach/depositories/{depositoryId}/micro-deposits/confirm | Confirm micro deposit amounts after they have been posted to the depository account
 [**DeleteDepository**](DepositoriesApi.md#DeleteDepository) | **Delete** /v1/ach/depositories/{depositoryId} | Permanently deletes a depository and associated transfers. It cannot be undone. Immediately cancels any active Transfers for the depository.
 [**GetDepositories**](DepositoriesApi.md#GetDepositories) | **Get** /v1/ach/depositories | A list of all Depository objects for the authentication context.
@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 # **AddDepository**
 > Depository AddDepository(ctx, createDepository, optional)
-Create a new depository account for a Customer ID or Originator ID defined in the Parent parameter
+Create a new depository account for the authenticated user
 
 ### Required Parameters
 
