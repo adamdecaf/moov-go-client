@@ -12,7 +12,6 @@ Name | Type | Description | Notes
 **AccountNumber** | **string** | The account number for the depository account | 
 **Status** | **string** | Defines the status of the Depository account | [optional] 
 **Metadata** | **string** | Additional meta data to be used for display only | [optional] 
-**Parent** | **string** | The depository owner&#39;s valid Customer ID or Originator ID | [optional] 
 **Created** | [**time.Time**](time.Time.md) |  | [optional] 
 **Updated** | [**time.Time**](time.Time.md) |  | [optional] 
 
