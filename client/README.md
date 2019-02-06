@@ -60,8 +60,9 @@ Class | Method | HTTP request | Description
 *FilesApi* | [**ValidateFile**](docs/FilesApi.md#validatefile) | **Get** /v1/ach/files/{file_id}/validate | Validates the existing file. You need only supply the unique File identifier that was returned upon creation.
 *GatewaysApi* | [**AddGateway**](docs/GatewaysApi.md#addgateway) | **Post** /v1/ach/gateways | Create a new Gateway object
 *GatewaysApi* | [**GetGateways**](docs/GatewaysApi.md#getgateways) | **Get** /v1/ach/gateways | Gets a list of Gatways
-*MonitorApi* | [**PingACH**](docs/MonitorApi.md#pingach) | **Get** /v1/ach/ping | Check that the moov-io/ach service is running
-*MonitorApi* | [**PingAuth**](docs/MonitorApi.md#pingauth) | **Get** /v1/auth/ping | Check that the moov-io/auth service is running
+*MonitorApi* | [**PingACH**](docs/MonitorApi.md#pingach) | **Get** /v1/ach/ping | Check that moov-io/ach service is running
+*MonitorApi* | [**PingAuth**](docs/MonitorApi.md#pingauth) | **Get** /v1/auth/ping | Check that moov-io/auth service is running
+*MonitorApi* | [**PingOFAC**](docs/MonitorApi.md#pingofac) | **Get** /v1/ofac/ping | Check that moov-io/ofac service is running
 *MonitorApi* | [**PingPaygate**](docs/MonitorApi.md#pingpaygate) | **Get** /v1/paygate/ping | Check that the moov-io/paygate service is running
 *OAuth2Api* | [**CheckOAuthClientCredentials**](docs/OAuth2Api.md#checkoauthclientcredentials) | **Get** /v1/oauth2/authorize | Verify OAuth2 Bearer token
 *OAuth2Api* | [**CreateOAuth2Client**](docs/OAuth2Api.md#createoauth2client) | **Post** /v1/oauth2/client | Create OAuth2 client credentials
