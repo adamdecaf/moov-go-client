@@ -1,6 +1,7 @@
 # Transfer
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | Optional ID to uniquely identify this transfer. If omitted, one will be generated | [optional] 
@@ -16,6 +17,7 @@ Name | Type | Description | Notes
 **SameDay** | **bool** | When set to true this indicates the transfer should be processed the same day if possible. | [optional] [default to false]
 **Created** | [**time.Time**](time.Time.md) |  | [optional] 
 **WEBDetail** | [**WebDetail**](WEBDetail.md) |  | [optional] 
+**IATDetail** | [**IatDetail**](IATDetail.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -1,6 +1,7 @@
 # CreateCustomer
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Email** | **string** | The customers email address | 

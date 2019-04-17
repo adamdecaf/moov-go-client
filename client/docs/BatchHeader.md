@@ -1,6 +1,7 @@
 # BatchHeader
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | Batch Header ID | [optional] 

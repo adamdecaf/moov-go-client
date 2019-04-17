@@ -1,6 +1,7 @@
 # CreateOriginator
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DefaultDepository** | **string** | The depository account to be used by default per transfer. ID must be a valid Originator Depository account | 

@@ -1,6 +1,7 @@
 # Addendum
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **TypeCode** | **string** | TODO | 

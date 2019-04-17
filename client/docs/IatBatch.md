@@ -1,6 +1,7 @@
 # IatBatch
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | Client defined string used as a reference to this record. | [optional] 

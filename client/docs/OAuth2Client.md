@@ -1,6 +1,7 @@
 # OAuth2Client
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ClientId** | **string** | OAuth2 client ID | [optional] 

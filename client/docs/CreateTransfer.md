@@ -1,6 +1,7 @@
 # CreateTransfer
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **TransferType** | **string** | Type of transaction being actioned against the receiving institution. Expected values are pull (debits) or push (credits). | [optional] 
@@ -13,6 +14,7 @@ Name | Type | Description | Notes
 **StandardEntryClassCode** | **string** | Standard Entry Class code will be generated based on Customer type for CCD and PPD | [optional] 
 **SameDay** | **bool** | When set to true this indicates the transfer should be processed the same day if possible. | [optional] [default to false]
 **WEBDetail** | [**WebDetail**](WEBDetail.md) |  | [optional] 
+**IATDetail** | [**IatDetail**](IATDetail.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -1,6 +1,7 @@
 # CreateGateway
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Origin** | **string** | Routing Number - four digit Federal Reserve Routing Symbol and the four digit ABA Institution Identifier | 

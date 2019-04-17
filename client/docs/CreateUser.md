@@ -1,6 +1,7 @@
 # CreateUser
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Email** | **string** | Email address associated to the User | 

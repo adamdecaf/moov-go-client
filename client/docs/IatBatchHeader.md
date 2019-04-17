@@ -1,6 +1,7 @@
 # IatBatchHeader
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | ID is a client defined string used as a reference to this record. | [optional] 

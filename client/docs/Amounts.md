@@ -1,6 +1,7 @@
 # Amounts
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Amounts** | **[]string** |  | 

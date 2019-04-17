@@ -1,6 +1,7 @@
 # EntryDetail
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | Entry Detail ID | 

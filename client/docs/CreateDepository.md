@@ -1,6 +1,7 @@
 # CreateDepository
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BankName** | **string** | Legal name of the financial institution. | 

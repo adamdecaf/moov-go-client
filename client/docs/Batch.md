@@ -1,6 +1,7 @@
 # Batch
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BatchHeader** | [**BatchHeader**](BatchHeader.md) |  | [optional] 

@@ -1,6 +1,7 @@
 # FileHeader
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ImmediateOrigin** | **string** | contains the Routing Number of the ACH Operator or sending point that is sending the file. | 

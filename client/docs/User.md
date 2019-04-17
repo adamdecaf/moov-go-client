@@ -1,6 +1,7 @@
 # User
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | Moov API user ID | [optional] 

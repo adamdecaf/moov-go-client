@@ -1,6 +1,7 @@
 # UserProfile
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **FirstName** | **string** | Legal first name | [optional] 

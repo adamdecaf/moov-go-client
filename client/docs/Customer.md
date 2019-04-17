@@ -1,6 +1,7 @@
 # Customer
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | Customer ID | [optional] 

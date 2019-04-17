@@ -7,31 +7,36 @@ Method | HTTP request | Description
 [**AddCustomerNameWatch**](OFACApi.md#AddCustomerNameWatch) | **Post** /v1/ofac/customers/watch | Add customer watch by name
 [**AddCustomerWatch**](OFACApi.md#AddCustomerWatch) | **Post** /v1/ofac/customers/{customerId}/watch | Add OFAC watch on a Customer
 [**GetCustomer**](OFACApi.md#GetCustomer) | **Get** /v1/ofac/customers/{customerId} | Get information about a customer, addresses, alternate names, and their SDN metadata.
-[**GetLatestDownloads**](OFACApi.md#GetLatestDownloads) | **Get** /v1/ofac/downloads | Return list of recent re-downloads of OFAC data
+[**GetLatestDownloads**](OFACApi.md#GetLatestDownloads) | **Get** /v1/ofac/downloads | Return list of recent downloads of OFAC data
 [**GetSDN**](OFACApi.md#GetSDN) | **Get** /v1/ofac/sdn/{sdnId} | Specially designated national
 [**GetSDNAddresses**](OFACApi.md#GetSDNAddresses) | **Get** /v1/ofac/sdn/{sdnId}/addresses | Get addresses for a given SDN
 [**GetSDNAltNames**](OFACApi.md#GetSDNAltNames) | **Get** /v1/ofac/sdn/{sdnId}/alts | Get alternate names for a given SDN
 [**RemoveCustomerNameWatch**](OFACApi.md#RemoveCustomerNameWatch) | **Delete** /v1/ofac/customers/watch/{watchId} | Remove a Customer name watch
 [**RemoveCustomerWatch**](OFACApi.md#RemoveCustomerWatch) | **Delete** /v1/ofac/customers/{customerId}/watch/{watchId} | Remove customer watch
 [**SearchSDNs**](OFACApi.md#SearchSDNs) | **Get** /v1/ofac/search | Search SDN names and metadata
-[**UpdateCustomerStatus**](OFACApi.md#UpdateCustomerStatus) | **Put** /v1/ofac/customers/{customerId} | Update a Customer&#39;s status to add or remove a manual block.
+[**UpdateCustomerStatus**](OFACApi.md#UpdateCustomerStatus) | **Put** /v1/ofac/customers/{customerId} | Update a Customer&#39;s sanction status to always block or always allow transactions.
 
 
-# **AddCustomerNameWatch**
+
+## AddCustomerNameWatch
+
 > Watch AddCustomerNameWatch(ctx, name, watchRequest, optional)
 Add customer watch by name
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **name** | **string**| Individual name used to match and send watch notifications | 
-  **watchRequest** | [**WatchRequest**](WatchRequest.md)|  | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**name** | **string**| Individual name used to match and send watch notifications | 
+**watchRequest** | [**WatchRequest**](WatchRequest.md)|  | 
  **optional** | ***AddCustomerNameWatchOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
+
 Optional parameters are passed through a pointer to a AddCustomerNameWatchOpts struct
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -49,26 +54,33 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **AddCustomerWatch**
+
+## AddCustomerWatch
+
 > Watch AddCustomerWatch(ctx, customerId, watchRequest, optional)
 Add OFAC watch on a Customer
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **customerId** | **string**| Customer ID | 
-  **watchRequest** | [**WatchRequest**](WatchRequest.md)|  | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**customerId** | **string**| Customer ID | 
+**watchRequest** | [**WatchRequest**](WatchRequest.md)|  | 
  **optional** | ***AddCustomerWatchOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
+
 Optional parameters are passed through a pointer to a AddCustomerWatchOpts struct
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -86,25 +98,32 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetCustomer**
+
+## GetCustomer
+
 > OfacCustomer GetCustomer(ctx, customerId, optional)
 Get information about a customer, addresses, alternate names, and their SDN metadata.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **customerId** | **string**| Customer ID | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**customerId** | **string**| Customer ID | 
  **optional** | ***GetCustomerOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
+
 Optional parameters are passed through a pointer to a GetCustomerOpts struct
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -121,24 +140,31 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetLatestDownloads**
+
+## GetLatestDownloads
+
 > []Download GetLatestDownloads(ctx, optional)
-Return list of recent re-downloads of OFAC data
+Return list of recent downloads of OFAC data
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
  **optional** | ***GetLatestDownloadsOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
+
 Optional parameters are passed through a pointer to a GetLatestDownloadsOpts struct
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -154,25 +180,32 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetSDN**
+
+## GetSDN
+
 > Sdn GetSDN(ctx, sdnId, optional)
 Specially designated national
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **sdnId** | **string**| SDN ID | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**sdnId** | **string**| SDN ID | 
  **optional** | ***GetSDNOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
+
 Optional parameters are passed through a pointer to a GetSDNOpts struct
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -189,25 +222,32 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetSDNAddresses**
+
+## GetSDNAddresses
+
 > []Address GetSDNAddresses(ctx, sdnId, optional)
 Get addresses for a given SDN
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **sdnId** | **string**| SDN ID | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**sdnId** | **string**| SDN ID | 
  **optional** | ***GetSDNAddressesOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
+
 Optional parameters are passed through a pointer to a GetSDNAddressesOpts struct
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -224,25 +264,32 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetSDNAltNames**
+
+## GetSDNAltNames
+
 > []Alt GetSDNAltNames(ctx, sdnId, optional)
 Get alternate names for a given SDN
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **sdnId** | **string**| SDN ID | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**sdnId** | **string**| SDN ID | 
  **optional** | ***GetSDNAltNamesOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
+
 Optional parameters are passed through a pointer to a GetSDNAltNamesOpts struct
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -259,26 +306,33 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **RemoveCustomerNameWatch**
+
+## RemoveCustomerNameWatch
+
 > RemoveCustomerNameWatch(ctx, watchId, name, optional)
 Remove a Customer name watch
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **watchId** | **string**| Watch ID, used to identify a specific watch | 
-  **name** | **string**| Customer or Company name watch | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**watchId** | **string**| Watch ID, used to identify a specific watch | 
+**name** | **string**| Customer or Company name watch | 
  **optional** | ***RemoveCustomerNameWatchOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
+
 Optional parameters are passed through a pointer to a RemoveCustomerNameWatchOpts struct
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -296,26 +350,33 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **RemoveCustomerWatch**
+
+## RemoveCustomerWatch
+
 > RemoveCustomerWatch(ctx, customerId, watchId, optional)
 Remove customer watch
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **customerId** | **string**| Customer ID | 
-  **watchId** | **string**| Watch ID, used to identify a specific watch | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**customerId** | **string**| Customer ID | 
+**watchId** | **string**| Watch ID, used to identify a specific watch | 
  **optional** | ***RemoveCustomerWatchOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
+
 Optional parameters are passed through a pointer to a RemoveCustomerWatchOpts struct
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -333,31 +394,39 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **SearchSDNs**
+
+## SearchSDNs
+
 > Search SearchSDNs(ctx, optional)
 Search SDN names and metadata
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
  **optional** | ***SearchSDNsOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
+
 Optional parameters are passed through a pointer to a SearchSDNsOpts struct
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
- **name** | **optional.String**| Name which could correspond to a human on the SDN list | 
- **address** | **optional.String**| Phsical address which could correspond to a human on the SDN list | 
- **altName** | **optional.String**| Alternate name which could correspond to a human on the SDN list | 
+ **q** | **optional.String**| Search across Name, Alt Names, and Address fields for all SDN entries. Entries may be returned in all response sub-objects. | 
+ **name** | **optional.String**| Name which could correspond to a human on the SDN list. Only SDN results will be returned. | 
+ **address** | **optional.String**| Phsical address which could correspond to a human on the SDN list. Only Address results will be returned. | 
+ **altName** | **optional.String**| Alternate name which could correspond to a human on the SDN list. Only Alt name results will be returned. | 
  **limit** | **optional.Int32**| Maximum results returned by a search | 
 
 ### Return type
@@ -370,26 +439,33 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **UpdateCustomerStatus**
+
+## UpdateCustomerStatus
+
 > UpdateCustomerStatus(ctx, customerId, updateCustomerStatus, optional)
-Update a Customer's status to add or remove a manual block.
+Update a Customer's sanction status to always block or always allow transactions.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **customerId** | **string**| Customer ID | 
-  **updateCustomerStatus** | [**UpdateCustomerStatus**](UpdateCustomerStatus.md)|  | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**customerId** | **string**| Customer ID | 
+**updateCustomerStatus** | [**UpdateCustomerStatus**](UpdateCustomerStatus.md)|  | 
  **optional** | ***UpdateCustomerStatusOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
+
 Optional parameters are passed through a pointer to a UpdateCustomerStatusOpts struct
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -407,8 +483,10 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: Not defined
+- **Content-Type**: application/json
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
