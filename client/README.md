@@ -152,7 +152,7 @@ Class | Method | HTTP request | Description
  - [IatDetail](docs/IatDetail.md)
  - [Login](docs/Login.md)
  - [OAuth2Client](docs/OAuth2Client.md)
- - [OAuthToken](docs/OAuthToken.md)
+ - [OAuth2Token](docs/OAuth2Token.md)
  - [OfacCustomer](docs/OfacCustomer.md)
  - [OfacCustomerStatus](docs/OfacCustomerStatus.md)
  - [Originator](docs/Originator.md)

@@ -10,7 +10,7 @@
 
 package openapi
 
-type OAuthToken struct {
+type OAuth2Token struct {
 	// OAuth2 Bearer access token
 	AccessToken string `json:"access_token,omitempty"`
 	// Hours until access_token expires

@@ -1,4 +1,4 @@
-# OAuthToken
+# OAuth2Token
 
 ## Properties
 

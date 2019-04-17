@@ -96,7 +96,7 @@ Name | Type | Description  | Notes
 
 ## CreateOAuth2Token
 
-> OAuthToken CreateOAuth2Token(ctx, optional)
+> OAuth2Token CreateOAuth2Token(ctx, optional)
 Generate OAuth2 access token
 
 ### Required Parameters
@@ -122,7 +122,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OAuthToken**](OAuthToken.md)
+[**OAuth2Token**](OAuth2Token.md)
 
 ### Authorization
 
