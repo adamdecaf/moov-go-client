@@ -96,7 +96,7 @@ Name | Type | Description  | Notes
 
 ## CreateOAuth2Token
 
-> InlineResponse200 CreateOAuth2Token(ctx, optional)
+> OAuthToken CreateOAuth2Token(ctx, optional)
 Generate OAuth2 access token
 
 ### Required Parameters
@@ -122,7 +122,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse200**](inline_response_200.md)
+[**OAuthToken**](OAuthToken.md)
 
 ### Authorization
 

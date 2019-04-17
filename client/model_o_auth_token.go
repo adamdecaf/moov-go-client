@@ -10,7 +10,7 @@
 
 package openapi
 
-type InlineResponse200 struct {
+type OAuthToken struct {
 	// OAuth2 Bearer access token
 	AccessToken string `json:"access_token,omitempty"`
 	// Hours until access_token expires

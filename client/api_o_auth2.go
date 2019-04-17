@@ -243,7 +243,7 @@ OAuth2ApiService Generate OAuth2 access token
  * @param "GrantType" (optional.String) -  OAuth2 grant type (must be 'client_credentials')
  * @param "ClientId" (optional.String) -  OAuth2 client ID
  * @param "ClientSecret" (optional.String) -  OAuth2 client secret
-@return InlineResponse200
+@return OAuthToken
 */
 
 type CreateOAuth2TokenOpts struct {
@@ -254,14 +254,14 @@ type CreateOAuth2TokenOpts struct {
 	ClientSecret    optional.String
 }
 
-func (a *OAuth2ApiService) CreateOAuth2Token(ctx context.Context, localVarOptionals *CreateOAuth2TokenOpts) (InlineResponse200, *http.Response, error) {
+func (a *OAuth2ApiService) CreateOAuth2Token(ctx context.Context, localVarOptionals *CreateOAuth2TokenOpts) (OAuthToken, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Post")
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse200
+		localVarReturnValue  OAuthToken
 	)
 
 	// create path and map variables
@@ -325,7 +325,7 @@ func (a *OAuth2ApiService) CreateOAuth2Token(ctx context.Context, localVarOption
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v InlineResponse200
+			var v OAuthToken
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
