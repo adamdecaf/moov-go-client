@@ -4,9 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Email** | **string** | The customers email address | 
-**DefaultDepository** | **string** | The depository account to be used by default per transfer. ID must be a valid Customer Depository account | 
-**Metadata** | **string** | Additional meta data to be used for display only | [optional] 
+**FirstName** | **string** | Given Name or First Name | [optional] 
+**LastName** | **string** | Surname or Last Name | [optional] 
+**Email** | **string** | Primary email address of customer name@domain.com | [optional] 
+**Phones** | [**[]CreatePhone**](CreatePhone.md) |  | [optional] 
+**Addresses** | [**[]CreateAddress**](CreateAddress.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

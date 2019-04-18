@@ -4,7 +4,7 @@ All URIs are relative to *https://api.moov.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AddTransfer**](TransfersApi.md#AddTransfer) | **Post** /v1/ach/transfers | Create a new transfer between an Originator and a Customer. Transfers cannot be modified. Instead delete the old and create a new transfer.
+[**AddTransfer**](TransfersApi.md#AddTransfer) | **Post** /v1/ach/transfers | Create a new transfer between an Originator and a Receiver. Transfers cannot be modified. Instead delete the old and create a new transfer.
 [**AddTransfers**](TransfersApi.md#AddTransfers) | **Post** /v1/ach/transfers/batch | Create a new list of transfer, validate, build, and process. Transfers cannot be modified.
 [**DeleteTransferByID**](TransfersApi.md#DeleteTransferByID) | **Delete** /v1/ach/transfers/{transferId} | It is possible to recall (delete) a transfer before it has been released from the financial institution.
 [**GetTransferByID**](TransfersApi.md#GetTransferByID) | **Get** /v1/ach/transfers/{transferId} | Get a Transfer object for the supplied ID
@@ -18,7 +18,7 @@ Method | HTTP request | Description
 ## AddTransfer
 
 > Transfer AddTransfer(ctx, createTransfer, optional)
-Create a new transfer between an Originator and a Customer. Transfers cannot be modified. Instead delete the old and create a new transfer.
+Create a new transfer between an Originator and a Receiver. Transfers cannot be modified. Instead delete the old and create a new transfer.
 
 ### Required Parameters
 
@@ -340,9 +340,7 @@ Name | Type | Description  | Notes
  **offset** | **optional.Int32**| The number of items to skip before starting to collect the result set | [default to 0]
  **limit** | **optional.Int32**| The number of items to return | [default to 25]
  **startDate** | **optional.Time**| Filter objects created after this date. ISO-8601 format YYYY-MM-DD. Can optionally be used with endDate to specify a date range. | 
- **startDate2** | **optional.Time**| Filter objects created after this date. ISO-8601 format YYYY-MM-DD. Can optionally be used with endDate to specify a date range. | 
  **endDate** | **optional.Time**| Filter objects created before this date. ISO-8601 format YYYY-MM-DD. Can optionally be used with startDate to specify a date range. | 
- **endDate2** | **optional.Time**| Filter objects created before this date. ISO-8601 format YYYY-MM-DD. Can optionally be used with startDate to specify a date range. | 
  **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
 
 ### Return type

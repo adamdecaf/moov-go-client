@@ -1,12 +1,13 @@
-# Originator
+# Receiver
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Originator ID | [optional] 
-**DefaultDepository** | **string** | The depository account to be used by default per transfer. ID must be a valid Originator Depository account | [optional] 
-**Identification** | **string** | An identification number by which the receiver is known to the originator. | [optional] 
+**Id** | **string** | Receiver ID | [optional] 
+**Email** | **string** | The receivers email address | [optional] 
+**DefaultDepository** | **string** | The depository account to be used by default per transfer. ID must be a valid Receiver Depository account | [optional] 
+**Status** | **string** | Defines the status of the Receiver | [optional] 
 **Metadata** | **string** | Additional meta data to be used for display only | [optional] 
 **Created** | [**time.Time**](time.Time.md) |  | [optional] 
 **Updated** | [**time.Time**](time.Time.md) |  | [optional] 

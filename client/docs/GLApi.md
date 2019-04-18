@@ -60,7 +60,7 @@ No authorization required
 
 ## CreateCustomer
 
-> CreateCustomer2 CreateCustomer(ctx, xUserId, optional)
+> CreateCustomer CreateCustomer(ctx, xUserId, optional)
 Create a new customer
 
 ### Required Parameters
@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateCustomer2**](CreateCustomer_2.md)
+[**CreateCustomer**](CreateCustomer.md)
 
 ### Authorization
 
@@ -146,7 +146,7 @@ No authorization required
 
 ## GetGLCustomer
 
-> Customer2 GetGLCustomer(ctx, customerId, xUserId, optional)
+> Customer GetGLCustomer(ctx, customerId, xUserId, optional)
 Retrieves a Customer object associated with the customer ID.
 
 ### Required Parameters
@@ -172,7 +172,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Customer2**](Customer_2.md)
+[**Customer**](Customer.md)
 
 ### Authorization
 
