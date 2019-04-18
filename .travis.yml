@@ -10,6 +10,6 @@ addons:
   apt:
     packages:
       # From https://superuser.com/a/1156455
-      - oracle-java8-set-default
+      - oracle-java9-set-default
 script:
   - make client
