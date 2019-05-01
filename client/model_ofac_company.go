@@ -10,10 +10,12 @@
 
 package openapi
 
-// Webhook or other means of notification on search criteria. OFAC will make a POST request with a body of the customer or company (SDN, AltNames, and Address).
-type WatchRequest struct {
-	// Private token supplied by clients to be used for authenticating webhooks.
-	AuthToken string `json:"authToken"`
-	// HTTPS url for webhook on search match
-	Webhook string `json:"webhook"`
+// OFAC Company and metadata
+type OfacCompany struct {
+	// OFAC Company ID
+	Id        string            `json:"id,omitempty"`
+	Sdn       Sdn               `json:"sdn,omitempty"`
+	Addresses []Address         `json:"addresses,omitempty"`
+	Alts      []Alt             `json:"alts,omitempty"`
+	Status    OfacCompanyStatus `json:"status,omitempty"`
 }
