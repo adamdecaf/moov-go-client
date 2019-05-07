@@ -6,6 +6,8 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateAccount**](GLApi.md#CreateAccount) | **Post** /v1/gl/customers/{customer_id}/accounts | Create a new account for a Customer
 [**CreateCustomer**](GLApi.md#CreateCustomer) | **Post** /v1/gl/customers | Create a new customer
+[**CreateTransaction**](GLApi.md#CreateTransaction) | **Post** /v1/gl/accounts/transactions | Post a transaction against multiple accounts. All transaction lines must sum to zero. No money is created or destroyed in a transaction - only moved from account to account. Accounts can be referred to in a Transaction without creating them first.
+[**GetAccountTransactions**](GLApi.md#GetAccountTransactions) | **Get** /v1/gl/accounts/{account_id}/transactions | Get transactions for an account. Ordered descending from their posted date.
 [**GetAccountsByCustomerID**](GLApi.md#GetAccountsByCustomerID) | **Get** /v1/gl/customers/{customer_id}/accounts | Retrieves a list of accounts associated with the customer ID.
 [**GetGLCustomer**](GLApi.md#GetGLCustomer) | **Get** /v1/gl/customers/{customer_id} | Retrieves a Customer object associated with the customer ID.
 [**SearchAccounts**](GLApi.md#SearchAccounts) | **Get** /v1/gl/accounts/search | Search for account which matches all query parameters
@@ -85,6 +87,95 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CreateCustomer**](CreateCustomer.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateTransaction
+
+> Transaction CreateTransaction(ctx, xUserId, createTransaction, optional)
+Post a transaction against multiple accounts. All transaction lines must sum to zero. No money is created or destroyed in a transaction - only moved from account to account. Accounts can be referred to in a Transaction without creating them first.
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**xUserId** | **string**| Moov User ID header, required in all requests | 
+**createTransaction** | [**CreateTransaction**](CreateTransaction.md)|  | 
+ **optional** | ***CreateTransactionOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a CreateTransactionOpts struct
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+
+### Return type
+
+[**Transaction**](Transaction.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetAccountTransactions
+
+> []Transaction GetAccountTransactions(ctx, accountId, xUserId, optional)
+Get transactions for an account. Ordered descending from their posted date.
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**accountId** | **string**| Account ID | 
+**xUserId** | **string**| Moov User ID header, required in all requests | 
+ **optional** | ***GetAccountTransactionsOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a GetAccountTransactionsOpts struct
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **limit** | **optional.Float32**| Maximum number of transactions to return | 
+ **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+
+### Return type
+
+[**[]Transaction**](Transaction.md)
 
 ### Authorization
 
