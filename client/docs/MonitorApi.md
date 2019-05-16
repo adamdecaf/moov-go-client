@@ -5,9 +5,10 @@ All URIs are relative to *https://api.moov.io*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**PingACH**](MonitorApi.md#PingACH) | **Get** /v1/ach/ping | Check that the moov-io/ach service is running
+[**PingAccounts**](MonitorApi.md#PingAccounts) | **Get** /v1/accounts/ping | Check that the moov-io/accounts service is running
 [**PingAuth**](MonitorApi.md#PingAuth) | **Get** /v1/auth/ping | Check that the moov-io/auth service is running
+[**PingCustomers**](MonitorApi.md#PingCustomers) | **Get** /v1/customers/ping | Check that the moov-io/customers service is running
 [**PingFED**](MonitorApi.md#PingFED) | **Get** /v1/fed/ping | Check that the moov-io/fed service is running
-[**PingGL**](MonitorApi.md#PingGL) | **Get** /v1/gl/ping | Check that the moov-io/gl service is running
 [**PingOFAC**](MonitorApi.md#PingOFAC) | **Get** /v1/ofac/ping | Check that the moov-io/ofac service is running
 [**PingPaygate**](MonitorApi.md#PingPaygate) | **Get** /v1/paygate/ping | Check that the moov-io/paygate service is running
 
@@ -29,6 +30,46 @@ Name | Type | Description  | Notes
 ### Optional Parameters
 
 Optional parameters are passed through a pointer to a PingACHOpts struct
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PingAccounts
+
+> PingAccounts(ctx, optional)
+Check that the moov-io/accounts service is running
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **optional** | ***PingAccountsOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a PingAccountsOpts struct
 
 
 Name | Type | Description  | Notes
@@ -93,10 +134,10 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## PingFED
+## PingCustomers
 
-> PingFED(ctx, optional)
-Check that the moov-io/fed service is running
+> PingCustomers(ctx, optional)
+Check that the moov-io/customers service is running
 
 ### Required Parameters
 
@@ -104,11 +145,11 @@ Check that the moov-io/fed service is running
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***PingFEDOpts** | optional parameters | nil if no parameters
+ **optional** | ***PingCustomersOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
 
-Optional parameters are passed through a pointer to a PingFEDOpts struct
+Optional parameters are passed through a pointer to a PingCustomersOpts struct
 
 
 Name | Type | Description  | Notes
@@ -133,10 +174,10 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## PingGL
+## PingFED
 
-> PingGL(ctx, optional)
-Check that the moov-io/gl service is running
+> PingFED(ctx, optional)
+Check that the moov-io/fed service is running
 
 ### Required Parameters
 
@@ -144,11 +185,11 @@ Check that the moov-io/gl service is running
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***PingGLOpts** | optional parameters | nil if no parameters
+ **optional** | ***PingFEDOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
 
-Optional parameters are passed through a pointer to a PingGLOpts struct
+Optional parameters are passed through a pointer to a PingFEDOpts struct
 
 
 Name | Type | Description  | Notes
