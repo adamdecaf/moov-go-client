@@ -4,15 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CustomerId** | **string** | The unique identifier for the customer who owns the account | [optional] 
+**Id** | **string** | The unique identifier for the customer who owns the account | [optional] 
 **FirstName** | **string** | Given Name or First Name | [optional] 
 **MiddleName** | **string** | Middle Name | [optional] 
 **LastName** | **string** | Surname or Last Name | [optional] 
 **NickName** | **string** | Name Customer is preferred to be called | [optional] 
 **Suffix** | **string** | Customers name suffix. \&quot;Jr\&quot;, \&quot;PH.D.\&quot; | [optional] 
 **BirthDate** | [**time.Time**](time.Time.md) | Legal date of birth | [optional] 
-**Gender** | **string** |  | [optional] 
-**Culture** | **string** | Used for localization of documents | [optional] 
 **Status** | **string** | State of the customer | [optional] 
 **Email** | **string** | Primary email address of customer name@domain.com | [optional] 
 **Phones** | [**[]Phone**](Phone.md) |  | [optional] 
