@@ -33,10 +33,9 @@ All URIs are relative to *https://api.moov.io*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AccountsApi* | [**CreateAccount**](docs/AccountsApi.md#createaccount) | **Post** /v1/customers/{customer_id}/accounts | Create a new account for a Customer
+*AccountsApi* | [**CreateAccount**](docs/AccountsApi.md#createaccount) | **Post** /v1/accounts | Create a new account for a Customer
 *AccountsApi* | [**CreateTransaction**](docs/AccountsApi.md#createtransaction) | **Post** /v1/accounts/transactions | Post a transaction against multiple accounts. All transaction lines must sum to zero. No money is created or destroyed in a transaction - only moved from account to account. Accounts can be referred to in a Transaction without creating them first.
 *AccountsApi* | [**GetAccountTransactions**](docs/AccountsApi.md#getaccounttransactions) | **Get** /v1/accounts/{account_id}/transactions | Get transactions for an account. Ordered descending from their posted date.
-*AccountsApi* | [**GetAccountsByCustomerID**](docs/AccountsApi.md#getaccountsbycustomerid) | **Get** /v1/customers/{customer_id}/accounts | Retrieves a list of accounts associated with the customer ID.
 *AccountsApi* | [**SearchAccounts**](docs/AccountsApi.md#searchaccounts) | **Get** /v1/accounts/search | Search for account which matches all query parameters
 *CustomersApi* | [**CreateCustomer**](docs/CustomersApi.md#createcustomer) | **Post** /v1/customers | Create a new customer
 *CustomersApi* | [**GetCustomer**](docs/CustomersApi.md#getcustomer) | **Get** /v1/customers/{customer_id} | Retrieves a Customer object associated with the customer ID.
