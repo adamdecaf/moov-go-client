@@ -175,6 +175,7 @@ Class | Method | HTTP request | Description
  - [Receiver](docs/Receiver.md)
  - [Sdn](docs/Sdn.md)
  - [Search](docs/Search.md)
+ - [TelDetail](docs/TelDetail.md)
  - [Transaction](docs/Transaction.md)
  - [TransactionLine](docs/TransactionLine.md)
  - [Transfer](docs/Transfer.md)
