@@ -1,20 +1,20 @@
-# \FilesApi
+# \ACHFilesApi
 
 All URIs are relative to *https://api.moov.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AddBatchToFile**](FilesApi.md#AddBatchToFile) | **Post** /v1/ach/files/{file_id}/batches | Add Batch to File
-[**CreateFile**](FilesApi.md#CreateFile) | **Post** /v1/ach/files/create | Create a new File object
-[**DeleteACHFile**](FilesApi.md#DeleteACHFile) | **Delete** /v1/ach/files/{file_id} | Permanently deletes a File and associated Batches. It cannot be undone.
-[**DeleteFileBatch**](FilesApi.md#DeleteFileBatch) | **Delete** /v1/ach/files/{file_id}/batches/{batch_id} | Delete a Batch from a File
-[**GetFileBatch**](FilesApi.md#GetFileBatch) | **Get** /v1/ach/files/{file_id}/batches/{batch_id} | Get a specific Batch on a FIle
-[**GetFileBatches**](FilesApi.md#GetFileBatches) | **Get** /v1/ach/files/{file_id}/batches | Get the batches on a File.
-[**GetFileByID**](FilesApi.md#GetFileByID) | **Get** /v1/ach/files/{file_id} | Retrieves the details of an existing File. You need only supply the unique File identifier that was returned upon creation.
-[**GetFileContents**](FilesApi.md#GetFileContents) | **Get** /v1/ach/files/{file_id}/contents | Assembles the existing file (batches and controls) records, computes sequence numbers and totals. Returns plaintext file.
-[**GetFiles**](FilesApi.md#GetFiles) | **Get** /v1/ach/files | Gets a list of Files
-[**UpdateFile**](FilesApi.md#UpdateFile) | **Post** /v1/ach/files/{file_id} | Updates the specified File Header by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
-[**ValidateFile**](FilesApi.md#ValidateFile) | **Get** /v1/ach/files/{file_id}/validate | Validates the existing file. You need only supply the unique File identifier that was returned upon creation.
+[**AddBatchToFile**](ACHFilesApi.md#AddBatchToFile) | **Post** /v1/ach/files/{file_id}/batches | Add Batch to File
+[**CreateFile**](ACHFilesApi.md#CreateFile) | **Post** /v1/ach/files/create | Create a new File object
+[**DeleteACHFile**](ACHFilesApi.md#DeleteACHFile) | **Delete** /v1/ach/files/{file_id} | Permanently deletes a File and associated Batches. It cannot be undone.
+[**DeleteFileBatch**](ACHFilesApi.md#DeleteFileBatch) | **Delete** /v1/ach/files/{file_id}/batches/{batch_id} | Delete a Batch from a File
+[**GetFileBatch**](ACHFilesApi.md#GetFileBatch) | **Get** /v1/ach/files/{file_id}/batches/{batch_id} | Get a specific Batch on a FIle
+[**GetFileBatches**](ACHFilesApi.md#GetFileBatches) | **Get** /v1/ach/files/{file_id}/batches | Get the batches on a File.
+[**GetFileByID**](ACHFilesApi.md#GetFileByID) | **Get** /v1/ach/files/{file_id} | Retrieves the details of an existing File. You need only supply the unique File identifier that was returned upon creation.
+[**GetFileContents**](ACHFilesApi.md#GetFileContents) | **Get** /v1/ach/files/{file_id}/contents | Assembles the existing file (batches and controls) records, computes sequence numbers and totals. Returns plaintext file.
+[**GetFiles**](ACHFilesApi.md#GetFiles) | **Get** /v1/ach/files | Gets a list of Files
+[**UpdateFile**](ACHFilesApi.md#UpdateFile) | **Post** /v1/ach/files/{file_id} | Updates the specified File Header by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
+[**ValidateFile**](ACHFilesApi.md#ValidateFile) | **Get** /v1/ach/files/{file_id}/validate | Validates the existing file. You need only supply the unique File identifier that was returned upon creation.
 
 
 

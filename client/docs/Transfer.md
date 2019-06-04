@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **Status** | **string** | Defines the state of the Transfer | [optional] 
 **SameDay** | **bool** | When set to true this indicates the transfer should be processed the same day if possible. | [optional] [default to false]
 **Created** | [**time.Time**](time.Time.md) |  | [optional] 
+**CCDDetail** | [**CcdDetail**](CCDDetail.md) |  | [optional] 
 **IATDetail** | [**IatDetail**](IATDetail.md) |  | [optional] 
 **TELDetail** | [**TelDetail**](TELDetail.md) |  | [optional] 
 **WEBDetail** | [**WebDetail**](WEBDetail.md) |  | [optional] 
