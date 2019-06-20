@@ -44,7 +44,7 @@ type AddBatchToFileOpts struct {
 
 func (a *ACHFilesApiService) AddBatchToFile(ctx context.Context, fileId string, batch Batch, localVarOptionals *AddBatchToFileOpts) (*http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Post")
+		localVarHttpMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -140,7 +140,7 @@ type CreateFileOpts struct {
 
 func (a *ACHFilesApiService) CreateFile(ctx context.Context, createFile CreateFile, localVarOptionals *CreateFileOpts) (File, *http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Post")
+		localVarHttpMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -262,7 +262,7 @@ type DeleteACHFileOpts struct {
 
 func (a *ACHFilesApiService) DeleteACHFile(ctx context.Context, fileId string, localVarOptionals *DeleteACHFileOpts) (*http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Delete")
+		localVarHttpMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -351,7 +351,7 @@ type DeleteFileBatchOpts struct {
 
 func (a *ACHFilesApiService) DeleteFileBatch(ctx context.Context, fileId string, batchId string, localVarOptionals *DeleteFileBatchOpts) (*http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Delete")
+		localVarHttpMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -442,7 +442,7 @@ type GetFileBatchOpts struct {
 
 func (a *ACHFilesApiService) GetFileBatch(ctx context.Context, fileId string, batchId string, localVarOptionals *GetFileBatchOpts) (Batch, *http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Get")
+		localVarHttpMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -552,7 +552,7 @@ type GetFileBatchesOpts struct {
 
 func (a *ACHFilesApiService) GetFileBatches(ctx context.Context, fileId string, localVarOptionals *GetFileBatchesOpts) ([]Batch, *http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Get")
+		localVarHttpMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -661,7 +661,7 @@ type GetFileByIDOpts struct {
 
 func (a *ACHFilesApiService) GetFileByID(ctx context.Context, fileId string, localVarOptionals *GetFileByIDOpts) (File, *http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Get")
+		localVarHttpMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -770,7 +770,7 @@ type GetFileContentsOpts struct {
 
 func (a *ACHFilesApiService) GetFileContents(ctx context.Context, fileId string, localVarOptionals *GetFileContentsOpts) (string, *http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Get")
+		localVarHttpMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -878,7 +878,7 @@ type GetFilesOpts struct {
 
 func (a *ACHFilesApiService) GetFiles(ctx context.Context, localVarOptionals *GetFilesOpts) ([]File, *http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Get")
+		localVarHttpMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -989,7 +989,7 @@ type UpdateFileOpts struct {
 
 func (a *ACHFilesApiService) UpdateFile(ctx context.Context, fileId string, createFile CreateFile, localVarOptionals *UpdateFileOpts) (File, *http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Post")
+		localVarHttpMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -1113,7 +1113,7 @@ type ValidateFileOpts struct {
 
 func (a *ACHFilesApiService) ValidateFile(ctx context.Context, fileId string, localVarOptionals *ValidateFileOpts) (File, *http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Get")
+		localVarHttpMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string

@@ -16,7 +16,6 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
-	"strings"
 )
 
 // Linger please
@@ -39,7 +38,7 @@ type PingACHOpts struct {
 
 func (a *MonitorApiService) PingACH(ctx context.Context, localVarOptionals *PingACHOpts) (*http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Get")
+		localVarHttpMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -113,7 +112,7 @@ type PingAccountsOpts struct {
 
 func (a *MonitorApiService) PingAccounts(ctx context.Context, localVarOptionals *PingAccountsOpts) (*http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Get")
+		localVarHttpMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -187,7 +186,7 @@ type PingAuthOpts struct {
 
 func (a *MonitorApiService) PingAuth(ctx context.Context, localVarOptionals *PingAuthOpts) (*http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Get")
+		localVarHttpMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -261,7 +260,7 @@ type PingCustomersOpts struct {
 
 func (a *MonitorApiService) PingCustomers(ctx context.Context, localVarOptionals *PingCustomersOpts) (*http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Get")
+		localVarHttpMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -335,7 +334,7 @@ type PingFEDOpts struct {
 
 func (a *MonitorApiService) PingFED(ctx context.Context, localVarOptionals *PingFEDOpts) (*http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Get")
+		localVarHttpMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -409,7 +408,7 @@ type PingImageCashLetterOpts struct {
 
 func (a *MonitorApiService) PingImageCashLetter(ctx context.Context, localVarOptionals *PingImageCashLetterOpts) (*http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Get")
+		localVarHttpMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -483,7 +482,7 @@ type PingOFACOpts struct {
 
 func (a *MonitorApiService) PingOFAC(ctx context.Context, localVarOptionals *PingOFACOpts) (*http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Get")
+		localVarHttpMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -557,7 +556,7 @@ type PingPaygateOpts struct {
 
 func (a *MonitorApiService) PingPaygate(ctx context.Context, localVarOptionals *PingPaygateOpts) (*http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Get")
+		localVarHttpMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string

@@ -44,7 +44,7 @@ type CreateWireFileOpts struct {
 
 func (a *WireFilesApiService) CreateWireFile(ctx context.Context, createFile2 CreateFile2, localVarOptionals *CreateWireFileOpts) (File2, *http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Post")
+		localVarHttpMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -167,7 +167,7 @@ type DeleteFEDWireMessageFromFileOpts struct {
 
 func (a *WireFilesApiService) DeleteFEDWireMessageFromFile(ctx context.Context, fileId string, fEDWireMessageId string, localVarOptionals *DeleteFEDWireMessageFromFileOpts) (*http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Delete")
+		localVarHttpMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -256,7 +256,7 @@ type DeleteWireFileByIDOpts struct {
 
 func (a *WireFilesApiService) DeleteWireFileByID(ctx context.Context, fileId string, localVarOptionals *DeleteWireFileByIDOpts) (*http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Delete")
+		localVarHttpMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -346,7 +346,7 @@ type GetFEDWireMessageFromFileOpts struct {
 
 func (a *WireFilesApiService) GetFEDWireMessageFromFile(ctx context.Context, fileId string, fEDWireMessageId string, localVarOptionals *GetFEDWireMessageFromFileOpts) (FedWireMessage, *http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Get")
+		localVarHttpMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -456,7 +456,7 @@ type GetWireFileByIDOpts struct {
 
 func (a *WireFilesApiService) GetWireFileByID(ctx context.Context, fileId string, localVarOptionals *GetWireFileByIDOpts) (File2, *http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Get")
+		localVarHttpMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -565,7 +565,7 @@ type GetWireFileContentsOpts struct {
 
 func (a *WireFilesApiService) GetWireFileContents(ctx context.Context, fileId string, localVarOptionals *GetWireFileContentsOpts) (string, *http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Get")
+		localVarHttpMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -673,7 +673,7 @@ type GetWireFilesOpts struct {
 
 func (a *WireFilesApiService) GetWireFiles(ctx context.Context, localVarOptionals *GetWireFilesOpts) ([]File2, *http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Get")
+		localVarHttpMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -784,7 +784,7 @@ type UpdateWireFileByIDOpts struct {
 
 func (a *WireFilesApiService) UpdateWireFileByID(ctx context.Context, fileId string, createFile2 CreateFile2, localVarOptionals *UpdateWireFileByIDOpts) (File2, *http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Post")
+		localVarHttpMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -908,7 +908,7 @@ type ValidateWireFileOpts struct {
 
 func (a *WireFilesApiService) ValidateWireFile(ctx context.Context, fileId string, localVarOptionals *ValidateWireFileOpts) (File2, *http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Get")
+		localVarHttpMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string

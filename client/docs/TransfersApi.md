@@ -69,7 +69,7 @@ Create a new list of transfer, validate, build, and process. Transfers cannot be
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**createTransfer** | [**[]CreateTransfer**](array.md)|  | 
+**createTransfer** | [**[]CreateTransfer**](CreateTransfer.md)|  | 
  **optional** | ***AddTransfersOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
