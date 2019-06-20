@@ -60,6 +60,8 @@ type APIClient struct {
 
 	GatewaysApi *GatewaysApiService
 
+	ImageCashLetterFilesApi *ImageCashLetterFilesApiService
+
 	MonitorApi *MonitorApiService
 
 	OAuth2Api *OAuth2ApiService
@@ -73,6 +75,8 @@ type APIClient struct {
 	TransfersApi *TransfersApiService
 
 	UserApi *UserApiService
+
+	WireFilesApi *WireFilesApiService
 }
 
 type service struct {
@@ -98,6 +102,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.EventsApi = (*EventsApiService)(&c.common)
 	c.FEDApi = (*FEDApiService)(&c.common)
 	c.GatewaysApi = (*GatewaysApiService)(&c.common)
+	c.ImageCashLetterFilesApi = (*ImageCashLetterFilesApiService)(&c.common)
 	c.MonitorApi = (*MonitorApiService)(&c.common)
 	c.OAuth2Api = (*OAuth2ApiService)(&c.common)
 	c.OFACApi = (*OFACApiService)(&c.common)
@@ -105,6 +110,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ReceiversApi = (*ReceiversApiService)(&c.common)
 	c.TransfersApi = (*TransfersApiService)(&c.common)
 	c.UserApi = (*UserApiService)(&c.common)
+	c.WireFilesApi = (*WireFilesApiService)(&c.common)
 
 	return c
 }
