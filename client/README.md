@@ -42,6 +42,7 @@ Class | Method | HTTP request | Description
 *ACHFilesApi* | [**GetFileByID**](docs/ACHFilesApi.md#getfilebyid) | **Get** /v1/ach/files/{file_id} | Retrieves the details of an existing File. You need only supply the unique File identifier that was returned upon creation.
 *ACHFilesApi* | [**GetFileContents**](docs/ACHFilesApi.md#getfilecontents) | **Get** /v1/ach/files/{file_id}/contents | Assembles the existing file (batches and controls) records, computes sequence numbers and totals. Returns plaintext file.
 *ACHFilesApi* | [**GetFiles**](docs/ACHFilesApi.md#getfiles) | **Get** /v1/ach/files | Gets a list of Files
+*ACHFilesApi* | [**SegmentFile**](docs/ACHFilesApi.md#segmentfile) | **Post** /v1/ach/files/{file_id}/segment | Create a new file object
 *ACHFilesApi* | [**UpdateFile**](docs/ACHFilesApi.md#updatefile) | **Post** /v1/ach/files/{file_id} | Updates the specified File Header by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
 *ACHFilesApi* | [**ValidateFile**](docs/ACHFilesApi.md#validatefile) | **Get** /v1/ach/files/{file_id}/validate | Validates the existing file. You need only supply the unique File identifier that was returned upon creation.
 *AccountsApi* | [**CreateAccount**](docs/AccountsApi.md#createaccount) | **Post** /v1/accounts | Create a new account for a Customer
@@ -64,6 +65,7 @@ Class | Method | HTTP request | Description
 *EventsApi* | [**GetEvents**](docs/EventsApi.md#getevents) | **Get** /v1/ach/events | Gets a list of Events
 *FEDApi* | [**SearchFEDACH**](docs/FEDApi.md#searchfedach) | **Get** /v1/fed/ach/search | Search FEDACH names and metadata
 *FEDApi* | [**SearchFEDWIRE**](docs/FEDApi.md#searchfedwire) | **Get** /v1/fed/wire/search | Search FEDWIRE names and metadata
+*FEDWireMessageFileApi* | [**AddFEDWireMessageToFile**](docs/FEDWireMessageFileApi.md#addfedwiremessagetofile) | **Post** /v1/wire/files/{file_id}/FEDWireMessage | Add FEDWireMessage to File
 *GatewaysApi* | [**AddGateway**](docs/GatewaysApi.md#addgateway) | **Post** /v1/ach/gateways | Create a new Gateway object
 *GatewaysApi* | [**GetGateways**](docs/GatewaysApi.md#getgateways) | **Get** /v1/ach/gateways | Gets a list of Gatways
 *ImageCashLetterFilesApi* | [**AddICLToFile**](docs/ImageCashLetterFilesApi.md#addicltofile) | **Post** /v1/imagecashletter/files/{file_id}/cashLetters | Add CashLetter to File
@@ -130,9 +132,7 @@ Class | Method | HTTP request | Description
 *UserApi* | [**UserLogin**](docs/UserApi.md#userlogin) | **Post** /v1/users/login | Attempt to login with an email and password
 *UserApi* | [**UserLogout**](docs/UserApi.md#userlogout) | **Delete** /v1/users/login | Invalidat a user&#39;s cookie(s).
 *WireFilesApi* | [**CreateWireFile**](docs/WireFilesApi.md#createwirefile) | **Post** /v1/wire/files/create | Create a new File object
-*WireFilesApi* | [**DeleteFEDWireMessageFromFile**](docs/WireFilesApi.md#deletefedwiremessagefromfile) | **Delete** /v1/wire/files/{file_id}/FEDWireMessage/{FEDWireMessage_id} | Delete a FEDWireMessage from a File
 *WireFilesApi* | [**DeleteWireFileByID**](docs/WireFilesApi.md#deletewirefilebyid) | **Delete** /v1/wire/files/{file_id} | Permanently deletes a File and associated FEDWireMessage. It cannot be undone.
-*WireFilesApi* | [**GetFEDWireMessageFromFile**](docs/WireFilesApi.md#getfedwiremessagefromfile) | **Get** /v1/wire/files/{file_id}/FEDWireMessage/{FEDWireMessage_id} | Get a specific FEDWireMessage on a FIle
 *WireFilesApi* | [**GetWireFileByID**](docs/WireFilesApi.md#getwirefilebyid) | **Get** /v1/wire/files/{file_id} | Retrieves the details of an existing File. You need only supply the unique File identifier that was returned upon creation.
 *WireFilesApi* | [**GetWireFileContents**](docs/WireFilesApi.md#getwirefilecontents) | **Get** /v1/wire/files/{file_id}/contents | Assembles the existing file witha FEDWireMessage, Returns plaintext file.
 *WireFilesApi* | [**GetWireFiles**](docs/WireFilesApi.md#getwirefiles) | **Get** /v1/wire/files | Gets a list of Files
@@ -196,6 +196,7 @@ Class | Method | HTTP request | Description
  - [Depository](docs/Depository.md)
  - [Document](docs/Document.md)
  - [Download](docs/Download.md)
+ - [Dpl](docs/Dpl.md)
  - [EntryDetail](docs/EntryDetail.md)
  - [Error](docs/Error.md)
  - [Error2](docs/Error2.md)

@@ -10,19 +10,115 @@
 
 package openapi
 
-type FileHeader struct {
-	// contains the Routing Number of the ACH Operator or sending point that is sending the file.
-	ImmediateOrigin string `json:"immediateOrigin"`
-	// The name of the ACH operator or sending point that is sending the file.
-	ImmediateOriginName string `json:"immediateOriginName"`
-	// contains the Routing Number of the ACH Operator or receiving point to which the file is being sent
-	ImmediateDestination string `json:"immediateDestination"`
-	// The name of the ACH or receiving point for which that file is destined.
-	ImmediateDestinationName string `json:"immediateDestinationName"`
-	// The File Creation Date is the date when the file was prepared by an ODFI. (Format HHmm - H=Hour, m=Minute)
-	FileCreationTime string `json:"fileCreationTime,omitempty"`
-	// The File Creation Time is the time when the file was prepared by an ODFI. (Format YYMMDD - Y=Year, M=Month, D=Day)
-	FileCreationDate string `json:"fileCreationDate,omitempty"`
-	// Incremented value for each file for RDFI's.
-	FileIDModifier string `json:"fileIDModifier,omitempty"`
+import (
+	"context"
+	"fmt"
+	"github.com/antihax/optional"
+	"io/ioutil"
+	"net/http"
+	"net/url"
+	"strings"
+)
+
+// Linger please
+var (
+	_ context.Context
+)
+
+type FEDWireMessageFileApiService service
+
+/*
+FEDWireMessageFileApiService Add FEDWireMessage to File
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param fileId File ID
+ * @param fedWireMessage
+ * @param optional nil or *AddFEDWireMessageToFileOpts - Optional Parameters:
+ * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
+ * @param "XIdempotencyKey" (optional.String) -  Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests.
+*/
+
+type AddFEDWireMessageToFileOpts struct {
+	XRequestId      optional.String
+	XIdempotencyKey optional.String
+}
+
+func (a *FEDWireMessageFileApiService) AddFEDWireMessageToFile(ctx context.Context, fileId string, fedWireMessage FedWireMessage, localVarOptionals *AddFEDWireMessageToFileOpts) (*http.Response, error) {
+	var (
+		localVarHttpMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/v1/wire/files/{file_id}/FEDWireMessage"
+	localVarPath = strings.Replace(localVarPath, "{"+"file_id"+"}", fmt.Sprintf("%v", fileId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XRequestId.IsSet() {
+		localVarHeaderParams["X-Request-Id"] = parameterToString(localVarOptionals.XRequestId.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XIdempotencyKey.IsSet() {
+		localVarHeaderParams["X-Idempotency-Key"] = parameterToString(localVarOptionals.XIdempotencyKey.Value(), "")
+	}
+	// body params
+	localVarPostBody = &fedWireMessage
+	if ctx != nil {
+		// API Key Authentication
+		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
+			var key string
+			if auth.Prefix != "" {
+				key = auth.Prefix + " " + auth.Key
+			} else {
+				key = auth.Key
+			}
+			localVarHeaderParams["Cookie"] = key
+		}
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return localVarHttpResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarHttpResponse.Body.Close()
+	if err != nil {
+		return localVarHttpResponse, err
+	}
+
+	if localVarHttpResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHttpResponse.Status,
+		}
+		return localVarHttpResponse, newErr
+	}
+
+	return localVarHttpResponse, nil
 }

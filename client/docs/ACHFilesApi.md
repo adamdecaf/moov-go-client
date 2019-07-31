@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**GetFileByID**](ACHFilesApi.md#GetFileByID) | **Get** /v1/ach/files/{file_id} | Retrieves the details of an existing File. You need only supply the unique File identifier that was returned upon creation.
 [**GetFileContents**](ACHFilesApi.md#GetFileContents) | **Get** /v1/ach/files/{file_id}/contents | Assembles the existing file (batches and controls) records, computes sequence numbers and totals. Returns plaintext file.
 [**GetFiles**](ACHFilesApi.md#GetFiles) | **Get** /v1/ach/files | Gets a list of Files
+[**SegmentFile**](ACHFilesApi.md#SegmentFile) | **Post** /v1/ach/files/{file_id}/segment | Create a new file object
 [**UpdateFile**](ACHFilesApi.md#UpdateFile) | **Post** /v1/ach/files/{file_id} | Updates the specified File Header by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
 [**ValidateFile**](ACHFilesApi.md#ValidateFile) | **Get** /v1/ach/files/{file_id}/validate | Validates the existing file. You need only supply the unique File identifier that was returned upon creation.
 
@@ -395,6 +396,51 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SegmentFile
+
+> File SegmentFile(ctx, fileId, createFile, optional)
+Create a new file object
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**fileId** | **string**| File ID | 
+**createFile** | [**CreateFile**](CreateFile.md)| Content of the ACH file (in json or raw text) | 
+ **optional** | ***SegmentFileOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a SegmentFileOpts struct
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **xIdempotencyKey** | **optional.String**| Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests. | 
+
+### Return type
+
+[**File**](File.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json, text/plain
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

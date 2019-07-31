@@ -5,9 +5,7 @@ All URIs are relative to *https://api.moov.io*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateWireFile**](WireFilesApi.md#CreateWireFile) | **Post** /v1/wire/files/create | Create a new File object
-[**DeleteFEDWireMessageFromFile**](WireFilesApi.md#DeleteFEDWireMessageFromFile) | **Delete** /v1/wire/files/{file_id}/FEDWireMessage/{FEDWireMessage_id} | Delete a FEDWireMessage from a File
 [**DeleteWireFileByID**](WireFilesApi.md#DeleteWireFileByID) | **Delete** /v1/wire/files/{file_id} | Permanently deletes a File and associated FEDWireMessage. It cannot be undone.
-[**GetFEDWireMessageFromFile**](WireFilesApi.md#GetFEDWireMessageFromFile) | **Get** /v1/wire/files/{file_id}/FEDWireMessage/{FEDWireMessage_id} | Get a specific FEDWireMessage on a FIle
 [**GetWireFileByID**](WireFilesApi.md#GetWireFileByID) | **Get** /v1/wire/files/{file_id} | Retrieves the details of an existing File. You need only supply the unique File identifier that was returned upon creation.
 [**GetWireFileContents**](WireFilesApi.md#GetWireFileContents) | **Get** /v1/wire/files/{file_id}/contents | Assembles the existing file witha FEDWireMessage, Returns plaintext file.
 [**GetWireFiles**](WireFilesApi.md#GetWireFiles) | **Get** /v1/wire/files | Gets a list of Files
@@ -59,50 +57,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteFEDWireMessageFromFile
-
-> DeleteFEDWireMessageFromFile(ctx, fileId, fEDWireMessageId, optional)
-Delete a FEDWireMessage from a File
-
-### Required Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**fileId** | **string**| File ID | 
-**fEDWireMessageId** | **string**| FEDWireMessage ID | 
- **optional** | ***DeleteFEDWireMessageFromFileOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a DeleteFEDWireMessageFromFileOpts struct
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
- **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth), [cookieAuth](../README.md#cookieAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## DeleteWireFileByID
 
 > DeleteWireFileByID(ctx, fileId, optional)
@@ -139,50 +93,6 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetFEDWireMessageFromFile
-
-> FedWireMessage GetFEDWireMessageFromFile(ctx, fileId, fEDWireMessageId, optional)
-Get a specific FEDWireMessage on a FIle
-
-### Required Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**fileId** | **string**| File ID | 
-**fEDWireMessageId** | **string**| FEDWireMessage ID | 
- **optional** | ***GetFEDWireMessageFromFileOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a GetFEDWireMessageFromFileOpts struct
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
- **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
-
-### Return type
-
-[**FedWireMessage**](FEDWireMessage.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth), [cookieAuth](../README.md#cookieAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

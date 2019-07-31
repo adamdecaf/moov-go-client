@@ -10,19 +10,31 @@
 
 package openapi
 
-type FileHeader struct {
-	// contains the Routing Number of the ACH Operator or sending point that is sending the file.
-	ImmediateOrigin string `json:"immediateOrigin"`
-	// The name of the ACH operator or sending point that is sending the file.
-	ImmediateOriginName string `json:"immediateOriginName"`
-	// contains the Routing Number of the ACH Operator or receiving point to which the file is being sent
-	ImmediateDestination string `json:"immediateDestination"`
-	// The name of the ACH or receiving point for which that file is destined.
-	ImmediateDestinationName string `json:"immediateDestinationName"`
-	// The File Creation Date is the date when the file was prepared by an ODFI. (Format HHmm - H=Hour, m=Minute)
-	FileCreationTime string `json:"fileCreationTime,omitempty"`
-	// The File Creation Time is the time when the file was prepared by an ODFI. (Format YYMMDD - Y=Year, M=Month, D=Day)
-	FileCreationDate string `json:"fileCreationDate,omitempty"`
-	// Incremented value for each file for RDFI's.
-	FileIDModifier string `json:"fileIDModifier,omitempty"`
+// BIS Denied Persons List item
+type Dpl struct {
+	// Name of the Denied Person
+	Name string `json:"name,omitempty"`
+	// Denied Person's street address
+	StreetAddress string `json:"streetAddress,omitempty"`
+	// Denied Person's city
+	City string `json:"city,omitempty"`
+	// Denied Person's state
+	State string `json:"state,omitempty"`
+	// Denied Person's country
+	Country string `json:"country,omitempty"`
+	// Denied Person's postal code
+	PostalCode string `json:"postalCode,omitempty"`
+	// Date when denial came into effect
+	EffectiveDate string `json:"effectiveDate,omitempty"`
+	// Date when denial expires, if blank denial never expires
+	ExpirationDate string `json:"expirationDate,omitempty"`
+	// Denotes whether or not the Denied Person was added by a standard order
+	StandardOrder string `json:"standardOrder,omitempty"`
+	// Most recent date when the Denied Person record was updated
+	LastUpdate string `json:"lastUpdate,omitempty"`
+	// Most recent action taken regarding the denial
+	Action string `json:"action,omitempty"`
+	// Reference to the order's citation in the Federal Register
+	FrCitation string  `json:"frCitation,omitempty"`
+	Match      float32 `json:"match,omitempty"`
 }
