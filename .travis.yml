@@ -6,10 +6,5 @@ go:
   - 1.12.x
 env:
   - GO111MODULE=on
-addons:
-  apt:
-    packages:
-      # From https://superuser.com/a/1156455
-      - oracle-java9-set-default
 script:
   - make client
