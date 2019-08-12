@@ -5,12 +5,12 @@ All URIs are relative to *https://api.moov.io*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**AddDepository**](DepositoriesApi.md#AddDepository) | **Post** /v1/ach/depositories | Create a new depository account for the authenticated user
-[**ConfirmMicroDeposits**](DepositoriesApi.md#ConfirmMicroDeposits) | **Post** /v1/ach/depositories/{depositoryId}/micro-deposits/confirm | Confirm micro deposit amounts after they have been posted to the depository account
-[**DeleteDepository**](DepositoriesApi.md#DeleteDepository) | **Delete** /v1/ach/depositories/{depositoryId} | Permanently deletes a depository and associated transfers. It cannot be undone. Immediately cancels any active Transfers for the depository.
+[**ConfirmMicroDeposits**](DepositoriesApi.md#ConfirmMicroDeposits) | **Post** /v1/ach/depositories/{depositoryID}/micro-deposits/confirm | Confirm micro deposit amounts after they have been posted to the depository account
+[**DeleteDepository**](DepositoriesApi.md#DeleteDepository) | **Delete** /v1/ach/depositories/{depositoryID} | Permanently deletes a depository and associated transfers. It cannot be undone. Immediately cancels any active Transfers for the depository.
 [**GetDepositories**](DepositoriesApi.md#GetDepositories) | **Get** /v1/ach/depositories | A list of all Depository objects for the authentication context.
-[**GetDepositoryByID**](DepositoriesApi.md#GetDepositoryByID) | **Get** /v1/ach/depositories/{depositoryId} | Get a Depository object for the supplied ID
-[**InitiateMicroDeposits**](DepositoriesApi.md#InitiateMicroDeposits) | **Post** /v1/ach/depositories/{depositoryId}/micro-deposits | Initiates micro deposits to be sent to the Depository institution for account validation
-[**UpdateDepository**](DepositoriesApi.md#UpdateDepository) | **Patch** /v1/ach/depositories/{depositoryId} | Updates the specified Depository by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
+[**GetDepositoryByID**](DepositoriesApi.md#GetDepositoryByID) | **Get** /v1/ach/depositories/{depositoryID} | Get a Depository object for the supplied ID
+[**InitiateMicroDeposits**](DepositoriesApi.md#InitiateMicroDeposits) | **Post** /v1/ach/depositories/{depositoryID}/micro-deposits | Initiates micro deposits to be sent to the Depository institution for account validation
+[**UpdateDepository**](DepositoriesApi.md#UpdateDepository) | **Patch** /v1/ach/depositories/{depositoryID} | Updates the specified Depository by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
 
 
 
@@ -37,7 +37,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **xIdempotencyKey** | **optional.String**| Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests. | 
- **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **xRequestID** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
 
 ### Return type
 
@@ -59,7 +59,7 @@ Name | Type | Description  | Notes
 
 ## ConfirmMicroDeposits
 
-> ConfirmMicroDeposits(ctx, depositoryId, amounts, optional)
+> ConfirmMicroDeposits(ctx, depositoryID, amounts, optional)
 Confirm micro deposit amounts after they have been posted to the depository account
 
 ### Required Parameters
@@ -68,7 +68,7 @@ Confirm micro deposit amounts after they have been posted to the depository acco
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**depositoryId** | **string**| Depository ID | 
+**depositoryID** | **string**| Depository ID | 
 **amounts** | [**Amounts**](Amounts.md)|  | 
  **optional** | ***ConfirmMicroDepositsOpts** | optional parameters | nil if no parameters
 
@@ -82,7 +82,7 @@ Name | Type | Description  | Notes
 
 
  **xIdempotencyKey** | **optional.String**| Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests. | 
- **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **xRequestID** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
 
 ### Return type
 
@@ -104,7 +104,7 @@ Name | Type | Description  | Notes
 
 ## DeleteDepository
 
-> DeleteDepository(ctx, depositoryId, optional)
+> DeleteDepository(ctx, depositoryID, optional)
 Permanently deletes a depository and associated transfers. It cannot be undone. Immediately cancels any active Transfers for the depository.
 
 ### Required Parameters
@@ -113,7 +113,7 @@ Permanently deletes a depository and associated transfers. It cannot be undone. 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**depositoryId** | **string**| Depository ID | 
+**depositoryID** | **string**| Depository ID | 
  **optional** | ***DeleteDepositoryOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -124,7 +124,7 @@ Optional parameters are passed through a pointer to a DeleteDepositoryOpts struc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **xRequestID** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
 
 ### Return type
 
@@ -166,7 +166,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **offset** | **optional.Int32**| The number of items to skip before starting to collect the result set | [default to 0]
  **limit** | **optional.Int32**| The number of items to return | [default to 25]
- **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **xRequestID** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
 
 ### Return type
 
@@ -188,7 +188,7 @@ Name | Type | Description  | Notes
 
 ## GetDepositoryByID
 
-> Depository GetDepositoryByID(ctx, depositoryId, optional)
+> Depository GetDepositoryByID(ctx, depositoryID, optional)
 Get a Depository object for the supplied ID
 
 ### Required Parameters
@@ -197,7 +197,7 @@ Get a Depository object for the supplied ID
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**depositoryId** | **string**| Depository ID | 
+**depositoryID** | **string**| Depository ID | 
  **optional** | ***GetDepositoryByIDOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -210,7 +210,7 @@ Name | Type | Description  | Notes
 
  **offset** | **optional.Int32**| The number of items to skip before starting to collect the result set | [default to 0]
  **limit** | **optional.Int32**| The number of items to return | [default to 25]
- **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **xRequestID** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
 
 ### Return type
 
@@ -232,7 +232,7 @@ Name | Type | Description  | Notes
 
 ## InitiateMicroDeposits
 
-> InitiateMicroDeposits(ctx, depositoryId, optional)
+> InitiateMicroDeposits(ctx, depositoryID, optional)
 Initiates micro deposits to be sent to the Depository institution for account validation
 
 ### Required Parameters
@@ -241,7 +241,7 @@ Initiates micro deposits to be sent to the Depository institution for account va
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**depositoryId** | **string**| Depository ID | 
+**depositoryID** | **string**| Depository ID | 
  **optional** | ***InitiateMicroDepositsOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -253,7 +253,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **xIdempotencyKey** | **optional.String**| Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests. | 
- **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **xRequestID** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
 
 ### Return type
 
@@ -275,7 +275,7 @@ Name | Type | Description  | Notes
 
 ## UpdateDepository
 
-> Depository UpdateDepository(ctx, depositoryId, createDepository, optional)
+> Depository UpdateDepository(ctx, depositoryID, createDepository, optional)
 Updates the specified Depository by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
 
 ### Required Parameters
@@ -284,7 +284,7 @@ Updates the specified Depository by setting the values of the parameters passed.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**depositoryId** | **string**| Depository ID | 
+**depositoryID** | **string**| Depository ID | 
 **createDepository** | [**CreateDepository**](CreateDepository.md)|  | 
  **optional** | ***UpdateDepositoryOpts** | optional parameters | nil if no parameters
 
@@ -298,7 +298,7 @@ Name | Type | Description  | Notes
 
 
  **xIdempotencyKey** | **optional.String**| Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests. | 
- **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **xRequestID** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
 
 ### Return type
 

@@ -5,10 +5,10 @@ All URIs are relative to *https://api.moov.io*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**AddOriginator**](OriginatorsApi.md#AddOriginator) | **Post** /v1/ach/originators | Create a new Originator object
-[**DeleteOriginator**](OriginatorsApi.md#DeleteOriginator) | **Delete** /v1/ach/originators/{originatorId} | Permanently deletes an Originator and associated Receivers, Depositories, and Transfers. It cannot be undone. Also immediately cancels any active Transfers for the Originator.
-[**GetOriginatorByID**](OriginatorsApi.md#GetOriginatorByID) | **Get** /v1/ach/originators/{originatorId} | Retrieves the details of an existing Originator. You need only supply the unique Originator identifier that was returned upon receiver creation.
+[**DeleteOriginator**](OriginatorsApi.md#DeleteOriginator) | **Delete** /v1/ach/originators/{originatorID} | Permanently deletes an Originator and associated Receivers, Depositories, and Transfers. It cannot be undone. Also immediately cancels any active Transfers for the Originator.
+[**GetOriginatorByID**](OriginatorsApi.md#GetOriginatorByID) | **Get** /v1/ach/originators/{originatorID} | Retrieves the details of an existing Originator. You need only supply the unique Originator identifier that was returned upon receiver creation.
 [**GetOriginators**](OriginatorsApi.md#GetOriginators) | **Get** /v1/ach/originators | Gets a list of Originators
-[**UpdateOriginator**](OriginatorsApi.md#UpdateOriginator) | **Patch** /v1/ach/originators/{originatorId} | Updates the specified Originator by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
+[**UpdateOriginator**](OriginatorsApi.md#UpdateOriginator) | **Patch** /v1/ach/originators/{originatorID} | Updates the specified Originator by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
 
 
 
@@ -34,7 +34,7 @@ Optional parameters are passed through a pointer to a AddOriginatorOpts struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **xRequestID** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
  **xIdempotencyKey** | **optional.String**| Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests. | 
 
 ### Return type
@@ -57,7 +57,7 @@ Name | Type | Description  | Notes
 
 ## DeleteOriginator
 
-> DeleteOriginator(ctx, originatorId, optional)
+> DeleteOriginator(ctx, originatorID, optional)
 Permanently deletes an Originator and associated Receivers, Depositories, and Transfers. It cannot be undone. Also immediately cancels any active Transfers for the Originator.
 
 ### Required Parameters
@@ -66,7 +66,7 @@ Permanently deletes an Originator and associated Receivers, Depositories, and Tr
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**originatorId** | **string**| Originator ID | 
+**originatorID** | **string**| Originator ID | 
  **optional** | ***DeleteOriginatorOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -77,7 +77,7 @@ Optional parameters are passed through a pointer to a DeleteOriginatorOpts struc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **xRequestID** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
 
 ### Return type
 
@@ -99,7 +99,7 @@ Name | Type | Description  | Notes
 
 ## GetOriginatorByID
 
-> Originator GetOriginatorByID(ctx, originatorId, optional)
+> Originator GetOriginatorByID(ctx, originatorID, optional)
 Retrieves the details of an existing Originator. You need only supply the unique Originator identifier that was returned upon receiver creation.
 
 ### Required Parameters
@@ -108,7 +108,7 @@ Retrieves the details of an existing Originator. You need only supply the unique
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**originatorId** | **string**| Originator ID | 
+**originatorID** | **string**| Originator ID | 
  **optional** | ***GetOriginatorByIDOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -119,7 +119,7 @@ Optional parameters are passed through a pointer to a GetOriginatorByIDOpts stru
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **xRequestID** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
  **offset** | **optional.Int32**| The number of items to skip before starting to collect the result set | [default to 0]
  **limit** | **optional.Int32**| The number of items to return | [default to 25]
 
@@ -161,7 +161,7 @@ Optional parameters are passed through a pointer to a GetOriginatorsOpts struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **xRequestID** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
  **offset** | **optional.Int32**| The number of items to skip before starting to collect the result set | [default to 0]
  **limit** | **optional.Int32**| The number of items to return | [default to 25]
 
@@ -185,7 +185,7 @@ Name | Type | Description  | Notes
 
 ## UpdateOriginator
 
-> Originator UpdateOriginator(ctx, originatorId, createOriginator, optional)
+> Originator UpdateOriginator(ctx, originatorID, createOriginator, optional)
 Updates the specified Originator by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
 
 ### Required Parameters
@@ -194,7 +194,7 @@ Updates the specified Originator by setting the values of the parameters passed.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**originatorId** | **string**| Originator ID | 
+**originatorID** | **string**| Originator ID | 
 **createOriginator** | [**CreateOriginator**](CreateOriginator.md)|  | 
  **optional** | ***UpdateOriginatorOpts** | optional parameters | nil if no parameters
 
@@ -208,7 +208,7 @@ Name | Type | Description  | Notes
 
 
  **xIdempotencyKey** | **optional.String**| Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests. | 
- **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **xRequestID** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
 
 ### Return type
 

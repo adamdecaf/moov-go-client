@@ -5,12 +5,12 @@ All URIs are relative to *https://api.moov.io*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**AddReceivers**](ReceiversApi.md#AddReceivers) | **Post** /v1/ach/receivers | Create a new Receiver object
-[**DeleteReceiver**](ReceiversApi.md#DeleteReceiver) | **Delete** /v1/ach/receivers/{receiverId} | Permanently deletes a receiver and associated depositories and transfers. It cannot be undone. Immediately cancels any active Transfers for the receiver.
-[**GetDepositoriesByID**](ReceiversApi.md#GetDepositoriesByID) | **Get** /v1/ach/receivers/{receiverId}/depositories/{depositoryId} | Get a Depository accounts for a Receiver based on it&#39;s ID
-[**GetDepositoriesByReceiverID**](ReceiversApi.md#GetDepositoriesByReceiverID) | **Get** /v1/ach/receivers/{receiverId}/depositories | Get a list of Depository accounts for a Receiver
-[**GetReceiverByID**](ReceiversApi.md#GetReceiverByID) | **Get** /v1/ach/receivers/{receiverId} | Get a Receiver by ID
+[**DeleteReceiver**](ReceiversApi.md#DeleteReceiver) | **Delete** /v1/ach/receivers/{receiverID} | Permanently deletes a receiver and associated depositories and transfers. It cannot be undone. Immediately cancels any active Transfers for the receiver.
+[**GetDepositoriesByID**](ReceiversApi.md#GetDepositoriesByID) | **Get** /v1/ach/receivers/{receiverID}/depositories/{depositoryID} | Get a Depository accounts for a Receiver based on it&#39;s ID
+[**GetDepositoriesByReceiverID**](ReceiversApi.md#GetDepositoriesByReceiverID) | **Get** /v1/ach/receivers/{receiverID}/depositories | Get a list of Depository accounts for a Receiver
+[**GetReceiverByID**](ReceiversApi.md#GetReceiverByID) | **Get** /v1/ach/receivers/{receiverID} | Get a Receiver by ID
 [**GetReceivers**](ReceiversApi.md#GetReceivers) | **Get** /v1/ach/receivers | Gets a list of Receivers
-[**UpdateReceiver**](ReceiversApi.md#UpdateReceiver) | **Patch** /v1/ach/receivers/{receiverId} | Updates the specified Receiver by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
+[**UpdateReceiver**](ReceiversApi.md#UpdateReceiver) | **Patch** /v1/ach/receivers/{receiverID} | Updates the specified Receiver by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
 
 
 
@@ -37,7 +37,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **xIdempotencyKey** | **optional.String**| Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests. | 
- **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **xRequestID** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
 
 ### Return type
 
@@ -59,7 +59,7 @@ Name | Type | Description  | Notes
 
 ## DeleteReceiver
 
-> DeleteReceiver(ctx, receiverId, optional)
+> DeleteReceiver(ctx, receiverID, optional)
 Permanently deletes a receiver and associated depositories and transfers. It cannot be undone. Immediately cancels any active Transfers for the receiver.
 
 ### Required Parameters
@@ -68,7 +68,7 @@ Permanently deletes a receiver and associated depositories and transfers. It can
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**receiverId** | **string**| Receiver ID | 
+**receiverID** | **string**| Receiver ID | 
  **optional** | ***DeleteReceiverOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -80,7 +80,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **authorization** | **optional.String**| OAuth2 Bearer token | 
- **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **xRequestID** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
 
 ### Return type
 
@@ -102,7 +102,7 @@ Name | Type | Description  | Notes
 
 ## GetDepositoriesByID
 
-> Depository GetDepositoriesByID(ctx, receiverId, depositoryId, optional)
+> Depository GetDepositoriesByID(ctx, receiverID, depositoryID, optional)
 Get a Depository accounts for a Receiver based on it's ID
 
 ### Required Parameters
@@ -111,8 +111,8 @@ Get a Depository accounts for a Receiver based on it's ID
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**receiverId** | **string**| Receiver ID | 
-**depositoryId** | **string**| Depository ID | 
+**receiverID** | **string**| Receiver ID | 
+**depositoryID** | **string**| Depository ID | 
  **optional** | ***GetDepositoriesByIDOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -126,7 +126,7 @@ Name | Type | Description  | Notes
 
  **offset** | **optional.Int32**| The number of items to skip before starting to collect the result set | [default to 0]
  **limit** | **optional.Int32**| The number of items to return | [default to 25]
- **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **xRequestID** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
 
 ### Return type
 
@@ -148,7 +148,7 @@ Name | Type | Description  | Notes
 
 ## GetDepositoriesByReceiverID
 
-> []Depository GetDepositoriesByReceiverID(ctx, receiverId, optional)
+> []Depository GetDepositoriesByReceiverID(ctx, receiverID, optional)
 Get a list of Depository accounts for a Receiver
 
 ### Required Parameters
@@ -157,7 +157,7 @@ Get a list of Depository accounts for a Receiver
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**receiverId** | **string**| Receiver ID | 
+**receiverID** | **string**| Receiver ID | 
  **optional** | ***GetDepositoriesByReceiverIDOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -170,7 +170,7 @@ Name | Type | Description  | Notes
 
  **offset** | **optional.Int32**| The number of items to skip before starting to collect the result set | [default to 0]
  **limit** | **optional.Int32**| The number of items to return | [default to 25]
- **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **xRequestID** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
 
 ### Return type
 
@@ -192,7 +192,7 @@ Name | Type | Description  | Notes
 
 ## GetReceiverByID
 
-> Receiver GetReceiverByID(ctx, receiverId, optional)
+> Receiver GetReceiverByID(ctx, receiverID, optional)
 Get a Receiver by ID
 
 ### Required Parameters
@@ -201,7 +201,7 @@ Get a Receiver by ID
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**receiverId** | **string**| Receiver ID | 
+**receiverID** | **string**| Receiver ID | 
  **optional** | ***GetReceiverByIDOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -214,7 +214,7 @@ Name | Type | Description  | Notes
 
  **offset** | **optional.Int32**| The number of items to skip before starting to collect the result set | [default to 0]
  **limit** | **optional.Int32**| The number of items to return | [default to 25]
- **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **xRequestID** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
 
 ### Return type
 
@@ -256,7 +256,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **offset** | **optional.Int32**| The number of items to skip before starting to collect the result set | [default to 0]
  **limit** | **optional.Int32**| The number of items to return | [default to 25]
- **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **xRequestID** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
 
 ### Return type
 
@@ -278,7 +278,7 @@ Name | Type | Description  | Notes
 
 ## UpdateReceiver
 
-> Receiver UpdateReceiver(ctx, receiverId, createReceiver, optional)
+> Receiver UpdateReceiver(ctx, receiverID, createReceiver, optional)
 Updates the specified Receiver by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
 
 ### Required Parameters
@@ -287,7 +287,7 @@ Updates the specified Receiver by setting the values of the parameters passed. A
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**receiverId** | **string**| Receiver ID | 
+**receiverID** | **string**| Receiver ID | 
 **createReceiver** | [**CreateReceiver**](CreateReceiver.md)|  | 
  **optional** | ***UpdateReceiverOpts** | optional parameters | nil if no parameters
 
@@ -301,7 +301,7 @@ Name | Type | Description  | Notes
 
 
  **xIdempotencyKey** | **optional.String**| Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests. | 
- **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **xRequestID** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
 
 ### Return type
 

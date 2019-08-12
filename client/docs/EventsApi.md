@@ -4,14 +4,14 @@ All URIs are relative to *https://api.moov.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetEventByID**](EventsApi.md#GetEventByID) | **Get** /v1/ach/events/{eventId} | Get a Event by ID
+[**GetEventByID**](EventsApi.md#GetEventByID) | **Get** /v1/ach/events/{eventID} | Get a Event by ID
 [**GetEvents**](EventsApi.md#GetEvents) | **Get** /v1/ach/events | Gets a list of Events
 
 
 
 ## GetEventByID
 
-> Event GetEventByID(ctx, eventId, optional)
+> Event GetEventByID(ctx, eventID, optional)
 Get a Event by ID
 
 ### Required Parameters
@@ -20,7 +20,7 @@ Get a Event by ID
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**eventId** | **string**| Event ID | 
+**eventID** | **string**| Event ID | 
  **optional** | ***GetEventByIDOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -33,7 +33,7 @@ Name | Type | Description  | Notes
 
  **offset** | **optional.Int32**| The number of items to skip before starting to collect the result set | [default to 0]
  **limit** | **optional.Int32**| The number of items to return | [default to 25]
- **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **xRequestID** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
 
 ### Return type
 
@@ -77,7 +77,7 @@ Name | Type | Description  | Notes
  **limit** | **optional.Int32**| The number of items to return | [default to 25]
  **startDate** | **optional.Time**| Filter objects created after this date. ISO-8601 format YYYY-MM-DD. Can optionally be used with endDate to specify a date range. | 
  **endDate** | **optional.Time**| Filter objects created before this date. ISO-8601 format YYYY-MM-DD. Can optionally be used with startDate to specify a date range. | 
- **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **xRequestID** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
 
 ### Return type
 
