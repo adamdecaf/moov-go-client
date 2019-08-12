@@ -16,7 +16,7 @@ import (
 
 type Event struct {
 	// ID to uniquely identify a event
-	Id string `json:"id,omitempty"`
+	ID string `json:"ID,omitempty"`
 	// Type of event
 	Topic string `json:"topic,omitempty"`
 	// A human readable description of the topic

@@ -16,7 +16,7 @@ import (
 
 type Gateway struct {
 	// ID to uniquely identify a gateway
-	Id string `json:"id"`
+	ID string `json:"ID,omitempty"`
 	// Routing Number - four digit Federal Reserve Routing Symbol and the four digit ABA Institution Identifier
 	Origin string `json:"origin"`
 	// Legal name associated with the origin routing number.

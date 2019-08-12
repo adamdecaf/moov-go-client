@@ -16,7 +16,7 @@ import (
 
 type Depository struct {
 	// Depository ID
-	Id string `json:"id,omitempty"`
+	ID string `json:"ID,omitempty"`
 	// Legal name of the financial institution.
 	BankName string `json:"bankName,omitempty"`
 	// Legal holder name on the account

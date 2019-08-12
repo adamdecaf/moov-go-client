@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Receiver ID | [optional] 
+**ID** | **string** | Receiver ID | [optional] 
 **Email** | **string** | The receivers email address | [optional] 
 **DefaultDepository** | **string** | The depository account to be used by default per transfer. ID must be a valid Receiver Depository account | [optional] 
 **Status** | **string** | Defines the status of the Receiver | [optional] 

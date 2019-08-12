@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Originator ID | [optional] 
+**ID** | **string** | Originator ID | [optional] 
 **DefaultDepository** | **string** | The depository account to be used by default per transfer. ID must be a valid Originator Depository account | [optional] 
 **Identification** | **string** | An identification number by which the receiver is known to the originator. | [optional] 
 **Metadata** | **string** | Additional meta data to be used for display only | [optional] 

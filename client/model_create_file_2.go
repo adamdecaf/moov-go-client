@@ -12,7 +12,7 @@ package openapi
 
 type CreateFile2 struct {
 	// File ID
-	Id          string       `json:"id,omitempty"`
+	ID          string       `json:"ID,omitempty"`
 	FileHeader  FileHeader2  `json:"fileHeader"`
 	CashLetters []CashLetter `json:"cashLetters,omitempty"`
 	Bundles     []Bundle     `json:"bundles,omitempty"`

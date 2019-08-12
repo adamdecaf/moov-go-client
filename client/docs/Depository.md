@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Depository ID | [optional] 
+**ID** | **string** | Depository ID | [optional] 
 **BankName** | **string** | Legal name of the financial institution. | [optional] 
 **Holder** | **string** | Legal holder name on the account | 
 **HolderType** | **string** | Defines the type of entity of the account holder as an *individual* or *company* | 

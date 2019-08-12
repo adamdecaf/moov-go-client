@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Moov API user ID | [optional] 
+**ID** | **string** | Moov API user ID | [optional] 
 **Email** | **string** | Email address associated to the user | [optional] 
 **FirstName** | **string** |  | [optional] 
 **LastName** | **string** |  | [optional] 

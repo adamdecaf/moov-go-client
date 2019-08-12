@@ -16,7 +16,7 @@ import (
 
 type User struct {
 	// Moov API user ID
-	Id string `json:"id,omitempty"`
+	ID string `json:"ID,omitempty"`
 	// Email address associated to the user
 	Email     string `json:"email,omitempty"`
 	FirstName string `json:"firstName,omitempty"`

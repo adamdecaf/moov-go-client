@@ -16,7 +16,7 @@ import (
 
 type Originator struct {
 	// Originator ID
-	Id string `json:"id,omitempty"`
+	ID string `json:"ID,omitempty"`
 	// The depository account to be used by default per transfer. ID must be a valid Originator Depository account
 	DefaultDepository string `json:"defaultDepository,omitempty"`
 	// An identification number by which the receiver is known to the originator.

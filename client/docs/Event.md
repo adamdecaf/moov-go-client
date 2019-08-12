@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | ID to uniquely identify a event | [optional] 
+**ID** | **string** | ID to uniquely identify a event | [optional] 
 **Topic** | **string** | Type of event | [optional] 
 **Message** | **string** | A human readable description of the topic | [optional] 
 **Type** | **string** |  | [optional] 

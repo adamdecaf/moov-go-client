@@ -16,7 +16,7 @@ import (
 
 type Receiver struct {
 	// Receiver ID
-	Id string `json:"id,omitempty"`
+	ID string `json:"ID,omitempty"`
 	// The receivers email address
 	Email string `json:"email,omitempty"`
 	// The depository account to be used by default per transfer. ID must be a valid Receiver Depository account
