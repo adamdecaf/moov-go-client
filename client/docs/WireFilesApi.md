@@ -36,8 +36,8 @@ Optional parameters are passed through a pointer to a CreateWireFileOpts struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
- **xIdempotencyKey** | **optional.String**| Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests. | 
+ **xRequestID** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **xIDempotencyKey** | **optional.String**| Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests. | 
 
 ### Return type
 
@@ -79,7 +79,7 @@ Optional parameters are passed through a pointer to a DeleteWireFileByIDOpts str
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **xRequestID** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
 
 ### Return type
 
@@ -121,7 +121,7 @@ Optional parameters are passed through a pointer to a GetWireFileByIDOpts struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **xRequestID** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
 
 ### Return type
 
@@ -163,7 +163,7 @@ Optional parameters are passed through a pointer to a GetWireFileContentsOpts st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **xRequestID** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
 
 ### Return type
 
@@ -203,7 +203,7 @@ Optional parameters are passed through a pointer to a GetWireFilesOpts struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **xRequestID** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
 
 ### Return type
 
@@ -247,8 +247,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
- **xIdempotencyKey** | **optional.String**| Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests. | 
+ **xRequestID** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **xIDempotencyKey** | **optional.String**| Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests. | 
 
 ### Return type
 
@@ -290,7 +290,7 @@ Optional parameters are passed through a pointer to a ValidateWireFileOpts struc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **xRequestID** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
 
 ### Return type
 

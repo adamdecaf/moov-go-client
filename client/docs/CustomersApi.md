@@ -34,8 +34,8 @@ Optional parameters are passed through a pointer to a CreateCustomerOpts struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
- **xUserId** | **optional.String**| Moov User ID header, required in all requests | 
+ **xRequestID** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **xUserID** | **optional.String**| Moov User ID header, required in all requests | 
 
 ### Return type
 
@@ -66,7 +66,7 @@ Retrieves a Customer object associated with the customer ID.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**customerId** | **string**| Customer Id | 
+**customerId** | **string**| Customer ID | 
  **optional** | ***GetCustomerOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -77,8 +77,8 @@ Optional parameters are passed through a pointer to a GetCustomerOpts struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
- **xUserId** | **optional.String**| Moov User ID header, required in all requests | 
+ **xRequestID** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **xUserID** | **optional.String**| Moov User ID header, required in all requests | 
 
 ### Return type
 
@@ -109,8 +109,8 @@ Retrieve the referenced document
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**customerId** | **string**| Customer Id | 
-**documentId** | **string**| Document Id | 
+**customerId** | **string**| Customer ID | 
+**documentId** | **string**| Document ID | 
  **optional** | ***GetCustomerDocumentContentsOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -122,8 +122,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
- **xUserId** | **optional.String**| Moov User ID header, required in all requests | 
+ **xRequestID** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **xUserID** | **optional.String**| Moov User ID header, required in all requests | 
 
 ### Return type
 
@@ -154,7 +154,7 @@ Get documents for a customer
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**customerId** | **string**| Customer Id | 
+**customerId** | **string**| Customer ID | 
  **optional** | ***GetCustomerDocumentsOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -165,8 +165,8 @@ Optional parameters are passed through a pointer to a GetCustomerDocumentsOpts s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
- **xUserId** | **optional.String**| Moov User ID header, required in all requests | 
+ **xRequestID** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **xUserID** | **optional.String**| Moov User ID header, required in all requests | 
 
 ### Return type
 
@@ -197,7 +197,7 @@ Upload a document for the given customer.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**customerId** | **string**| Customer Id | 
+**customerId** | **string**| Customer ID | 
 **type_** | **string**| Document type (see Document type for values) | 
 **file** | ***os.File*****os.File**| Document to be uploaded | 
  **optional** | ***UploadCustomerDocumentOpts** | optional parameters | nil if no parameters
@@ -212,8 +212,8 @@ Name | Type | Description  | Notes
 
 
 
- **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
- **xUserId** | **optional.String**| Moov User ID header, required in all requests | 
+ **xRequestID** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **xUserID** | **optional.String**| Moov User ID header, required in all requests | 
 
 ### Return type
 

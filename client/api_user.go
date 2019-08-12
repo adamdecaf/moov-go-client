@@ -31,11 +31,11 @@ type UserApiService service
 UserApiService Check if a cookie is valid and authentic for a user.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *CheckUserLoginOpts - Optional Parameters:
- * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
+ * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
 */
 
 type CheckUserLoginOpts struct {
-	XRequestId optional.String
+	XRequestID optional.String
 }
 
 func (a *UserApiService) CheckUserLogin(ctx context.Context, localVarOptionals *CheckUserLoginOpts) (*http.Response, error) {
@@ -71,8 +71,8 @@ func (a *UserApiService) CheckUserLogin(ctx context.Context, localVarOptionals *
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	if localVarOptionals != nil && localVarOptionals.XRequestId.IsSet() {
-		localVarHeaderParams["X-Request-Id"] = parameterToString(localVarOptionals.XRequestId.Value(), "")
+	if localVarOptionals != nil && localVarOptionals.XRequestID.IsSet() {
+		localVarHeaderParams["X-Request-ID"] = parameterToString(localVarOptionals.XRequestID.Value(), "")
 	}
 	if ctx != nil {
 		// API Key Authentication
@@ -118,13 +118,13 @@ UserApiService Create a new user using an email address not seen before.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param createUser
  * @param optional nil or *CreateUserOpts - Optional Parameters:
- * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
+ * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
  * @param "XIdempotencyKey" (optional.String) -  Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests.
 @return User
 */
 
 type CreateUserOpts struct {
-	XRequestId      optional.String
+	XRequestID      optional.String
 	XIdempotencyKey optional.String
 }
 
@@ -162,8 +162,8 @@ func (a *UserApiService) CreateUser(ctx context.Context, createUser CreateUser, 
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	if localVarOptionals != nil && localVarOptionals.XRequestId.IsSet() {
-		localVarHeaderParams["X-Request-Id"] = parameterToString(localVarOptionals.XRequestId.Value(), "")
+	if localVarOptionals != nil && localVarOptionals.XRequestID.IsSet() {
+		localVarHeaderParams["X-Request-ID"] = parameterToString(localVarOptionals.XRequestID.Value(), "")
 	}
 	if localVarOptionals != nil && localVarOptionals.XIdempotencyKey.IsSet() {
 		localVarHeaderParams["X-Idempotency-Key"] = parameterToString(localVarOptionals.XIdempotencyKey.Value(), "")
@@ -233,12 +233,12 @@ UserApiService Update a User's profile information
  * @param userProfile User profile information
  * @param optional nil or *UpdateUserProfileOpts - Optional Parameters:
  * @param "XIdempotencyKey" (optional.String) -  Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests.
- * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
+ * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
 */
 
 type UpdateUserProfileOpts struct {
 	XIdempotencyKey optional.String
-	XRequestId      optional.String
+	XRequestID      optional.String
 }
 
 func (a *UserApiService) UpdateUserProfile(ctx context.Context, userId string, userProfile UserProfile, localVarOptionals *UpdateUserProfileOpts) (*http.Response, error) {
@@ -278,8 +278,8 @@ func (a *UserApiService) UpdateUserProfile(ctx context.Context, userId string, u
 	if localVarOptionals != nil && localVarOptionals.XIdempotencyKey.IsSet() {
 		localVarHeaderParams["X-Idempotency-Key"] = parameterToString(localVarOptionals.XIdempotencyKey.Value(), "")
 	}
-	if localVarOptionals != nil && localVarOptionals.XRequestId.IsSet() {
-		localVarHeaderParams["X-Request-Id"] = parameterToString(localVarOptionals.XRequestId.Value(), "")
+	if localVarOptionals != nil && localVarOptionals.XRequestID.IsSet() {
+		localVarHeaderParams["X-Request-ID"] = parameterToString(localVarOptionals.XRequestID.Value(), "")
 	}
 	// body params
 	localVarPostBody = &userProfile
@@ -337,13 +337,13 @@ UserApiService Attempt to login with an email and password
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param login Authenticating with an email and password
  * @param optional nil or *UserLoginOpts - Optional Parameters:
- * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
+ * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
  * @param "XIdempotencyKey" (optional.String) -  Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests.
 @return User
 */
 
 type UserLoginOpts struct {
-	XRequestId      optional.String
+	XRequestID      optional.String
 	XIdempotencyKey optional.String
 }
 
@@ -381,8 +381,8 @@ func (a *UserApiService) UserLogin(ctx context.Context, login Login, localVarOpt
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	if localVarOptionals != nil && localVarOptionals.XRequestId.IsSet() {
-		localVarHeaderParams["X-Request-Id"] = parameterToString(localVarOptionals.XRequestId.Value(), "")
+	if localVarOptionals != nil && localVarOptionals.XRequestID.IsSet() {
+		localVarHeaderParams["X-Request-ID"] = parameterToString(localVarOptionals.XRequestID.Value(), "")
 	}
 	if localVarOptionals != nil && localVarOptionals.XIdempotencyKey.IsSet() {
 		localVarHeaderParams["X-Idempotency-Key"] = parameterToString(localVarOptionals.XIdempotencyKey.Value(), "")
@@ -449,11 +449,11 @@ func (a *UserApiService) UserLogin(ctx context.Context, login Login, localVarOpt
 UserApiService Invalidat a user's cookie(s).
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *UserLogoutOpts - Optional Parameters:
- * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
+ * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
 */
 
 type UserLogoutOpts struct {
-	XRequestId optional.String
+	XRequestID optional.String
 }
 
 func (a *UserApiService) UserLogout(ctx context.Context, localVarOptionals *UserLogoutOpts) (*http.Response, error) {
@@ -489,8 +489,8 @@ func (a *UserApiService) UserLogout(ctx context.Context, localVarOptionals *User
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	if localVarOptionals != nil && localVarOptionals.XRequestId.IsSet() {
-		localVarHeaderParams["X-Request-Id"] = parameterToString(localVarOptionals.XRequestId.Value(), "")
+	if localVarOptionals != nil && localVarOptionals.XRequestID.IsSet() {
+		localVarHeaderParams["X-Request-ID"] = parameterToString(localVarOptionals.XRequestID.Value(), "")
 	}
 	if ctx != nil {
 		// API Key Authentication

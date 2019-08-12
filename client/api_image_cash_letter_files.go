@@ -33,13 +33,13 @@ ImageCashLetterFilesApiService Add CashLetter to File
  * @param fileId File ID
  * @param cashLetter
  * @param optional nil or *AddICLToFileOpts - Optional Parameters:
- * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
- * @param "XIdempotencyKey" (optional.String) -  Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests.
+ * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
+ * @param "XIDempotencyKey" (optional.String) -  Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests.
 */
 
 type AddICLToFileOpts struct {
-	XRequestId      optional.String
-	XIdempotencyKey optional.String
+	XRequestID      optional.String
+	XIDempotencyKey optional.String
 }
 
 func (a *ImageCashLetterFilesApiService) AddICLToFile(ctx context.Context, fileId string, cashLetter CashLetter, localVarOptionals *AddICLToFileOpts) (*http.Response, error) {
@@ -76,11 +76,11 @@ func (a *ImageCashLetterFilesApiService) AddICLToFile(ctx context.Context, fileI
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	if localVarOptionals != nil && localVarOptionals.XRequestId.IsSet() {
-		localVarHeaderParams["X-Request-Id"] = parameterToString(localVarOptionals.XRequestId.Value(), "")
+	if localVarOptionals != nil && localVarOptionals.XRequestID.IsSet() {
+		localVarHeaderParams["X-Request-ID"] = parameterToString(localVarOptionals.XRequestID.Value(), "")
 	}
-	if localVarOptionals != nil && localVarOptionals.XIdempotencyKey.IsSet() {
-		localVarHeaderParams["X-Idempotency-Key"] = parameterToString(localVarOptionals.XIdempotencyKey.Value(), "")
+	if localVarOptionals != nil && localVarOptionals.XIDempotencyKey.IsSet() {
+		localVarHeaderParams["X-IDempotency-Key"] = parameterToString(localVarOptionals.XIDempotencyKey.Value(), "")
 	}
 	// body params
 	localVarPostBody = &cashLetter
@@ -128,14 +128,14 @@ ImageCashLetterFilesApiService Create a new File object
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param createFile2 Content of the ImageCashLetter file (in json or raw text)
  * @param optional nil or *CreateICLFileOpts - Optional Parameters:
- * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
- * @param "XIdempotencyKey" (optional.String) -  Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests.
+ * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
+ * @param "XIDempotencyKey" (optional.String) -  Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests.
 @return File2
 */
 
 type CreateICLFileOpts struct {
-	XRequestId      optional.String
-	XIdempotencyKey optional.String
+	XRequestID      optional.String
+	XIDempotencyKey optional.String
 }
 
 func (a *ImageCashLetterFilesApiService) CreateICLFile(ctx context.Context, createFile2 CreateFile2, localVarOptionals *CreateICLFileOpts) (File2, *http.Response, error) {
@@ -172,11 +172,11 @@ func (a *ImageCashLetterFilesApiService) CreateICLFile(ctx context.Context, crea
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	if localVarOptionals != nil && localVarOptionals.XRequestId.IsSet() {
-		localVarHeaderParams["X-Request-Id"] = parameterToString(localVarOptionals.XRequestId.Value(), "")
+	if localVarOptionals != nil && localVarOptionals.XRequestID.IsSet() {
+		localVarHeaderParams["X-Request-ID"] = parameterToString(localVarOptionals.XRequestID.Value(), "")
 	}
-	if localVarOptionals != nil && localVarOptionals.XIdempotencyKey.IsSet() {
-		localVarHeaderParams["X-Idempotency-Key"] = parameterToString(localVarOptionals.XIdempotencyKey.Value(), "")
+	if localVarOptionals != nil && localVarOptionals.XIDempotencyKey.IsSet() {
+		localVarHeaderParams["X-IDempotency-Key"] = parameterToString(localVarOptionals.XIDempotencyKey.Value(), "")
 	}
 	// body params
 	localVarPostBody = &createFile2
@@ -253,11 +253,11 @@ ImageCashLetterFilesApiService Permanently deletes a File and associated CashLet
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param fileId File ID
  * @param optional nil or *DeleteICLFileOpts - Optional Parameters:
- * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
+ * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
 */
 
 type DeleteICLFileOpts struct {
-	XRequestId optional.String
+	XRequestID optional.String
 }
 
 func (a *ImageCashLetterFilesApiService) DeleteICLFile(ctx context.Context, fileId string, localVarOptionals *DeleteICLFileOpts) (*http.Response, error) {
@@ -294,8 +294,8 @@ func (a *ImageCashLetterFilesApiService) DeleteICLFile(ctx context.Context, file
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	if localVarOptionals != nil && localVarOptionals.XRequestId.IsSet() {
-		localVarHeaderParams["X-Request-Id"] = parameterToString(localVarOptionals.XRequestId.Value(), "")
+	if localVarOptionals != nil && localVarOptionals.XRequestID.IsSet() {
+		localVarHeaderParams["X-Request-ID"] = parameterToString(localVarOptionals.XRequestID.Value(), "")
 	}
 	if ctx != nil {
 		// API Key Authentication
@@ -342,11 +342,11 @@ ImageCashLetterFilesApiService Delete a CashLetter from a File
  * @param fileId File ID
  * @param cashLetterId CashLetter ID
  * @param optional nil or *DeleteICLFromFileOpts - Optional Parameters:
- * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
+ * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
 */
 
 type DeleteICLFromFileOpts struct {
-	XRequestId optional.String
+	XRequestID optional.String
 }
 
 func (a *ImageCashLetterFilesApiService) DeleteICLFromFile(ctx context.Context, fileId string, cashLetterId string, localVarOptionals *DeleteICLFromFileOpts) (*http.Response, error) {
@@ -384,8 +384,8 @@ func (a *ImageCashLetterFilesApiService) DeleteICLFromFile(ctx context.Context, 
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	if localVarOptionals != nil && localVarOptionals.XRequestId.IsSet() {
-		localVarHeaderParams["X-Request-Id"] = parameterToString(localVarOptionals.XRequestId.Value(), "")
+	if localVarOptionals != nil && localVarOptionals.XRequestID.IsSet() {
+		localVarHeaderParams["X-Request-ID"] = parameterToString(localVarOptionals.XRequestID.Value(), "")
 	}
 	if ctx != nil {
 		// API Key Authentication
@@ -431,12 +431,12 @@ ImageCashLetterFilesApiService Retrieves the details of an existing File. You ne
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param fileId File ID
  * @param optional nil or *GetICLFileByIDOpts - Optional Parameters:
- * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
+ * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
 @return File2
 */
 
 type GetICLFileByIDOpts struct {
-	XRequestId optional.String
+	XRequestID optional.String
 }
 
 func (a *ImageCashLetterFilesApiService) GetICLFileByID(ctx context.Context, fileId string, localVarOptionals *GetICLFileByIDOpts) (File2, *http.Response, error) {
@@ -474,8 +474,8 @@ func (a *ImageCashLetterFilesApiService) GetICLFileByID(ctx context.Context, fil
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	if localVarOptionals != nil && localVarOptionals.XRequestId.IsSet() {
-		localVarHeaderParams["X-Request-Id"] = parameterToString(localVarOptionals.XRequestId.Value(), "")
+	if localVarOptionals != nil && localVarOptionals.XRequestID.IsSet() {
+		localVarHeaderParams["X-Request-ID"] = parameterToString(localVarOptionals.XRequestID.Value(), "")
 	}
 	if ctx != nil {
 		// API Key Authentication
@@ -540,12 +540,12 @@ ImageCashLetterFilesApiService Assembles the existing file (Cash Letters, Bundle
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param fileId File ID
  * @param optional nil or *GetICLFileContentsOpts - Optional Parameters:
- * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
+ * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
 @return string
 */
 
 type GetICLFileContentsOpts struct {
-	XRequestId optional.String
+	XRequestID optional.String
 }
 
 func (a *ImageCashLetterFilesApiService) GetICLFileContents(ctx context.Context, fileId string, localVarOptionals *GetICLFileContentsOpts) (string, *http.Response, error) {
@@ -583,8 +583,8 @@ func (a *ImageCashLetterFilesApiService) GetICLFileContents(ctx context.Context,
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	if localVarOptionals != nil && localVarOptionals.XRequestId.IsSet() {
-		localVarHeaderParams["X-Request-Id"] = parameterToString(localVarOptionals.XRequestId.Value(), "")
+	if localVarOptionals != nil && localVarOptionals.XRequestID.IsSet() {
+		localVarHeaderParams["X-Request-ID"] = parameterToString(localVarOptionals.XRequestID.Value(), "")
 	}
 	if ctx != nil {
 		// API Key Authentication
@@ -648,12 +648,12 @@ func (a *ImageCashLetterFilesApiService) GetICLFileContents(ctx context.Context,
 ImageCashLetterFilesApiService Gets a list of Files
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *GetICLFilesOpts - Optional Parameters:
- * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
+ * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
 @return []File2
 */
 
 type GetICLFilesOpts struct {
-	XRequestId optional.String
+	XRequestID optional.String
 }
 
 func (a *ImageCashLetterFilesApiService) GetICLFiles(ctx context.Context, localVarOptionals *GetICLFilesOpts) ([]File2, *http.Response, error) {
@@ -690,8 +690,8 @@ func (a *ImageCashLetterFilesApiService) GetICLFiles(ctx context.Context, localV
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	if localVarOptionals != nil && localVarOptionals.XRequestId.IsSet() {
-		localVarHeaderParams["X-Request-Id"] = parameterToString(localVarOptionals.XRequestId.Value(), "")
+	if localVarOptionals != nil && localVarOptionals.XRequestID.IsSet() {
+		localVarHeaderParams["X-Request-ID"] = parameterToString(localVarOptionals.XRequestID.Value(), "")
 	}
 	if ctx != nil {
 		// API Key Authentication
@@ -757,14 +757,14 @@ ImageCashLetterFilesApiService Updates the specified File Header by setting the 
  * @param fileId File ID
  * @param fileHeader2
  * @param optional nil or *UpdateICLFileOpts - Optional Parameters:
- * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
- * @param "XIdempotencyKey" (optional.String) -  Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests.
+ * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
+ * @param "XIDempotencyKey" (optional.String) -  Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests.
 @return File2
 */
 
 type UpdateICLFileOpts struct {
-	XRequestId      optional.String
-	XIdempotencyKey optional.String
+	XRequestID      optional.String
+	XIDempotencyKey optional.String
 }
 
 func (a *ImageCashLetterFilesApiService) UpdateICLFile(ctx context.Context, fileId string, fileHeader2 FileHeader2, localVarOptionals *UpdateICLFileOpts) (File2, *http.Response, error) {
@@ -802,11 +802,11 @@ func (a *ImageCashLetterFilesApiService) UpdateICLFile(ctx context.Context, file
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	if localVarOptionals != nil && localVarOptionals.XRequestId.IsSet() {
-		localVarHeaderParams["X-Request-Id"] = parameterToString(localVarOptionals.XRequestId.Value(), "")
+	if localVarOptionals != nil && localVarOptionals.XRequestID.IsSet() {
+		localVarHeaderParams["X-Request-ID"] = parameterToString(localVarOptionals.XRequestID.Value(), "")
 	}
-	if localVarOptionals != nil && localVarOptionals.XIdempotencyKey.IsSet() {
-		localVarHeaderParams["X-Idempotency-Key"] = parameterToString(localVarOptionals.XIdempotencyKey.Value(), "")
+	if localVarOptionals != nil && localVarOptionals.XIDempotencyKey.IsSet() {
+		localVarHeaderParams["X-IDempotency-Key"] = parameterToString(localVarOptionals.XIDempotencyKey.Value(), "")
 	}
 	// body params
 	localVarPostBody = &fileHeader2
@@ -883,12 +883,12 @@ ImageCashLetterFilesApiService Validates the existing file. You need only supply
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param fileId File ID
  * @param optional nil or *ValidateICLFileOpts - Optional Parameters:
- * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
+ * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
 @return File2
 */
 
 type ValidateICLFileOpts struct {
-	XRequestId optional.String
+	XRequestID optional.String
 }
 
 func (a *ImageCashLetterFilesApiService) ValidateICLFile(ctx context.Context, fileId string, localVarOptionals *ValidateICLFileOpts) (File2, *http.Response, error) {
@@ -926,8 +926,8 @@ func (a *ImageCashLetterFilesApiService) ValidateICLFile(ctx context.Context, fi
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	if localVarOptionals != nil && localVarOptionals.XRequestId.IsSet() {
-		localVarHeaderParams["X-Request-Id"] = parameterToString(localVarOptionals.XRequestId.Value(), "")
+	if localVarOptionals != nil && localVarOptionals.XRequestID.IsSet() {
+		localVarHeaderParams["X-Request-ID"] = parameterToString(localVarOptionals.XRequestID.Value(), "")
 	}
 	if ctx != nil {
 		// API Key Authentication

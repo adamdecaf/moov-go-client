@@ -33,14 +33,14 @@ CustomersApiService Create a new customer
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param createCustomer
  * @param optional nil or *CreateCustomerOpts - Optional Parameters:
- * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
- * @param "XUserId" (optional.String) -  Moov User ID header, required in all requests
+ * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
+ * @param "XUserID" (optional.String) -  Moov User ID header, required in all requests
 @return Customer
 */
 
 type CreateCustomerOpts struct {
-	XRequestId optional.String
-	XUserId    optional.String
+	XRequestID optional.String
+	XUserID    optional.String
 }
 
 func (a *CustomersApiService) CreateCustomer(ctx context.Context, createCustomer CreateCustomer, localVarOptionals *CreateCustomerOpts) (Customer, *http.Response, error) {
@@ -77,11 +77,11 @@ func (a *CustomersApiService) CreateCustomer(ctx context.Context, createCustomer
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	if localVarOptionals != nil && localVarOptionals.XRequestId.IsSet() {
-		localVarHeaderParams["X-Request-Id"] = parameterToString(localVarOptionals.XRequestId.Value(), "")
+	if localVarOptionals != nil && localVarOptionals.XRequestID.IsSet() {
+		localVarHeaderParams["X-Request-ID"] = parameterToString(localVarOptionals.XRequestID.Value(), "")
 	}
-	if localVarOptionals != nil && localVarOptionals.XUserId.IsSet() {
-		localVarHeaderParams["X-User-Id"] = parameterToString(localVarOptionals.XUserId.Value(), "")
+	if localVarOptionals != nil && localVarOptionals.XUserID.IsSet() {
+		localVarHeaderParams["X-User-ID"] = parameterToString(localVarOptionals.XUserID.Value(), "")
 	}
 	// body params
 	localVarPostBody = &createCustomer
@@ -144,16 +144,16 @@ func (a *CustomersApiService) CreateCustomer(ctx context.Context, createCustomer
 /*
 CustomersApiService Retrieves a Customer object associated with the customer ID.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param customerId Customer Id
+ * @param customerId Customer ID
  * @param optional nil or *GetCustomerOpts - Optional Parameters:
- * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
- * @param "XUserId" (optional.String) -  Moov User ID header, required in all requests
+ * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
+ * @param "XUserID" (optional.String) -  Moov User ID header, required in all requests
 @return Customer
 */
 
 type GetCustomerOpts struct {
-	XRequestId optional.String
-	XUserId    optional.String
+	XRequestID optional.String
+	XUserID    optional.String
 }
 
 func (a *CustomersApiService) GetCustomer(ctx context.Context, customerId string, localVarOptionals *GetCustomerOpts) (Customer, *http.Response, error) {
@@ -191,11 +191,11 @@ func (a *CustomersApiService) GetCustomer(ctx context.Context, customerId string
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	if localVarOptionals != nil && localVarOptionals.XRequestId.IsSet() {
-		localVarHeaderParams["X-Request-Id"] = parameterToString(localVarOptionals.XRequestId.Value(), "")
+	if localVarOptionals != nil && localVarOptionals.XRequestID.IsSet() {
+		localVarHeaderParams["X-Request-ID"] = parameterToString(localVarOptionals.XRequestID.Value(), "")
 	}
-	if localVarOptionals != nil && localVarOptionals.XUserId.IsSet() {
-		localVarHeaderParams["X-User-Id"] = parameterToString(localVarOptionals.XUserId.Value(), "")
+	if localVarOptionals != nil && localVarOptionals.XUserID.IsSet() {
+		localVarHeaderParams["X-User-ID"] = parameterToString(localVarOptionals.XUserID.Value(), "")
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -246,17 +246,17 @@ func (a *CustomersApiService) GetCustomer(ctx context.Context, customerId string
 /*
 CustomersApiService Retrieve the referenced document
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param customerId Customer Id
- * @param documentId Document Id
+ * @param customerId Customer ID
+ * @param documentId Document ID
  * @param optional nil or *GetCustomerDocumentContentsOpts - Optional Parameters:
- * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
- * @param "XUserId" (optional.String) -  Moov User ID header, required in all requests
+ * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
+ * @param "XUserID" (optional.String) -  Moov User ID header, required in all requests
 @return *os.File
 */
 
 type GetCustomerDocumentContentsOpts struct {
-	XRequestId optional.String
-	XUserId    optional.String
+	XRequestID optional.String
+	XUserID    optional.String
 }
 
 func (a *CustomersApiService) GetCustomerDocumentContents(ctx context.Context, customerId string, documentId string, localVarOptionals *GetCustomerDocumentContentsOpts) (*os.File, *http.Response, error) {
@@ -295,11 +295,11 @@ func (a *CustomersApiService) GetCustomerDocumentContents(ctx context.Context, c
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	if localVarOptionals != nil && localVarOptionals.XRequestId.IsSet() {
-		localVarHeaderParams["X-Request-Id"] = parameterToString(localVarOptionals.XRequestId.Value(), "")
+	if localVarOptionals != nil && localVarOptionals.XRequestID.IsSet() {
+		localVarHeaderParams["X-Request-ID"] = parameterToString(localVarOptionals.XRequestID.Value(), "")
 	}
-	if localVarOptionals != nil && localVarOptionals.XUserId.IsSet() {
-		localVarHeaderParams["X-User-Id"] = parameterToString(localVarOptionals.XUserId.Value(), "")
+	if localVarOptionals != nil && localVarOptionals.XUserID.IsSet() {
+		localVarHeaderParams["X-User-ID"] = parameterToString(localVarOptionals.XUserID.Value(), "")
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -350,16 +350,16 @@ func (a *CustomersApiService) GetCustomerDocumentContents(ctx context.Context, c
 /*
 CustomersApiService Get documents for a customer
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param customerId Customer Id
+ * @param customerId Customer ID
  * @param optional nil or *GetCustomerDocumentsOpts - Optional Parameters:
- * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
- * @param "XUserId" (optional.String) -  Moov User ID header, required in all requests
+ * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
+ * @param "XUserID" (optional.String) -  Moov User ID header, required in all requests
 @return []Document
 */
 
 type GetCustomerDocumentsOpts struct {
-	XRequestId optional.String
-	XUserId    optional.String
+	XRequestID optional.String
+	XUserID    optional.String
 }
 
 func (a *CustomersApiService) GetCustomerDocuments(ctx context.Context, customerId string, localVarOptionals *GetCustomerDocumentsOpts) ([]Document, *http.Response, error) {
@@ -397,11 +397,11 @@ func (a *CustomersApiService) GetCustomerDocuments(ctx context.Context, customer
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	if localVarOptionals != nil && localVarOptionals.XRequestId.IsSet() {
-		localVarHeaderParams["X-Request-Id"] = parameterToString(localVarOptionals.XRequestId.Value(), "")
+	if localVarOptionals != nil && localVarOptionals.XRequestID.IsSet() {
+		localVarHeaderParams["X-Request-ID"] = parameterToString(localVarOptionals.XRequestID.Value(), "")
 	}
-	if localVarOptionals != nil && localVarOptionals.XUserId.IsSet() {
-		localVarHeaderParams["X-User-Id"] = parameterToString(localVarOptionals.XUserId.Value(), "")
+	if localVarOptionals != nil && localVarOptionals.XUserID.IsSet() {
+		localVarHeaderParams["X-User-ID"] = parameterToString(localVarOptionals.XUserID.Value(), "")
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -452,18 +452,18 @@ func (a *CustomersApiService) GetCustomerDocuments(ctx context.Context, customer
 /*
 CustomersApiService Upload a document for the given customer.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param customerId Customer Id
+ * @param customerId Customer ID
  * @param type_ Document type (see Document type for values)
  * @param file Document to be uploaded
  * @param optional nil or *UploadCustomerDocumentOpts - Optional Parameters:
- * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
- * @param "XUserId" (optional.String) -  Moov User ID header, required in all requests
+ * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
+ * @param "XUserID" (optional.String) -  Moov User ID header, required in all requests
 @return Document
 */
 
 type UploadCustomerDocumentOpts struct {
-	XRequestId optional.String
-	XUserId    optional.String
+	XRequestID optional.String
+	XUserID    optional.String
 }
 
 func (a *CustomersApiService) UploadCustomerDocument(ctx context.Context, customerId string, type_ string, file *os.File, localVarOptionals *UploadCustomerDocumentOpts) (Document, *http.Response, error) {
@@ -502,11 +502,11 @@ func (a *CustomersApiService) UploadCustomerDocument(ctx context.Context, custom
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	if localVarOptionals != nil && localVarOptionals.XRequestId.IsSet() {
-		localVarHeaderParams["X-Request-Id"] = parameterToString(localVarOptionals.XRequestId.Value(), "")
+	if localVarOptionals != nil && localVarOptionals.XRequestID.IsSet() {
+		localVarHeaderParams["X-Request-ID"] = parameterToString(localVarOptionals.XRequestID.Value(), "")
 	}
-	if localVarOptionals != nil && localVarOptionals.XUserId.IsSet() {
-		localVarHeaderParams["X-User-Id"] = parameterToString(localVarOptionals.XUserId.Value(), "")
+	if localVarOptionals != nil && localVarOptionals.XUserID.IsSet() {
+		localVarHeaderParams["X-User-ID"] = parameterToString(localVarOptionals.XUserID.Value(), "")
 	}
 	localVarFormFileName = "file"
 	localVarFile := file

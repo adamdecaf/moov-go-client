@@ -30,11 +30,11 @@ OAuth2ApiService Verify OAuth2 Bearer token
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param authorization <ignored>
  * @param optional nil or *CheckOAuthClientCredentialsOpts - Optional Parameters:
- * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
+ * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
 */
 
 type CheckOAuthClientCredentialsOpts struct {
-	XRequestId optional.String
+	XRequestID optional.String
 }
 
 func (a *OAuth2ApiService) CheckOAuthClientCredentials(ctx context.Context, authorization string, localVarOptionals *CheckOAuthClientCredentialsOpts) (*http.Response, error) {
@@ -70,8 +70,8 @@ func (a *OAuth2ApiService) CheckOAuthClientCredentials(ctx context.Context, auth
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	if localVarOptionals != nil && localVarOptionals.XRequestId.IsSet() {
-		localVarHeaderParams["X-Request-Id"] = parameterToString(localVarOptionals.XRequestId.Value(), "")
+	if localVarOptionals != nil && localVarOptionals.XRequestID.IsSet() {
+		localVarHeaderParams["X-Request-ID"] = parameterToString(localVarOptionals.XRequestID.Value(), "")
 	}
 	localVarHeaderParams["Authorization"] = parameterToString(authorization, "")
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
@@ -115,13 +115,13 @@ func (a *OAuth2ApiService) CheckOAuthClientCredentials(ctx context.Context, auth
 OAuth2ApiService Create OAuth2 client credentials
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *CreateOAuth2ClientOpts - Optional Parameters:
- * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
+ * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
  * @param "XIdempotencyKey" (optional.String) -  Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests.
 @return []OAuth2Client
 */
 
 type CreateOAuth2ClientOpts struct {
-	XRequestId      optional.String
+	XRequestID      optional.String
 	XIdempotencyKey optional.String
 }
 
@@ -159,8 +159,8 @@ func (a *OAuth2ApiService) CreateOAuth2Client(ctx context.Context, localVarOptio
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	if localVarOptionals != nil && localVarOptionals.XRequestId.IsSet() {
-		localVarHeaderParams["X-Request-Id"] = parameterToString(localVarOptionals.XRequestId.Value(), "")
+	if localVarOptionals != nil && localVarOptionals.XRequestID.IsSet() {
+		localVarHeaderParams["X-Request-ID"] = parameterToString(localVarOptionals.XRequestID.Value(), "")
 	}
 	if localVarOptionals != nil && localVarOptionals.XIdempotencyKey.IsSet() {
 		localVarHeaderParams["X-Idempotency-Key"] = parameterToString(localVarOptionals.XIdempotencyKey.Value(), "")
@@ -237,7 +237,7 @@ func (a *OAuth2ApiService) CreateOAuth2Client(ctx context.Context, localVarOptio
 OAuth2ApiService Generate OAuth2 access token
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *CreateOAuth2TokenOpts - Optional Parameters:
- * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
+ * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
  * @param "XIdempotencyKey" (optional.String) -  Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests.
  * @param "GrantType" (optional.String) -  OAuth2 grant type (must be 'client_credentials')
  * @param "ClientId" (optional.String) -  OAuth2 client ID
@@ -246,7 +246,7 @@ OAuth2ApiService Generate OAuth2 access token
 */
 
 type CreateOAuth2TokenOpts struct {
-	XRequestId      optional.String
+	XRequestID      optional.String
 	XIdempotencyKey optional.String
 	GrantType       optional.String
 	ClientId        optional.String
@@ -296,8 +296,8 @@ func (a *OAuth2ApiService) CreateOAuth2Token(ctx context.Context, localVarOption
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	if localVarOptionals != nil && localVarOptionals.XRequestId.IsSet() {
-		localVarHeaderParams["X-Request-Id"] = parameterToString(localVarOptionals.XRequestId.Value(), "")
+	if localVarOptionals != nil && localVarOptionals.XRequestID.IsSet() {
+		localVarHeaderParams["X-Request-ID"] = parameterToString(localVarOptionals.XRequestID.Value(), "")
 	}
 	if localVarOptionals != nil && localVarOptionals.XIdempotencyKey.IsSet() {
 		localVarHeaderParams["X-Idempotency-Key"] = parameterToString(localVarOptionals.XIdempotencyKey.Value(), "")
@@ -362,13 +362,13 @@ func (a *OAuth2ApiService) CreateOAuth2Token(ctx context.Context, localVarOption
 OAuth2ApiService List OAuth2 clients for the authenticated user
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *GetClientsForUserIdOpts - Optional Parameters:
- * @param "XRequestId" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
+ * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
  * @param "XIdempotencyKey" (optional.String) -  Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests.
 @return []OAuth2Client
 */
 
 type GetClientsForUserIdOpts struct {
-	XRequestId      optional.String
+	XRequestID      optional.String
 	XIdempotencyKey optional.String
 }
 
@@ -406,8 +406,8 @@ func (a *OAuth2ApiService) GetClientsForUserId(ctx context.Context, localVarOpti
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	if localVarOptionals != nil && localVarOptionals.XRequestId.IsSet() {
-		localVarHeaderParams["X-Request-Id"] = parameterToString(localVarOptionals.XRequestId.Value(), "")
+	if localVarOptionals != nil && localVarOptionals.XRequestID.IsSet() {
+		localVarHeaderParams["X-Request-ID"] = parameterToString(localVarOptionals.XRequestID.Value(), "")
 	}
 	if localVarOptionals != nil && localVarOptionals.XIdempotencyKey.IsSet() {
 		localVarHeaderParams["X-Idempotency-Key"] = parameterToString(localVarOptionals.XIdempotencyKey.Value(), "")
