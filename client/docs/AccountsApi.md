@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateAccount**](AccountsApi.md#CreateAccount) | **Post** /v1/accounts | Create a new account for a Customer
 [**CreateTransaction**](AccountsApi.md#CreateTransaction) | **Post** /v1/accounts/transactions | Post a transaction against multiple accounts. All transaction lines must sum to zero. No money is created or destroyed in a transaction - only moved from account to account. Accounts can be referred to in a Transaction without creating them first.
-[**GetAccountTransactions**](AccountsApi.md#GetAccountTransactions) | **Get** /v1/accounts/{account_id}/transactions | Get transactions for an account. Ordered descending from their posted date.
+[**GetAccountTransactions**](AccountsApi.md#GetAccountTransactions) | **Get** /v1/accounts/{accountID}/transactions | Get transactions for an account. Ordered descending from their posted date.
 [**SearchAccounts**](AccountsApi.md#SearchAccounts) | **Get** /v1/accounts/search | Search for account which matches all query parameters
 
 
@@ -101,7 +101,7 @@ No authorization required
 
 ## GetAccountTransactions
 
-> []Transaction GetAccountTransactions(ctx, accountId, xUserID, optional)
+> []Transaction GetAccountTransactions(ctx, accountID, xUserID, optional)
 Get transactions for an account. Ordered descending from their posted date.
 
 ### Required Parameters
@@ -110,7 +110,7 @@ Get transactions for an account. Ordered descending from their posted date.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | **string**| Account ID | 
+**accountID** | **string**| Account ID | 
 **xUserID** | **string**| Moov User ID header, required in all requests | 
  **optional** | ***GetAccountTransactionsOpts** | optional parameters | nil if no parameters
 

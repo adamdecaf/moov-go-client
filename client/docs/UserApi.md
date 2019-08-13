@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CheckUserLogin**](UserApi.md#CheckUserLogin) | **Get** /v1/users/login | Check if a cookie is valid and authentic for a user.
 [**CreateUser**](UserApi.md#CreateUser) | **Post** /v1/users/create | Create a new user using an email address not seen before.
-[**UpdateUserProfile**](UserApi.md#UpdateUserProfile) | **Patch** /v1/users/{user_id} | Update a User&#39;s profile information
+[**UpdateUserProfile**](UserApi.md#UpdateUserProfile) | **Patch** /v1/users/{userID} | Update a User&#39;s profile information
 [**UserLogin**](UserApi.md#UserLogin) | **Post** /v1/users/login | Attempt to login with an email and password
 [**UserLogout**](UserApi.md#UserLogout) | **Delete** /v1/users/login | Invalidat a user&#39;s cookie(s).
 
@@ -97,7 +97,7 @@ No authorization required
 
 ## UpdateUserProfile
 
-> UpdateUserProfile(ctx, userId, userProfile, optional)
+> UpdateUserProfile(ctx, userID, userProfile, optional)
 Update a User's profile information
 
 ### Required Parameters
@@ -106,7 +106,7 @@ Update a User's profile information
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**userId** | **string**| Moov API User ID | 
+**userID** | **string**| Moov API User ID | 
 **userProfile** | [**UserProfile**](UserProfile.md)| User profile information | 
  **optional** | ***UpdateUserProfileOpts** | optional parameters | nil if no parameters
 

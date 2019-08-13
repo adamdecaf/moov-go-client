@@ -5,10 +5,10 @@ All URIs are relative to *https://api.moov.io*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateCustomer**](CustomersApi.md#CreateCustomer) | **Post** /v1/customers | Create a new customer
-[**GetCustomer**](CustomersApi.md#GetCustomer) | **Get** /v1/customers/{customer_id} | Retrieves a Customer object associated with the customer ID.
-[**GetCustomerDocumentContents**](CustomersApi.md#GetCustomerDocumentContents) | **Get** /v1/customers/{customer_id}/documents/{document_id} | Retrieve the referenced document
-[**GetCustomerDocuments**](CustomersApi.md#GetCustomerDocuments) | **Get** /v1/customers/{customer_id}/documents | Get documents for a customer
-[**UploadCustomerDocument**](CustomersApi.md#UploadCustomerDocument) | **Post** /v1/customers/{customer_id}/documents | Upload a document for the given customer.
+[**GetCustomer**](CustomersApi.md#GetCustomer) | **Get** /v1/customers/{customerID} | Retrieves a Customer object associated with the customer ID.
+[**GetCustomerDocumentContents**](CustomersApi.md#GetCustomerDocumentContents) | **Get** /v1/customers/{customerID}/documents/{documentID} | Retrieve the referenced document
+[**GetCustomerDocuments**](CustomersApi.md#GetCustomerDocuments) | **Get** /v1/customers/{customerID}/documents | Get documents for a customer
+[**UploadCustomerDocument**](CustomersApi.md#UploadCustomerDocument) | **Post** /v1/customers/{customerID}/documents | Upload a document for the given customer.
 
 
 
@@ -57,7 +57,7 @@ No authorization required
 
 ## GetCustomer
 
-> Customer GetCustomer(ctx, customerId, optional)
+> Customer GetCustomer(ctx, customerID, optional)
 Retrieves a Customer object associated with the customer ID.
 
 ### Required Parameters
@@ -66,7 +66,7 @@ Retrieves a Customer object associated with the customer ID.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**customerId** | **string**| Customer ID | 
+**customerID** | **string**| Customer ID | 
  **optional** | ***GetCustomerOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -100,7 +100,7 @@ No authorization required
 
 ## GetCustomerDocumentContents
 
-> *os.File GetCustomerDocumentContents(ctx, customerId, documentId, optional)
+> *os.File GetCustomerDocumentContents(ctx, customerID, documentID, optional)
 Retrieve the referenced document
 
 ### Required Parameters
@@ -109,8 +109,8 @@ Retrieve the referenced document
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**customerId** | **string**| Customer ID | 
-**documentId** | **string**| Document ID | 
+**customerID** | **string**| Customer ID | 
+**documentID** | **string**| Document ID | 
  **optional** | ***GetCustomerDocumentContentsOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -145,7 +145,7 @@ No authorization required
 
 ## GetCustomerDocuments
 
-> []Document GetCustomerDocuments(ctx, customerId, optional)
+> []Document GetCustomerDocuments(ctx, customerID, optional)
 Get documents for a customer
 
 ### Required Parameters
@@ -154,7 +154,7 @@ Get documents for a customer
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**customerId** | **string**| Customer ID | 
+**customerID** | **string**| Customer ID | 
  **optional** | ***GetCustomerDocumentsOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -188,7 +188,7 @@ No authorization required
 
 ## UploadCustomerDocument
 
-> Document UploadCustomerDocument(ctx, customerId, type_, file, optional)
+> Document UploadCustomerDocument(ctx, customerID, type_, file, optional)
 Upload a document for the given customer.
 
 ### Required Parameters
@@ -197,7 +197,7 @@ Upload a document for the given customer.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**customerId** | **string**| Customer ID | 
+**customerID** | **string**| Customer ID | 
 **type_** | **string**| Document type (see Document type for values) | 
 **file** | ***os.File*****os.File**| Document to be uploaded | 
  **optional** | ***UploadCustomerDocumentOpts** | optional parameters | nil if no parameters

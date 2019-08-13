@@ -4,24 +4,24 @@ All URIs are relative to *https://api.moov.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AddBatchToFile**](ACHFilesApi.md#AddBatchToFile) | **Post** /v1/ach/files/{file_id}/batches | Add Batch to File
+[**AddBatchToFile**](ACHFilesApi.md#AddBatchToFile) | **Post** /v1/ach/files/{fileID}/batches | Add Batch to File
 [**CreateFile**](ACHFilesApi.md#CreateFile) | **Post** /v1/ach/files/create | Create a new File object
-[**DeleteACHFile**](ACHFilesApi.md#DeleteACHFile) | **Delete** /v1/ach/files/{file_id} | Permanently deletes a File and associated Batches. It cannot be undone.
-[**DeleteFileBatch**](ACHFilesApi.md#DeleteFileBatch) | **Delete** /v1/ach/files/{file_id}/batches/{batch_id} | Delete a Batch from a File
-[**GetFileBatch**](ACHFilesApi.md#GetFileBatch) | **Get** /v1/ach/files/{file_id}/batches/{batch_id} | Get a specific Batch on a FIle
-[**GetFileBatches**](ACHFilesApi.md#GetFileBatches) | **Get** /v1/ach/files/{file_id}/batches | Get the batches on a File.
-[**GetFileByID**](ACHFilesApi.md#GetFileByID) | **Get** /v1/ach/files/{file_id} | Retrieves the details of an existing File. You need only supply the unique File identifier that was returned upon creation.
-[**GetFileContents**](ACHFilesApi.md#GetFileContents) | **Get** /v1/ach/files/{file_id}/contents | Assembles the existing file (batches and controls) records, computes sequence numbers and totals. Returns plaintext file.
+[**DeleteACHFile**](ACHFilesApi.md#DeleteACHFile) | **Delete** /v1/ach/files/{fileID} | Permanently deletes a File and associated Batches. It cannot be undone.
+[**DeleteFileBatch**](ACHFilesApi.md#DeleteFileBatch) | **Delete** /v1/ach/files/{fileID}/batches/{batchID} | Delete a Batch from a File
+[**GetFileBatch**](ACHFilesApi.md#GetFileBatch) | **Get** /v1/ach/files/{fileID}/batches/{batchID} | Get a specific Batch on a FIle
+[**GetFileBatches**](ACHFilesApi.md#GetFileBatches) | **Get** /v1/ach/files/{fileID}/batches | Get the batches on a File.
+[**GetFileByID**](ACHFilesApi.md#GetFileByID) | **Get** /v1/ach/files/{fileID} | Retrieves the details of an existing File. You need only supply the unique File identifier that was returned upon creation.
+[**GetFileContents**](ACHFilesApi.md#GetFileContents) | **Get** /v1/ach/files/{fileID}/contents | Assembles the existing file (batches and controls) records, computes sequence numbers and totals. Returns plaintext file.
 [**GetFiles**](ACHFilesApi.md#GetFiles) | **Get** /v1/ach/files | Gets a list of Files
-[**SegmentFile**](ACHFilesApi.md#SegmentFile) | **Post** /v1/ach/files/{file_id}/segment | Create a new file object
-[**UpdateFile**](ACHFilesApi.md#UpdateFile) | **Post** /v1/ach/files/{file_id} | Updates the specified File Header by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
-[**ValidateFile**](ACHFilesApi.md#ValidateFile) | **Get** /v1/ach/files/{file_id}/validate | Validates the existing file. You need only supply the unique File identifier that was returned upon creation.
+[**SegmentFile**](ACHFilesApi.md#SegmentFile) | **Post** /v1/ach/files/{fileID}/segment | Create a new file object
+[**UpdateFile**](ACHFilesApi.md#UpdateFile) | **Post** /v1/ach/files/{fileID} | Updates the specified File Header by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
+[**ValidateFile**](ACHFilesApi.md#ValidateFile) | **Get** /v1/ach/files/{fileID}/validate | Validates the existing file. You need only supply the unique File identifier that was returned upon creation.
 
 
 
 ## AddBatchToFile
 
-> AddBatchToFile(ctx, fileId, batch, optional)
+> AddBatchToFile(ctx, fileID, batch, optional)
 Add Batch to File
 
 ### Required Parameters
@@ -30,7 +30,7 @@ Add Batch to File
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**fileId** | **string**| File ID | 
+**fileID** | **string**| File ID | 
 **batch** | [**Batch**](Batch.md)|  | 
  **optional** | ***AddBatchToFileOpts** | optional parameters | nil if no parameters
 
@@ -43,7 +43,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **xRequestID** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
  **xIdempotencyKey** | **optional.String**| Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests. | 
 
 ### Return type
@@ -86,7 +86,7 @@ Optional parameters are passed through a pointer to a CreateFileOpts struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **xRequestID** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
  **xIdempotencyKey** | **optional.String**| Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests. | 
 
 ### Return type
@@ -109,7 +109,7 @@ Name | Type | Description  | Notes
 
 ## DeleteACHFile
 
-> DeleteACHFile(ctx, fileId, optional)
+> DeleteACHFile(ctx, fileID, optional)
 Permanently deletes a File and associated Batches. It cannot be undone.
 
 ### Required Parameters
@@ -118,7 +118,7 @@ Permanently deletes a File and associated Batches. It cannot be undone.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**fileId** | **string**| File ID | 
+**fileID** | **string**| File ID | 
  **optional** | ***DeleteACHFileOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -129,7 +129,7 @@ Optional parameters are passed through a pointer to a DeleteACHFileOpts struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **xRequestID** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
 
 ### Return type
 
@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
 
 ## DeleteFileBatch
 
-> DeleteFileBatch(ctx, fileId, batchId, optional)
+> DeleteFileBatch(ctx, fileID, batchID, optional)
 Delete a Batch from a File
 
 ### Required Parameters
@@ -160,8 +160,8 @@ Delete a Batch from a File
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**fileId** | **string**| File ID | 
-**batchId** | **string**| Batch ID | 
+**fileID** | **string**| File ID | 
+**batchID** | **string**| Batch ID | 
  **optional** | ***DeleteFileBatchOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -173,7 +173,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **xRequestID** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
 
 ### Return type
 
@@ -195,7 +195,7 @@ Name | Type | Description  | Notes
 
 ## GetFileBatch
 
-> Batch GetFileBatch(ctx, fileId, batchId, optional)
+> Batch GetFileBatch(ctx, fileID, batchID, optional)
 Get a specific Batch on a FIle
 
 ### Required Parameters
@@ -204,8 +204,8 @@ Get a specific Batch on a FIle
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**fileId** | **string**| File ID | 
-**batchId** | **string**| Batch ID | 
+**fileID** | **string**| File ID | 
+**batchID** | **string**| Batch ID | 
  **optional** | ***GetFileBatchOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -217,7 +217,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **xRequestID** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
 
 ### Return type
 
@@ -239,7 +239,7 @@ Name | Type | Description  | Notes
 
 ## GetFileBatches
 
-> []Batch GetFileBatches(ctx, fileId, optional)
+> []Batch GetFileBatches(ctx, fileID, optional)
 Get the batches on a File.
 
 ### Required Parameters
@@ -248,7 +248,7 @@ Get the batches on a File.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**fileId** | **string**| File ID | 
+**fileID** | **string**| File ID | 
  **optional** | ***GetFileBatchesOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -259,7 +259,7 @@ Optional parameters are passed through a pointer to a GetFileBatchesOpts struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **xRequestID** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
 
 ### Return type
 
@@ -281,7 +281,7 @@ Name | Type | Description  | Notes
 
 ## GetFileByID
 
-> File GetFileByID(ctx, fileId, optional)
+> File GetFileByID(ctx, fileID, optional)
 Retrieves the details of an existing File. You need only supply the unique File identifier that was returned upon creation.
 
 ### Required Parameters
@@ -290,7 +290,7 @@ Retrieves the details of an existing File. You need only supply the unique File 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**fileId** | **string**| File ID | 
+**fileID** | **string**| File ID | 
  **optional** | ***GetFileByIDOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -301,7 +301,7 @@ Optional parameters are passed through a pointer to a GetFileByIDOpts struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **xRequestID** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
 
 ### Return type
 
@@ -323,7 +323,7 @@ Name | Type | Description  | Notes
 
 ## GetFileContents
 
-> string GetFileContents(ctx, fileId, optional)
+> string GetFileContents(ctx, fileID, optional)
 Assembles the existing file (batches and controls) records, computes sequence numbers and totals. Returns plaintext file.
 
 ### Required Parameters
@@ -332,7 +332,7 @@ Assembles the existing file (batches and controls) records, computes sequence nu
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**fileId** | **string**| File ID | 
+**fileID** | **string**| File ID | 
  **optional** | ***GetFileContentsOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -343,7 +343,7 @@ Optional parameters are passed through a pointer to a GetFileContentsOpts struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **xRequestID** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
 
 ### Return type
 
@@ -383,7 +383,7 @@ Optional parameters are passed through a pointer to a GetFilesOpts struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **xRequestID** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
 
 ### Return type
 
@@ -405,7 +405,7 @@ Name | Type | Description  | Notes
 
 ## SegmentFile
 
-> File SegmentFile(ctx, fileId, createFile, optional)
+> File SegmentFile(ctx, fileID, createFile, optional)
 Create a new file object
 
 ### Required Parameters
@@ -414,7 +414,7 @@ Create a new file object
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**fileId** | **string**| File ID | 
+**fileID** | **string**| File ID | 
 **createFile** | [**CreateFile**](CreateFile.md)| Content of the ACH file (in json or raw text) | 
  **optional** | ***SegmentFileOpts** | optional parameters | nil if no parameters
 
@@ -427,7 +427,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **xRequestID** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
  **xIdempotencyKey** | **optional.String**| Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests. | 
 
 ### Return type
@@ -450,7 +450,7 @@ Name | Type | Description  | Notes
 
 ## UpdateFile
 
-> File UpdateFile(ctx, fileId, createFile, optional)
+> File UpdateFile(ctx, fileID, createFile, optional)
 Updates the specified File Header by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
 
 ### Required Parameters
@@ -459,7 +459,7 @@ Updates the specified File Header by setting the values of the parameters passed
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**fileId** | **string**| File ID | 
+**fileID** | **string**| File ID | 
 **createFile** | [**CreateFile**](CreateFile.md)|  | 
  **optional** | ***UpdateFileOpts** | optional parameters | nil if no parameters
 
@@ -472,7 +472,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **xRequestID** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
  **xIdempotencyKey** | **optional.String**| Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests. | 
 
 ### Return type
@@ -495,7 +495,7 @@ Name | Type | Description  | Notes
 
 ## ValidateFile
 
-> File ValidateFile(ctx, fileId, optional)
+> File ValidateFile(ctx, fileID, optional)
 Validates the existing file. You need only supply the unique File identifier that was returned upon creation.
 
 ### Required Parameters
@@ -504,7 +504,7 @@ Validates the existing file. You need only supply the unique File identifier tha
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**fileId** | **string**| File ID | 
+**fileID** | **string**| File ID | 
  **optional** | ***ValidateFileOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -515,7 +515,7 @@ Optional parameters are passed through a pointer to a ValidateFileOpts struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xRequestId** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **xRequestID** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
 
 ### Return type
 

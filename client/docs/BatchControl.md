@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Batch ID | [optional] 
+**ID** | **string** | Batch ID | [optional] 
 **ServiceClassCode** | **int32** | Same as ServiceClassCode in BatchHeaderRecord | [optional] 
 **EntryAddendaount** | **int32** | EntryAddendaCount is a tally of each Entry Detail Record and each Addenda Record processed, within either the batch or file as appropriate. | [optional] 
 **EntryHash** | **int32** | Validate the Receiving DFI Identification in each Entry Detail Record is hashed to provide a check against inadvertent alteration of data contents due to hardware failure or program error. In this context the Entry Hash is the sum of the corresponding fields in the Entry Detail Records on the file.  | [optional] 

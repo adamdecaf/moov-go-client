@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | ID is a client defined string used as a reference to this record. | [optional] 
+**ID** | **string** | ID is a client defined string used as a reference to this record. | [optional] 
 **ServiceClassCode** | **int32** | ServiceClassCode ACH Mixed Debits and Credits ‘200’ ACH Credits Only ‘220’ ACH Debits Only ‘225&#39;  | [optional] 
 **IATIndicator** | **string** | Leave Blank. Only used for corrected IAT entries | [optional] 
 **ForeignExchangeIndicator** | **string** | Code indicating currency conversion. FV Fixed-to-Variable – Entry is originated in a fixed-value amount and is to be received in a variable amount resulting from the execution of the foreign exchange conversion. VF Variable-to-Fixed – Entry is originated in a variable-value amount based on a specific foreign exchange rate for conversion to a fixed-value amount in which the entry is to be received. FF Fixed-to-Fixed – Entry is originated in a fixed-value amount and is to be received in the same fixed-value amount in the same currency denomination. There is no foreign exchange conversion for entries transmitted using this code. For entries originated in a fixed value amount, the foreign Exchange Reference Field will be space filled.  | [optional] 

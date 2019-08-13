@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Entry Detail ID | 
+**ID** | **string** | Entry Detail ID | [optional] 
 **TransactionCode** | **int32** | transactionCode if the receivers account is: Credit (deposit) to checking account 22 Prenote for credit to checking account 23 Debit (withdrawal) to checking account 27 Prenote for debit to checking account 28 Credit to savings account 32 Prenote for credit to savings account 33 Debit to savings account 37 Prenote for debit to savings account 38  | 
 **RDFIIdentification** | **string** | RDFI&#39;s routing number without the last digit. | 
 **CheckDigit** | **string** | Last digit in RDFI routing number. | 

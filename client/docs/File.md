@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | File ID | [optional] 
+**ID** | **string** | File ID | [optional] 
 **FileHeader** | [**FileHeader**](FileHeader.md) |  | [optional] 
 **Batches** | [**[]Batch**](Batch.md) |  | [optional] 
 **IATBatches** | [**[]IatBatch**](IATBatch.md) |  | [optional] 

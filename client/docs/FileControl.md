@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Moov API File ID | [optional] 
+**ID** | **string** | Moov API File ID | [optional] 
 **BatchCount** | **int32** | Count of Batches in the File | [optional] 
 **BlockCount** | **int32** | BlockCount total number of records in the file (include all headers and trailer) divided by 10 (This number must be evenly divisible by 10. If not, additional records consisting of all 9’s are added to the file after the initial ‘9’ record to fill out the block 10.)  | [optional] 
 **EntryAddendaCount** | **int32** | Total detail and addenda records in the file | [optional] 

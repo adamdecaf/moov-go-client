@@ -5,12 +5,12 @@ All URIs are relative to *https://api.moov.io*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateWireFile**](WireFilesApi.md#CreateWireFile) | **Post** /v1/wire/files/create | Create a new File object
-[**DeleteWireFileByID**](WireFilesApi.md#DeleteWireFileByID) | **Delete** /v1/wire/files/{file_id} | Permanently deletes a File and associated FEDWireMessage. It cannot be undone.
-[**GetWireFileByID**](WireFilesApi.md#GetWireFileByID) | **Get** /v1/wire/files/{file_id} | Retrieves the details of an existing File. You need only supply the unique File identifier that was returned upon creation.
-[**GetWireFileContents**](WireFilesApi.md#GetWireFileContents) | **Get** /v1/wire/files/{file_id}/contents | Assembles the existing file witha FEDWireMessage, Returns plaintext file.
+[**DeleteWireFileByID**](WireFilesApi.md#DeleteWireFileByID) | **Delete** /v1/wire/files/{fileID} | Permanently deletes a File and associated FEDWireMessage. It cannot be undone.
+[**GetWireFileByID**](WireFilesApi.md#GetWireFileByID) | **Get** /v1/wire/files/{fileID} | Retrieves the details of an existing File. You need only supply the unique File identifier that was returned upon creation.
+[**GetWireFileContents**](WireFilesApi.md#GetWireFileContents) | **Get** /v1/wire/files/{fileID}/contents | Assembles the existing file witha FEDWireMessage, Returns plaintext file.
 [**GetWireFiles**](WireFilesApi.md#GetWireFiles) | **Get** /v1/wire/files | Gets a list of Files
-[**UpdateWireFileByID**](WireFilesApi.md#UpdateWireFileByID) | **Post** /v1/wire/files/{file_id} | Updates the specified FEDWire Message by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
-[**ValidateWireFile**](WireFilesApi.md#ValidateWireFile) | **Get** /v1/wire/files/{file_id}/validate | Validates the existing file. You need only supply the unique File identifier that was returned upon creation.
+[**UpdateWireFileByID**](WireFilesApi.md#UpdateWireFileByID) | **Post** /v1/wire/files/{fileID} | Updates the specified FEDWire Message by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
+[**ValidateWireFile**](WireFilesApi.md#ValidateWireFile) | **Get** /v1/wire/files/{fileID}/validate | Validates the existing file. You need only supply the unique File identifier that was returned upon creation.
 
 
 
@@ -37,7 +37,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **xRequestID** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
- **xIDempotencyKey** | **optional.String**| Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests. | 
+ **xIdempotencyKey** | **optional.String**| Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests. | 
 
 ### Return type
 
@@ -59,7 +59,7 @@ Name | Type | Description  | Notes
 
 ## DeleteWireFileByID
 
-> DeleteWireFileByID(ctx, fileId, optional)
+> DeleteWireFileByID(ctx, fileID, optional)
 Permanently deletes a File and associated FEDWireMessage. It cannot be undone.
 
 ### Required Parameters
@@ -68,7 +68,7 @@ Permanently deletes a File and associated FEDWireMessage. It cannot be undone.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**fileId** | **string**| File ID | 
+**fileID** | **string**| File ID | 
  **optional** | ***DeleteWireFileByIDOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -101,7 +101,7 @@ Name | Type | Description  | Notes
 
 ## GetWireFileByID
 
-> File2 GetWireFileByID(ctx, fileId, optional)
+> File2 GetWireFileByID(ctx, fileID, optional)
 Retrieves the details of an existing File. You need only supply the unique File identifier that was returned upon creation.
 
 ### Required Parameters
@@ -110,7 +110,7 @@ Retrieves the details of an existing File. You need only supply the unique File 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**fileId** | **string**| File ID | 
+**fileID** | **string**| File ID | 
  **optional** | ***GetWireFileByIDOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -143,7 +143,7 @@ Name | Type | Description  | Notes
 
 ## GetWireFileContents
 
-> string GetWireFileContents(ctx, fileId, optional)
+> string GetWireFileContents(ctx, fileID, optional)
 Assembles the existing file witha FEDWireMessage, Returns plaintext file.
 
 ### Required Parameters
@@ -152,7 +152,7 @@ Assembles the existing file witha FEDWireMessage, Returns plaintext file.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**fileId** | **string**| File ID | 
+**fileID** | **string**| File ID | 
  **optional** | ***GetWireFileContentsOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -225,7 +225,7 @@ Name | Type | Description  | Notes
 
 ## UpdateWireFileByID
 
-> File2 UpdateWireFileByID(ctx, fileId, createFile2, optional)
+> File2 UpdateWireFileByID(ctx, fileID, createFile2, optional)
 Updates the specified FEDWire Message by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
 
 ### Required Parameters
@@ -234,7 +234,7 @@ Updates the specified FEDWire Message by setting the values of the parameters pa
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**fileId** | **string**| File ID | 
+**fileID** | **string**| File ID | 
 **createFile2** | [**CreateFile2**](CreateFile2.md)|  | 
  **optional** | ***UpdateWireFileByIDOpts** | optional parameters | nil if no parameters
 
@@ -248,7 +248,7 @@ Name | Type | Description  | Notes
 
 
  **xRequestID** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
- **xIDempotencyKey** | **optional.String**| Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests. | 
+ **xIdempotencyKey** | **optional.String**| Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests. | 
 
 ### Return type
 
@@ -270,7 +270,7 @@ Name | Type | Description  | Notes
 
 ## ValidateWireFile
 
-> File2 ValidateWireFile(ctx, fileId, optional)
+> File2 ValidateWireFile(ctx, fileID, optional)
 Validates the existing file. You need only supply the unique File identifier that was returned upon creation.
 
 ### Required Parameters
@@ -279,7 +279,7 @@ Validates the existing file. You need only supply the unique File identifier tha
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**fileId** | **string**| File ID | 
+**fileID** | **string**| File ID | 
  **optional** | ***ValidateWireFileOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
