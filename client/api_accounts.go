@@ -11,25 +11,25 @@
 package openapi
 
 import (
-	"context"
+	_context "context"
 	"fmt"
 	"github.com/antihax/optional"
-	"io/ioutil"
-	"net/http"
-	"net/url"
+	_ioutil "io/ioutil"
+	_nethttp "net/http"
+	_neturl "net/url"
 	"strings"
 )
 
 // Linger please
 var (
-	_ context.Context
+	_ _context.Context
 )
 
 type AccountsApiService service
 
 /*
 AccountsApiService Create a new account for a Customer
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param xUserID Moov User ID header, required in all requests
  * @param createAccount
  * @param optional nil or *CreateAccountOpts - Optional Parameters:
@@ -41,9 +41,9 @@ type CreateAccountOpts struct {
 	XRequestID optional.String
 }
 
-func (a *AccountsApiService) CreateAccount(ctx context.Context, xUserID string, createAccount CreateAccount, localVarOptionals *CreateAccountOpts) (Account, *http.Response, error) {
+func (a *AccountsApiService) CreateAccount(ctx _context.Context, xUserID string, createAccount CreateAccount, localVarOptionals *CreateAccountOpts) (Account, *_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodPost
+		localVarHttpMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -55,8 +55,8 @@ func (a *AccountsApiService) CreateAccount(ctx context.Context, xUserID string, 
 	localVarPath := a.client.cfg.BasePath + "/v1/accounts"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{"application/json"}
@@ -91,7 +91,7 @@ func (a *AccountsApiService) CreateAccount(ctx context.Context, xUserID string, 
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -139,7 +139,7 @@ func (a *AccountsApiService) CreateAccount(ctx context.Context, xUserID string, 
 
 /*
 AccountsApiService Post a transaction against multiple accounts. All transaction lines must sum to zero. No money is created or destroyed in a transaction - only moved from account to account. Accounts can be referred to in a Transaction without creating them first.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param xUserID Moov User ID header, required in all requests
  * @param createTransaction
  * @param optional nil or *CreateTransactionOpts - Optional Parameters:
@@ -151,9 +151,9 @@ type CreateTransactionOpts struct {
 	XRequestID optional.String
 }
 
-func (a *AccountsApiService) CreateTransaction(ctx context.Context, xUserID string, createTransaction CreateTransaction, localVarOptionals *CreateTransactionOpts) (Transaction, *http.Response, error) {
+func (a *AccountsApiService) CreateTransaction(ctx _context.Context, xUserID string, createTransaction CreateTransaction, localVarOptionals *CreateTransactionOpts) (Transaction, *_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodPost
+		localVarHttpMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -165,8 +165,8 @@ func (a *AccountsApiService) CreateTransaction(ctx context.Context, xUserID stri
 	localVarPath := a.client.cfg.BasePath + "/v1/accounts/transactions"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{"application/json"}
@@ -201,7 +201,7 @@ func (a *AccountsApiService) CreateTransaction(ctx context.Context, xUserID stri
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -249,7 +249,7 @@ func (a *AccountsApiService) CreateTransaction(ctx context.Context, xUserID stri
 
 /*
 AccountsApiService Get transactions for an account. Ordered descending from their posted date.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param accountID Account ID
  * @param xUserID Moov User ID header, required in all requests
  * @param optional nil or *GetAccountTransactionsOpts - Optional Parameters:
@@ -263,9 +263,9 @@ type GetAccountTransactionsOpts struct {
 	XRequestID optional.String
 }
 
-func (a *AccountsApiService) GetAccountTransactions(ctx context.Context, accountID string, xUserID string, localVarOptionals *GetAccountTransactionsOpts) ([]Transaction, *http.Response, error) {
+func (a *AccountsApiService) GetAccountTransactions(ctx _context.Context, accountID string, xUserID string, localVarOptionals *GetAccountTransactionsOpts) ([]Transaction, *_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodGet
+		localVarHttpMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -275,11 +275,11 @@ func (a *AccountsApiService) GetAccountTransactions(ctx context.Context, account
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/v1/accounts/{accountID}/transactions"
-	localVarPath = strings.Replace(localVarPath, "{"+"accountID"+"}", fmt.Sprintf("%v", accountID), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"accountID"+"}", _neturl.QueryEscape(fmt.Sprintf("%v", accountID)), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	if localVarOptionals != nil && localVarOptionals.Limit.IsSet() {
 		localVarQueryParams.Add("limit", parameterToString(localVarOptionals.Limit.Value(), ""))
@@ -315,7 +315,7 @@ func (a *AccountsApiService) GetAccountTransactions(ctx context.Context, account
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -353,7 +353,7 @@ func (a *AccountsApiService) GetAccountTransactions(ctx context.Context, account
 
 /*
 AccountsApiService Search for account which matches all query parameters
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param xUserID Moov User ID header, required in all requests
  * @param optional nil or *SearchAccountsOpts - Optional Parameters:
  * @param "Number" (optional.String) -  Account number
@@ -372,9 +372,9 @@ type SearchAccountsOpts struct {
 	XRequestID    optional.String
 }
 
-func (a *AccountsApiService) SearchAccounts(ctx context.Context, xUserID string, localVarOptionals *SearchAccountsOpts) ([]Account, *http.Response, error) {
+func (a *AccountsApiService) SearchAccounts(ctx _context.Context, xUserID string, localVarOptionals *SearchAccountsOpts) ([]Account, *_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodGet
+		localVarHttpMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -386,8 +386,8 @@ func (a *AccountsApiService) SearchAccounts(ctx context.Context, xUserID string,
 	localVarPath := a.client.cfg.BasePath + "/v1/accounts/search"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	if localVarOptionals != nil && localVarOptionals.Number.IsSet() {
 		localVarQueryParams.Add("number", parameterToString(localVarOptionals.Number.Value(), ""))
@@ -432,7 +432,7 @@ func (a *AccountsApiService) SearchAccounts(ctx context.Context, xUserID string,
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err

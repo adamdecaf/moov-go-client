@@ -11,25 +11,25 @@
 package openapi
 
 import (
-	"context"
+	_context "context"
 	"fmt"
 	"github.com/antihax/optional"
-	"io/ioutil"
-	"net/http"
-	"net/url"
+	_ioutil "io/ioutil"
+	_nethttp "net/http"
+	_neturl "net/url"
 	"strings"
 )
 
 // Linger please
 var (
-	_ context.Context
+	_ _context.Context
 )
 
 type DepositoriesApiService service
 
 /*
 DepositoriesApiService Create a new depository account for the authenticated user
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param createDepository
  * @param optional nil or *AddDepositoryOpts - Optional Parameters:
  * @param "XIdempotencyKey" (optional.String) -  Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests.
@@ -42,9 +42,9 @@ type AddDepositoryOpts struct {
 	XRequestID      optional.String
 }
 
-func (a *DepositoriesApiService) AddDepository(ctx context.Context, createDepository CreateDepository, localVarOptionals *AddDepositoryOpts) (Depository, *http.Response, error) {
+func (a *DepositoriesApiService) AddDepository(ctx _context.Context, createDepository CreateDepository, localVarOptionals *AddDepositoryOpts) (Depository, *_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodPost
+		localVarHttpMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -56,8 +56,8 @@ func (a *DepositoriesApiService) AddDepository(ctx context.Context, createDeposi
 	localVarPath := a.client.cfg.BasePath + "/v1/ach/depositories"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{"application/json"}
@@ -106,7 +106,7 @@ func (a *DepositoriesApiService) AddDepository(ctx context.Context, createDeposi
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -154,7 +154,7 @@ func (a *DepositoriesApiService) AddDepository(ctx context.Context, createDeposi
 
 /*
 DepositoriesApiService Confirm micro deposit amounts after they have been posted to the depository account
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param depositoryID Depository ID
  * @param amounts
  * @param optional nil or *ConfirmMicroDepositsOpts - Optional Parameters:
@@ -167,9 +167,9 @@ type ConfirmMicroDepositsOpts struct {
 	XRequestID      optional.String
 }
 
-func (a *DepositoriesApiService) ConfirmMicroDeposits(ctx context.Context, depositoryID string, amounts Amounts, localVarOptionals *ConfirmMicroDepositsOpts) (*http.Response, error) {
+func (a *DepositoriesApiService) ConfirmMicroDeposits(ctx _context.Context, depositoryID string, amounts Amounts, localVarOptionals *ConfirmMicroDepositsOpts) (*_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodPost
+		localVarHttpMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -178,11 +178,11 @@ func (a *DepositoriesApiService) ConfirmMicroDeposits(ctx context.Context, depos
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/v1/ach/depositories/{depositoryID}/micro-deposits/confirm"
-	localVarPath = strings.Replace(localVarPath, "{"+"depositoryID"+"}", fmt.Sprintf("%v", depositoryID), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"depositoryID"+"}", _neturl.QueryEscape(fmt.Sprintf("%v", depositoryID)), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{"application/json"}
@@ -231,7 +231,7 @@ func (a *DepositoriesApiService) ConfirmMicroDeposits(ctx context.Context, depos
 		return localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarHttpResponse, err
@@ -250,7 +250,7 @@ func (a *DepositoriesApiService) ConfirmMicroDeposits(ctx context.Context, depos
 
 /*
 DepositoriesApiService Permanently deletes a depository and associated transfers. It cannot be undone. Immediately cancels any active Transfers for the depository.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param depositoryID Depository ID
  * @param optional nil or *DeleteDepositoryOpts - Optional Parameters:
  * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
@@ -260,9 +260,9 @@ type DeleteDepositoryOpts struct {
 	XRequestID optional.String
 }
 
-func (a *DepositoriesApiService) DeleteDepository(ctx context.Context, depositoryID string, localVarOptionals *DeleteDepositoryOpts) (*http.Response, error) {
+func (a *DepositoriesApiService) DeleteDepository(ctx _context.Context, depositoryID string, localVarOptionals *DeleteDepositoryOpts) (*_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodDelete
+		localVarHttpMethod   = _nethttp.MethodDelete
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -271,11 +271,11 @@ func (a *DepositoriesApiService) DeleteDepository(ctx context.Context, depositor
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/v1/ach/depositories/{depositoryID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"depositoryID"+"}", fmt.Sprintf("%v", depositoryID), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"depositoryID"+"}", _neturl.QueryEscape(fmt.Sprintf("%v", depositoryID)), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
@@ -319,7 +319,7 @@ func (a *DepositoriesApiService) DeleteDepository(ctx context.Context, depositor
 		return localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarHttpResponse, err
@@ -338,7 +338,7 @@ func (a *DepositoriesApiService) DeleteDepository(ctx context.Context, depositor
 
 /*
 DepositoriesApiService A list of all Depository objects for the authentication context.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *GetDepositoriesOpts - Optional Parameters:
  * @param "Offset" (optional.Int32) -  The number of items to skip before starting to collect the result set
  * @param "Limit" (optional.Int32) -  The number of items to return
@@ -352,9 +352,9 @@ type GetDepositoriesOpts struct {
 	XRequestID optional.String
 }
 
-func (a *DepositoriesApiService) GetDepositories(ctx context.Context, localVarOptionals *GetDepositoriesOpts) ([]Depository, *http.Response, error) {
+func (a *DepositoriesApiService) GetDepositories(ctx _context.Context, localVarOptionals *GetDepositoriesOpts) ([]Depository, *_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodGet
+		localVarHttpMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -366,8 +366,8 @@ func (a *DepositoriesApiService) GetDepositories(ctx context.Context, localVarOp
 	localVarPath := a.client.cfg.BasePath + "/v1/ach/depositories"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	if localVarOptionals != nil && localVarOptionals.Offset.IsSet() {
 		localVarQueryParams.Add("offset", parameterToString(localVarOptionals.Offset.Value(), ""))
@@ -417,7 +417,7 @@ func (a *DepositoriesApiService) GetDepositories(ctx context.Context, localVarOp
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -455,7 +455,7 @@ func (a *DepositoriesApiService) GetDepositories(ctx context.Context, localVarOp
 
 /*
 DepositoriesApiService Get a Depository object for the supplied ID
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param depositoryID Depository ID
  * @param optional nil or *GetDepositoryByIDOpts - Optional Parameters:
  * @param "Offset" (optional.Int32) -  The number of items to skip before starting to collect the result set
@@ -470,9 +470,9 @@ type GetDepositoryByIDOpts struct {
 	XRequestID optional.String
 }
 
-func (a *DepositoriesApiService) GetDepositoryByID(ctx context.Context, depositoryID string, localVarOptionals *GetDepositoryByIDOpts) (Depository, *http.Response, error) {
+func (a *DepositoriesApiService) GetDepositoryByID(ctx _context.Context, depositoryID string, localVarOptionals *GetDepositoryByIDOpts) (Depository, *_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodGet
+		localVarHttpMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -482,11 +482,11 @@ func (a *DepositoriesApiService) GetDepositoryByID(ctx context.Context, deposito
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/v1/ach/depositories/{depositoryID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"depositoryID"+"}", fmt.Sprintf("%v", depositoryID), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"depositoryID"+"}", _neturl.QueryEscape(fmt.Sprintf("%v", depositoryID)), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	if localVarOptionals != nil && localVarOptionals.Offset.IsSet() {
 		localVarQueryParams.Add("offset", parameterToString(localVarOptionals.Offset.Value(), ""))
@@ -536,7 +536,7 @@ func (a *DepositoriesApiService) GetDepositoryByID(ctx context.Context, deposito
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -574,7 +574,7 @@ func (a *DepositoriesApiService) GetDepositoryByID(ctx context.Context, deposito
 
 /*
 DepositoriesApiService Initiates micro deposits to be sent to the Depository institution for account validation
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param depositoryID Depository ID
  * @param optional nil or *InitiateMicroDepositsOpts - Optional Parameters:
  * @param "XIdempotencyKey" (optional.String) -  Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests.
@@ -586,9 +586,9 @@ type InitiateMicroDepositsOpts struct {
 	XRequestID      optional.String
 }
 
-func (a *DepositoriesApiService) InitiateMicroDeposits(ctx context.Context, depositoryID string, localVarOptionals *InitiateMicroDepositsOpts) (*http.Response, error) {
+func (a *DepositoriesApiService) InitiateMicroDeposits(ctx _context.Context, depositoryID string, localVarOptionals *InitiateMicroDepositsOpts) (*_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodPost
+		localVarHttpMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -597,11 +597,11 @@ func (a *DepositoriesApiService) InitiateMicroDeposits(ctx context.Context, depo
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/v1/ach/depositories/{depositoryID}/micro-deposits"
-	localVarPath = strings.Replace(localVarPath, "{"+"depositoryID"+"}", fmt.Sprintf("%v", depositoryID), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"depositoryID"+"}", _neturl.QueryEscape(fmt.Sprintf("%v", depositoryID)), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
@@ -648,7 +648,7 @@ func (a *DepositoriesApiService) InitiateMicroDeposits(ctx context.Context, depo
 		return localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarHttpResponse, err
@@ -677,7 +677,7 @@ func (a *DepositoriesApiService) InitiateMicroDeposits(ctx context.Context, depo
 
 /*
 DepositoriesApiService Updates the specified Depository by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param depositoryID Depository ID
  * @param createDepository
  * @param optional nil or *UpdateDepositoryOpts - Optional Parameters:
@@ -691,9 +691,9 @@ type UpdateDepositoryOpts struct {
 	XRequestID      optional.String
 }
 
-func (a *DepositoriesApiService) UpdateDepository(ctx context.Context, depositoryID string, createDepository CreateDepository, localVarOptionals *UpdateDepositoryOpts) (Depository, *http.Response, error) {
+func (a *DepositoriesApiService) UpdateDepository(ctx _context.Context, depositoryID string, createDepository CreateDepository, localVarOptionals *UpdateDepositoryOpts) (Depository, *_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodPatch
+		localVarHttpMethod   = _nethttp.MethodPatch
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -703,11 +703,11 @@ func (a *DepositoriesApiService) UpdateDepository(ctx context.Context, depositor
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/v1/ach/depositories/{depositoryID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"depositoryID"+"}", fmt.Sprintf("%v", depositoryID), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"depositoryID"+"}", _neturl.QueryEscape(fmt.Sprintf("%v", depositoryID)), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{"application/json"}
@@ -756,7 +756,7 @@ func (a *DepositoriesApiService) UpdateDepository(ctx context.Context, depositor
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err

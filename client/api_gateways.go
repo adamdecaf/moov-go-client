@@ -11,23 +11,23 @@
 package openapi
 
 import (
-	"context"
+	_context "context"
 	"github.com/antihax/optional"
-	"io/ioutil"
-	"net/http"
-	"net/url"
+	_ioutil "io/ioutil"
+	_nethttp "net/http"
+	_neturl "net/url"
 )
 
 // Linger please
 var (
-	_ context.Context
+	_ _context.Context
 )
 
 type GatewaysApiService service
 
 /*
 GatewaysApiService Create a new Gateway object
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param createGateway
  * @param optional nil or *AddGatewayOpts - Optional Parameters:
  * @param "XIdempotencyKey" (optional.String) -  Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests.
@@ -40,9 +40,9 @@ type AddGatewayOpts struct {
 	XRequestID      optional.String
 }
 
-func (a *GatewaysApiService) AddGateway(ctx context.Context, createGateway CreateGateway, localVarOptionals *AddGatewayOpts) (Gateway, *http.Response, error) {
+func (a *GatewaysApiService) AddGateway(ctx _context.Context, createGateway CreateGateway, localVarOptionals *AddGatewayOpts) (Gateway, *_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodPost
+		localVarHttpMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -54,8 +54,8 @@ func (a *GatewaysApiService) AddGateway(ctx context.Context, createGateway Creat
 	localVarPath := a.client.cfg.BasePath + "/v1/ach/gateways"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{"application/json"}
@@ -104,7 +104,7 @@ func (a *GatewaysApiService) AddGateway(ctx context.Context, createGateway Creat
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -152,7 +152,7 @@ func (a *GatewaysApiService) AddGateway(ctx context.Context, createGateway Creat
 
 /*
 GatewaysApiService Gets a list of Gatways
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *GetGatewaysOpts - Optional Parameters:
  * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
 @return []Gateway
@@ -162,9 +162,9 @@ type GetGatewaysOpts struct {
 	XRequestID optional.String
 }
 
-func (a *GatewaysApiService) GetGateways(ctx context.Context, localVarOptionals *GetGatewaysOpts) ([]Gateway, *http.Response, error) {
+func (a *GatewaysApiService) GetGateways(ctx _context.Context, localVarOptionals *GetGatewaysOpts) ([]Gateway, *_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodGet
+		localVarHttpMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -176,8 +176,8 @@ func (a *GatewaysApiService) GetGateways(ctx context.Context, localVarOptionals 
 	localVarPath := a.client.cfg.BasePath + "/v1/ach/gateways"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
@@ -221,7 +221,7 @@ func (a *GatewaysApiService) GetGateways(ctx context.Context, localVarOptionals 
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err

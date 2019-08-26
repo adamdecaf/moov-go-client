@@ -11,25 +11,25 @@
 package openapi
 
 import (
-	"context"
+	_context "context"
 	"fmt"
 	"github.com/antihax/optional"
-	"io/ioutil"
-	"net/http"
-	"net/url"
+	_ioutil "io/ioutil"
+	_nethttp "net/http"
+	_neturl "net/url"
 	"strings"
 )
 
 // Linger please
 var (
-	_ context.Context
+	_ _context.Context
 )
 
 type ACHFilesApiService service
 
 /*
 ACHFilesApiService Add Batch to File
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param fileID File ID
  * @param batch
  * @param optional nil or *AddBatchToFileOpts - Optional Parameters:
@@ -42,9 +42,9 @@ type AddBatchToFileOpts struct {
 	XIdempotencyKey optional.String
 }
 
-func (a *ACHFilesApiService) AddBatchToFile(ctx context.Context, fileID string, batch Batch, localVarOptionals *AddBatchToFileOpts) (*http.Response, error) {
+func (a *ACHFilesApiService) AddBatchToFile(ctx _context.Context, fileID string, batch Batch, localVarOptionals *AddBatchToFileOpts) (*_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodPost
+		localVarHttpMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -53,11 +53,11 @@ func (a *ACHFilesApiService) AddBatchToFile(ctx context.Context, fileID string, 
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/v1/ach/files/{fileID}/batches"
-	localVarPath = strings.Replace(localVarPath, "{"+"fileID"+"}", fmt.Sprintf("%v", fileID), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"fileID"+"}", _neturl.QueryEscape(fmt.Sprintf("%v", fileID)), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{"application/json"}
@@ -106,7 +106,7 @@ func (a *ACHFilesApiService) AddBatchToFile(ctx context.Context, fileID string, 
 		return localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarHttpResponse, err
@@ -125,7 +125,7 @@ func (a *ACHFilesApiService) AddBatchToFile(ctx context.Context, fileID string, 
 
 /*
 ACHFilesApiService Create a new File object
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param createFile Content of the ACH file (in json or raw text)
  * @param optional nil or *CreateFileOpts - Optional Parameters:
  * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
@@ -138,9 +138,9 @@ type CreateFileOpts struct {
 	XIdempotencyKey optional.String
 }
 
-func (a *ACHFilesApiService) CreateFile(ctx context.Context, createFile CreateFile, localVarOptionals *CreateFileOpts) (File, *http.Response, error) {
+func (a *ACHFilesApiService) CreateFile(ctx _context.Context, createFile CreateFile, localVarOptionals *CreateFileOpts) (File, *_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodPost
+		localVarHttpMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -152,8 +152,8 @@ func (a *ACHFilesApiService) CreateFile(ctx context.Context, createFile CreateFi
 	localVarPath := a.client.cfg.BasePath + "/v1/ach/files/create"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{"application/json", "text/plain"}
@@ -202,7 +202,7 @@ func (a *ACHFilesApiService) CreateFile(ctx context.Context, createFile CreateFi
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -250,7 +250,7 @@ func (a *ACHFilesApiService) CreateFile(ctx context.Context, createFile CreateFi
 
 /*
 ACHFilesApiService Permanently deletes a File and associated Batches. It cannot be undone.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param fileID File ID
  * @param optional nil or *DeleteACHFileOpts - Optional Parameters:
  * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
@@ -260,9 +260,9 @@ type DeleteACHFileOpts struct {
 	XRequestID optional.String
 }
 
-func (a *ACHFilesApiService) DeleteACHFile(ctx context.Context, fileID string, localVarOptionals *DeleteACHFileOpts) (*http.Response, error) {
+func (a *ACHFilesApiService) DeleteACHFile(ctx _context.Context, fileID string, localVarOptionals *DeleteACHFileOpts) (*_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodDelete
+		localVarHttpMethod   = _nethttp.MethodDelete
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -271,11 +271,11 @@ func (a *ACHFilesApiService) DeleteACHFile(ctx context.Context, fileID string, l
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/v1/ach/files/{fileID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"fileID"+"}", fmt.Sprintf("%v", fileID), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"fileID"+"}", _neturl.QueryEscape(fmt.Sprintf("%v", fileID)), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
@@ -319,7 +319,7 @@ func (a *ACHFilesApiService) DeleteACHFile(ctx context.Context, fileID string, l
 		return localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarHttpResponse, err
@@ -338,7 +338,7 @@ func (a *ACHFilesApiService) DeleteACHFile(ctx context.Context, fileID string, l
 
 /*
 ACHFilesApiService Delete a Batch from a File
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param fileID File ID
  * @param batchID Batch ID
  * @param optional nil or *DeleteFileBatchOpts - Optional Parameters:
@@ -349,9 +349,9 @@ type DeleteFileBatchOpts struct {
 	XRequestID optional.String
 }
 
-func (a *ACHFilesApiService) DeleteFileBatch(ctx context.Context, fileID string, batchID string, localVarOptionals *DeleteFileBatchOpts) (*http.Response, error) {
+func (a *ACHFilesApiService) DeleteFileBatch(ctx _context.Context, fileID string, batchID string, localVarOptionals *DeleteFileBatchOpts) (*_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodDelete
+		localVarHttpMethod   = _nethttp.MethodDelete
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -360,12 +360,12 @@ func (a *ACHFilesApiService) DeleteFileBatch(ctx context.Context, fileID string,
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/v1/ach/files/{fileID}/batches/{batchID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"fileID"+"}", fmt.Sprintf("%v", fileID), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"batchID"+"}", fmt.Sprintf("%v", batchID), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"fileID"+"}", _neturl.QueryEscape(fmt.Sprintf("%v", fileID)), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"batchID"+"}", _neturl.QueryEscape(fmt.Sprintf("%v", batchID)), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
@@ -409,7 +409,7 @@ func (a *ACHFilesApiService) DeleteFileBatch(ctx context.Context, fileID string,
 		return localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarHttpResponse, err
@@ -428,7 +428,7 @@ func (a *ACHFilesApiService) DeleteFileBatch(ctx context.Context, fileID string,
 
 /*
 ACHFilesApiService Get a specific Batch on a FIle
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param fileID File ID
  * @param batchID Batch ID
  * @param optional nil or *GetFileBatchOpts - Optional Parameters:
@@ -440,9 +440,9 @@ type GetFileBatchOpts struct {
 	XRequestID optional.String
 }
 
-func (a *ACHFilesApiService) GetFileBatch(ctx context.Context, fileID string, batchID string, localVarOptionals *GetFileBatchOpts) (Batch, *http.Response, error) {
+func (a *ACHFilesApiService) GetFileBatch(ctx _context.Context, fileID string, batchID string, localVarOptionals *GetFileBatchOpts) (Batch, *_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodGet
+		localVarHttpMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -452,12 +452,12 @@ func (a *ACHFilesApiService) GetFileBatch(ctx context.Context, fileID string, ba
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/v1/ach/files/{fileID}/batches/{batchID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"fileID"+"}", fmt.Sprintf("%v", fileID), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"batchID"+"}", fmt.Sprintf("%v", batchID), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"fileID"+"}", _neturl.QueryEscape(fmt.Sprintf("%v", fileID)), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"batchID"+"}", _neturl.QueryEscape(fmt.Sprintf("%v", batchID)), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
@@ -501,7 +501,7 @@ func (a *ACHFilesApiService) GetFileBatch(ctx context.Context, fileID string, ba
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -539,7 +539,7 @@ func (a *ACHFilesApiService) GetFileBatch(ctx context.Context, fileID string, ba
 
 /*
 ACHFilesApiService Get the batches on a File.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param fileID File ID
  * @param optional nil or *GetFileBatchesOpts - Optional Parameters:
  * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
@@ -550,9 +550,9 @@ type GetFileBatchesOpts struct {
 	XRequestID optional.String
 }
 
-func (a *ACHFilesApiService) GetFileBatches(ctx context.Context, fileID string, localVarOptionals *GetFileBatchesOpts) ([]Batch, *http.Response, error) {
+func (a *ACHFilesApiService) GetFileBatches(ctx _context.Context, fileID string, localVarOptionals *GetFileBatchesOpts) ([]Batch, *_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodGet
+		localVarHttpMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -562,11 +562,11 @@ func (a *ACHFilesApiService) GetFileBatches(ctx context.Context, fileID string, 
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/v1/ach/files/{fileID}/batches"
-	localVarPath = strings.Replace(localVarPath, "{"+"fileID"+"}", fmt.Sprintf("%v", fileID), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"fileID"+"}", _neturl.QueryEscape(fmt.Sprintf("%v", fileID)), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
@@ -610,7 +610,7 @@ func (a *ACHFilesApiService) GetFileBatches(ctx context.Context, fileID string, 
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -648,7 +648,7 @@ func (a *ACHFilesApiService) GetFileBatches(ctx context.Context, fileID string, 
 
 /*
 ACHFilesApiService Retrieves the details of an existing File. You need only supply the unique File identifier that was returned upon creation.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param fileID File ID
  * @param optional nil or *GetFileByIDOpts - Optional Parameters:
  * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
@@ -659,9 +659,9 @@ type GetFileByIDOpts struct {
 	XRequestID optional.String
 }
 
-func (a *ACHFilesApiService) GetFileByID(ctx context.Context, fileID string, localVarOptionals *GetFileByIDOpts) (File, *http.Response, error) {
+func (a *ACHFilesApiService) GetFileByID(ctx _context.Context, fileID string, localVarOptionals *GetFileByIDOpts) (File, *_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodGet
+		localVarHttpMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -671,11 +671,11 @@ func (a *ACHFilesApiService) GetFileByID(ctx context.Context, fileID string, loc
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/v1/ach/files/{fileID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"fileID"+"}", fmt.Sprintf("%v", fileID), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"fileID"+"}", _neturl.QueryEscape(fmt.Sprintf("%v", fileID)), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
@@ -719,7 +719,7 @@ func (a *ACHFilesApiService) GetFileByID(ctx context.Context, fileID string, loc
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -757,7 +757,7 @@ func (a *ACHFilesApiService) GetFileByID(ctx context.Context, fileID string, loc
 
 /*
 ACHFilesApiService Assembles the existing file (batches and controls) records, computes sequence numbers and totals. Returns plaintext file.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param fileID File ID
  * @param optional nil or *GetFileContentsOpts - Optional Parameters:
  * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
@@ -768,9 +768,9 @@ type GetFileContentsOpts struct {
 	XRequestID optional.String
 }
 
-func (a *ACHFilesApiService) GetFileContents(ctx context.Context, fileID string, localVarOptionals *GetFileContentsOpts) (string, *http.Response, error) {
+func (a *ACHFilesApiService) GetFileContents(ctx _context.Context, fileID string, localVarOptionals *GetFileContentsOpts) (string, *_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodGet
+		localVarHttpMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -780,11 +780,11 @@ func (a *ACHFilesApiService) GetFileContents(ctx context.Context, fileID string,
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/v1/ach/files/{fileID}/contents"
-	localVarPath = strings.Replace(localVarPath, "{"+"fileID"+"}", fmt.Sprintf("%v", fileID), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"fileID"+"}", _neturl.QueryEscape(fmt.Sprintf("%v", fileID)), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
@@ -828,7 +828,7 @@ func (a *ACHFilesApiService) GetFileContents(ctx context.Context, fileID string,
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -866,7 +866,7 @@ func (a *ACHFilesApiService) GetFileContents(ctx context.Context, fileID string,
 
 /*
 ACHFilesApiService Gets a list of Files
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *GetFilesOpts - Optional Parameters:
  * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
 @return []File
@@ -876,9 +876,9 @@ type GetFilesOpts struct {
 	XRequestID optional.String
 }
 
-func (a *ACHFilesApiService) GetFiles(ctx context.Context, localVarOptionals *GetFilesOpts) ([]File, *http.Response, error) {
+func (a *ACHFilesApiService) GetFiles(ctx _context.Context, localVarOptionals *GetFilesOpts) ([]File, *_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodGet
+		localVarHttpMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -890,8 +890,8 @@ func (a *ACHFilesApiService) GetFiles(ctx context.Context, localVarOptionals *Ge
 	localVarPath := a.client.cfg.BasePath + "/v1/ach/files"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
@@ -935,7 +935,7 @@ func (a *ACHFilesApiService) GetFiles(ctx context.Context, localVarOptionals *Ge
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -973,7 +973,7 @@ func (a *ACHFilesApiService) GetFiles(ctx context.Context, localVarOptionals *Ge
 
 /*
 ACHFilesApiService Create a new file object
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param fileID File ID
  * @param createFile Content of the ACH file (in json or raw text)
  * @param optional nil or *SegmentFileOpts - Optional Parameters:
@@ -987,9 +987,9 @@ type SegmentFileOpts struct {
 	XIdempotencyKey optional.String
 }
 
-func (a *ACHFilesApiService) SegmentFile(ctx context.Context, fileID string, createFile CreateFile, localVarOptionals *SegmentFileOpts) (File, *http.Response, error) {
+func (a *ACHFilesApiService) SegmentFile(ctx _context.Context, fileID string, createFile CreateFile, localVarOptionals *SegmentFileOpts) (File, *_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodPost
+		localVarHttpMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -999,11 +999,11 @@ func (a *ACHFilesApiService) SegmentFile(ctx context.Context, fileID string, cre
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/v1/ach/files/{fileID}/segment"
-	localVarPath = strings.Replace(localVarPath, "{"+"fileID"+"}", fmt.Sprintf("%v", fileID), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"fileID"+"}", _neturl.QueryEscape(fmt.Sprintf("%v", fileID)), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{"application/json", "text/plain"}
@@ -1052,7 +1052,7 @@ func (a *ACHFilesApiService) SegmentFile(ctx context.Context, fileID string, cre
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -1090,7 +1090,7 @@ func (a *ACHFilesApiService) SegmentFile(ctx context.Context, fileID string, cre
 
 /*
 ACHFilesApiService Updates the specified File Header by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param fileID File ID
  * @param createFile
  * @param optional nil or *UpdateFileOpts - Optional Parameters:
@@ -1104,9 +1104,9 @@ type UpdateFileOpts struct {
 	XIdempotencyKey optional.String
 }
 
-func (a *ACHFilesApiService) UpdateFile(ctx context.Context, fileID string, createFile CreateFile, localVarOptionals *UpdateFileOpts) (File, *http.Response, error) {
+func (a *ACHFilesApiService) UpdateFile(ctx _context.Context, fileID string, createFile CreateFile, localVarOptionals *UpdateFileOpts) (File, *_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodPost
+		localVarHttpMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -1116,11 +1116,11 @@ func (a *ACHFilesApiService) UpdateFile(ctx context.Context, fileID string, crea
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/v1/ach/files/{fileID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"fileID"+"}", fmt.Sprintf("%v", fileID), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"fileID"+"}", _neturl.QueryEscape(fmt.Sprintf("%v", fileID)), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{"application/json"}
@@ -1169,7 +1169,7 @@ func (a *ACHFilesApiService) UpdateFile(ctx context.Context, fileID string, crea
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -1217,7 +1217,7 @@ func (a *ACHFilesApiService) UpdateFile(ctx context.Context, fileID string, crea
 
 /*
 ACHFilesApiService Validates the existing file. You need only supply the unique File identifier that was returned upon creation.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param fileID File ID
  * @param optional nil or *ValidateFileOpts - Optional Parameters:
  * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
@@ -1228,9 +1228,9 @@ type ValidateFileOpts struct {
 	XRequestID optional.String
 }
 
-func (a *ACHFilesApiService) ValidateFile(ctx context.Context, fileID string, localVarOptionals *ValidateFileOpts) (File, *http.Response, error) {
+func (a *ACHFilesApiService) ValidateFile(ctx _context.Context, fileID string, localVarOptionals *ValidateFileOpts) (File, *_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodGet
+		localVarHttpMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -1240,11 +1240,11 @@ func (a *ACHFilesApiService) ValidateFile(ctx context.Context, fileID string, lo
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/v1/ach/files/{fileID}/validate"
-	localVarPath = strings.Replace(localVarPath, "{"+"fileID"+"}", fmt.Sprintf("%v", fileID), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"fileID"+"}", _neturl.QueryEscape(fmt.Sprintf("%v", fileID)), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
@@ -1288,7 +1288,7 @@ func (a *ACHFilesApiService) ValidateFile(ctx context.Context, fileID string, lo
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err

@@ -11,25 +11,25 @@
 package openapi
 
 import (
-	"context"
+	_context "context"
 	"fmt"
 	"github.com/antihax/optional"
-	"io/ioutil"
-	"net/http"
-	"net/url"
+	_ioutil "io/ioutil"
+	_nethttp "net/http"
+	_neturl "net/url"
 	"strings"
 )
 
 // Linger please
 var (
-	_ context.Context
+	_ _context.Context
 )
 
 type OriginatorsApiService service
 
 /*
 OriginatorsApiService Create a new Originator object
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param createOriginator
  * @param optional nil or *AddOriginatorOpts - Optional Parameters:
  * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
@@ -42,9 +42,9 @@ type AddOriginatorOpts struct {
 	XIdempotencyKey optional.String
 }
 
-func (a *OriginatorsApiService) AddOriginator(ctx context.Context, createOriginator CreateOriginator, localVarOptionals *AddOriginatorOpts) (Originator, *http.Response, error) {
+func (a *OriginatorsApiService) AddOriginator(ctx _context.Context, createOriginator CreateOriginator, localVarOptionals *AddOriginatorOpts) (Originator, *_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodPost
+		localVarHttpMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -56,8 +56,8 @@ func (a *OriginatorsApiService) AddOriginator(ctx context.Context, createOrigina
 	localVarPath := a.client.cfg.BasePath + "/v1/ach/originators"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{"application/json"}
@@ -106,7 +106,7 @@ func (a *OriginatorsApiService) AddOriginator(ctx context.Context, createOrigina
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -154,7 +154,7 @@ func (a *OriginatorsApiService) AddOriginator(ctx context.Context, createOrigina
 
 /*
 OriginatorsApiService Permanently deletes an Originator and associated Receivers, Depositories, and Transfers. It cannot be undone. Also immediately cancels any active Transfers for the Originator.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param originatorID Originator ID
  * @param optional nil or *DeleteOriginatorOpts - Optional Parameters:
  * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
@@ -164,9 +164,9 @@ type DeleteOriginatorOpts struct {
 	XRequestID optional.String
 }
 
-func (a *OriginatorsApiService) DeleteOriginator(ctx context.Context, originatorID string, localVarOptionals *DeleteOriginatorOpts) (*http.Response, error) {
+func (a *OriginatorsApiService) DeleteOriginator(ctx _context.Context, originatorID string, localVarOptionals *DeleteOriginatorOpts) (*_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodDelete
+		localVarHttpMethod   = _nethttp.MethodDelete
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -175,11 +175,11 @@ func (a *OriginatorsApiService) DeleteOriginator(ctx context.Context, originator
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/v1/ach/originators/{originatorID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"originatorID"+"}", fmt.Sprintf("%v", originatorID), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"originatorID"+"}", _neturl.QueryEscape(fmt.Sprintf("%v", originatorID)), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
@@ -223,7 +223,7 @@ func (a *OriginatorsApiService) DeleteOriginator(ctx context.Context, originator
 		return localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarHttpResponse, err
@@ -242,7 +242,7 @@ func (a *OriginatorsApiService) DeleteOriginator(ctx context.Context, originator
 
 /*
 OriginatorsApiService Retrieves the details of an existing Originator. You need only supply the unique Originator identifier that was returned upon receiver creation.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param originatorID Originator ID
  * @param optional nil or *GetOriginatorByIDOpts - Optional Parameters:
  * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
@@ -257,9 +257,9 @@ type GetOriginatorByIDOpts struct {
 	Limit      optional.Int32
 }
 
-func (a *OriginatorsApiService) GetOriginatorByID(ctx context.Context, originatorID string, localVarOptionals *GetOriginatorByIDOpts) (Originator, *http.Response, error) {
+func (a *OriginatorsApiService) GetOriginatorByID(ctx _context.Context, originatorID string, localVarOptionals *GetOriginatorByIDOpts) (Originator, *_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodGet
+		localVarHttpMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -269,11 +269,11 @@ func (a *OriginatorsApiService) GetOriginatorByID(ctx context.Context, originato
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/v1/ach/originators/{originatorID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"originatorID"+"}", fmt.Sprintf("%v", originatorID), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"originatorID"+"}", _neturl.QueryEscape(fmt.Sprintf("%v", originatorID)), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	if localVarOptionals != nil && localVarOptionals.Offset.IsSet() {
 		localVarQueryParams.Add("offset", parameterToString(localVarOptionals.Offset.Value(), ""))
@@ -323,7 +323,7 @@ func (a *OriginatorsApiService) GetOriginatorByID(ctx context.Context, originato
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -361,7 +361,7 @@ func (a *OriginatorsApiService) GetOriginatorByID(ctx context.Context, originato
 
 /*
 OriginatorsApiService Gets a list of Originators
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *GetOriginatorsOpts - Optional Parameters:
  * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
  * @param "Offset" (optional.Int32) -  The number of items to skip before starting to collect the result set
@@ -375,9 +375,9 @@ type GetOriginatorsOpts struct {
 	Limit      optional.Int32
 }
 
-func (a *OriginatorsApiService) GetOriginators(ctx context.Context, localVarOptionals *GetOriginatorsOpts) ([]Originator, *http.Response, error) {
+func (a *OriginatorsApiService) GetOriginators(ctx _context.Context, localVarOptionals *GetOriginatorsOpts) ([]Originator, *_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodGet
+		localVarHttpMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -389,8 +389,8 @@ func (a *OriginatorsApiService) GetOriginators(ctx context.Context, localVarOpti
 	localVarPath := a.client.cfg.BasePath + "/v1/ach/originators"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	if localVarOptionals != nil && localVarOptionals.Offset.IsSet() {
 		localVarQueryParams.Add("offset", parameterToString(localVarOptionals.Offset.Value(), ""))
@@ -440,7 +440,7 @@ func (a *OriginatorsApiService) GetOriginators(ctx context.Context, localVarOpti
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -478,7 +478,7 @@ func (a *OriginatorsApiService) GetOriginators(ctx context.Context, localVarOpti
 
 /*
 OriginatorsApiService Updates the specified Originator by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param originatorID Originator ID
  * @param createOriginator
  * @param optional nil or *UpdateOriginatorOpts - Optional Parameters:
@@ -492,9 +492,9 @@ type UpdateOriginatorOpts struct {
 	XRequestID      optional.String
 }
 
-func (a *OriginatorsApiService) UpdateOriginator(ctx context.Context, originatorID string, createOriginator CreateOriginator, localVarOptionals *UpdateOriginatorOpts) (Originator, *http.Response, error) {
+func (a *OriginatorsApiService) UpdateOriginator(ctx _context.Context, originatorID string, createOriginator CreateOriginator, localVarOptionals *UpdateOriginatorOpts) (Originator, *_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodPatch
+		localVarHttpMethod   = _nethttp.MethodPatch
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -504,11 +504,11 @@ func (a *OriginatorsApiService) UpdateOriginator(ctx context.Context, originator
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/v1/ach/originators/{originatorID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"originatorID"+"}", fmt.Sprintf("%v", originatorID), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"originatorID"+"}", _neturl.QueryEscape(fmt.Sprintf("%v", originatorID)), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{"application/json"}
@@ -557,7 +557,7 @@ func (a *OriginatorsApiService) UpdateOriginator(ctx context.Context, originator
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err

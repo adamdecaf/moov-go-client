@@ -11,25 +11,25 @@
 package openapi
 
 import (
-	"context"
+	_context "context"
 	"fmt"
 	"github.com/antihax/optional"
-	"io/ioutil"
-	"net/http"
-	"net/url"
+	_ioutil "io/ioutil"
+	_nethttp "net/http"
+	_neturl "net/url"
 	"strings"
 )
 
 // Linger please
 var (
-	_ context.Context
+	_ _context.Context
 )
 
 type TransfersApiService service
 
 /*
 TransfersApiService Create a new transfer between an Originator and a Receiver. Transfers cannot be modified. Instead delete the old and create a new transfer.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param createTransfer
  * @param optional nil or *AddTransferOpts - Optional Parameters:
  * @param "XIdempotencyKey" (optional.String) -  Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests.
@@ -42,9 +42,9 @@ type AddTransferOpts struct {
 	XRequestID      optional.String
 }
 
-func (a *TransfersApiService) AddTransfer(ctx context.Context, createTransfer CreateTransfer, localVarOptionals *AddTransferOpts) (Transfer, *http.Response, error) {
+func (a *TransfersApiService) AddTransfer(ctx _context.Context, createTransfer CreateTransfer, localVarOptionals *AddTransferOpts) (Transfer, *_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodPost
+		localVarHttpMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -56,8 +56,8 @@ func (a *TransfersApiService) AddTransfer(ctx context.Context, createTransfer Cr
 	localVarPath := a.client.cfg.BasePath + "/v1/ach/transfers"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{"application/json"}
@@ -106,7 +106,7 @@ func (a *TransfersApiService) AddTransfer(ctx context.Context, createTransfer Cr
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -154,7 +154,7 @@ func (a *TransfersApiService) AddTransfer(ctx context.Context, createTransfer Cr
 
 /*
 TransfersApiService Create a new list of transfer, validate, build, and process. Transfers cannot be modified.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param createTransfer
  * @param optional nil or *AddTransfersOpts - Optional Parameters:
  * @param "XIdempotencyKey" (optional.String) -  Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests.
@@ -167,9 +167,9 @@ type AddTransfersOpts struct {
 	XRequestID      optional.String
 }
 
-func (a *TransfersApiService) AddTransfers(ctx context.Context, createTransfer []CreateTransfer, localVarOptionals *AddTransfersOpts) ([]Transfer, *http.Response, error) {
+func (a *TransfersApiService) AddTransfers(ctx _context.Context, createTransfer []CreateTransfer, localVarOptionals *AddTransfersOpts) ([]Transfer, *_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodPost
+		localVarHttpMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -181,8 +181,8 @@ func (a *TransfersApiService) AddTransfers(ctx context.Context, createTransfer [
 	localVarPath := a.client.cfg.BasePath + "/v1/ach/transfers/batch"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{"application/json"}
@@ -231,7 +231,7 @@ func (a *TransfersApiService) AddTransfers(ctx context.Context, createTransfer [
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -279,7 +279,7 @@ func (a *TransfersApiService) AddTransfers(ctx context.Context, createTransfer [
 
 /*
 TransfersApiService It is possible to recall (delete) a transfer before it has been released from the financial institution.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param transferID Transfer ID
  * @param optional nil or *DeleteTransferByIDOpts - Optional Parameters:
  * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
@@ -289,9 +289,9 @@ type DeleteTransferByIDOpts struct {
 	XRequestID optional.String
 }
 
-func (a *TransfersApiService) DeleteTransferByID(ctx context.Context, transferID string, localVarOptionals *DeleteTransferByIDOpts) (*http.Response, error) {
+func (a *TransfersApiService) DeleteTransferByID(ctx _context.Context, transferID string, localVarOptionals *DeleteTransferByIDOpts) (*_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodDelete
+		localVarHttpMethod   = _nethttp.MethodDelete
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -300,11 +300,11 @@ func (a *TransfersApiService) DeleteTransferByID(ctx context.Context, transferID
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/v1/ach/transfers/{transferID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"transferID"+"}", fmt.Sprintf("%v", transferID), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"transferID"+"}", _neturl.QueryEscape(fmt.Sprintf("%v", transferID)), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
@@ -348,7 +348,7 @@ func (a *TransfersApiService) DeleteTransferByID(ctx context.Context, transferID
 		return localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarHttpResponse, err
@@ -367,7 +367,7 @@ func (a *TransfersApiService) DeleteTransferByID(ctx context.Context, transferID
 
 /*
 TransfersApiService Get a Transfer object for the supplied ID
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param transferID Transfer ID
  * @param optional nil or *GetTransferByIDOpts - Optional Parameters:
  * @param "Offset" (optional.Int32) -  The number of items to skip before starting to collect the result set
@@ -382,9 +382,9 @@ type GetTransferByIDOpts struct {
 	XRequestID optional.String
 }
 
-func (a *TransfersApiService) GetTransferByID(ctx context.Context, transferID string, localVarOptionals *GetTransferByIDOpts) (Transfer, *http.Response, error) {
+func (a *TransfersApiService) GetTransferByID(ctx _context.Context, transferID string, localVarOptionals *GetTransferByIDOpts) (Transfer, *_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodGet
+		localVarHttpMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -394,11 +394,11 @@ func (a *TransfersApiService) GetTransferByID(ctx context.Context, transferID st
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/v1/ach/transfers/{transferID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"transferID"+"}", fmt.Sprintf("%v", transferID), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"transferID"+"}", _neturl.QueryEscape(fmt.Sprintf("%v", transferID)), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	if localVarOptionals != nil && localVarOptionals.Offset.IsSet() {
 		localVarQueryParams.Add("offset", parameterToString(localVarOptionals.Offset.Value(), ""))
@@ -448,7 +448,7 @@ func (a *TransfersApiService) GetTransferByID(ctx context.Context, transferID st
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -486,7 +486,7 @@ func (a *TransfersApiService) GetTransferByID(ctx context.Context, transferID st
 
 /*
 TransfersApiService Get all Events associated with the Transfer object's for the supplied ID
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param transferID Transfer ID
  * @param optional nil or *GetTransferEventsByIDOpts - Optional Parameters:
  * @param "Offset" (optional.Int32) -  The number of items to skip before starting to collect the result set
@@ -501,9 +501,9 @@ type GetTransferEventsByIDOpts struct {
 	XRequestID optional.String
 }
 
-func (a *TransfersApiService) GetTransferEventsByID(ctx context.Context, transferID string, localVarOptionals *GetTransferEventsByIDOpts) ([]Event, *http.Response, error) {
+func (a *TransfersApiService) GetTransferEventsByID(ctx _context.Context, transferID string, localVarOptionals *GetTransferEventsByIDOpts) ([]Event, *_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodGet
+		localVarHttpMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -513,11 +513,11 @@ func (a *TransfersApiService) GetTransferEventsByID(ctx context.Context, transfe
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/v1/ach/transfers/{transferID}/events"
-	localVarPath = strings.Replace(localVarPath, "{"+"transferID"+"}", fmt.Sprintf("%v", transferID), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"transferID"+"}", _neturl.QueryEscape(fmt.Sprintf("%v", transferID)), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	if localVarOptionals != nil && localVarOptionals.Offset.IsSet() {
 		localVarQueryParams.Add("offset", parameterToString(localVarOptionals.Offset.Value(), ""))
@@ -567,7 +567,7 @@ func (a *TransfersApiService) GetTransferEventsByID(ctx context.Context, transfe
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -605,7 +605,7 @@ func (a *TransfersApiService) GetTransferEventsByID(ctx context.Context, transfe
 
 /*
 TransfersApiService Get the ACH files to be used in this transfer.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param transferID Transfer ID
  * @param optional nil or *GetTransferFilesOpts - Optional Parameters:
  * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
@@ -618,9 +618,9 @@ type GetTransferFilesOpts struct {
 	XIdempotencyKey optional.String
 }
 
-func (a *TransfersApiService) GetTransferFiles(ctx context.Context, transferID string, localVarOptionals *GetTransferFilesOpts) ([]File, *http.Response, error) {
+func (a *TransfersApiService) GetTransferFiles(ctx _context.Context, transferID string, localVarOptionals *GetTransferFilesOpts) ([]File, *_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodPost
+		localVarHttpMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -630,11 +630,11 @@ func (a *TransfersApiService) GetTransferFiles(ctx context.Context, transferID s
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/v1/ach/transfers/{transferID}/files"
-	localVarPath = strings.Replace(localVarPath, "{"+"transferID"+"}", fmt.Sprintf("%v", transferID), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"transferID"+"}", _neturl.QueryEscape(fmt.Sprintf("%v", transferID)), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
@@ -681,7 +681,7 @@ func (a *TransfersApiService) GetTransferFiles(ctx context.Context, transferID s
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -729,7 +729,7 @@ func (a *TransfersApiService) GetTransferFiles(ctx context.Context, transferID s
 
 /*
 TransfersApiService Get the NACHA return code and description
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param transferID Transfer ID
  * @param optional nil or *GetTransferNachaCodeOpts - Optional Parameters:
  * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
@@ -741,9 +741,9 @@ type GetTransferNachaCodeOpts struct {
 	XIdempotencyKey optional.String
 }
 
-func (a *TransfersApiService) GetTransferNachaCode(ctx context.Context, transferID string, localVarOptionals *GetTransferNachaCodeOpts) (*http.Response, error) {
+func (a *TransfersApiService) GetTransferNachaCode(ctx _context.Context, transferID string, localVarOptionals *GetTransferNachaCodeOpts) (*_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodPost
+		localVarHttpMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -752,11 +752,11 @@ func (a *TransfersApiService) GetTransferNachaCode(ctx context.Context, transfer
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/v1/ach/transfers/{transferID}/failed"
-	localVarPath = strings.Replace(localVarPath, "{"+"transferID"+"}", fmt.Sprintf("%v", transferID), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"transferID"+"}", _neturl.QueryEscape(fmt.Sprintf("%v", transferID)), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
@@ -803,7 +803,7 @@ func (a *TransfersApiService) GetTransferNachaCode(ctx context.Context, transfer
 		return localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarHttpResponse, err
@@ -822,7 +822,7 @@ func (a *TransfersApiService) GetTransferNachaCode(ctx context.Context, transfer
 
 /*
 TransfersApiService A list of all Transfer objects
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *GetTransfersOpts - Optional Parameters:
  * @param "Offset" (optional.Int32) -  The number of items to skip before starting to collect the result set
  * @param "Limit" (optional.Int32) -  The number of items to return
@@ -840,9 +840,9 @@ type GetTransfersOpts struct {
 	XRequestID optional.String
 }
 
-func (a *TransfersApiService) GetTransfers(ctx context.Context, localVarOptionals *GetTransfersOpts) ([]Transfer, *http.Response, error) {
+func (a *TransfersApiService) GetTransfers(ctx _context.Context, localVarOptionals *GetTransfersOpts) ([]Transfer, *_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodGet
+		localVarHttpMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -854,8 +854,8 @@ func (a *TransfersApiService) GetTransfers(ctx context.Context, localVarOptional
 	localVarPath := a.client.cfg.BasePath + "/v1/ach/transfers"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	if localVarOptionals != nil && localVarOptionals.Offset.IsSet() {
 		localVarQueryParams.Add("offset", parameterToString(localVarOptionals.Offset.Value(), ""))
@@ -911,7 +911,7 @@ func (a *TransfersApiService) GetTransfers(ctx context.Context, localVarOptional
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err

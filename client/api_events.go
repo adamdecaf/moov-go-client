@@ -11,25 +11,25 @@
 package openapi
 
 import (
-	"context"
+	_context "context"
 	"fmt"
 	"github.com/antihax/optional"
-	"io/ioutil"
-	"net/http"
-	"net/url"
+	_ioutil "io/ioutil"
+	_nethttp "net/http"
+	_neturl "net/url"
 	"strings"
 )
 
 // Linger please
 var (
-	_ context.Context
+	_ _context.Context
 )
 
 type EventsApiService service
 
 /*
 EventsApiService Get a Event by ID
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param eventID Event ID
  * @param optional nil or *GetEventByIDOpts - Optional Parameters:
  * @param "Offset" (optional.Int32) -  The number of items to skip before starting to collect the result set
@@ -44,9 +44,9 @@ type GetEventByIDOpts struct {
 	XRequestID optional.String
 }
 
-func (a *EventsApiService) GetEventByID(ctx context.Context, eventID string, localVarOptionals *GetEventByIDOpts) (Event, *http.Response, error) {
+func (a *EventsApiService) GetEventByID(ctx _context.Context, eventID string, localVarOptionals *GetEventByIDOpts) (Event, *_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodGet
+		localVarHttpMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -56,11 +56,11 @@ func (a *EventsApiService) GetEventByID(ctx context.Context, eventID string, loc
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/v1/ach/events/{eventID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"eventID"+"}", fmt.Sprintf("%v", eventID), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"eventID"+"}", _neturl.QueryEscape(fmt.Sprintf("%v", eventID)), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	if localVarOptionals != nil && localVarOptionals.Offset.IsSet() {
 		localVarQueryParams.Add("offset", parameterToString(localVarOptionals.Offset.Value(), ""))
@@ -110,7 +110,7 @@ func (a *EventsApiService) GetEventByID(ctx context.Context, eventID string, loc
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -148,7 +148,7 @@ func (a *EventsApiService) GetEventByID(ctx context.Context, eventID string, loc
 
 /*
 EventsApiService Gets a list of Events
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *GetEventsOpts - Optional Parameters:
  * @param "Offset" (optional.Int32) -  The number of items to skip before starting to collect the result set
  * @param "Limit" (optional.Int32) -  The number of items to return
@@ -166,9 +166,9 @@ type GetEventsOpts struct {
 	XRequestID optional.String
 }
 
-func (a *EventsApiService) GetEvents(ctx context.Context, localVarOptionals *GetEventsOpts) ([]Event, *http.Response, error) {
+func (a *EventsApiService) GetEvents(ctx _context.Context, localVarOptionals *GetEventsOpts) ([]Event, *_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodGet
+		localVarHttpMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -180,8 +180,8 @@ func (a *EventsApiService) GetEvents(ctx context.Context, localVarOptionals *Get
 	localVarPath := a.client.cfg.BasePath + "/v1/ach/events"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	if localVarOptionals != nil && localVarOptionals.Offset.IsSet() {
 		localVarQueryParams.Add("offset", parameterToString(localVarOptionals.Offset.Value(), ""))
@@ -237,7 +237,7 @@ func (a *EventsApiService) GetEvents(ctx context.Context, localVarOptionals *Get
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err

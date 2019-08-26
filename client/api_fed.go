@@ -11,23 +11,23 @@
 package openapi
 
 import (
-	"context"
+	_context "context"
 	"github.com/antihax/optional"
-	"io/ioutil"
-	"net/http"
-	"net/url"
+	_ioutil "io/ioutil"
+	_nethttp "net/http"
+	_neturl "net/url"
 )
 
 // Linger please
 var (
-	_ context.Context
+	_ _context.Context
 )
 
 type FEDApiService service
 
 /*
 FEDApiService Search FEDACH names and metadata
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *SearchFEDACHOpts - Optional Parameters:
  * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
  * @param "Name" (optional.String) -  FEDACH Financial Institution Name
@@ -49,9 +49,9 @@ type SearchFEDACHOpts struct {
 	Limit         optional.Int32
 }
 
-func (a *FEDApiService) SearchFEDACH(ctx context.Context, localVarOptionals *SearchFEDACHOpts) (AchDictionary, *http.Response, error) {
+func (a *FEDApiService) SearchFEDACH(ctx _context.Context, localVarOptionals *SearchFEDACHOpts) (AchDictionary, *_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodGet
+		localVarHttpMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -63,8 +63,8 @@ func (a *FEDApiService) SearchFEDACH(ctx context.Context, localVarOptionals *Sea
 	localVarPath := a.client.cfg.BasePath + "/v1/fed/ach/search"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	if localVarOptionals != nil && localVarOptionals.Name.IsSet() {
 		localVarQueryParams.Add("name", parameterToString(localVarOptionals.Name.Value(), ""))
@@ -114,7 +114,7 @@ func (a *FEDApiService) SearchFEDACH(ctx context.Context, localVarOptionals *Sea
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -162,7 +162,7 @@ func (a *FEDApiService) SearchFEDACH(ctx context.Context, localVarOptionals *Sea
 
 /*
 FEDApiService Search FEDWIRE names and metadata
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *SearchFEDWIREOpts - Optional Parameters:
  * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
  * @param "Name" (optional.String) -  FEDWIRE Financial Institution Name
@@ -182,9 +182,9 @@ type SearchFEDWIREOpts struct {
 	Limit         optional.Int32
 }
 
-func (a *FEDApiService) SearchFEDWIRE(ctx context.Context, localVarOptionals *SearchFEDWIREOpts) (WireDictionary, *http.Response, error) {
+func (a *FEDApiService) SearchFEDWIRE(ctx _context.Context, localVarOptionals *SearchFEDWIREOpts) (WireDictionary, *_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodGet
+		localVarHttpMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -196,8 +196,8 @@ func (a *FEDApiService) SearchFEDWIRE(ctx context.Context, localVarOptionals *Se
 	localVarPath := a.client.cfg.BasePath + "/v1/fed/wire/search"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	if localVarOptionals != nil && localVarOptionals.Name.IsSet() {
 		localVarQueryParams.Add("name", parameterToString(localVarOptionals.Name.Value(), ""))
@@ -244,7 +244,7 @@ func (a *FEDApiService) SearchFEDWIRE(ctx context.Context, localVarOptionals *Se
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err

@@ -11,25 +11,25 @@
 package openapi
 
 import (
-	"context"
+	_context "context"
 	"fmt"
 	"github.com/antihax/optional"
-	"io/ioutil"
-	"net/http"
-	"net/url"
+	_ioutil "io/ioutil"
+	_nethttp "net/http"
+	_neturl "net/url"
 	"strings"
 )
 
 // Linger please
 var (
-	_ context.Context
+	_ _context.Context
 )
 
 type ReceiversApiService service
 
 /*
 ReceiversApiService Create a new Receiver object
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param createReceiver
  * @param optional nil or *AddReceiversOpts - Optional Parameters:
  * @param "XIdempotencyKey" (optional.String) -  Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests.
@@ -42,9 +42,9 @@ type AddReceiversOpts struct {
 	XRequestID      optional.String
 }
 
-func (a *ReceiversApiService) AddReceivers(ctx context.Context, createReceiver CreateReceiver, localVarOptionals *AddReceiversOpts) (Receiver, *http.Response, error) {
+func (a *ReceiversApiService) AddReceivers(ctx _context.Context, createReceiver CreateReceiver, localVarOptionals *AddReceiversOpts) (Receiver, *_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodPost
+		localVarHttpMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -56,8 +56,8 @@ func (a *ReceiversApiService) AddReceivers(ctx context.Context, createReceiver C
 	localVarPath := a.client.cfg.BasePath + "/v1/ach/receivers"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{"application/json"}
@@ -106,7 +106,7 @@ func (a *ReceiversApiService) AddReceivers(ctx context.Context, createReceiver C
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -154,7 +154,7 @@ func (a *ReceiversApiService) AddReceivers(ctx context.Context, createReceiver C
 
 /*
 ReceiversApiService Permanently deletes a receiver and associated depositories and transfers. It cannot be undone. Immediately cancels any active Transfers for the receiver.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param receiverID Receiver ID
  * @param optional nil or *DeleteReceiverOpts - Optional Parameters:
  * @param "Authorization" (optional.String) -  OAuth2 Bearer token
@@ -166,9 +166,9 @@ type DeleteReceiverOpts struct {
 	XRequestID    optional.String
 }
 
-func (a *ReceiversApiService) DeleteReceiver(ctx context.Context, receiverID string, localVarOptionals *DeleteReceiverOpts) (*http.Response, error) {
+func (a *ReceiversApiService) DeleteReceiver(ctx _context.Context, receiverID string, localVarOptionals *DeleteReceiverOpts) (*_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodDelete
+		localVarHttpMethod   = _nethttp.MethodDelete
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -177,11 +177,11 @@ func (a *ReceiversApiService) DeleteReceiver(ctx context.Context, receiverID str
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/v1/ach/receivers/{receiverID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"receiverID"+"}", fmt.Sprintf("%v", receiverID), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"receiverID"+"}", _neturl.QueryEscape(fmt.Sprintf("%v", receiverID)), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
@@ -228,7 +228,7 @@ func (a *ReceiversApiService) DeleteReceiver(ctx context.Context, receiverID str
 		return localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarHttpResponse, err
@@ -247,7 +247,7 @@ func (a *ReceiversApiService) DeleteReceiver(ctx context.Context, receiverID str
 
 /*
 ReceiversApiService Get a Depository accounts for a Receiver based on it's ID
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param receiverID Receiver ID
  * @param depositoryID Depository ID
  * @param optional nil or *GetDepositoriesByIDOpts - Optional Parameters:
@@ -263,9 +263,9 @@ type GetDepositoriesByIDOpts struct {
 	XRequestID optional.String
 }
 
-func (a *ReceiversApiService) GetDepositoriesByID(ctx context.Context, receiverID string, depositoryID string, localVarOptionals *GetDepositoriesByIDOpts) (Depository, *http.Response, error) {
+func (a *ReceiversApiService) GetDepositoriesByID(ctx _context.Context, receiverID string, depositoryID string, localVarOptionals *GetDepositoriesByIDOpts) (Depository, *_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodGet
+		localVarHttpMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -275,12 +275,12 @@ func (a *ReceiversApiService) GetDepositoriesByID(ctx context.Context, receiverI
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/v1/ach/receivers/{receiverID}/depositories/{depositoryID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"receiverID"+"}", fmt.Sprintf("%v", receiverID), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"depositoryID"+"}", fmt.Sprintf("%v", depositoryID), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"receiverID"+"}", _neturl.QueryEscape(fmt.Sprintf("%v", receiverID)), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"depositoryID"+"}", _neturl.QueryEscape(fmt.Sprintf("%v", depositoryID)), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	if localVarOptionals != nil && localVarOptionals.Offset.IsSet() {
 		localVarQueryParams.Add("offset", parameterToString(localVarOptionals.Offset.Value(), ""))
@@ -330,7 +330,7 @@ func (a *ReceiversApiService) GetDepositoriesByID(ctx context.Context, receiverI
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -368,7 +368,7 @@ func (a *ReceiversApiService) GetDepositoriesByID(ctx context.Context, receiverI
 
 /*
 ReceiversApiService Get a list of Depository accounts for a Receiver
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param receiverID Receiver ID
  * @param optional nil or *GetDepositoriesByReceiverIDOpts - Optional Parameters:
  * @param "Offset" (optional.Int32) -  The number of items to skip before starting to collect the result set
@@ -383,9 +383,9 @@ type GetDepositoriesByReceiverIDOpts struct {
 	XRequestID optional.String
 }
 
-func (a *ReceiversApiService) GetDepositoriesByReceiverID(ctx context.Context, receiverID string, localVarOptionals *GetDepositoriesByReceiverIDOpts) ([]Depository, *http.Response, error) {
+func (a *ReceiversApiService) GetDepositoriesByReceiverID(ctx _context.Context, receiverID string, localVarOptionals *GetDepositoriesByReceiverIDOpts) ([]Depository, *_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodGet
+		localVarHttpMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -395,11 +395,11 @@ func (a *ReceiversApiService) GetDepositoriesByReceiverID(ctx context.Context, r
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/v1/ach/receivers/{receiverID}/depositories"
-	localVarPath = strings.Replace(localVarPath, "{"+"receiverID"+"}", fmt.Sprintf("%v", receiverID), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"receiverID"+"}", _neturl.QueryEscape(fmt.Sprintf("%v", receiverID)), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	if localVarOptionals != nil && localVarOptionals.Offset.IsSet() {
 		localVarQueryParams.Add("offset", parameterToString(localVarOptionals.Offset.Value(), ""))
@@ -449,7 +449,7 @@ func (a *ReceiversApiService) GetDepositoriesByReceiverID(ctx context.Context, r
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -487,7 +487,7 @@ func (a *ReceiversApiService) GetDepositoriesByReceiverID(ctx context.Context, r
 
 /*
 ReceiversApiService Get a Receiver by ID
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param receiverID Receiver ID
  * @param optional nil or *GetReceiverByIDOpts - Optional Parameters:
  * @param "Offset" (optional.Int32) -  The number of items to skip before starting to collect the result set
@@ -502,9 +502,9 @@ type GetReceiverByIDOpts struct {
 	XRequestID optional.String
 }
 
-func (a *ReceiversApiService) GetReceiverByID(ctx context.Context, receiverID string, localVarOptionals *GetReceiverByIDOpts) (Receiver, *http.Response, error) {
+func (a *ReceiversApiService) GetReceiverByID(ctx _context.Context, receiverID string, localVarOptionals *GetReceiverByIDOpts) (Receiver, *_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodGet
+		localVarHttpMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -514,11 +514,11 @@ func (a *ReceiversApiService) GetReceiverByID(ctx context.Context, receiverID st
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/v1/ach/receivers/{receiverID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"receiverID"+"}", fmt.Sprintf("%v", receiverID), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"receiverID"+"}", _neturl.QueryEscape(fmt.Sprintf("%v", receiverID)), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	if localVarOptionals != nil && localVarOptionals.Offset.IsSet() {
 		localVarQueryParams.Add("offset", parameterToString(localVarOptionals.Offset.Value(), ""))
@@ -568,7 +568,7 @@ func (a *ReceiversApiService) GetReceiverByID(ctx context.Context, receiverID st
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -606,7 +606,7 @@ func (a *ReceiversApiService) GetReceiverByID(ctx context.Context, receiverID st
 
 /*
 ReceiversApiService Gets a list of Receivers
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *GetReceiversOpts - Optional Parameters:
  * @param "Offset" (optional.Int32) -  The number of items to skip before starting to collect the result set
  * @param "Limit" (optional.Int32) -  The number of items to return
@@ -620,9 +620,9 @@ type GetReceiversOpts struct {
 	XRequestID optional.String
 }
 
-func (a *ReceiversApiService) GetReceivers(ctx context.Context, localVarOptionals *GetReceiversOpts) ([]Receiver, *http.Response, error) {
+func (a *ReceiversApiService) GetReceivers(ctx _context.Context, localVarOptionals *GetReceiversOpts) ([]Receiver, *_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodGet
+		localVarHttpMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -634,8 +634,8 @@ func (a *ReceiversApiService) GetReceivers(ctx context.Context, localVarOptional
 	localVarPath := a.client.cfg.BasePath + "/v1/ach/receivers"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	if localVarOptionals != nil && localVarOptionals.Offset.IsSet() {
 		localVarQueryParams.Add("offset", parameterToString(localVarOptionals.Offset.Value(), ""))
@@ -685,7 +685,7 @@ func (a *ReceiversApiService) GetReceivers(ctx context.Context, localVarOptional
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -723,7 +723,7 @@ func (a *ReceiversApiService) GetReceivers(ctx context.Context, localVarOptional
 
 /*
 ReceiversApiService Updates the specified Receiver by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param receiverID Receiver ID
  * @param createReceiver
  * @param optional nil or *UpdateReceiverOpts - Optional Parameters:
@@ -737,9 +737,9 @@ type UpdateReceiverOpts struct {
 	XRequestID      optional.String
 }
 
-func (a *ReceiversApiService) UpdateReceiver(ctx context.Context, receiverID string, createReceiver CreateReceiver, localVarOptionals *UpdateReceiverOpts) (Receiver, *http.Response, error) {
+func (a *ReceiversApiService) UpdateReceiver(ctx _context.Context, receiverID string, createReceiver CreateReceiver, localVarOptionals *UpdateReceiverOpts) (Receiver, *_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodPatch
+		localVarHttpMethod   = _nethttp.MethodPatch
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -749,11 +749,11 @@ func (a *ReceiversApiService) UpdateReceiver(ctx context.Context, receiverID str
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/v1/ach/receivers/{receiverID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"receiverID"+"}", fmt.Sprintf("%v", receiverID), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"receiverID"+"}", _neturl.QueryEscape(fmt.Sprintf("%v", receiverID)), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{"application/json"}
@@ -802,7 +802,7 @@ func (a *ReceiversApiService) UpdateReceiver(ctx context.Context, receiverID str
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err

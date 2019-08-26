@@ -11,25 +11,25 @@
 package openapi
 
 import (
-	"context"
+	_context "context"
 	"fmt"
 	"github.com/antihax/optional"
-	"io/ioutil"
-	"net/http"
-	"net/url"
+	_ioutil "io/ioutil"
+	_nethttp "net/http"
+	_neturl "net/url"
 	"strings"
 )
 
 // Linger please
 var (
-	_ context.Context
+	_ _context.Context
 )
 
 type UserApiService service
 
 /*
 UserApiService Check if a cookie is valid and authentic for a user.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *CheckUserLoginOpts - Optional Parameters:
  * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
 */
@@ -38,9 +38,9 @@ type CheckUserLoginOpts struct {
 	XRequestID optional.String
 }
 
-func (a *UserApiService) CheckUserLogin(ctx context.Context, localVarOptionals *CheckUserLoginOpts) (*http.Response, error) {
+func (a *UserApiService) CheckUserLogin(ctx _context.Context, localVarOptionals *CheckUserLoginOpts) (*_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodGet
+		localVarHttpMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -51,8 +51,8 @@ func (a *UserApiService) CheckUserLogin(ctx context.Context, localVarOptionals *
 	localVarPath := a.client.cfg.BasePath + "/v1/users/login"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
@@ -96,7 +96,7 @@ func (a *UserApiService) CheckUserLogin(ctx context.Context, localVarOptionals *
 		return localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarHttpResponse, err
@@ -115,7 +115,7 @@ func (a *UserApiService) CheckUserLogin(ctx context.Context, localVarOptionals *
 
 /*
 UserApiService Create a new user using an email address not seen before.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param createUser
  * @param optional nil or *CreateUserOpts - Optional Parameters:
  * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
@@ -128,9 +128,9 @@ type CreateUserOpts struct {
 	XIdempotencyKey optional.String
 }
 
-func (a *UserApiService) CreateUser(ctx context.Context, createUser CreateUser, localVarOptionals *CreateUserOpts) (User, *http.Response, error) {
+func (a *UserApiService) CreateUser(ctx _context.Context, createUser CreateUser, localVarOptionals *CreateUserOpts) (User, *_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodPost
+		localVarHttpMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -142,8 +142,8 @@ func (a *UserApiService) CreateUser(ctx context.Context, createUser CreateUser, 
 	localVarPath := a.client.cfg.BasePath + "/v1/users/create"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{"application/json"}
@@ -180,7 +180,7 @@ func (a *UserApiService) CreateUser(ctx context.Context, createUser CreateUser, 
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -228,7 +228,7 @@ func (a *UserApiService) CreateUser(ctx context.Context, createUser CreateUser, 
 
 /*
 UserApiService Update a User's profile information
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param userID Moov API User ID
  * @param userProfile User profile information
  * @param optional nil or *UpdateUserProfileOpts - Optional Parameters:
@@ -241,9 +241,9 @@ type UpdateUserProfileOpts struct {
 	XRequestID      optional.String
 }
 
-func (a *UserApiService) UpdateUserProfile(ctx context.Context, userID string, userProfile UserProfile, localVarOptionals *UpdateUserProfileOpts) (*http.Response, error) {
+func (a *UserApiService) UpdateUserProfile(ctx _context.Context, userID string, userProfile UserProfile, localVarOptionals *UpdateUserProfileOpts) (*_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodPatch
+		localVarHttpMethod   = _nethttp.MethodPatch
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -252,11 +252,11 @@ func (a *UserApiService) UpdateUserProfile(ctx context.Context, userID string, u
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/v1/users/{userID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", fmt.Sprintf("%v", userID), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", _neturl.QueryEscape(fmt.Sprintf("%v", userID)), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{"application/json"}
@@ -305,7 +305,7 @@ func (a *UserApiService) UpdateUserProfile(ctx context.Context, userID string, u
 		return localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarHttpResponse, err
@@ -334,7 +334,7 @@ func (a *UserApiService) UpdateUserProfile(ctx context.Context, userID string, u
 
 /*
 UserApiService Attempt to login with an email and password
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param login Authenticating with an email and password
  * @param optional nil or *UserLoginOpts - Optional Parameters:
  * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
@@ -347,9 +347,9 @@ type UserLoginOpts struct {
 	XIdempotencyKey optional.String
 }
 
-func (a *UserApiService) UserLogin(ctx context.Context, login Login, localVarOptionals *UserLoginOpts) (User, *http.Response, error) {
+func (a *UserApiService) UserLogin(ctx _context.Context, login Login, localVarOptionals *UserLoginOpts) (User, *_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodPost
+		localVarHttpMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -361,8 +361,8 @@ func (a *UserApiService) UserLogin(ctx context.Context, login Login, localVarOpt
 	localVarPath := a.client.cfg.BasePath + "/v1/users/login"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{"application/json"}
@@ -399,7 +399,7 @@ func (a *UserApiService) UserLogin(ctx context.Context, login Login, localVarOpt
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -447,7 +447,7 @@ func (a *UserApiService) UserLogin(ctx context.Context, login Login, localVarOpt
 
 /*
 UserApiService Invalidat a user's cookie(s).
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *UserLogoutOpts - Optional Parameters:
  * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
 */
@@ -456,9 +456,9 @@ type UserLogoutOpts struct {
 	XRequestID optional.String
 }
 
-func (a *UserApiService) UserLogout(ctx context.Context, localVarOptionals *UserLogoutOpts) (*http.Response, error) {
+func (a *UserApiService) UserLogout(ctx _context.Context, localVarOptionals *UserLogoutOpts) (*_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodDelete
+		localVarHttpMethod   = _nethttp.MethodDelete
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -469,8 +469,8 @@ func (a *UserApiService) UserLogout(ctx context.Context, localVarOptionals *User
 	localVarPath := a.client.cfg.BasePath + "/v1/users/login"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
@@ -514,7 +514,7 @@ func (a *UserApiService) UserLogout(ctx context.Context, localVarOptionals *User
 		return localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarHttpResponse, err

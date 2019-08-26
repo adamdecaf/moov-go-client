@@ -11,23 +11,23 @@
 package openapi
 
 import (
-	"context"
+	_context "context"
 	"github.com/antihax/optional"
-	"io/ioutil"
-	"net/http"
-	"net/url"
+	_ioutil "io/ioutil"
+	_nethttp "net/http"
+	_neturl "net/url"
 )
 
 // Linger please
 var (
-	_ context.Context
+	_ _context.Context
 )
 
 type OAuth2ApiService service
 
 /*
 OAuth2ApiService Verify OAuth2 Bearer token
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param authorization <ignored>
  * @param optional nil or *CheckOAuthClientCredentialsOpts - Optional Parameters:
  * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
@@ -37,9 +37,9 @@ type CheckOAuthClientCredentialsOpts struct {
 	XRequestID optional.String
 }
 
-func (a *OAuth2ApiService) CheckOAuthClientCredentials(ctx context.Context, authorization string, localVarOptionals *CheckOAuthClientCredentialsOpts) (*http.Response, error) {
+func (a *OAuth2ApiService) CheckOAuthClientCredentials(ctx _context.Context, authorization string, localVarOptionals *CheckOAuthClientCredentialsOpts) (*_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodGet
+		localVarHttpMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -50,8 +50,8 @@ func (a *OAuth2ApiService) CheckOAuthClientCredentials(ctx context.Context, auth
 	localVarPath := a.client.cfg.BasePath + "/v1/oauth2/authorize"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
@@ -84,7 +84,7 @@ func (a *OAuth2ApiService) CheckOAuthClientCredentials(ctx context.Context, auth
 		return localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarHttpResponse, err
@@ -113,7 +113,7 @@ func (a *OAuth2ApiService) CheckOAuthClientCredentials(ctx context.Context, auth
 
 /*
 OAuth2ApiService Create OAuth2 client credentials
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *CreateOAuth2ClientOpts - Optional Parameters:
  * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
  * @param "XIdempotencyKey" (optional.String) -  Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests.
@@ -125,9 +125,9 @@ type CreateOAuth2ClientOpts struct {
 	XIdempotencyKey optional.String
 }
 
-func (a *OAuth2ApiService) CreateOAuth2Client(ctx context.Context, localVarOptionals *CreateOAuth2ClientOpts) ([]OAuth2Client, *http.Response, error) {
+func (a *OAuth2ApiService) CreateOAuth2Client(ctx _context.Context, localVarOptionals *CreateOAuth2ClientOpts) ([]OAuth2Client, *_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodPost
+		localVarHttpMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -139,8 +139,8 @@ func (a *OAuth2ApiService) CreateOAuth2Client(ctx context.Context, localVarOptio
 	localVarPath := a.client.cfg.BasePath + "/v1/oauth2/client"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
@@ -187,7 +187,7 @@ func (a *OAuth2ApiService) CreateOAuth2Client(ctx context.Context, localVarOptio
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -235,7 +235,7 @@ func (a *OAuth2ApiService) CreateOAuth2Client(ctx context.Context, localVarOptio
 
 /*
 OAuth2ApiService Generate OAuth2 access token
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *CreateOAuth2TokenOpts - Optional Parameters:
  * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
  * @param "XIdempotencyKey" (optional.String) -  Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests.
@@ -253,9 +253,9 @@ type CreateOAuth2TokenOpts struct {
 	ClientSecret    optional.String
 }
 
-func (a *OAuth2ApiService) CreateOAuth2Token(ctx context.Context, localVarOptionals *CreateOAuth2TokenOpts) (OAuth2Token, *http.Response, error) {
+func (a *OAuth2ApiService) CreateOAuth2Token(ctx _context.Context, localVarOptionals *CreateOAuth2TokenOpts) (OAuth2Token, *_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodPost
+		localVarHttpMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -267,8 +267,8 @@ func (a *OAuth2ApiService) CreateOAuth2Token(ctx context.Context, localVarOption
 	localVarPath := a.client.cfg.BasePath + "/v1/oauth2/token"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	if localVarOptionals != nil && localVarOptionals.GrantType.IsSet() {
 		localVarQueryParams.Add("grant_type", parameterToString(localVarOptionals.GrantType.Value(), ""))
@@ -312,7 +312,7 @@ func (a *OAuth2ApiService) CreateOAuth2Token(ctx context.Context, localVarOption
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -360,7 +360,7 @@ func (a *OAuth2ApiService) CreateOAuth2Token(ctx context.Context, localVarOption
 
 /*
 OAuth2ApiService List OAuth2 clients for the authenticated user
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *GetClientsForUserIdOpts - Optional Parameters:
  * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
  * @param "XIdempotencyKey" (optional.String) -  Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests.
@@ -372,9 +372,9 @@ type GetClientsForUserIdOpts struct {
 	XIdempotencyKey optional.String
 }
 
-func (a *OAuth2ApiService) GetClientsForUserId(ctx context.Context, localVarOptionals *GetClientsForUserIdOpts) ([]OAuth2Client, *http.Response, error) {
+func (a *OAuth2ApiService) GetClientsForUserId(ctx _context.Context, localVarOptionals *GetClientsForUserIdOpts) ([]OAuth2Client, *_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodGet
+		localVarHttpMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -386,8 +386,8 @@ func (a *OAuth2ApiService) GetClientsForUserId(ctx context.Context, localVarOpti
 	localVarPath := a.client.cfg.BasePath + "/v1/oauth2/clients"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
@@ -434,7 +434,7 @@ func (a *OAuth2ApiService) GetClientsForUserId(ctx context.Context, localVarOpti
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err

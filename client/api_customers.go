@@ -11,26 +11,26 @@
 package openapi
 
 import (
-	"context"
+	_context "context"
 	"fmt"
 	"github.com/antihax/optional"
-	"io/ioutil"
-	"net/http"
-	"net/url"
+	_ioutil "io/ioutil"
+	_nethttp "net/http"
+	_neturl "net/url"
 	"os"
 	"strings"
 )
 
 // Linger please
 var (
-	_ context.Context
+	_ _context.Context
 )
 
 type CustomersApiService service
 
 /*
 CustomersApiService Create a new customer
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param createCustomer
  * @param optional nil or *CreateCustomerOpts - Optional Parameters:
  * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
@@ -43,9 +43,9 @@ type CreateCustomerOpts struct {
 	XUserID    optional.String
 }
 
-func (a *CustomersApiService) CreateCustomer(ctx context.Context, createCustomer CreateCustomer, localVarOptionals *CreateCustomerOpts) (Customer, *http.Response, error) {
+func (a *CustomersApiService) CreateCustomer(ctx _context.Context, createCustomer CreateCustomer, localVarOptionals *CreateCustomerOpts) (Customer, *_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodPost
+		localVarHttpMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -57,8 +57,8 @@ func (a *CustomersApiService) CreateCustomer(ctx context.Context, createCustomer
 	localVarPath := a.client.cfg.BasePath + "/v1/customers"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{"application/json"}
@@ -95,7 +95,7 @@ func (a *CustomersApiService) CreateCustomer(ctx context.Context, createCustomer
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -143,7 +143,7 @@ func (a *CustomersApiService) CreateCustomer(ctx context.Context, createCustomer
 
 /*
 CustomersApiService Retrieves a Customer object associated with the customer ID.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param customerID Customer ID
  * @param optional nil or *GetCustomerOpts - Optional Parameters:
  * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
@@ -156,9 +156,9 @@ type GetCustomerOpts struct {
 	XUserID    optional.String
 }
 
-func (a *CustomersApiService) GetCustomer(ctx context.Context, customerID string, localVarOptionals *GetCustomerOpts) (Customer, *http.Response, error) {
+func (a *CustomersApiService) GetCustomer(ctx _context.Context, customerID string, localVarOptionals *GetCustomerOpts) (Customer, *_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodGet
+		localVarHttpMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -168,11 +168,11 @@ func (a *CustomersApiService) GetCustomer(ctx context.Context, customerID string
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/v1/customers/{customerID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"customerID"+"}", fmt.Sprintf("%v", customerID), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"customerID"+"}", _neturl.QueryEscape(fmt.Sprintf("%v", customerID)), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
@@ -207,7 +207,7 @@ func (a *CustomersApiService) GetCustomer(ctx context.Context, customerID string
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -245,7 +245,7 @@ func (a *CustomersApiService) GetCustomer(ctx context.Context, customerID string
 
 /*
 CustomersApiService Retrieve the referenced document
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param customerID Customer ID
  * @param documentID Document ID
  * @param optional nil or *GetCustomerDocumentContentsOpts - Optional Parameters:
@@ -259,9 +259,9 @@ type GetCustomerDocumentContentsOpts struct {
 	XUserID    optional.String
 }
 
-func (a *CustomersApiService) GetCustomerDocumentContents(ctx context.Context, customerID string, documentID string, localVarOptionals *GetCustomerDocumentContentsOpts) (*os.File, *http.Response, error) {
+func (a *CustomersApiService) GetCustomerDocumentContents(ctx _context.Context, customerID string, documentID string, localVarOptionals *GetCustomerDocumentContentsOpts) (*os.File, *_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodGet
+		localVarHttpMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -271,12 +271,12 @@ func (a *CustomersApiService) GetCustomerDocumentContents(ctx context.Context, c
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/v1/customers/{customerID}/documents/{documentID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"customerID"+"}", fmt.Sprintf("%v", customerID), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"documentID"+"}", fmt.Sprintf("%v", documentID), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"customerID"+"}", _neturl.QueryEscape(fmt.Sprintf("%v", customerID)), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"documentID"+"}", _neturl.QueryEscape(fmt.Sprintf("%v", documentID)), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
@@ -311,7 +311,7 @@ func (a *CustomersApiService) GetCustomerDocumentContents(ctx context.Context, c
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -349,7 +349,7 @@ func (a *CustomersApiService) GetCustomerDocumentContents(ctx context.Context, c
 
 /*
 CustomersApiService Get documents for a customer
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param customerID Customer ID
  * @param optional nil or *GetCustomerDocumentsOpts - Optional Parameters:
  * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
@@ -362,9 +362,9 @@ type GetCustomerDocumentsOpts struct {
 	XUserID    optional.String
 }
 
-func (a *CustomersApiService) GetCustomerDocuments(ctx context.Context, customerID string, localVarOptionals *GetCustomerDocumentsOpts) ([]Document, *http.Response, error) {
+func (a *CustomersApiService) GetCustomerDocuments(ctx _context.Context, customerID string, localVarOptionals *GetCustomerDocumentsOpts) ([]Document, *_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodGet
+		localVarHttpMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -374,11 +374,11 @@ func (a *CustomersApiService) GetCustomerDocuments(ctx context.Context, customer
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/v1/customers/{customerID}/documents"
-	localVarPath = strings.Replace(localVarPath, "{"+"customerID"+"}", fmt.Sprintf("%v", customerID), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"customerID"+"}", _neturl.QueryEscape(fmt.Sprintf("%v", customerID)), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
@@ -413,7 +413,7 @@ func (a *CustomersApiService) GetCustomerDocuments(ctx context.Context, customer
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
@@ -451,7 +451,7 @@ func (a *CustomersApiService) GetCustomerDocuments(ctx context.Context, customer
 
 /*
 CustomersApiService Upload a document for the given customer.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param customerID Customer ID
  * @param type_ Document type (see Document type for values)
  * @param file Document to be uploaded
@@ -466,9 +466,9 @@ type UploadCustomerDocumentOpts struct {
 	XUserID    optional.String
 }
 
-func (a *CustomersApiService) UploadCustomerDocument(ctx context.Context, customerID string, type_ string, file *os.File, localVarOptionals *UploadCustomerDocumentOpts) (Document, *http.Response, error) {
+func (a *CustomersApiService) UploadCustomerDocument(ctx _context.Context, customerID string, type_ string, file *os.File, localVarOptionals *UploadCustomerDocumentOpts) (Document, *_nethttp.Response, error) {
 	var (
-		localVarHttpMethod   = http.MethodPost
+		localVarHttpMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -478,11 +478,11 @@ func (a *CustomersApiService) UploadCustomerDocument(ctx context.Context, custom
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/v1/customers/{customerID}/documents"
-	localVarPath = strings.Replace(localVarPath, "{"+"customerID"+"}", fmt.Sprintf("%v", customerID), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"customerID"+"}", _neturl.QueryEscape(fmt.Sprintf("%v", customerID)), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	localVarQueryParams.Add("type", parameterToString(type_, ""))
 	// to determine the Content-Type header
@@ -511,7 +511,7 @@ func (a *CustomersApiService) UploadCustomerDocument(ctx context.Context, custom
 	localVarFormFileName = "file"
 	localVarFile := file
 	if localVarFile != nil {
-		fbs, _ := ioutil.ReadAll(localVarFile)
+		fbs, _ := _ioutil.ReadAll(localVarFile)
 		localVarFileBytes = fbs
 		localVarFileName = localVarFile.Name()
 		localVarFile.Close()
@@ -526,7 +526,7 @@ func (a *CustomersApiService) UploadCustomerDocument(ctx context.Context, custom
 		return localVarReturnValue, localVarHttpResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
