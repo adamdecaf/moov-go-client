@@ -10,7 +10,7 @@
 
 package openapi
 
-// OFAC Company and metadata
+// OfacCompany OFAC Company and metadata
 type OfacCompany struct {
 	// OFAC Company ID
 	ID        string            `json:"ID,omitempty"`

@@ -10,6 +10,7 @@
 
 package openapi
 
+// CreateReceiver struct for CreateReceiver
 type CreateReceiver struct {
 	// The receivers email address
 	Email string `json:"email"`

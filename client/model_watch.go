@@ -10,7 +10,7 @@
 
 package openapi
 
-// Customer or Company watch
+// Watch Customer or Company watch
 type Watch struct {
 	// Object representing a customer or company watch
 	WatchID string `json:"watchID,omitempty"`
