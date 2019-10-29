@@ -10,38 +10,12 @@
 
 package openapi
 
-import (
-	"time"
-)
-
-// Transfer struct for Transfer
-type Transfer struct {
-	// Optional ID to uniquely identify this transfer. If omitted, one will be generated
-	ID string `json:"ID,omitempty"`
-	// Type of transaction being actioned against the receiving institution. Expected values are pull (debits) or push (credits). Only one period used to signify decimal value will be included.
-	TransferType string `json:"transferType,omitempty"`
-	// Amount of money. USD - United States.
-	Amount string `json:"amount"`
-	// ID of the Originator account initiating the transfer.
-	Originator string `json:"originator"`
-	// ID of the Originator Depository to be be used to override the default depository.
-	OriginatorDepository string `json:"originatorDepository,omitempty"`
-	// ID of the Receiver account the transfer was sent to.
-	Receiver string `json:"receiver"`
-	// ID of the Receiver Depository to be used to override the default depository
-	ReceiverDepository string `json:"receiverDepository,omitempty"`
-	// Brief description of the transaction, that may appear on the receiving entity’s financial statement
-	Description string `json:"description"`
-	// Standard Entry Class code will be generated based on Receiver type for CCD and PPD
-	StandardEntryClassCode string `json:"standardEntryClassCode,omitempty"`
-	// Defines the state of the Transfer
-	Status string `json:"status,omitempty"`
-	// When set to true this indicates the transfer should be processed the same day if possible.
-	SameDay    bool       `json:"sameDay,omitempty"`
-	ReturnCode ReturnCode `json:"returnCode,omitempty"`
-	Created    time.Time  `json:"created,omitempty"`
-	CCDDetail  CcdDetail  `json:"CCDDetail,omitempty"`
-	IATDetail  IatDetail  `json:"IATDetail,omitempty"`
-	TELDetail  TelDetail  `json:"TELDetail,omitempty"`
-	WEBDetail  WebDetail  `json:"WEBDetail,omitempty"`
+// EntityAddress Physical address from OFAC list
+type EntityAddress struct {
+	EntityID                    string  `json:"entityID,omitempty"`
+	AddressID                   string  `json:"addressID,omitempty"`
+	Address                     string  `json:"address,omitempty"`
+	CityStateProvincePostalCode string  `json:"cityStateProvincePostalCode,omitempty"`
+	Country                     string  `json:"country,omitempty"`
+	Match                       float32 `json:"match,omitempty"`
 }
