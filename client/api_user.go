@@ -325,7 +325,6 @@ func (a *UserApiService) UpdateUserProfile(ctx _context.Context, userID string, 
 				return localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
 		}
 		return localVarHTTPResponse, newErr
 	}

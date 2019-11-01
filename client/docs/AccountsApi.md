@@ -14,6 +14,7 @@ Method | HTTP request | Description
 ## CreateAccount
 
 > Account CreateAccount(ctx, xUserID, createAccount, optional)
+
 Create a new account for a Customer
 
 ### Required Parameters
@@ -58,6 +59,7 @@ No authorization required
 ## CreateTransaction
 
 > Transaction CreateTransaction(ctx, xUserID, createTransaction, optional)
+
 Post a transaction against multiple accounts. All transaction lines must sum to zero. No money is created or destroyed in a transaction - only moved from account to account. Accounts can be referred to in a Transaction without creating them first.
 
 ### Required Parameters
@@ -102,6 +104,7 @@ No authorization required
 ## GetAccountTransactions
 
 > []Transaction GetAccountTransactions(ctx, accountID, xUserID, optional)
+
 Get transactions for an account. Ordered descending from their posted date.
 
 ### Required Parameters
@@ -147,6 +150,7 @@ No authorization required
 ## SearchAccounts
 
 > []Account SearchAccounts(ctx, xUserID, optional)
+
 Search for account which matches all query parameters
 
 ### Required Parameters

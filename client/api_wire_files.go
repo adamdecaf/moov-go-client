@@ -136,7 +136,6 @@ func (a *WireFilesApiService) CreateWireFile(ctx _context.Context, createFile2 C
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -442,7 +441,6 @@ func (a *WireFilesApiService) GetWireFileContents(ctx _context.Context, fileID s
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -549,7 +547,6 @@ func (a *WireFilesApiService) GetWireFiles(ctx _context.Context, localVarOptiona
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -676,7 +673,6 @@ func (a *WireFilesApiService) UpdateWireFileByID(ctx _context.Context, fileID st
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

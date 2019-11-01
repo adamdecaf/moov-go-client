@@ -104,7 +104,6 @@ func (a *OAuth2ApiService) CheckOAuthClientCredentials(ctx _context.Context, aut
 				return localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -217,7 +216,6 @@ func (a *OAuth2ApiService) CreateOAuth2Client(ctx _context.Context, localVarOpti
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -342,7 +340,6 @@ func (a *OAuth2ApiService) CreateOAuth2Token(ctx _context.Context, localVarOptio
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -464,7 +461,6 @@ func (a *OAuth2ApiService) GetClientsForUserId(ctx _context.Context, localVarOpt
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

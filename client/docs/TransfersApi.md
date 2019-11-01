@@ -18,6 +18,7 @@ Method | HTTP request | Description
 ## AddTransfer
 
 > Transfer AddTransfer(ctx, xUserID, createTransfer, optional)
+
 Create a new transfer between an Originator and a Receiver. Transfers cannot be modified. Instead delete the old and create a new transfer.
 
 ### Required Parameters
@@ -63,6 +64,7 @@ Name | Type | Description  | Notes
 ## AddTransfers
 
 > []Transfer AddTransfers(ctx, xUserID, createTransfer, optional)
+
 Create a new list of transfer, validate, build, and process. Transfers cannot be modified.
 
 ### Required Parameters
@@ -108,6 +110,7 @@ Name | Type | Description  | Notes
 ## DeleteTransferByID
 
 > DeleteTransferByID(ctx, transferID, xUserID, optional)
+
 It is possible to recall (delete) a transfer before it has been released from the financial institution.
 
 ### Required Parameters
@@ -152,6 +155,7 @@ Name | Type | Description  | Notes
 ## GetTransferByID
 
 > Transfer GetTransferByID(ctx, transferID, xUserID, optional)
+
 Get a Transfer object for the supplied ID
 
 ### Required Parameters
@@ -198,6 +202,7 @@ Name | Type | Description  | Notes
 ## GetTransferEventsByID
 
 > []Event GetTransferEventsByID(ctx, transferID, xUserID, optional)
+
 Get all Events associated with the Transfer object's for the supplied ID
 
 ### Required Parameters
@@ -244,6 +249,7 @@ Name | Type | Description  | Notes
 ## GetTransferFiles
 
 > []File GetTransferFiles(ctx, transferID, xUserID, optional)
+
 Get the ACH files to be used in this transfer.
 
 ### Required Parameters
@@ -289,6 +295,7 @@ Name | Type | Description  | Notes
 ## GetTransferNachaCode
 
 > GetTransferNachaCode(ctx, transferID, xUserID, optional)
+
 Get the NACHA return code and description
 
 ### Required Parameters
@@ -334,6 +341,7 @@ Name | Type | Description  | Notes
 ## GetTransfers
 
 > []Transfer GetTransfers(ctx, xUserID, optional)
+
 A list of all Transfer objects
 
 ### Required Parameters

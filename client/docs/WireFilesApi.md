@@ -17,6 +17,7 @@ Method | HTTP request | Description
 ## CreateWireFile
 
 > File2 CreateWireFile(ctx, createFile2, optional)
+
 Create a new File object
 
 ### Required Parameters
@@ -60,6 +61,7 @@ Name | Type | Description  | Notes
 ## DeleteWireFileByID
 
 > DeleteWireFileByID(ctx, fileID, optional)
+
 Permanently deletes a File and associated FEDWireMessage. It cannot be undone.
 
 ### Required Parameters
@@ -102,6 +104,7 @@ Name | Type | Description  | Notes
 ## GetWireFileByID
 
 > File2 GetWireFileByID(ctx, fileID, optional)
+
 Retrieves the details of an existing File. You need only supply the unique File identifier that was returned upon creation.
 
 ### Required Parameters
@@ -144,6 +147,7 @@ Name | Type | Description  | Notes
 ## GetWireFileContents
 
 > string GetWireFileContents(ctx, fileID, optional)
+
 Assembles the existing file witha FEDWireMessage, Returns plaintext file.
 
 ### Required Parameters
@@ -186,6 +190,7 @@ Name | Type | Description  | Notes
 ## GetWireFiles
 
 > []File2 GetWireFiles(ctx, optional)
+
 Gets a list of Files
 
 ### Required Parameters
@@ -226,6 +231,7 @@ Name | Type | Description  | Notes
 ## UpdateWireFileByID
 
 > File2 UpdateWireFileByID(ctx, fileID, createFile2, optional)
+
 Updates the specified FEDWire Message by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
 
 ### Required Parameters
@@ -271,6 +277,7 @@ Name | Type | Description  | Notes
 ## ValidateWireFile
 
 > File2 ValidateWireFile(ctx, fileID, optional)
+
 Validates the existing file. You need only supply the unique File identifier that was returned upon creation.
 
 ### Required Parameters

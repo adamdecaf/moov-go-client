@@ -15,6 +15,7 @@ Method | HTTP request | Description
 ## CreateCustomer
 
 > Customer CreateCustomer(ctx, createCustomer, optional)
+
 Create a new customer
 
 ### Required Parameters
@@ -58,6 +59,7 @@ No authorization required
 ## GetCustomer
 
 > Customer GetCustomer(ctx, customerID, optional)
+
 Retrieves a Customer object associated with the customer ID.
 
 ### Required Parameters
@@ -101,6 +103,7 @@ No authorization required
 ## GetCustomerDocumentContents
 
 > *os.File GetCustomerDocumentContents(ctx, customerID, documentID, optional)
+
 Retrieve the referenced document
 
 ### Required Parameters
@@ -146,6 +149,7 @@ No authorization required
 ## GetCustomerDocuments
 
 > []Document GetCustomerDocuments(ctx, customerID, optional)
+
 Get documents for a customer
 
 ### Required Parameters
@@ -189,6 +193,7 @@ No authorization required
 ## UploadCustomerDocument
 
 > Document UploadCustomerDocument(ctx, customerID, type_, file, optional)
+
 Upload a document for the given customer.
 
 ### Required Parameters

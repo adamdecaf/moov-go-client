@@ -14,6 +14,7 @@ Method | HTTP request | Description
 ## CheckOAuthClientCredentials
 
 > CheckOAuthClientCredentials(ctx, authorization, optional)
+
 Verify OAuth2 Bearer token
 
 ### Required Parameters
@@ -56,6 +57,7 @@ Name | Type | Description  | Notes
 ## CreateOAuth2Client
 
 > []OAuth2Client CreateOAuth2Client(ctx, optional)
+
 Create OAuth2 client credentials
 
 ### Required Parameters
@@ -97,6 +99,7 @@ Name | Type | Description  | Notes
 ## CreateOAuth2Token
 
 > OAuth2Token CreateOAuth2Token(ctx, optional)
+
 Generate OAuth2 access token
 
 ### Required Parameters
@@ -141,6 +144,7 @@ Name | Type | Description  | Notes
 ## GetClientsForUserId
 
 > []OAuth2Client GetClientsForUserId(ctx, optional)
+
 List OAuth2 clients for the authenticated user
 
 ### Required Parameters

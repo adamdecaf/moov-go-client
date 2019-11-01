@@ -15,6 +15,7 @@ Method | HTTP request | Description
 ## CheckUserLogin
 
 > CheckUserLogin(ctx, optional)
+
 Check if a cookie is valid and authentic for a user.
 
 ### Required Parameters
@@ -55,6 +56,7 @@ Name | Type | Description  | Notes
 ## CreateUser
 
 > User CreateUser(ctx, createUser, optional)
+
 Create a new user using an email address not seen before.
 
 ### Required Parameters
@@ -98,6 +100,7 @@ No authorization required
 ## UpdateUserProfile
 
 > UpdateUserProfile(ctx, userID, userProfile, optional)
+
 Update a User's profile information
 
 ### Required Parameters
@@ -143,6 +146,7 @@ Name | Type | Description  | Notes
 ## UserLogin
 
 > User UserLogin(ctx, login, optional)
+
 Attempt to login with an email and password
 
 ### Required Parameters
@@ -186,6 +190,7 @@ No authorization required
 ## UserLogout
 
 > UserLogout(ctx, optional)
+
 Invalidat a user's cookie(s).
 
 ### Required Parameters

@@ -116,7 +116,6 @@ func (a *OFACApiService) AddOFACCompanyNameWatch(ctx _context.Context, name stri
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -326,7 +325,6 @@ func (a *OFACApiService) AddOFACCustomerNameWatch(ctx _context.Context, name str
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -536,7 +534,6 @@ func (a *OFACApiService) GetLatestDownloads(ctx _context.Context, localVarOption
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -638,7 +635,6 @@ func (a *OFACApiService) GetOFACCompany(ctx _context.Context, companyID string, 
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -740,7 +736,6 @@ func (a *OFACApiService) GetOFACCustomer(ctx _context.Context, customerID string
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -842,7 +837,6 @@ func (a *OFACApiService) GetSDN(ctx _context.Context, sdnID string, localVarOpti
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -944,7 +938,6 @@ func (a *OFACApiService) GetSDNAddresses(ctx _context.Context, sdnID string, loc
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1046,7 +1039,6 @@ func (a *OFACApiService) GetSDNAltNames(ctx _context.Context, sdnID string, loca
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1543,7 +1535,6 @@ func (a *OFACApiService) Search(ctx _context.Context, localVarOptionals *SearchO
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

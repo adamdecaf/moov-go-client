@@ -125,7 +125,6 @@ func (a *CustomersApiService) CreateCustomer(ctx _context.Context, createCustome
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -331,7 +330,6 @@ func (a *CustomersApiService) GetCustomerDocumentContents(ctx _context.Context, 
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -433,7 +431,6 @@ func (a *CustomersApiService) GetCustomerDocuments(ctx _context.Context, custome
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -556,7 +553,6 @@ func (a *CustomersApiService) UploadCustomerDocument(ctx _context.Context, custo
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

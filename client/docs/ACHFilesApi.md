@@ -22,6 +22,7 @@ Method | HTTP request | Description
 ## AddBatchToFile
 
 > AddBatchToFile(ctx, fileID, batch, optional)
+
 Add Batch to File
 
 ### Required Parameters
@@ -67,6 +68,7 @@ Name | Type | Description  | Notes
 ## CreateFile
 
 > File CreateFile(ctx, createFile, optional)
+
 Create a new File object
 
 ### Required Parameters
@@ -110,6 +112,7 @@ Name | Type | Description  | Notes
 ## DeleteACHFile
 
 > DeleteACHFile(ctx, fileID, optional)
+
 Permanently deletes a File and associated Batches. It cannot be undone.
 
 ### Required Parameters
@@ -152,6 +155,7 @@ Name | Type | Description  | Notes
 ## DeleteFileBatch
 
 > DeleteFileBatch(ctx, fileID, batchID, optional)
+
 Delete a Batch from a File
 
 ### Required Parameters
@@ -196,6 +200,7 @@ Name | Type | Description  | Notes
 ## GetFileBatch
 
 > Batch GetFileBatch(ctx, fileID, batchID, optional)
+
 Get a specific Batch on a FIle
 
 ### Required Parameters
@@ -240,6 +245,7 @@ Name | Type | Description  | Notes
 ## GetFileBatches
 
 > []Batch GetFileBatches(ctx, fileID, optional)
+
 Get the batches on a File.
 
 ### Required Parameters
@@ -282,6 +288,7 @@ Name | Type | Description  | Notes
 ## GetFileByID
 
 > File GetFileByID(ctx, fileID, optional)
+
 Retrieves the details of an existing File. You need only supply the unique File identifier that was returned upon creation.
 
 ### Required Parameters
@@ -324,6 +331,7 @@ Name | Type | Description  | Notes
 ## GetFileContents
 
 > string GetFileContents(ctx, fileID, optional)
+
 Assembles the existing file (batches and controls) records, computes sequence numbers and totals. Returns plaintext file.
 
 ### Required Parameters
@@ -366,6 +374,7 @@ Name | Type | Description  | Notes
 ## GetFiles
 
 > []File GetFiles(ctx, optional)
+
 Gets a list of Files
 
 ### Required Parameters
@@ -406,6 +415,7 @@ Name | Type | Description  | Notes
 ## SegmentFile
 
 > File SegmentFile(ctx, fileID, createFile, optional)
+
 Create a new file object
 
 ### Required Parameters
@@ -451,6 +461,7 @@ Name | Type | Description  | Notes
 ## UpdateFile
 
 > File UpdateFile(ctx, fileID, createFile, optional)
+
 Updates the specified File Header by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
 
 ### Required Parameters
@@ -496,6 +507,7 @@ Name | Type | Description  | Notes
 ## ValidateFile
 
 > File ValidateFile(ctx, fileID, optional)
+
 Validates the existing file. You need only supply the unique File identifier that was returned upon creation.
 
 ### Required Parameters

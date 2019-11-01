@@ -232,7 +232,6 @@ func (a *ACHFilesApiService) CreateFile(ctx _context.Context, createFile CreateF
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -630,7 +629,6 @@ func (a *ACHFilesApiService) GetFileBatches(ctx _context.Context, fileID string,
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -848,7 +846,6 @@ func (a *ACHFilesApiService) GetFileContents(ctx _context.Context, fileID string
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -955,7 +952,6 @@ func (a *ACHFilesApiService) GetFiles(ctx _context.Context, localVarOptionals *G
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1072,7 +1068,6 @@ func (a *ACHFilesApiService) SegmentFile(ctx _context.Context, fileID string, cr
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1199,7 +1194,6 @@ func (a *ACHFilesApiService) UpdateFile(ctx _context.Context, fileID string, cre
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

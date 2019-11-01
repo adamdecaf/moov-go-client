@@ -27,6 +27,7 @@ Method | HTTP request | Description
 ## AddOFACCompanyNameWatch
 
 > Watch AddOFACCompanyNameWatch(ctx, name, watchRequest, optional)
+
 Add company watch by name. The match percentage will be included in the webhook's JSON payload.
 
 ### Required Parameters
@@ -72,6 +73,7 @@ No authorization required
 ## AddOFACCompanyWatch
 
 > Watch AddOFACCompanyWatch(ctx, companyID, watchRequest, optional)
+
 Add OFAC watch on a Company
 
 ### Required Parameters
@@ -117,6 +119,7 @@ No authorization required
 ## AddOFACCustomerNameWatch
 
 > Watch AddOFACCustomerNameWatch(ctx, name, watchRequest, optional)
+
 Add customer watch by name. The match percentage will be included in the webhook's JSON payload.
 
 ### Required Parameters
@@ -162,6 +165,7 @@ No authorization required
 ## AddOFACCustomerWatch
 
 > Watch AddOFACCustomerWatch(ctx, customerID, watchRequest, optional)
+
 Add OFAC watch on a Customer
 
 ### Required Parameters
@@ -207,6 +211,7 @@ No authorization required
 ## GetLatestDownloads
 
 > []Download GetLatestDownloads(ctx, optional)
+
 Return list of recent downloads of OFAC data
 
 ### Required Parameters
@@ -249,6 +254,7 @@ No authorization required
 ## GetOFACCompany
 
 > OfacCompany GetOFACCompany(ctx, companyID, optional)
+
 Get information about a company, trust or organization such as addresses, alternate names, and remarks.
 
 ### Required Parameters
@@ -292,6 +298,7 @@ No authorization required
 ## GetOFACCustomer
 
 > OfacCustomer GetOFACCustomer(ctx, customerID, optional)
+
 Get information about a customer, addresses, alternate names, and their SDN metadata.
 
 ### Required Parameters
@@ -335,6 +342,7 @@ No authorization required
 ## GetSDN
 
 > Sdn GetSDN(ctx, sdnID, optional)
+
 Specially designated national
 
 ### Required Parameters
@@ -378,6 +386,7 @@ No authorization required
 ## GetSDNAddresses
 
 > []EntityAddress GetSDNAddresses(ctx, sdnID, optional)
+
 Get addresses for a given SDN
 
 ### Required Parameters
@@ -421,6 +430,7 @@ No authorization required
 ## GetSDNAltNames
 
 > []Alt GetSDNAltNames(ctx, sdnID, optional)
+
 Get alternate names for a given SDN
 
 ### Required Parameters
@@ -464,6 +474,7 @@ No authorization required
 ## RemoveOFACCompanyNameWatch
 
 > RemoveOFACCompanyNameWatch(ctx, watchID, name, optional)
+
 Remove a Company name watch
 
 ### Required Parameters
@@ -509,6 +520,7 @@ No authorization required
 ## RemoveOFACCompanyWatch
 
 > RemoveOFACCompanyWatch(ctx, companyID, watchID, optional)
+
 Remove company watch
 
 ### Required Parameters
@@ -554,6 +566,7 @@ No authorization required
 ## RemoveOFACCustomerNameWatch
 
 > RemoveOFACCustomerNameWatch(ctx, watchID, name, optional)
+
 Remove a Customer name watch
 
 ### Required Parameters
@@ -599,6 +612,7 @@ No authorization required
 ## RemoveOFACCustomerWatch
 
 > RemoveOFACCustomerWatch(ctx, customerID, watchID, optional)
+
 Remove customer watch
 
 ### Required Parameters
@@ -644,6 +658,7 @@ No authorization required
 ## Search
 
 > Search Search(ctx, optional)
+
 Search SDN names and metadata
 
 ### Required Parameters
@@ -698,6 +713,7 @@ No authorization required
 ## UpdateOFACCompanyStatus
 
 > UpdateOFACCompanyStatus(ctx, companyID, updateCompanyStatus, optional)
+
 Update a Companies sanction status to always block or always allow transactions.
 
 ### Required Parameters
@@ -743,6 +759,7 @@ No authorization required
 ## UpdateOFACCustomerStatus
 
 > UpdateOFACCustomerStatus(ctx, customerID, updateCustomerStatus, optional)
+
 Update a Customer's sanction status to always block or always allow transactions.
 
 ### Required Parameters

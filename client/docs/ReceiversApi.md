@@ -17,6 +17,7 @@ Method | HTTP request | Description
 ## AddReceivers
 
 > Receiver AddReceivers(ctx, xUserID, createReceiver, optional)
+
 Create a new Receiver object
 
 ### Required Parameters
@@ -62,6 +63,7 @@ Name | Type | Description  | Notes
 ## DeleteReceiver
 
 > DeleteReceiver(ctx, receiverID, xUserID, optional)
+
 Permanently deletes a receiver and associated depositories and transfers. It cannot be undone. Immediately cancels any active Transfers for the receiver.
 
 ### Required Parameters
@@ -107,6 +109,7 @@ Name | Type | Description  | Notes
 ## GetDepositoriesByID
 
 > Depository GetDepositoriesByID(ctx, receiverID, depositoryID, xUserID, optional)
+
 Get a Depository accounts for a Receiver based on it's ID
 
 ### Required Parameters
@@ -155,6 +158,7 @@ Name | Type | Description  | Notes
 ## GetDepositoriesByReceiverID
 
 > []Depository GetDepositoriesByReceiverID(ctx, receiverID, xUserID, optional)
+
 Get a list of Depository accounts for a Receiver
 
 ### Required Parameters
@@ -201,6 +205,7 @@ Name | Type | Description  | Notes
 ## GetReceiverByID
 
 > Receiver GetReceiverByID(ctx, receiverID, xUserID, optional)
+
 Get a Receiver by ID
 
 ### Required Parameters
@@ -247,6 +252,7 @@ Name | Type | Description  | Notes
 ## GetReceivers
 
 > []Receiver GetReceivers(ctx, xUserID, optional)
+
 Gets a list of Receivers
 
 ### Required Parameters
@@ -291,6 +297,7 @@ Name | Type | Description  | Notes
 ## UpdateReceiver
 
 > Receiver UpdateReceiver(ctx, receiverID, xUserID, createReceiver, optional)
+
 Updates the specified Receiver by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
 
 ### Required Parameters
