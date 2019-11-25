@@ -10,10 +10,12 @@
 
 package openapi
 
-// UpdateCompanyStatus Request body to update a company status.
-type UpdateCompanyStatus struct {
-	// manual override of company/SDN sanction status
-	Status string `json:"status"`
-	// Free form notes about manually changing the Company status
-	Notes string `json:"notes,omitempty"`
+// OfacEntityAddress Physical address from OFAC list
+type OfacEntityAddress struct {
+	EntityID                    string  `json:"entityID,omitempty"`
+	AddressID                   string  `json:"addressID,omitempty"`
+	Address                     string  `json:"address,omitempty"`
+	CityStateProvincePostalCode string  `json:"cityStateProvincePostalCode,omitempty"`
+	Country                     string  `json:"country,omitempty"`
+	Match                       float32 `json:"match,omitempty"`
 }

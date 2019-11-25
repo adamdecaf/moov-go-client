@@ -10,12 +10,10 @@
 
 package openapi
 
-// Alt Alternate name from OFAC list
-type Alt struct {
-	EntityID         string  `json:"entityID,omitempty"`
-	AlternateID      string  `json:"alternateID,omitempty"`
-	AlternateType    string  `json:"alternateType,omitempty"`
-	AlternateName    string  `json:"alternateName,omitempty"`
-	AlternateRemarks string  `json:"alternateRemarks,omitempty"`
-	Match            float32 `json:"match,omitempty"`
+// UpdateOfacCustomerStatus Request body to update a customers status.
+type UpdateOfacCustomerStatus struct {
+	// manual override of customer/SDN sanction status
+	Status string `json:"status"`
+	// Free form notes about manually changing the Customer status
+	Notes string `json:"notes,omitempty"`
 }

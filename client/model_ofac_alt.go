@@ -10,8 +10,12 @@
 
 package openapi
 
-// Watch Customer or Company watch
-type Watch struct {
-	// Object representing a customer or company watch
-	WatchID string `json:"watchID,omitempty"`
+// OfacAlt Alternate name from OFAC list
+type OfacAlt struct {
+	EntityID         string  `json:"entityID,omitempty"`
+	AlternateID      string  `json:"alternateID,omitempty"`
+	AlternateType    string  `json:"alternateType,omitempty"`
+	AlternateName    string  `json:"alternateName,omitempty"`
+	AlternateRemarks string  `json:"alternateRemarks,omitempty"`
+	Match            float32 `json:"match,omitempty"`
 }

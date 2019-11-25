@@ -10,12 +10,8 @@
 
 package openapi
 
-// EntityAddress Physical address from OFAC list
-type EntityAddress struct {
-	EntityID                    string  `json:"entityID,omitempty"`
-	AddressID                   string  `json:"addressID,omitempty"`
-	Address                     string  `json:"address,omitempty"`
-	CityStateProvincePostalCode string  `json:"cityStateProvincePostalCode,omitempty"`
-	Country                     string  `json:"country,omitempty"`
-	Match                       float32 `json:"match,omitempty"`
+// OfacWatch Customer or Company watch
+type OfacWatch struct {
+	// Object representing a customer or company watch
+	WatchID string `json:"watchID,omitempty"`
 }

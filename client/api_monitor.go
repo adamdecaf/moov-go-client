@@ -470,18 +470,18 @@ func (a *MonitorApiService) PingImageCashLetter(ctx _context.Context, localVarOp
 	return localVarHTTPResponse, nil
 }
 
-// PingOFACOpts Optional parameters for the method 'PingOFAC'
-type PingOFACOpts struct {
+// PingPaygateOpts Optional parameters for the method 'PingPaygate'
+type PingPaygateOpts struct {
 	XRequestID optional.String
 }
 
 /*
-PingOFAC Check that the moov-io/ofac service is running
+PingPaygate Check that the moov-io/paygate service is running
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param optional nil or *PingOFACOpts - Optional Parameters:
+ * @param optional nil or *PingPaygateOpts - Optional Parameters:
  * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
 */
-func (a *MonitorApiService) PingOFAC(ctx _context.Context, localVarOptionals *PingOFACOpts) (*_nethttp.Response, error) {
+func (a *MonitorApiService) PingPaygate(ctx _context.Context, localVarOptionals *PingPaygateOpts) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -491,7 +491,7 @@ func (a *MonitorApiService) PingOFAC(ctx _context.Context, localVarOptionals *Pi
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/v1/ofac/ping"
+	localVarPath := a.client.cfg.BasePath + "/v1/paygate/ping"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -544,18 +544,18 @@ func (a *MonitorApiService) PingOFAC(ctx _context.Context, localVarOptionals *Pi
 	return localVarHTTPResponse, nil
 }
 
-// PingPaygateOpts Optional parameters for the method 'PingPaygate'
-type PingPaygateOpts struct {
+// PingWatchmanOpts Optional parameters for the method 'PingWatchman'
+type PingWatchmanOpts struct {
 	XRequestID optional.String
 }
 
 /*
-PingPaygate Check that the moov-io/paygate service is running
+PingWatchman Check that the moov-io/watchman service is running
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param optional nil or *PingPaygateOpts - Optional Parameters:
+ * @param optional nil or *PingWatchmanOpts - Optional Parameters:
  * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
 */
-func (a *MonitorApiService) PingPaygate(ctx _context.Context, localVarOptionals *PingPaygateOpts) (*_nethttp.Response, error) {
+func (a *MonitorApiService) PingWatchman(ctx _context.Context, localVarOptionals *PingWatchmanOpts) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -565,7 +565,7 @@ func (a *MonitorApiService) PingPaygate(ctx _context.Context, localVarOptionals 
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/v1/paygate/ping"
+	localVarPath := a.client.cfg.BasePath + "/v1/watchman/ping"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}

@@ -10,8 +10,8 @@ Method | HTTP request | Description
 [**PingCustomers**](MonitorApi.md#PingCustomers) | **Get** /v1/customers/ping | Check that the moov-io/customers service is running
 [**PingFED**](MonitorApi.md#PingFED) | **Get** /v1/fed/ping | Check that the moov-io/fed service is running
 [**PingImageCashLetter**](MonitorApi.md#PingImageCashLetter) | **Get** /v1/imagecashletter/ping | Check that the moov-io/imagecashletter service is running
-[**PingOFAC**](MonitorApi.md#PingOFAC) | **Get** /v1/ofac/ping | Check that the moov-io/ofac service is running
 [**PingPaygate**](MonitorApi.md#PingPaygate) | **Get** /v1/paygate/ping | Check that the moov-io/paygate service is running
+[**PingWatchman**](MonitorApi.md#PingWatchman) | **Get** /v1/watchman/ping | Check that the moov-io/watchman service is running
 
 
 
@@ -261,11 +261,11 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## PingOFAC
+## PingPaygate
 
-> PingOFAC(ctx, optional)
+> PingPaygate(ctx, optional)
 
-Check that the moov-io/ofac service is running
+Check that the moov-io/paygate service is running
 
 ### Required Parameters
 
@@ -273,11 +273,11 @@ Check that the moov-io/ofac service is running
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***PingOFACOpts** | optional parameters | nil if no parameters
+ **optional** | ***PingPaygateOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
 
-Optional parameters are passed through a pointer to a PingOFACOpts struct
+Optional parameters are passed through a pointer to a PingPaygateOpts struct
 
 
 Name | Type | Description  | Notes
@@ -302,11 +302,11 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## PingPaygate
+## PingWatchman
 
-> PingPaygate(ctx, optional)
+> PingWatchman(ctx, optional)
 
-Check that the moov-io/paygate service is running
+Check that the moov-io/watchman service is running
 
 ### Required Parameters
 
@@ -314,11 +314,11 @@ Check that the moov-io/paygate service is running
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***PingPaygateOpts** | optional parameters | nil if no parameters
+ **optional** | ***PingWatchmanOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
 
-Optional parameters are passed through a pointer to a PingPaygateOpts struct
+Optional parameters are passed through a pointer to a PingWatchmanOpts struct
 
 
 Name | Type | Description  | Notes
