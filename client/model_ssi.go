@@ -10,16 +10,26 @@
 
 package openapi
 
-// OfacSdn Specially designated national from OFAC list
-type OfacSdn struct {
+// Ssi Treasury Department Sectoral Sanctions Identifications List (SSI)
+type Ssi struct {
+	// The ID assigned to an entity by the Treasury Department
 	EntityID string `json:"entityID,omitempty"`
-	SdnName  string `json:"sdnName,omitempty"`
-	// SDN's typically represent an individual (customer) or trust/company/organization. OFAC endpoints refer to customers or companies as different entities, but underlying both is the same SDN metadata.
-	SdnType string `json:"sdnType,omitempty"`
-	// Programs is the sanction programs this SDN was added from
+	// Entity type (e.g. individual, vessel, aircraft, etc)
+	Type string `json:"type,omitempty"`
+	// Sanction programs for which the entity is flagged
 	Programs []string `json:"programs,omitempty"`
-	Title    string   `json:"title,omitempty"`
-	Remarks  string   `json:"remarks,omitempty"`
-	// Remarks on SDN and often additional information about the SDN
-	Match float32 `json:"match,omitempty"`
+	// The name of the entity
+	Name string `json:"name,omitempty"`
+	// Addresses associated with the entity
+	Addresses []string `json:"addresses,omitempty"`
+	// Additional details regarding the entity
+	Remarks []string `json:"remarks,omitempty"`
+	// Known aliases associated with the entity
+	AlternateNames []string `json:"alternateNames,omitempty"`
+	// IDs on file for the entity
+	Ids []string `json:"ids,omitempty"`
+	// The link to the official SSI list
+	SourceListURL string `json:"sourceListURL,omitempty"`
+	// The link for information regarding the source
+	SourceInfoURL string `json:"sourceInfoURL,omitempty"`
 }
