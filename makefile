@@ -1,3 +1,5 @@
+VERSION=v$(shell date -u +"%Y.%m.%d").1
+
 .PHONY: client
 client:
 # Download [latest] OpenAPI spec
@@ -17,3 +19,8 @@ client:
 clean:
 	@rm -rf client/
 	@rm -f openapi-generator-cli-*.jar
+
+.PHONY: tag
+tag:
+	git tag $(VERSION)
+	git push origin $(VERSION)
