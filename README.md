@@ -10,7 +10,7 @@ Moov Docs: [docs.moov.io](https://docs.moov.io/) | API Docs: [api.moov.io](https
 
 ## Project Status
 
-This project is currently pre-production and could change without much notice, however we are looking for community feedback so please try out our code or give us feedback!
+This project is currently under development and could introduce breaking changes to reach a stable status. We are looking for community feedback so please try out our code or give us feedback!
 
 ## Getting Started
 
