@@ -1,6 +1,6 @@
-# Go API client for openapi
+# Go API client for client
 
-_Note_: The Moov API and services are under development and could introduce breaking changes while reaching a stable stus. We are looking for community feedback so please try out our code, [join the slack organization](https://slack.moov.io/) and give us some feedback! We announce releases on the [mailing list](https://groups.google.com/forum/#!forum/moov-users).
+_Note_: The Moov API and services are under development and could introduce breaking changes while reaching a stable status. We are looking for community feedback so please try out our code, [join the slack organization](https://slack.moov.io/) and give us some feedback! We announce releases on the [mailing list](https://groups.google.com/forum/#!forum/moov-users).
 
 The Moov API is organized around [REST](http://en.wikipedia.org/wiki/Representational_State_Transfer). Our API has predictable, resource-oriented URLs, and uses HTTP response codes to indicate API errors. We use built-in HTTP features, like HTTP authentication and HTTP verbs, which are understood by off-the-shelf HTTP clients. We support [cross-origin resource sharing](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing), allowing you to interact securely with our API from client-side web applications (never expose your secret API key in any public website's client-side code). [JSON](http://www.json.org/) is returned by all API responses, including errors, although you can generate client code via [OpenAPI code generation](https://github.com/OpenAPITools/openapi-generator) or the [OpenAPI editor](https://editor.swagger.io/) to convert responses to appropriate language-specific objects.
 
@@ -24,20 +24,15 @@ After signup clients can [submit ACH files](#operation/addFile) (either in JSON 
 
 The Moov API offers many services:
 - Automated Clearing House (ACH) origination and file management
-- Transfers and ACH Receiver management.
-- X9 / Image Cash Ledger (ICL) specification support (image uplaod)
+- Transfers and ACH Receiver management
+- Image Cash Ledger (ICL) file creation and modification API
+- Fed WIRE file creation and modification API
 
 ACH is implemented a RESTful API enabling ACH transactions to be submitted and received without a deep understanding of a full NACHA file specification.
 
-An Originator can initiate a Transfer as either a push (credit) or pull (debit) to a Receiver. Originators and Receivers must have a valid Depository account for a Transfer. A Transfer is initiated by an Originator to a Receiver with an amount and flow of funds.
-```
-Originator                 ->   Gateway   ->   Receiver
- - OriginatorDepository                         - ReceiverDepository
- - Type   (Push or Pull)
- - Amount (USD 12.43)
- - Status (Pending)
- ```
- If you find a security related problem please contact us at [`security@moov.io`](mailto:security@moov.io).
+An `Originator` can initiate a `Transfer` as either a push (credit) or pull (debit) to a `Receiver`. Originators and Receivers must have a valid `Depository` account for a `Transfer`. A `Transfer` is initiated by an `Originator` to a `Receiver` with an amount and flow of funds.
+
+If you find a security related problem please contact us at [`security@moov.io`](mailto:security@moov.io).
 
 
 ## Overview
@@ -62,7 +57,7 @@ go get github.com/antihax/optional
 Put the package under your project folder and add the following in import:
 
 ```golang
-import "./openapi"
+import "./client"
 ```
 
 ## Documentation for API Endpoints

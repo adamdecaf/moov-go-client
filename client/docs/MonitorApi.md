@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 ## PingACH
 
-> PingACH(ctx, optional)
+> string PingACH(ctx, optional)
 
 Check that the moov-io/ach service is running
 
@@ -41,7 +41,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**string**
 
 ### Authorization
 
@@ -50,7 +50,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: text/plain
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -59,7 +59,7 @@ No authorization required
 
 ## PingAccounts
 
-> PingAccounts(ctx, optional)
+> string PingAccounts(ctx, optional)
 
 Check that the moov-io/accounts service is running
 
@@ -82,7 +82,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**string**
 
 ### Authorization
 
@@ -91,7 +91,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: text/plain
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -100,7 +100,7 @@ No authorization required
 
 ## PingAuth
 
-> PingAuth(ctx, optional)
+> string PingAuth(ctx, optional)
 
 Check that the moov-io/auth service is running
 
@@ -123,7 +123,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**string**
 
 ### Authorization
 
@@ -132,7 +132,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: text/plain
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -141,7 +141,7 @@ No authorization required
 
 ## PingCustomers
 
-> PingCustomers(ctx, optional)
+> string PingCustomers(ctx, optional)
 
 Check that the moov-io/customers service is running
 
@@ -164,7 +164,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**string**
 
 ### Authorization
 
@@ -173,7 +173,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: text/plain
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -182,7 +182,7 @@ No authorization required
 
 ## PingFED
 
-> PingFED(ctx, optional)
+> string PingFED(ctx, optional)
 
 Check that the moov-io/fed service is running
 
@@ -205,7 +205,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**string**
 
 ### Authorization
 
@@ -214,7 +214,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: text/plain
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -223,7 +223,7 @@ No authorization required
 
 ## PingImageCashLetter
 
-> PingImageCashLetter(ctx, optional)
+> string PingImageCashLetter(ctx, optional)
 
 Check that the moov-io/imagecashletter service is running
 
@@ -246,7 +246,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**string**
 
 ### Authorization
 
@@ -255,7 +255,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: text/plain
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -264,7 +264,7 @@ No authorization required
 
 ## PingPaygate
 
-> PingPaygate(ctx, optional)
+> string PingPaygate(ctx, optional)
 
 Check that the moov-io/paygate service is running
 
@@ -287,7 +287,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**string**
 
 ### Authorization
 
@@ -296,7 +296,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: text/plain
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -305,7 +305,7 @@ No authorization required
 
 ## PingWatchman
 
-> PingWatchman(ctx, optional)
+> string PingWatchman(ctx, optional)
 
 Check that the moov-io/watchman service is running
 
@@ -328,7 +328,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**string**
 
 ### Authorization
 
@@ -337,7 +337,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: text/plain
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -346,7 +346,7 @@ No authorization required
 
 ## PingWire
 
-> PingWire(ctx, optional)
+> string PingWire(ctx, optional)
 
 Check that the moov-io/wire service is running
 
@@ -369,7 +369,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**string**
 
 ### Authorization
 
@@ -378,7 +378,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: text/plain
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
