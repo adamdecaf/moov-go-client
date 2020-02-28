@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**PingImageCashLetter**](MonitorApi.md#PingImageCashLetter) | **Get** /v1/imagecashletter/ping | Check that the moov-io/imagecashletter service is running
 [**PingPaygate**](MonitorApi.md#PingPaygate) | **Get** /v1/paygate/ping | Check that the moov-io/paygate service is running
 [**PingWatchman**](MonitorApi.md#PingWatchman) | **Get** /v1/watchman/ping | Check that the moov-io/watchman service is running
+[**PingWire**](MonitorApi.md#PingWire) | **Get** /v1/wire/ping | Check that the moov-io/wire service is running
 
 
 
@@ -319,6 +320,47 @@ Name | Type | Description  | Notes
 ### Optional Parameters
 
 Optional parameters are passed through a pointer to a PingWatchmanOpts struct
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **xRequestID** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PingWire
+
+> PingWire(ctx, optional)
+
+Check that the moov-io/wire service is running
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **optional** | ***PingWireOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a PingWireOpts struct
 
 
 Name | Type | Description  | Notes

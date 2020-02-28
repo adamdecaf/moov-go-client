@@ -1,6 +1,44 @@
 # Go API client for openapi
 
-_Note_: We're currently in pre-release of our API. We expect breaking changes before launching v1 so please join our [slack organization](http://moov-io.slack.com/) ([request an invite](https://join.slack.com/t/moov-io/shared_invite/enQtNDE5NzIwNTYxODEwLTRkYTcyZDI5ZTlkZWRjMzlhMWVhMGZlOTZiOTk4MmM3MmRhZDY4OTJiMDVjOTE2MGEyNWYzYzY1MGMyMThiZjg)) or [mailing list](https://groups.google.com/forum/#!forum/moov-users) for more updates and notices.  The Moov API is organized around [REST](http://en.wikipedia.org/wiki/Representational_State_Transfer). Our API has predictable, resource-oriented URLs, and uses HTTP response codes to indicate API errors. We use built-in HTTP features, like HTTP authentication and HTTP verbs, which are understood by off-the-shelf HTTP clients. We support [cross-origin resource sharing](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing), allowing you to interact securely with our API from client-side web applications (never expose your secret API key in any public website's client-side code). [JSON](http://www.json.org/) is returned by all API responses, including errors, although you can generate client code via [OpenAPI code generation](https://github.com/OpenAPITools/openapi-generator) or the [OpenAPI editor](https://editor.swagger.io/) to convert responses to appropriate language-specific objects.  The Moov API offers two methods of authentication, Cookie and OAuth2 access tokens. The cookie auth is designed for web browsers while the OAuth2 authentication is designed for automated access of our API.  When an API requires a token generated using OAuth (2-legged), no end user is involved. You generate the token by passing your client credentials (Client ID and Client Secret) in a simple call to Create access token (`/oauth2/token`). The operation returns a token that is valid for a few hours and can be renewed; when it expires, you just repeat the call and get a new token. Making additional token requests will keep generating tokens. There are no hard or soft limits.  Cookie auth is setup by provided (`/users/login`) a valid email and password combination. A `Set-Cookie` header is returned on success, which can be used in later calls. Cookie auth is required to generate OAuth2 client credentials.  The following order of API operations is suggested to start developing against the Moov API:  1. [Create a Moov API user](#operation/createUser) with a unique email address 1. [Login with user/password credentials](#operation/userLogin) 1. [Create an OAuth2 client](#operation/createOAuth2Client) and [Generate an OAuth access token](#operation/createOAuth2Token) 1. Using the OAuth credentials create:    - [Originator](#operation/addOriginator) and [Originator Depository](#operation/addDepository) (requires micro deposit setup)    - [Receiver](#operation/addReceivers) and [Receiver Depository](#operation/addDepository) (requires micro deposit setup) 1. [Submit the Transfer](#operation/addTransfer)  After signup clients can [submit ACH files](#operation/addFile) (either in JSON or plaintext) for [validation](#operation/validateFile) and [tabulation](#operation/getFileContents).  The Moov API offers many services: - Automated Clearing House (ACH) origination and file management - Transfers and ACH Receiver management. - X9 / Image Cash Ledger (ICL) specification support (image uplaod)  ACH is implemented a RESTful API enabling ACH transactions to be submitted and received without a deep understanding of a full NACHA file specification.  An Originator can initiate a Transfer as either a push (credit) or pull (debit) to a Receiver. Originators and Receivers must have a valid Depository account for a Transfer. A Transfer is initiated by an Originator to a Receiver with an amount and flow of funds. ``` Originator                 ->   Gateway   ->   Receiver  - OriginatorDepository                         - ReceiverDepository  - Type   (Push or Pull)  - Amount (USD 12.43)  - Status (Pending)  ```  If you find a security related problem please contact us at [`security@moov.io`](mailto:security@moov.io). 
+_Note_: The Moov API and services are under development and could introduce breaking changes while reaching a stable stus. We are looking for community feedback so please try out our code, [join the slack organization](https://slack.moov.io/) and give us some feedback! We announce releases on the [mailing list](https://groups.google.com/forum/#!forum/moov-users).
+
+The Moov API is organized around [REST](http://en.wikipedia.org/wiki/Representational_State_Transfer). Our API has predictable, resource-oriented URLs, and uses HTTP response codes to indicate API errors. We use built-in HTTP features, like HTTP authentication and HTTP verbs, which are understood by off-the-shelf HTTP clients. We support [cross-origin resource sharing](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing), allowing you to interact securely with our API from client-side web applications (never expose your secret API key in any public website's client-side code). [JSON](http://www.json.org/) is returned by all API responses, including errors, although you can generate client code via [OpenAPI code generation](https://github.com/OpenAPITools/openapi-generator) or the [OpenAPI editor](https://editor.swagger.io/) to convert responses to appropriate language-specific objects.
+
+The Moov API offers two methods of authentication, Cookie and OAuth2 access tokens. The cookie auth is designed for web browsers while the OAuth2 authentication is designed for automated access of our API.
+
+When an API requires a token generated using OAuth (2-legged), no end user is involved. You generate the token by passing your client credentials (Client ID and Client Secret) in a simple call to Create access token (`/oauth2/token`). The operation returns a token that is valid for a few hours and can be renewed; when it expires, you just repeat the call and get a new token. Making additional token requests will keep generating tokens. There are no hard or soft limits.
+
+Cookie auth is setup by provided (`/users/login`) a valid email and password combination. A `Set-Cookie` header is returned on success, which can be used in later calls. Cookie auth is required to generate OAuth2 client credentials.
+
+The following order of API operations is suggested to start developing against the Moov API:
+
+1. [Create a Moov API user](#operation/createUser) with a unique email address
+1. [Login with user/password credentials](#operation/userLogin)
+1. [Create an OAuth2 client](#operation/createOAuth2Client) and [Generate an OAuth access token](#operation/createOAuth2Token)
+1. Using the OAuth credentials create:
+   - [Originator](#operation/addOriginator) and [Originator Depository](#operation/addDepository) (requires micro deposit setup)
+   - [Receiver](#operation/addReceivers) and [Receiver Depository](#operation/addDepository) (requires micro deposit setup)
+1. [Submit the Transfer](#operation/addTransfer)
+
+After signup clients can [submit ACH files](#operation/addFile) (either in JSON or plaintext) for [validation](#operation/validateFile) and [tabulation](#operation/getFileContents).
+
+The Moov API offers many services:
+- Automated Clearing House (ACH) origination and file management
+- Transfers and ACH Receiver management.
+- X9 / Image Cash Ledger (ICL) specification support (image uplaod)
+
+ACH is implemented a RESTful API enabling ACH transactions to be submitted and received without a deep understanding of a full NACHA file specification.
+
+An Originator can initiate a Transfer as either a push (credit) or pull (debit) to a Receiver. Originators and Receivers must have a valid Depository account for a Transfer. A Transfer is initiated by an Originator to a Receiver with an amount and flow of funds.
+```
+Originator                 ->   Gateway   ->   Receiver
+ - OriginatorDepository                         - ReceiverDepository
+ - Type   (Push or Pull)
+ - Amount (USD 12.43)
+ - Status (Pending)
+ ```
+ If you find a security related problem please contact us at [`security@moov.io`](mailto:security@moov.io).
+
 
 ## Overview
 This API client was generated by the [OpenAPI Generator](https://openapi-generator.tech) project.  By using the [OpenAPI-spec](https://www.openapis.org/) from a remote server, you can easily generate an API client.
@@ -65,7 +103,6 @@ Class | Method | HTTP request | Description
 *EventsApi* | [**GetEvents**](docs/EventsApi.md#getevents) | **Get** /v1/ach/events | Gets a list of Events
 *FEDApi* | [**SearchFEDACH**](docs/FEDApi.md#searchfedach) | **Get** /v1/fed/ach/search | Search FEDACH names and metadata
 *FEDApi* | [**SearchFEDWIRE**](docs/FEDApi.md#searchfedwire) | **Get** /v1/fed/wire/search | Search FEDWIRE names and metadata
-*FEDWireMessageFileApi* | [**AddFEDWireMessageToFile**](docs/FEDWireMessageFileApi.md#addfedwiremessagetofile) | **Post** /v1/wire/files/{fileID}/FEDWireMessage | Add FEDWireMessage to File
 *GatewaysApi* | [**AddGateway**](docs/GatewaysApi.md#addgateway) | **Post** /v1/ach/gateways | Create a new Gateway object
 *GatewaysApi* | [**GetGateways**](docs/GatewaysApi.md#getgateways) | **Get** /v1/ach/gateways | Gets a list of Gatways
 *ImageCashLetterFilesApi* | [**AddICLToFile**](docs/ImageCashLetterFilesApi.md#addicltofile) | **Post** /v1/imagecashletter/files/{fileID}/cashLetters | Add CashLetter to File
@@ -85,6 +122,7 @@ Class | Method | HTTP request | Description
 *MonitorApi* | [**PingImageCashLetter**](docs/MonitorApi.md#pingimagecashletter) | **Get** /v1/imagecashletter/ping | Check that the moov-io/imagecashletter service is running
 *MonitorApi* | [**PingPaygate**](docs/MonitorApi.md#pingpaygate) | **Get** /v1/paygate/ping | Check that the moov-io/paygate service is running
 *MonitorApi* | [**PingWatchman**](docs/MonitorApi.md#pingwatchman) | **Get** /v1/watchman/ping | Check that the moov-io/watchman service is running
+*MonitorApi* | [**PingWire**](docs/MonitorApi.md#pingwire) | **Get** /v1/wire/ping | Check that the moov-io/wire service is running
 *OAuth2Api* | [**CheckOAuthClientCredentials**](docs/OAuth2Api.md#checkoauthclientcredentials) | **Get** /v1/oauth2/authorize | Verify OAuth2 Bearer token
 *OAuth2Api* | [**CreateOAuth2Client**](docs/OAuth2Api.md#createoauth2client) | **Post** /v1/oauth2/client | Create OAuth2 client credentials
 *OAuth2Api* | [**CreateOAuth2Token**](docs/OAuth2Api.md#createoauth2token) | **Post** /v1/oauth2/token | Generate OAuth2 access token
@@ -131,10 +169,11 @@ Class | Method | HTTP request | Description
 *WatchmanApi* | [**Search**](docs/WatchmanApi.md#search) | **Get** /v1/watchman/ofac/search | Search SDN names and metadata
 *WatchmanApi* | [**UpdateOfacCompanyStatus**](docs/WatchmanApi.md#updateofaccompanystatus) | **Put** /v1/watchman/companies/{companyID} | Update a Companies sanction status to always block or always allow transactions.
 *WatchmanApi* | [**UpdateOfacCustomerStatus**](docs/WatchmanApi.md#updateofaccustomerstatus) | **Put** /v1/watchman/ofac/customers/{customerID} | Update a Customer&#39;s sanction status to always block or always allow transactions.
+*WireFilesApi* | [**AddFEDWireMessageToFile**](docs/WireFilesApi.md#addfedwiremessagetofile) | **Post** /v1/wire/files/{fileID}/FEDWireMessage | Add FEDWireMessage to File
 *WireFilesApi* | [**CreateWireFile**](docs/WireFilesApi.md#createwirefile) | **Post** /v1/wire/files/create | Create a new File object
 *WireFilesApi* | [**DeleteWireFileByID**](docs/WireFilesApi.md#deletewirefilebyid) | **Delete** /v1/wire/files/{fileID} | Permanently deletes a File and associated FEDWireMessage. It cannot be undone.
 *WireFilesApi* | [**GetWireFileByID**](docs/WireFilesApi.md#getwirefilebyid) | **Get** /v1/wire/files/{fileID} | Retrieves the details of an existing File. You need only supply the unique File identifier that was returned upon creation.
-*WireFilesApi* | [**GetWireFileContents**](docs/WireFilesApi.md#getwirefilecontents) | **Get** /v1/wire/files/{fileID}/contents | Assembles the existing file witha FEDWireMessage, Returns plaintext file.
+*WireFilesApi* | [**GetWireFileContents**](docs/WireFilesApi.md#getwirefilecontents) | **Get** /v1/wire/files/{fileID}/contents | Assembles the existing file with a FEDWireMessage, Returns plaintext file.
 *WireFilesApi* | [**GetWireFiles**](docs/WireFilesApi.md#getwirefiles) | **Get** /v1/wire/files | Gets a list of Files
 *WireFilesApi* | [**UpdateWireFileByID**](docs/WireFilesApi.md#updatewirefilebyid) | **Post** /v1/wire/files/{fileID} | Updates the specified FEDWire Message by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
 *WireFilesApi* | [**ValidateWireFile**](docs/WireFilesApi.md#validatewirefile) | **Get** /v1/wire/files/{fileID}/validate | Validates the existing file. You need only supply the unique File identifier that was returned upon creation.
@@ -148,13 +187,25 @@ Class | Method | HTTP request | Description
  - [AchDictionary](docs/AchDictionary.md)
  - [AchLocation](docs/AchLocation.md)
  - [AchParticipant](docs/AchParticipant.md)
- - [Addendum](docs/Addendum.md)
+ - [Addenda02](docs/Addenda02.md)
+ - [Addenda05](docs/Addenda05.md)
+ - [Addenda10](docs/Addenda10.md)
+ - [Addenda11](docs/Addenda11.md)
+ - [Addenda12](docs/Addenda12.md)
+ - [Addenda13](docs/Addenda13.md)
+ - [Addenda14](docs/Addenda14.md)
+ - [Addenda15](docs/Addenda15.md)
+ - [Addenda16](docs/Addenda16.md)
+ - [Addenda17](docs/Addenda17.md)
+ - [Addenda18](docs/Addenda18.md)
+ - [Addenda98](docs/Addenda98.md)
+ - [Addenda99](docs/Addenda99.md)
  - [AdditionalFiToFi](docs/AdditionalFiToFi.md)
  - [Address](docs/Address.md)
- - [Address2](docs/Address2.md)
  - [Adjustment](docs/Adjustment.md)
+ - [AdvBatchControl](docs/AdvBatchControl.md)
+ - [AdvEntryDetail](docs/AdvEntryDetail.md)
  - [Advice](docs/Advice.md)
- - [Amount](docs/Amount.md)
  - [Amounts](docs/Amounts.md)
  - [Batch](docs/Batch.md)
  - [BatchControl](docs/BatchControl.md)
@@ -177,21 +228,23 @@ Class | Method | HTTP request | Description
  - [Checks](docs/Checks.md)
  - [CoverPayment](docs/CoverPayment.md)
  - [CreateAccount](docs/CreateAccount.md)
- - [CreateAddress](docs/CreateAddress.md)
  - [CreateCustomer](docs/CreateCustomer.md)
+ - [CreateCustomerAddress](docs/CreateCustomerAddress.md)
  - [CreateDepository](docs/CreateDepository.md)
  - [CreateFile](docs/CreateFile.md)
- - [CreateFile2](docs/CreateFile2.md)
  - [CreateGateway](docs/CreateGateway.md)
+ - [CreateIclFile](docs/CreateIclFile.md)
  - [CreateOriginator](docs/CreateOriginator.md)
  - [CreatePhone](docs/CreatePhone.md)
  - [CreateReceiver](docs/CreateReceiver.md)
  - [CreateTransaction](docs/CreateTransaction.md)
  - [CreateTransfer](docs/CreateTransfer.md)
  - [CreateUser](docs/CreateUser.md)
+ - [CreateWireFile](docs/CreateWireFile.md)
  - [CreditItem](docs/CreditItem.md)
  - [CurrencyInstructedAmount](docs/CurrencyInstructedAmount.md)
  - [Customer](docs/Customer.md)
+ - [CustomerAddress](docs/CustomerAddress.md)
  - [DateRemittanceDocument](docs/DateRemittanceDocument.md)
  - [Depository](docs/Depository.md)
  - [Document](docs/Document.md)
@@ -199,7 +252,6 @@ Class | Method | HTTP request | Description
  - [Dpl](docs/Dpl.md)
  - [EntryDetail](docs/EntryDetail.md)
  - [Error](docs/Error.md)
- - [Error2](docs/Error2.md)
  - [ErrorWire](docs/ErrorWire.md)
  - [Event](docs/Event.md)
  - [ExchangeRate](docs/ExchangeRate.md)
@@ -207,16 +259,17 @@ Class | Method | HTTP request | Description
  - [FiPaymentMethodToBeneficiary](docs/FiPaymentMethodToBeneficiary.md)
  - [FiToFi](docs/FiToFi.md)
  - [File](docs/File.md)
- - [File2](docs/File2.md)
  - [FileControl](docs/FileControl.md)
- - [FileControl2](docs/FileControl2.md)
  - [FileHeader](docs/FileHeader.md)
- - [FileHeader2](docs/FileHeader2.md)
  - [FinancialInstitution](docs/FinancialInstitution.md)
  - [Gateway](docs/Gateway.md)
  - [IatBatch](docs/IatBatch.md)
  - [IatBatchHeader](docs/IatBatchHeader.md)
  - [IatDetail](docs/IatDetail.md)
+ - [IatEntryDetail](docs/IatEntryDetail.md)
+ - [IclFile](docs/IclFile.md)
+ - [IclFileControl](docs/IclFileControl.md)
+ - [IclFileHeader](docs/IclFileHeader.md)
  - [ImageViewAnalysis](docs/ImageViewAnalysis.md)
  - [ImageViewData](docs/ImageViewData.md)
  - [ImageViewDetail](docs/ImageViewDetail.md)
@@ -237,6 +290,7 @@ Class | Method | HTTP request | Description
  - [OfacSdn](docs/OfacSdn.md)
  - [OfacWatch](docs/OfacWatch.md)
  - [OfacWatchRequest](docs/OfacWatchRequest.md)
+ - [Offset](docs/Offset.md)
  - [Originator](docs/Originator.md)
  - [OriginatorOptionF](docs/OriginatorOptionF.md)
  - [OriginatorToBeneficiary](docs/OriginatorToBeneficiary.md)
@@ -281,7 +335,10 @@ Class | Method | HTTP request | Description
  - [User](docs/User.md)
  - [UserProfile](docs/UserProfile.md)
  - [WebDetail](docs/WebDetail.md)
+ - [WireAddress](docs/WireAddress.md)
+ - [WireAmount](docs/WireAmount.md)
  - [WireDictionary](docs/WireDictionary.md)
+ - [WireFile](docs/WireFile.md)
  - [WireLocation](docs/WireLocation.md)
  - [WireParticipant](docs/WireParticipant.md)
 
@@ -331,6 +388,7 @@ auth := context.WithValue(context.Background(), sw.ContextAPIKey, sw.APIKey{
 })
 r, err := client.Service.Operation(auth, args)
 ```
+
 
 
 ## Author
