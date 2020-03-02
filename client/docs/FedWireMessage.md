@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **SenderSupplied** | [**SenderSupplied**](SenderSupplied.md) |  | 
 **TypeSubType** | [**TypeSubType**](TypeSubType.md) |  | 
 **InputMessageAccountabilityData** | [**InputMessageAccountabilityData**](InputMessageAccountabilityData.md) |  | 
-**Amount** | [**WireAmount**](WireAmount.md) |  | 
+**Amount** | [**Amount**](Amount.md) |  | 
 **SenderDepositoryInstitution** | [**SenderDepositoryInstitution**](SenderDepositoryInstitution.md) |  | 
 **ReceiverDepositoryInstitution** | [**ReceiverDepositoryInstitution**](ReceiverDepositoryInstitution.md) |  | 
 **BusinessFunctionCode** | [**BusinessFunctionCode**](BusinessFunctionCode.md) |  | 

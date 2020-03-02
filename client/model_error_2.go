@@ -10,12 +10,8 @@
 
 package client
 
-// CreateIclFile struct for CreateIclFile
-type CreateIclFile struct {
-	// File ID
-	ID          string         `json:"ID,omitempty"`
-	FileHeader  IclFileHeader  `json:"fileHeader"`
-	CashLetters []CashLetter   `json:"cashLetters,omitempty"`
-	Bundles     []Bundle       `json:"bundles,omitempty"`
-	FileControl IclFileControl `json:"fileControl,omitempty"`
+// Error2 struct for Error2
+type Error2 struct {
+	// An error message describing the problem intended for humans.
+	Error string `json:"error"`
 }

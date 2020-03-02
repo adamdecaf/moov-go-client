@@ -10,8 +10,20 @@
 
 package client
 
-// WireAmount Amount is an amount up to a penny less than $10 billion
-type WireAmount struct {
-	// Amount 12 numeric, right-justified with leading zeros, an implied decimal point and no commas; e.g., $12,345.67 becomes 000001234567 Can be all zeros for subtype 90
-	Amount string `json:"amount"`
+// FileControl2 struct for FileControl2
+type FileControl2 struct {
+	// Moov API File ID
+	ID string `json:"ID,omitempty"`
+	// Count of Batches in the File
+	BatchCount int32 `json:"batchCount,omitempty"`
+	// BlockCount total number of records in the file (include all headers and trailer) divided by 10 (This number must be evenly divisible by 10. If not, additional records consisting of all 9's are added to the file after the initial '9' record to fill out the block 10.)
+	BlockCount int32 `json:"blockCount,omitempty"`
+	// Total detail and addenda records in the file
+	EntryAddendaCount int32 `json:"entryAddendaCount,omitempty"`
+	// EntryHash calculated in the same manner as the batch has total but includes total from entire file
+	EntryHash int32 `json:"entryHash,omitempty"`
+	// Accumulated Batch debit totals within the file.
+	TotalDebit int32 `json:"totalDebit,omitempty"`
+	// Accumulated Batch credit totals within the file.
+	TotalCredit int32 `json:"totalCredit,omitempty"`
 }

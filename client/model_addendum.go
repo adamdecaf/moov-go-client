@@ -10,40 +10,8 @@
 
 package client
 
-// AdvEntryDetail struct for AdvEntryDetail
-type AdvEntryDetail struct {
-	// Entry Detail ID
-	ID string `json:"ID,omitempty"`
-	// TransactionCode representing Accounting Entries Credit for ACH debits originated - 81 Debit for ACH credits originated - 82 Credit for ACH credits received 83 Debit for ACH debits received 84 Credit for ACH credits in rejected batches 85 Debit for ACH debits in rejected batches - 86 Summary credit for respondent ACH activity - 87 Summary debit for respondent ACH activity - 88
-	TransactionCode int32 `json:"transactionCode"`
-	// RDFI's routing number without the last digit.
-	RDFIIdentification string `json:"RDFIIdentification"`
-	// Last digit in RDFI routing number.
-	CheckDigit string `json:"checkDigit"`
-	// The receiver's bank account number you are crediting/debiting. It important to note that this is an alphanumeric field, so its space padded, no zero padded
-	DFIAccountNumber string `json:"DFIAccountNumber"`
-	// Number of cents you are debiting/crediting this account
-	Amount int32 `json:"amount"`
-	// Suggested routing number to use
-	AdviceRoutingNumber string `json:"adviceRoutingNumber,omitempty"`
-	// Unique identifier for the File
-	FileIdentification string `json:"fileIdentification,omitempty"`
-	// Information related to the ACH opreator
-	AchOperatorData string `json:"achOperatorData,omitempty"`
-	// The name of the receiver, usually the name on the bank account
-	IndividualName string `json:"individualName"`
-	// DiscretionaryData allows ODFIs to include codes, of significance only to them, to enable specialized handling of the entry. There will be no standardized interpretation for the value of this field. It can either be a single two-character code, or two distinct one-character codes, according to the needs of the ODFI and/or Originator involved. This field must be returned intact for any returned entry. WEB uses the Discretionary Data Field as the Payment Type Code
-	DiscretionaryData string `json:"discretionaryData,omitempty"`
-	// AddendaRecordIndicator indicates the existence of an Addenda Record. A value of \"1\" indicates that one ore more addenda records follow, and \"0\" means no such record is present.
-	AddendaRecordIndicator int32 `json:"addendaRecordIndicator,omitempty"`
-	// Routing number for ACH operator
-	AchOperatorRoutingNumber string `json:"achOperatorRoutingNumber,omitempty"`
-	// Julian Day of the year
-	JulianDay float32 `json:"julianDay,omitempty"`
-	// SequenceNumber is consecutively assigned to each Addenda05 Record following an Entry Detail Record. The first addenda05 sequence number must always be a 1.
-	SequenceNumber float32 `json:"sequenceNumber,omitempty"`
-	// Addenda99 record for the Entry Detail
-	Addenda99 []Addenda99 `json:"addenda99,omitempty"`
-	// Category defines if the entry is a Forward, Return, or NOC
-	Category string `json:"category,omitempty"`
+// Addendum struct for Addendum
+type Addendum struct {
+	// TODO
+	TypeCode string `json:"typeCode"`
 }

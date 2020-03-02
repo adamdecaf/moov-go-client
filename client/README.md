@@ -98,6 +98,7 @@ Class | Method | HTTP request | Description
 *EventsApi* | [**GetEvents**](docs/EventsApi.md#getevents) | **Get** /v1/ach/events | Gets a list of Events
 *FEDApi* | [**SearchFEDACH**](docs/FEDApi.md#searchfedach) | **Get** /v1/fed/ach/search | Search FEDACH names and metadata
 *FEDApi* | [**SearchFEDWIRE**](docs/FEDApi.md#searchfedwire) | **Get** /v1/fed/wire/search | Search FEDWIRE names and metadata
+*FEDWireMessageFileApi* | [**AddFEDWireMessageToFile**](docs/FEDWireMessageFileApi.md#addfedwiremessagetofile) | **Post** /v1/wire/files/{fileID}/FEDWireMessage | Add FEDWireMessage to File
 *GatewaysApi* | [**AddGateway**](docs/GatewaysApi.md#addgateway) | **Post** /v1/ach/gateways | Create a new Gateway object
 *GatewaysApi* | [**GetGateways**](docs/GatewaysApi.md#getgateways) | **Get** /v1/ach/gateways | Gets a list of Gatways
 *ImageCashLetterFilesApi* | [**AddICLToFile**](docs/ImageCashLetterFilesApi.md#addicltofile) | **Post** /v1/imagecashletter/files/{fileID}/cashLetters | Add CashLetter to File
@@ -164,11 +165,10 @@ Class | Method | HTTP request | Description
 *WatchmanApi* | [**Search**](docs/WatchmanApi.md#search) | **Get** /v1/watchman/ofac/search | Search SDN names and metadata
 *WatchmanApi* | [**UpdateOfacCompanyStatus**](docs/WatchmanApi.md#updateofaccompanystatus) | **Put** /v1/watchman/companies/{companyID} | Update a Companies sanction status to always block or always allow transactions.
 *WatchmanApi* | [**UpdateOfacCustomerStatus**](docs/WatchmanApi.md#updateofaccustomerstatus) | **Put** /v1/watchman/ofac/customers/{customerID} | Update a Customer&#39;s sanction status to always block or always allow transactions.
-*WireFilesApi* | [**AddFEDWireMessageToFile**](docs/WireFilesApi.md#addfedwiremessagetofile) | **Post** /v1/wire/files/{fileID}/FEDWireMessage | Add FEDWireMessage to File
 *WireFilesApi* | [**CreateWireFile**](docs/WireFilesApi.md#createwirefile) | **Post** /v1/wire/files/create | Create a new File object
 *WireFilesApi* | [**DeleteWireFileByID**](docs/WireFilesApi.md#deletewirefilebyid) | **Delete** /v1/wire/files/{fileID} | Permanently deletes a File and associated FEDWireMessage. It cannot be undone.
 *WireFilesApi* | [**GetWireFileByID**](docs/WireFilesApi.md#getwirefilebyid) | **Get** /v1/wire/files/{fileID} | Retrieves the details of an existing File. You need only supply the unique File identifier that was returned upon creation.
-*WireFilesApi* | [**GetWireFileContents**](docs/WireFilesApi.md#getwirefilecontents) | **Get** /v1/wire/files/{fileID}/contents | Assembles the existing file with a FEDWireMessage, Returns plaintext file.
+*WireFilesApi* | [**GetWireFileContents**](docs/WireFilesApi.md#getwirefilecontents) | **Get** /v1/wire/files/{fileID}/contents | Assembles the existing file witha FEDWireMessage, Returns plaintext file.
 *WireFilesApi* | [**GetWireFiles**](docs/WireFilesApi.md#getwirefiles) | **Get** /v1/wire/files | Gets a list of Files
 *WireFilesApi* | [**UpdateWireFileByID**](docs/WireFilesApi.md#updatewirefilebyid) | **Post** /v1/wire/files/{fileID} | Updates the specified FEDWire Message by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
 *WireFilesApi* | [**ValidateWireFile**](docs/WireFilesApi.md#validatewirefile) | **Get** /v1/wire/files/{fileID}/validate | Validates the existing file. You need only supply the unique File identifier that was returned upon creation.
@@ -195,16 +195,20 @@ Class | Method | HTTP request | Description
  - [Addenda18](docs/Addenda18.md)
  - [Addenda98](docs/Addenda98.md)
  - [Addenda99](docs/Addenda99.md)
+ - [Addendum](docs/Addendum.md)
  - [AdditionalFiToFi](docs/AdditionalFiToFi.md)
  - [Address](docs/Address.md)
+ - [Address2](docs/Address2.md)
  - [Adjustment](docs/Adjustment.md)
- - [AdvBatchControl](docs/AdvBatchControl.md)
- - [AdvEntryDetail](docs/AdvEntryDetail.md)
  - [Advice](docs/Advice.md)
+ - [Amount](docs/Amount.md)
  - [Amounts](docs/Amounts.md)
  - [Batch](docs/Batch.md)
+ - [Batch2](docs/Batch2.md)
  - [BatchControl](docs/BatchControl.md)
+ - [BatchControl2](docs/BatchControl2.md)
  - [BatchHeader](docs/BatchHeader.md)
+ - [BatchHeader2](docs/BatchHeader2.md)
  - [BeneficiaryReference](docs/BeneficiaryReference.md)
  - [BisEntities](docs/BisEntities.md)
  - [Bundle](docs/Bundle.md)
@@ -223,30 +227,30 @@ Class | Method | HTTP request | Description
  - [Checks](docs/Checks.md)
  - [CoverPayment](docs/CoverPayment.md)
  - [CreateAccount](docs/CreateAccount.md)
+ - [CreateAddress](docs/CreateAddress.md)
  - [CreateCustomer](docs/CreateCustomer.md)
- - [CreateCustomerAddress](docs/CreateCustomerAddress.md)
  - [CreateDepository](docs/CreateDepository.md)
  - [CreateFile](docs/CreateFile.md)
+ - [CreateFile2](docs/CreateFile2.md)
  - [CreateGateway](docs/CreateGateway.md)
- - [CreateIclFile](docs/CreateIclFile.md)
  - [CreateOriginator](docs/CreateOriginator.md)
  - [CreatePhone](docs/CreatePhone.md)
  - [CreateReceiver](docs/CreateReceiver.md)
  - [CreateTransaction](docs/CreateTransaction.md)
  - [CreateTransfer](docs/CreateTransfer.md)
  - [CreateUser](docs/CreateUser.md)
- - [CreateWireFile](docs/CreateWireFile.md)
  - [CreditItem](docs/CreditItem.md)
  - [CurrencyInstructedAmount](docs/CurrencyInstructedAmount.md)
  - [Customer](docs/Customer.md)
- - [CustomerAddress](docs/CustomerAddress.md)
  - [DateRemittanceDocument](docs/DateRemittanceDocument.md)
  - [Depository](docs/Depository.md)
  - [Document](docs/Document.md)
  - [Download](docs/Download.md)
  - [Dpl](docs/Dpl.md)
  - [EntryDetail](docs/EntryDetail.md)
+ - [EntryDetail2](docs/EntryDetail2.md)
  - [Error](docs/Error.md)
+ - [Error2](docs/Error2.md)
  - [ErrorWire](docs/ErrorWire.md)
  - [Event](docs/Event.md)
  - [ExchangeRate](docs/ExchangeRate.md)
@@ -254,17 +258,19 @@ Class | Method | HTTP request | Description
  - [FiPaymentMethodToBeneficiary](docs/FiPaymentMethodToBeneficiary.md)
  - [FiToFi](docs/FiToFi.md)
  - [File](docs/File.md)
+ - [File2](docs/File2.md)
  - [FileControl](docs/FileControl.md)
+ - [FileControl2](docs/FileControl2.md)
  - [FileHeader](docs/FileHeader.md)
+ - [FileHeader2](docs/FileHeader2.md)
  - [FinancialInstitution](docs/FinancialInstitution.md)
  - [Gateway](docs/Gateway.md)
  - [IatBatch](docs/IatBatch.md)
+ - [IatBatch2](docs/IatBatch2.md)
  - [IatBatchHeader](docs/IatBatchHeader.md)
+ - [IatBatchHeader2](docs/IatBatchHeader2.md)
  - [IatDetail](docs/IatDetail.md)
  - [IatEntryDetail](docs/IatEntryDetail.md)
- - [IclFile](docs/IclFile.md)
- - [IclFileControl](docs/IclFileControl.md)
- - [IclFileHeader](docs/IclFileHeader.md)
  - [ImageViewAnalysis](docs/ImageViewAnalysis.md)
  - [ImageViewData](docs/ImageViewData.md)
  - [ImageViewDetail](docs/ImageViewDetail.md)
@@ -330,10 +336,7 @@ Class | Method | HTTP request | Description
  - [User](docs/User.md)
  - [UserProfile](docs/UserProfile.md)
  - [WebDetail](docs/WebDetail.md)
- - [WireAddress](docs/WireAddress.md)
- - [WireAmount](docs/WireAmount.md)
  - [WireDictionary](docs/WireDictionary.md)
- - [WireFile](docs/WireFile.md)
  - [WireLocation](docs/WireLocation.md)
  - [WireParticipant](docs/WireParticipant.md)
 

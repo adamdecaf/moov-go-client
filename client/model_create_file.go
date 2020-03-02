@@ -13,11 +13,9 @@ package client
 // CreateFile struct for CreateFile
 type CreateFile struct {
 	// File ID
-	ID              string           `json:"ID,omitempty"`
-	FileHeader      FileHeader       `json:"fileHeader"`
-	Batches         []Batch          `json:"batches,omitempty"`
-	IATBatches      []IatBatch       `json:"IATBatches,omitempty"`
-	FileControl     FileControl      `json:"fileControl,omitempty"`
-	AdvEntryDetails []AdvEntryDetail `json:"advEntryDetails,omitempty"`
-	AdvBatchControl AdvBatchControl  `json:"advBatchControl,omitempty"`
+	ID          string      `json:"ID,omitempty"`
+	FileHeader  FileHeader  `json:"fileHeader"`
+	Batches     []Batch     `json:"batches,omitempty"`
+	IATBatches  []IatBatch  `json:"IATBatches,omitempty"`
+	FileControl FileControl `json:"fileControl,omitempty"`
 }

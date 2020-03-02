@@ -128,7 +128,7 @@ func (a *GatewaysApiService) AddGateway(ctx _context.Context, xUserID string, cr
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v Error2
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

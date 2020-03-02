@@ -223,7 +223,7 @@ func (a *ACHFilesApiService) CreateFile(ctx _context.Context, createFile CreateF
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v Error2
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1186,7 +1186,7 @@ func (a *ACHFilesApiService) UpdateFile(ctx _context.Context, fileID string, cre
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v Error2
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

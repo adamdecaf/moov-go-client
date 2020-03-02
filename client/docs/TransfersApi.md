@@ -248,7 +248,7 @@ Name | Type | Description  | Notes
 
 ## GetTransferFiles
 
-> []File GetTransferFiles(ctx, transferID, xUserID, optional)
+> []File2 GetTransferFiles(ctx, transferID, xUserID, optional)
 
 Get the ACH files to be used in this transfer.
 
@@ -276,7 +276,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]File**](File.md)
+[**[]File2**](File_2.md)
 
 ### Authorization
 

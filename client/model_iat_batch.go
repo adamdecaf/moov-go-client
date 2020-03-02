@@ -13,8 +13,6 @@ package client
 // IatBatch struct for IatBatch
 type IatBatch struct {
 	// Client defined string used as a reference to this record.
-	ID              string           `json:"ID,omitempty"`
-	IATBatchHeader  IatBatchHeader   `json:"IATBatchHeader,omitempty"`
-	IATEntryDetails []IatEntryDetail `json:"IATEntryDetails,omitempty"`
-	BatchControl    BatchControl     `json:"batchControl,omitempty"`
+	ID             string         `json:"ID,omitempty"`
+	IATBatchHeader IatBatchHeader `json:"IATBatchHeader,omitempty"`
 }

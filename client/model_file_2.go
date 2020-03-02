@@ -10,22 +10,14 @@
 
 package client
 
-// CustomerAddress struct for CustomerAddress
-type CustomerAddress struct {
-	// Unique identifier for this Address
-	ID   string `json:"ID,omitempty"`
-	Type string `json:"type,omitempty"`
-	// First line of the address
-	Address1 string `json:"address1,omitempty"`
-	// Second line of the address
-	Address2 string `json:"address2,omitempty"`
-	City     string `json:"city,omitempty"`
-	// two charcer code of US state
-	State      string `json:"state,omitempty"`
-	PostalCode string `json:"postalCode,omitempty"`
-	Country    string `json:"country,omitempty"`
-	// Address has been validated for customer
-	Validated bool `json:"validated,omitempty"`
-	// Address is currently being used for customer
-	Active bool `json:"active,omitempty"`
+// File2 struct for File2
+type File2 struct {
+	// File ID
+	ID                   string       `json:"ID,omitempty"`
+	FileHeader           FileHeader2  `json:"fileHeader,omitempty"`
+	Batches              []Batch2     `json:"batches,omitempty"`
+	IATBatches           []IatBatch2  `json:"IATBatches,omitempty"`
+	FileControl          FileControl2 `json:"fileControl,omitempty"`
+	NotificationOfChange []Batch2     `json:"NotificationOfChange,omitempty"`
+	ReturnEntries        []Batch2     `json:"ReturnEntries,omitempty"`
 }

@@ -112,7 +112,7 @@ func (a *AccountsApiService) CreateAccount(ctx _context.Context, xUserID string,
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v Error2
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -221,7 +221,7 @@ func (a *AccountsApiService) CreateTransaction(ctx _context.Context, xUserID str
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v Error2
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

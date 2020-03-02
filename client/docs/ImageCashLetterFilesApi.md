@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
 
 ## CreateICLFile
 
-> IclFile CreateICLFile(ctx, createIclFile, optional)
+> File2 CreateICLFile(ctx, createFile2, optional)
 
 Create a new File object
 
@@ -74,7 +74,7 @@ Create a new File object
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**createIclFile** | [**CreateIclFile**](CreateIclFile.md)| Content of the ImageCashLetter file (in json or raw text) | 
+**createFile2** | [**CreateFile2**](CreateFile2.md)| Content of the ImageCashLetter file (in json or raw text) | 
  **optional** | ***CreateICLFileOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -90,7 +90,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IclFile**](ICLFile.md)
+[**File2**](File_2.md)
 
 ### Authorization
 
@@ -196,7 +196,7 @@ Name | Type | Description  | Notes
 
 ## GetICLFileByID
 
-> IclFile GetICLFileByID(ctx, fileID, optional)
+> File2 GetICLFileByID(ctx, fileID, optional)
 
 Retrieves the details of an existing File. You need only supply the unique File identifier that was returned upon creation.
 
@@ -221,7 +221,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IclFile**](ICLFile.md)
+[**File2**](File_2.md)
 
 ### Authorization
 
@@ -282,7 +282,7 @@ Name | Type | Description  | Notes
 
 ## GetICLFiles
 
-> []IclFile GetICLFiles(ctx, optional)
+> []File2 GetICLFiles(ctx, optional)
 
 Gets a list of Files
 
@@ -305,7 +305,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]IclFile**](ICLFile.md)
+[**[]File2**](File_2.md)
 
 ### Authorization
 
@@ -323,7 +323,7 @@ Name | Type | Description  | Notes
 
 ## UpdateICLFile
 
-> IclFile UpdateICLFile(ctx, fileID, iclFileHeader, optional)
+> File2 UpdateICLFile(ctx, fileID, fileHeader2, optional)
 
 Updates the specified File Header by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
 
@@ -334,7 +334,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **fileID** | **string**| File ID | 
-**iclFileHeader** | [**IclFileHeader**](IclFileHeader.md)|  | 
+**fileHeader2** | [**FileHeader2**](FileHeader2.md)|  | 
  **optional** | ***UpdateICLFileOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -351,7 +351,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IclFile**](ICLFile.md)
+[**File2**](File_2.md)
 
 ### Authorization
 
@@ -369,7 +369,7 @@ Name | Type | Description  | Notes
 
 ## ValidateICLFile
 
-> IclFile ValidateICLFile(ctx, fileID, optional)
+> File2 ValidateICLFile(ctx, fileID, optional)
 
 Validates the existing file. You need only supply the unique File identifier that was returned upon creation.
 
@@ -394,7 +394,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IclFile**](ICLFile.md)
+[**File2**](File_2.md)
 
 ### Authorization
 

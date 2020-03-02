@@ -10,24 +10,11 @@
 
 package client
 
-// AdvBatchControl struct for AdvBatchControl
-type AdvBatchControl struct {
-	// Batch ID
-	ID string `json:"ID,omitempty"`
-	// Same as ServiceClassCode in BatchHeader record
-	ServiceClassCode int32 `json:"serviceClassCode,omitempty"`
-	// EntryAddendaCount is a tally of each Entry Detail Record and each Addenda Record processed, within either the batch or file as appropriate.
-	EntryAddendaCount int32 `json:"entryAddendaCount,omitempty"`
-	// Validate the Receiving DFI Identification in each Entry Detail Record is hashed to provide a check against inadvertent alteration of data contents due to hardware failure or program error. In this context the Entry Hash is the sum of the corresponding fields in the Entry Detail Records on the file.
-	EntryHash int32 `json:"entryHash,omitempty"`
-	// Contains accumulated Entry debit totals within the batch.
-	TotalDebit int32 `json:"totalDebit,omitempty"`
-	// Contains accumulated Entry credit totals within the batch.
-	TotalCredit int32 `json:"totalCredit,omitempty"`
-	// Alphanumeric code used to identify an ACH Operator
-	AchOperatorData string `json:"achOperatorData,omitempty"`
-	// The routing number is used to identify the DFI originating entries within a given branch.
-	ODFIIdentification string `json:"ODFIIdentification,omitempty"`
-	// BatchNumber is assigned in ascending sequence to each batch by the ODFI or its Sending Point in a given file of entries. Since the batch number in the Batch Header Record and the Batch Control Record is the same, the ascending sequence number should be assigned by batch and not by record.
-	BatchNumber string `json:"batchNumber,omitempty"`
+// IatBatch2 struct for IatBatch2
+type IatBatch2 struct {
+	// Client defined string used as a reference to this record.
+	ID              string           `json:"ID,omitempty"`
+	IATBatchHeader  IatBatchHeader2  `json:"IATBatchHeader,omitempty"`
+	IATEntryDetails []IatEntryDetail `json:"IATEntryDetails,omitempty"`
+	BatchControl    BatchControl2    `json:"batchControl,omitempty"`
 }

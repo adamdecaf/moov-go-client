@@ -129,7 +129,7 @@ func (a *TransfersApiService) AddTransfer(ctx _context.Context, xUserID string, 
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v Error2
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -254,7 +254,7 @@ func (a *TransfersApiService) AddTransfers(ctx _context.Context, xUserID string,
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v Error2
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -623,16 +623,16 @@ GetTransferFiles Get the ACH files to be used in this transfer.
  * @param optional nil or *GetTransferFilesOpts - Optional Parameters:
  * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
  * @param "XIdempotencyKey" (optional.String) -  Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests.
-@return []File
+@return []File2
 */
-func (a *TransfersApiService) GetTransferFiles(ctx _context.Context, transferID string, xUserID string, localVarOptionals *GetTransferFilesOpts) ([]File, *_nethttp.Response, error) {
+func (a *TransfersApiService) GetTransferFiles(ctx _context.Context, transferID string, xUserID string, localVarOptionals *GetTransferFilesOpts) ([]File2, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []File
+		localVarReturnValue  []File2
 	)
 
 	// create path and map variables
@@ -701,7 +701,7 @@ func (a *TransfersApiService) GetTransferFiles(ctx _context.Context, transferID 
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 200 {
-			var v []File
+			var v []File2
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -711,7 +711,7 @@ func (a *TransfersApiService) GetTransferFiles(ctx _context.Context, transferID 
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v Error2
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

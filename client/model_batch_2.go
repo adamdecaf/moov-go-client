@@ -10,12 +10,10 @@
 
 package client
 
-// IclFile struct for IclFile
-type IclFile struct {
-	// File ID
-	ID          string         `json:"ID,omitempty"`
-	FileHeader  IclFileHeader  `json:"fileHeader,omitempty"`
-	CashLetters []CashLetter   `json:"cashLetters,omitempty"`
-	Bundles     []Bundle       `json:"bundles,omitempty"`
-	FileControl IclFileControl `json:"fileControl,omitempty"`
+// Batch2 struct for Batch2
+type Batch2 struct {
+	BatchHeader  BatchHeader2   `json:"batchHeader,omitempty"`
+	EntryDetails []EntryDetail2 `json:"entryDetails,omitempty"`
+	BatchControl BatchControl2  `json:"batchControl,omitempty"`
+	Offset       Offset         `json:"offset,omitempty"`
 }

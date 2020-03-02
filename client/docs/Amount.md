@@ -1,4 +1,4 @@
-# WireAmount
+# Amount
 
 ## Properties
 
