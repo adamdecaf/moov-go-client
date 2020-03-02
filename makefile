@@ -4,7 +4,7 @@ VERSION=v$(shell date -u +"%Y.%m.%d").1
 client:
 # Download [latest] OpenAPI spec
 	rm -rf openapi.yaml
-	@wget -q -O openapi.yaml https://raw.githubusercontent.com/moov-io/api/master/openapi.yaml
+	wget -q -O openapi.yaml https://github.com/moov-io/api/releases/download/v2020.03.02.1/openapi.yaml
 # Generate client
 # Checkout https://github.com/OpenAPITools/openapi-generator/releases
 	@chmod +x ./openapi-generator
