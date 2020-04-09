@@ -33,7 +33,8 @@ type CreateAccountOpts struct {
 }
 
 /*
-CreateAccount Create a new account for a Customer
+CreateAccount Create Account
+Create an account for a Customer. Leaving the number blank will generate a random value.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param xUserID Moov User ID header, required in all requests
  * @param createAccount
@@ -142,7 +143,8 @@ type CreateTransactionOpts struct {
 }
 
 /*
-CreateTransaction Post a transaction against multiple accounts. All transaction lines must sum to zero. No money is created or destroyed in a transaction - only moved from account to account. Accounts can be referred to in a Transaction without creating them first.
+CreateTransaction Create Transaction
+Post a transaction against multiple accounts. All transaction lines must sum to zero. No money is created or destroyed in a transaction - only moved from account to account. Accounts can be referred to in a Transaction without creating them first.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param xUserID Moov User ID header, required in all requests
  * @param createTransaction
@@ -251,7 +253,8 @@ type GetAccountTransactionsOpts struct {
 }
 
 /*
-GetAccountTransactions Get transactions for an account. Ordered descending from their posted date.
+GetAccountTransactions Get Account transactions
+Get transactions for an account. Ordered descending from their posted date.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param accountID Account ID
  * @param xUserID Moov User ID header, required in all requests
@@ -357,7 +360,8 @@ type SearchAccountsOpts struct {
 }
 
 /*
-SearchAccounts Search for account which matches all query parameters
+SearchAccounts Search for Accounts
+Find accounts which match all specified query parameters
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param xUserID Moov User ID header, required in all requests
  * @param optional nil or *SearchAccountsOpts - Optional Parameters:

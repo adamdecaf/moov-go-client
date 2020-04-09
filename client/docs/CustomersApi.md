@@ -4,11 +4,11 @@ All URIs are relative to *https://api.moov.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateCustomer**](CustomersApi.md#CreateCustomer) | **Post** /v1/customers | Create a new customer
-[**GetCustomer**](CustomersApi.md#GetCustomer) | **Get** /v1/customers/{customerID} | Retrieves a Customer object associated with the customer ID.
-[**GetCustomerDocumentContents**](CustomersApi.md#GetCustomerDocumentContents) | **Get** /v1/customers/{customerID}/documents/{documentID} | Retrieve the referenced document
-[**GetCustomerDocuments**](CustomersApi.md#GetCustomerDocuments) | **Get** /v1/customers/{customerID}/documents | Get documents for a customer
-[**UploadCustomerDocument**](CustomersApi.md#UploadCustomerDocument) | **Post** /v1/customers/{customerID}/documents | Upload a document for the given customer.
+[**CreateCustomer**](CustomersApi.md#CreateCustomer) | **Post** /v1/customers | Create customer
+[**GetCustomer**](CustomersApi.md#GetCustomer) | **Get** /v1/customers/{customerID} | Retrieve customer
+[**GetCustomerDocumentContents**](CustomersApi.md#GetCustomerDocumentContents) | **Get** /v1/customers/{customerID}/documents/{documentID} | Get customer document
+[**GetCustomerDocuments**](CustomersApi.md#GetCustomerDocuments) | **Get** /v1/customers/{customerID}/documents | Get customer documents
+[**UploadCustomerDocument**](CustomersApi.md#UploadCustomerDocument) | **Post** /v1/customers/{customerID}/documents | Upload document
 
 
 
@@ -16,7 +16,9 @@ Method | HTTP request | Description
 
 > Customer CreateCustomer(ctx, createCustomer, optional)
 
-Create a new customer
+Create customer
+
+Create a Customer object from the given details of a human or business
 
 ### Required Parameters
 
@@ -60,7 +62,9 @@ No authorization required
 
 > Customer GetCustomer(ctx, customerID, optional)
 
-Retrieves a Customer object associated with the customer ID.
+Retrieve customer
+
+Get the Customer object and metadata for the customer ID.
 
 ### Required Parameters
 
@@ -103,6 +107,8 @@ No authorization required
 ## GetCustomerDocumentContents
 
 > *os.File GetCustomerDocumentContents(ctx, customerID, documentID, optional)
+
+Get customer document
 
 Retrieve the referenced document
 
@@ -150,6 +156,8 @@ No authorization required
 
 > []Document GetCustomerDocuments(ctx, customerID, optional)
 
+Get customer documents
+
 Get documents for a customer
 
 ### Required Parameters
@@ -194,7 +202,9 @@ No authorization required
 
 > Document UploadCustomerDocument(ctx, customerID, type_, file, optional)
 
-Upload a document for the given customer.
+Upload document
+
+Upload a document for the given customer
 
 ### Required Parameters
 

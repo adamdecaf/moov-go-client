@@ -21,7 +21,7 @@ type FedWireMessage struct {
 	SenderSupplied                  SenderSupplied                  `json:"senderSupplied"`
 	TypeSubType                     TypeSubType                     `json:"typeSubType"`
 	InputMessageAccountabilityData  InputMessageAccountabilityData  `json:"inputMessageAccountabilityData"`
-	Amount                          Amount                          `json:"amount"`
+	Amount                          WireAmount                      `json:"amount"`
 	SenderDepositoryInstitution     SenderDepositoryInstitution     `json:"senderDepositoryInstitution"`
 	ReceiverDepositoryInstitution   ReceiverDepositoryInstitution   `json:"receiverDepositoryInstitution"`
 	BusinessFunctionCode            BusinessFunctionCode            `json:"businessFunctionCode"`

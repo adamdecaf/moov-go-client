@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**TransferType** | **string** | Type of transaction being actioned against the receiving institution. Expected values are pull (debits) or push (credits). | [optional] 
+**TransferType** | **string** | Type of transaction being actioned against the receiving institution. Expected values are pull (debits) or push (credits). | 
 **Amount** | **string** | Amount of money. USD - United States. | 
 **Originator** | **string** | ID of the Originator account initiating the transfer. | 
 **OriginatorDepository** | **string** | ID of the Originator Depository to be be used to override the default depository. | [optional] 
@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **SameDay** | **bool** | When set to true this indicates the transfer should be processed the same day if possible. | [optional] [default to false]
 **CCDDetail** | [**CcdDetail**](CCDDetail.md) |  | [optional] 
 **IATDetail** | [**IatDetail**](IATDetail.md) |  | [optional] 
+**PPDDetail** | [**PpdDetail**](PPDDetail.md) |  | [optional] 
 **TELDetail** | [**TelDetail**](TELDetail.md) |  | [optional] 
 **WEBDetail** | [**WebDetail**](WEBDetail.md) |  | [optional] 
 

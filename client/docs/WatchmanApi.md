@@ -4,23 +4,23 @@ All URIs are relative to *https://api.moov.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AddOfacCompanyNameWatch**](WatchmanApi.md#AddOfacCompanyNameWatch) | **Post** /v1/watchman/companies/watch | Add company watch by name. The match percentage will be included in the webhook&#39;s JSON payload.
-[**AddOfacCompanyWatch**](WatchmanApi.md#AddOfacCompanyWatch) | **Post** /v1/watchman/companies/{companyID}/watch | Add watch on a OFAC Company
-[**AddOfacCustomerNameWatch**](WatchmanApi.md#AddOfacCustomerNameWatch) | **Post** /v1/watchman/ofac/customers/watch | Add customer watch by name. The match percentage will be included in the webhook&#39;s JSON payload.
-[**AddOfacCustomerWatch**](WatchmanApi.md#AddOfacCustomerWatch) | **Post** /v1/watchman/ofac/customers/{customerID}/watch | Add watch on a OFAC Customer
-[**GetLatestDownloads**](WatchmanApi.md#GetLatestDownloads) | **Get** /v1/watchman/ofac/downloads | Return list of recent downloads of list data
-[**GetOfacCompany**](WatchmanApi.md#GetOfacCompany) | **Get** /v1/watchman/companies/{companyID} | Get information about a company, trust or organization such as addresses, alternate names, and remarks.
-[**GetOfacCustomer**](WatchmanApi.md#GetOfacCustomer) | **Get** /v1/watchman/ofac/customers/{customerID} | Get information about a customer, addresses, alternate names, and their SDN metadata.
-[**GetSDN**](WatchmanApi.md#GetSDN) | **Get** /v1/watchman/ofac/sdn/{sdnID} | Specially designated national
-[**GetSDNAddresses**](WatchmanApi.md#GetSDNAddresses) | **Get** /v1/watchman/ofac/sdn/{sdnID}/addresses | Get addresses for a given SDN
-[**GetSDNAltNames**](WatchmanApi.md#GetSDNAltNames) | **Get** /v1/watchman/ofac/sdn/{sdnID}/alts | Get alternate names for a given SDN
-[**RemoveOfacCompanyNameWatch**](WatchmanApi.md#RemoveOfacCompanyNameWatch) | **Delete** /v1/watchman/companies/watch/{watchID} | Remove a Company name watch
+[**AddOfacCompanyNameWatch**](WatchmanApi.md#AddOfacCompanyNameWatch) | **Post** /v1/watchman/companies/watch | Watch company
+[**AddOfacCompanyWatch**](WatchmanApi.md#AddOfacCompanyWatch) | **Post** /v1/watchman/companies/{companyID}/watch | Watch OFAC company
+[**AddOfacCustomerNameWatch**](WatchmanApi.md#AddOfacCustomerNameWatch) | **Post** /v1/watchman/ofac/customers/watch | Watch customer
+[**AddOfacCustomerWatch**](WatchmanApi.md#AddOfacCustomerWatch) | **Post** /v1/watchman/ofac/customers/{customerID}/watch | Watch OFAC customer
+[**GetLatestDownloads**](WatchmanApi.md#GetLatestDownloads) | **Get** /v1/watchman/ofac/downloads | Get latest downloads
+[**GetOfacCompany**](WatchmanApi.md#GetOfacCompany) | **Get** /v1/watchman/companies/{companyID} | Get company
+[**GetOfacCustomer**](WatchmanApi.md#GetOfacCustomer) | **Get** /v1/watchman/ofac/customers/{customerID} | Get Customer
+[**GetSDN**](WatchmanApi.md#GetSDN) | **Get** /v1/watchman/ofac/sdn/{sdnID} | Get SDN
+[**GetSDNAddresses**](WatchmanApi.md#GetSDNAddresses) | **Get** /v1/watchman/ofac/sdn/{sdnID}/addresses | Get SDN addresses
+[**GetSDNAltNames**](WatchmanApi.md#GetSDNAltNames) | **Get** /v1/watchman/ofac/sdn/{sdnID}/alts | Get SDN alt names
+[**RemoveOfacCompanyNameWatch**](WatchmanApi.md#RemoveOfacCompanyNameWatch) | **Delete** /v1/watchman/companies/watch/{watchID} | Remove a company watch
 [**RemoveOfacCompanyWatch**](WatchmanApi.md#RemoveOfacCompanyWatch) | **Delete** /v1/watchman/companies/{companyID}/watch/{watchID} | Remove company watch
-[**RemoveOfacCustomerNameWatch**](WatchmanApi.md#RemoveOfacCustomerNameWatch) | **Delete** /v1/watchman/ofac/customers/watch/{watchID} | Remove a Customer name watch
+[**RemoveOfacCustomerNameWatch**](WatchmanApi.md#RemoveOfacCustomerNameWatch) | **Delete** /v1/watchman/ofac/customers/watch/{watchID} | remove a customer watch
 [**RemoveOfacCustomerWatch**](WatchmanApi.md#RemoveOfacCustomerWatch) | **Delete** /v1/watchman/ofac/customers/{customerID}/watch/{watchID} | Remove customer watch
-[**Search**](WatchmanApi.md#Search) | **Get** /v1/watchman/ofac/search | Search SDN names and metadata
-[**UpdateOfacCompanyStatus**](WatchmanApi.md#UpdateOfacCompanyStatus) | **Put** /v1/watchman/companies/{companyID} | Update a Companies sanction status to always block or always allow transactions.
-[**UpdateOfacCustomerStatus**](WatchmanApi.md#UpdateOfacCustomerStatus) | **Put** /v1/watchman/ofac/customers/{customerID} | Update a Customer&#39;s sanction status to always block or always allow transactions.
+[**Search**](WatchmanApi.md#Search) | **Get** /v1/watchman/ofac/search | Search SDNs
+[**UpdateOfacCompanyStatus**](WatchmanApi.md#UpdateOfacCompanyStatus) | **Put** /v1/watchman/companies/{companyID} | Update company
+[**UpdateOfacCustomerStatus**](WatchmanApi.md#UpdateOfacCustomerStatus) | **Put** /v1/watchman/ofac/customers/{customerID} | Update customer
 
 
 
@@ -28,7 +28,9 @@ Method | HTTP request | Description
 
 > OfacWatch AddOfacCompanyNameWatch(ctx, name, ofacWatchRequest, optional)
 
-Add company watch by name. The match percentage will be included in the webhook's JSON payload.
+Watch company
+
+Watch a company by its name. The match percentage will be included in the webhook's JSON payload.
 
 ### Required Parameters
 
@@ -74,7 +76,9 @@ No authorization required
 
 > OfacWatch AddOfacCompanyWatch(ctx, companyID, ofacWatchRequest, optional)
 
-Add watch on a OFAC Company
+Watch OFAC company
+
+Add name watch on a OFAC Company
 
 ### Required Parameters
 
@@ -120,7 +124,9 @@ No authorization required
 
 > OfacWatch AddOfacCustomerNameWatch(ctx, name, ofacWatchRequest, optional)
 
-Add customer watch by name. The match percentage will be included in the webhook's JSON payload.
+Watch customer
+
+Watch a customer by its name. The match percentage will be included in the webhook's JSON payload.
 
 ### Required Parameters
 
@@ -166,7 +172,9 @@ No authorization required
 
 > OfacWatch AddOfacCustomerWatch(ctx, customerID, ofacWatchRequest, optional)
 
-Add watch on a OFAC Customer
+Watch OFAC customer
+
+Add name watch on a OFAC Customer
 
 ### Required Parameters
 
@@ -212,6 +220,8 @@ No authorization required
 
 > []Download GetLatestDownloads(ctx, optional)
 
+Get latest downloads
+
 Return list of recent downloads of list data
 
 ### Required Parameters
@@ -254,6 +264,8 @@ No authorization required
 ## GetOfacCompany
 
 > OfacCompany GetOfacCompany(ctx, companyID, optional)
+
+Get company
 
 Get information about a company, trust or organization such as addresses, alternate names, and remarks.
 
@@ -299,6 +311,8 @@ No authorization required
 
 > OfacCustomer GetOfacCustomer(ctx, customerID, optional)
 
+Get Customer
+
 Get information about a customer, addresses, alternate names, and their SDN metadata.
 
 ### Required Parameters
@@ -343,7 +357,9 @@ No authorization required
 
 > OfacSdn GetSDN(ctx, sdnID, optional)
 
-Specially designated national
+Get SDN
+
+Get SDN details
 
 ### Required Parameters
 
@@ -387,7 +403,7 @@ No authorization required
 
 > []OfacEntityAddress GetSDNAddresses(ctx, sdnID, optional)
 
-Get addresses for a given SDN
+Get SDN addresses
 
 ### Required Parameters
 
@@ -431,7 +447,7 @@ No authorization required
 
 > []OfacAlt GetSDNAltNames(ctx, sdnID, optional)
 
-Get alternate names for a given SDN
+Get SDN alt names
 
 ### Required Parameters
 
@@ -475,7 +491,7 @@ No authorization required
 
 > RemoveOfacCompanyNameWatch(ctx, watchID, name, optional)
 
-Remove a Company name watch
+Remove a company watch
 
 ### Required Parameters
 
@@ -523,6 +539,8 @@ No authorization required
 
 Remove company watch
 
+Delete a company name watch
+
 ### Required Parameters
 
 
@@ -567,7 +585,7 @@ No authorization required
 
 > RemoveOfacCustomerNameWatch(ctx, watchID, name, optional)
 
-Remove a Customer name watch
+remove a customer watch
 
 ### Required Parameters
 
@@ -615,6 +633,8 @@ No authorization required
 
 Remove customer watch
 
+Delete a customer name watch
+
 ### Required Parameters
 
 
@@ -659,7 +679,7 @@ No authorization required
 
 > Search Search(ctx, optional)
 
-Search SDN names and metadata
+Search SDNs
 
 ### Required Parameters
 
@@ -714,6 +734,8 @@ No authorization required
 
 > UpdateOfacCompanyStatus(ctx, companyID, updateOfacCompanyStatus, optional)
 
+Update company
+
 Update a Companies sanction status to always block or always allow transactions.
 
 ### Required Parameters
@@ -760,7 +782,9 @@ No authorization required
 
 > UpdateOfacCustomerStatus(ctx, customerID, updateOfacCustomerStatus, optional)
 
-Update a Customer's sanction status to always block or always allow transactions.
+Update customer
+
+Update a Customer sanction status to always block or always allow transactions.
 
 ### Required Parameters
 

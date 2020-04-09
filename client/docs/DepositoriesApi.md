@@ -4,13 +4,13 @@ All URIs are relative to *https://api.moov.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AddDepository**](DepositoriesApi.md#AddDepository) | **Post** /v1/ach/depositories | Create a new depository account for the authenticated user
-[**ConfirmMicroDeposits**](DepositoriesApi.md#ConfirmMicroDeposits) | **Post** /v1/ach/depositories/{depositoryID}/micro-deposits/confirm | Confirm micro deposit amounts after they have been posted to the depository account
-[**DeleteDepository**](DepositoriesApi.md#DeleteDepository) | **Delete** /v1/ach/depositories/{depositoryID} | Permanently deletes a depository and associated transfers. It cannot be undone. Immediately cancels any active Transfers for the depository.
-[**GetDepositories**](DepositoriesApi.md#GetDepositories) | **Get** /v1/ach/depositories | A list of all Depository objects for the authentication context.
-[**GetDepositoryByID**](DepositoriesApi.md#GetDepositoryByID) | **Get** /v1/ach/depositories/{depositoryID} | Get a Depository object for the supplied ID
-[**InitiateMicroDeposits**](DepositoriesApi.md#InitiateMicroDeposits) | **Post** /v1/ach/depositories/{depositoryID}/micro-deposits | Initiates micro deposits to be sent to the Depository institution for account validation
-[**UpdateDepository**](DepositoriesApi.md#UpdateDepository) | **Patch** /v1/ach/depositories/{depositoryID} | Updates the specified Depository by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
+[**AddDepository**](DepositoriesApi.md#AddDepository) | **Post** /v1/ach/depositories | Create Depository
+[**ConfirmMicroDeposits**](DepositoriesApi.md#ConfirmMicroDeposits) | **Post** /v1/ach/depositories/{depositoryID}/micro-deposits/confirm | Confirm micro-deposits
+[**DeleteDepository**](DepositoriesApi.md#DeleteDepository) | **Delete** /v1/ach/depositories/{depositoryID} | Delete Depository
+[**GetDepositories**](DepositoriesApi.md#GetDepositories) | **Get** /v1/ach/depositories | List Depositories
+[**GetDepositoryByID**](DepositoriesApi.md#GetDepositoryByID) | **Get** /v1/ach/depositories/{depositoryID} | Get Depository
+[**InitiateMicroDeposits**](DepositoriesApi.md#InitiateMicroDeposits) | **Post** /v1/ach/depositories/{depositoryID}/micro-deposits | Initiate micro-deposits
+[**UpdateDepository**](DepositoriesApi.md#UpdateDepository) | **Patch** /v1/ach/depositories/{depositoryID} | Update Depository
 
 
 
@@ -18,7 +18,9 @@ Method | HTTP request | Description
 
 > Depository AddDepository(ctx, xUserID, createDepository, optional)
 
-Create a new depository account for the authenticated user
+Create Depository
+
+Create a new Dpository object for the userID
 
 ### Required Parameters
 
@@ -63,6 +65,8 @@ Name | Type | Description  | Notes
 ## ConfirmMicroDeposits
 
 > ConfirmMicroDeposits(ctx, depositoryID, xUserID, amounts, optional)
+
+Confirm micro-deposits
 
 Confirm micro deposit amounts after they have been posted to the depository account
 
@@ -112,6 +116,8 @@ Name | Type | Description  | Notes
 
 > DeleteDepository(ctx, depositoryID, xUserID, optional)
 
+Delete Depository
+
 Permanently deletes a depository and associated transfers. It cannot be undone. Immediately cancels any active Transfers for the depository.
 
 ### Required Parameters
@@ -157,7 +163,9 @@ Name | Type | Description  | Notes
 
 > []Depository GetDepositories(ctx, xUserID, optional)
 
-A list of all Depository objects for the authentication context.
+List Depositories
+
+Get all Depository objects for the userID
 
 ### Required Parameters
 
@@ -202,7 +210,9 @@ Name | Type | Description  | Notes
 
 > Depository GetDepositoryByID(ctx, depositoryID, xUserID, optional)
 
-Get a Depository object for the supplied ID
+Get Depository
+
+Get a Depository object for the supplied x-user-id
 
 ### Required Parameters
 
@@ -248,6 +258,8 @@ Name | Type | Description  | Notes
 ## InitiateMicroDeposits
 
 > InitiateMicroDeposits(ctx, depositoryID, xUserID, optional)
+
+Initiate micro-deposits
 
 Initiates micro deposits to be sent to the Depository institution for account validation
 
@@ -295,7 +307,9 @@ Name | Type | Description  | Notes
 
 > Depository UpdateDepository(ctx, depositoryID, xUserID, createDepository, optional)
 
-Updates the specified Depository by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
+Update Depository
+
+Updates the specified Depository by setting the values of the parameters passed for the userID. Any parameters not provided will be left unchanged.
 
 ### Required Parameters
 

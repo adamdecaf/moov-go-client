@@ -60,8 +60,6 @@ type APIClient struct {
 
 	FEDApi *FEDApiService
 
-	FEDWireMessageFileApi *FEDWireMessageFileApiService
-
 	GatewaysApi *GatewaysApiService
 
 	ImageCashLetterFilesApi *ImageCashLetterFilesApiService
@@ -105,7 +103,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.DepositoriesApi = (*DepositoriesApiService)(&c.common)
 	c.EventsApi = (*EventsApiService)(&c.common)
 	c.FEDApi = (*FEDApiService)(&c.common)
-	c.FEDWireMessageFileApi = (*FEDWireMessageFileApiService)(&c.common)
 	c.GatewaysApi = (*GatewaysApiService)(&c.common)
 	c.ImageCashLetterFilesApi = (*ImageCashLetterFilesApiService)(&c.common)
 	c.MonitorApi = (*MonitorApiService)(&c.common)

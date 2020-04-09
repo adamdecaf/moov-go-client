@@ -67,40 +67,38 @@ All URIs are relative to *https://api.moov.io*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *ACHFilesApi* | [**AddBatchToFile**](docs/ACHFilesApi.md#addbatchtofile) | **Post** /v1/ach/files/{fileID}/batches | Add Batch to File
-*ACHFilesApi* | [**CreateFile**](docs/ACHFilesApi.md#createfile) | **Post** /v1/ach/files/create | Create a new File object
-*ACHFilesApi* | [**DeleteACHFile**](docs/ACHFilesApi.md#deleteachfile) | **Delete** /v1/ach/files/{fileID} | Permanently deletes a File and associated Batches. It cannot be undone.
-*ACHFilesApi* | [**DeleteFileBatch**](docs/ACHFilesApi.md#deletefilebatch) | **Delete** /v1/ach/files/{fileID}/batches/{batchID} | Delete a Batch from a File
-*ACHFilesApi* | [**GetFileBatch**](docs/ACHFilesApi.md#getfilebatch) | **Get** /v1/ach/files/{fileID}/batches/{batchID} | Get a specific Batch on a FIle
-*ACHFilesApi* | [**GetFileBatches**](docs/ACHFilesApi.md#getfilebatches) | **Get** /v1/ach/files/{fileID}/batches | Get the batches on a File.
-*ACHFilesApi* | [**GetFileByID**](docs/ACHFilesApi.md#getfilebyid) | **Get** /v1/ach/files/{fileID} | Retrieves the details of an existing File. You need only supply the unique File identifier that was returned upon creation.
-*ACHFilesApi* | [**GetFileContents**](docs/ACHFilesApi.md#getfilecontents) | **Get** /v1/ach/files/{fileID}/contents | Assembles the existing file (batches and controls) records, computes sequence numbers and totals. Returns plaintext file.
-*ACHFilesApi* | [**GetFiles**](docs/ACHFilesApi.md#getfiles) | **Get** /v1/ach/files | Gets a list of Files
-*ACHFilesApi* | [**SegmentFile**](docs/ACHFilesApi.md#segmentfile) | **Post** /v1/ach/files/{fileID}/segment | Create a new file object
-*ACHFilesApi* | [**UpdateFile**](docs/ACHFilesApi.md#updatefile) | **Post** /v1/ach/files/{fileID} | Updates the specified File Header by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
-*ACHFilesApi* | [**ValidateFile**](docs/ACHFilesApi.md#validatefile) | **Get** /v1/ach/files/{fileID}/validate | Validates the existing file. You need only supply the unique File identifier that was returned upon creation.
-*AccountsApi* | [**CreateAccount**](docs/AccountsApi.md#createaccount) | **Post** /v1/accounts | Create a new account for a Customer
-*AccountsApi* | [**CreateTransaction**](docs/AccountsApi.md#createtransaction) | **Post** /v1/accounts/transactions | Post a transaction against multiple accounts. All transaction lines must sum to zero. No money is created or destroyed in a transaction - only moved from account to account. Accounts can be referred to in a Transaction without creating them first.
-*AccountsApi* | [**GetAccountTransactions**](docs/AccountsApi.md#getaccounttransactions) | **Get** /v1/accounts/{accountID}/transactions | Get transactions for an account. Ordered descending from their posted date.
-*AccountsApi* | [**SearchAccounts**](docs/AccountsApi.md#searchaccounts) | **Get** /v1/accounts/search | Search for account which matches all query parameters
-*CustomersApi* | [**CreateCustomer**](docs/CustomersApi.md#createcustomer) | **Post** /v1/customers | Create a new customer
-*CustomersApi* | [**GetCustomer**](docs/CustomersApi.md#getcustomer) | **Get** /v1/customers/{customerID} | Retrieves a Customer object associated with the customer ID.
-*CustomersApi* | [**GetCustomerDocumentContents**](docs/CustomersApi.md#getcustomerdocumentcontents) | **Get** /v1/customers/{customerID}/documents/{documentID} | Retrieve the referenced document
-*CustomersApi* | [**GetCustomerDocuments**](docs/CustomersApi.md#getcustomerdocuments) | **Get** /v1/customers/{customerID}/documents | Get documents for a customer
-*CustomersApi* | [**UploadCustomerDocument**](docs/CustomersApi.md#uploadcustomerdocument) | **Post** /v1/customers/{customerID}/documents | Upload a document for the given customer.
-*DepositoriesApi* | [**AddDepository**](docs/DepositoriesApi.md#adddepository) | **Post** /v1/ach/depositories | Create a new depository account for the authenticated user
-*DepositoriesApi* | [**ConfirmMicroDeposits**](docs/DepositoriesApi.md#confirmmicrodeposits) | **Post** /v1/ach/depositories/{depositoryID}/micro-deposits/confirm | Confirm micro deposit amounts after they have been posted to the depository account
-*DepositoriesApi* | [**DeleteDepository**](docs/DepositoriesApi.md#deletedepository) | **Delete** /v1/ach/depositories/{depositoryID} | Permanently deletes a depository and associated transfers. It cannot be undone. Immediately cancels any active Transfers for the depository.
-*DepositoriesApi* | [**GetDepositories**](docs/DepositoriesApi.md#getdepositories) | **Get** /v1/ach/depositories | A list of all Depository objects for the authentication context.
-*DepositoriesApi* | [**GetDepositoryByID**](docs/DepositoriesApi.md#getdepositorybyid) | **Get** /v1/ach/depositories/{depositoryID} | Get a Depository object for the supplied ID
-*DepositoriesApi* | [**InitiateMicroDeposits**](docs/DepositoriesApi.md#initiatemicrodeposits) | **Post** /v1/ach/depositories/{depositoryID}/micro-deposits | Initiates micro deposits to be sent to the Depository institution for account validation
-*DepositoriesApi* | [**UpdateDepository**](docs/DepositoriesApi.md#updatedepository) | **Patch** /v1/ach/depositories/{depositoryID} | Updates the specified Depository by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
-*EventsApi* | [**GetEventByID**](docs/EventsApi.md#geteventbyid) | **Get** /v1/ach/events/{eventID} | Get a Event by ID
-*EventsApi* | [**GetEvents**](docs/EventsApi.md#getevents) | **Get** /v1/ach/events | Gets a list of Events
+*ACHFilesApi* | [**CreateFile**](docs/ACHFilesApi.md#createfile) | **Post** /v1/ach/files/create | Create File
+*ACHFilesApi* | [**DeleteACHFile**](docs/ACHFilesApi.md#deleteachfile) | **Delete** /v1/ach/files/{fileID} | Delete file
+*ACHFilesApi* | [**DeleteFileBatch**](docs/ACHFilesApi.md#deletefilebatch) | **Delete** /v1/ach/files/{fileID}/batches/{batchID} | Delete batch
+*ACHFilesApi* | [**GetFileBatch**](docs/ACHFilesApi.md#getfilebatch) | **Get** /v1/ach/files/{fileID}/batches/{batchID} | Get Batch
+*ACHFilesApi* | [**GetFileBatches**](docs/ACHFilesApi.md#getfilebatches) | **Get** /v1/ach/files/{fileID}/batches | Get batches
+*ACHFilesApi* | [**GetFileByID**](docs/ACHFilesApi.md#getfilebyid) | **Get** /v1/ach/files/{fileID} | Retrieve a file
+*ACHFilesApi* | [**GetFileContents**](docs/ACHFilesApi.md#getfilecontents) | **Get** /v1/ach/files/{fileID}/contents | Get file contents
+*ACHFilesApi* | [**GetFiles**](docs/ACHFilesApi.md#getfiles) | **Get** /v1/ach/files | Get ACH files
+*ACHFilesApi* | [**SegmentFile**](docs/ACHFilesApi.md#segmentfile) | **Post** /v1/ach/files/{fileID}/segment | Segment file
+*ACHFilesApi* | [**ValidateFile**](docs/ACHFilesApi.md#validatefile) | **Get** /v1/ach/files/{fileID}/validate | Validate file
+*AccountsApi* | [**CreateAccount**](docs/AccountsApi.md#createaccount) | **Post** /v1/accounts | Create Account
+*AccountsApi* | [**CreateTransaction**](docs/AccountsApi.md#createtransaction) | **Post** /v1/accounts/transactions | Create Transaction
+*AccountsApi* | [**GetAccountTransactions**](docs/AccountsApi.md#getaccounttransactions) | **Get** /v1/accounts/{accountID}/transactions | Get Account transactions
+*AccountsApi* | [**SearchAccounts**](docs/AccountsApi.md#searchaccounts) | **Get** /v1/accounts/search | Search for Accounts
+*CustomersApi* | [**CreateCustomer**](docs/CustomersApi.md#createcustomer) | **Post** /v1/customers | Create customer
+*CustomersApi* | [**GetCustomer**](docs/CustomersApi.md#getcustomer) | **Get** /v1/customers/{customerID} | Retrieve customer
+*CustomersApi* | [**GetCustomerDocumentContents**](docs/CustomersApi.md#getcustomerdocumentcontents) | **Get** /v1/customers/{customerID}/documents/{documentID} | Get customer document
+*CustomersApi* | [**GetCustomerDocuments**](docs/CustomersApi.md#getcustomerdocuments) | **Get** /v1/customers/{customerID}/documents | Get customer documents
+*CustomersApi* | [**UploadCustomerDocument**](docs/CustomersApi.md#uploadcustomerdocument) | **Post** /v1/customers/{customerID}/documents | Upload document
+*DepositoriesApi* | [**AddDepository**](docs/DepositoriesApi.md#adddepository) | **Post** /v1/ach/depositories | Create Depository
+*DepositoriesApi* | [**ConfirmMicroDeposits**](docs/DepositoriesApi.md#confirmmicrodeposits) | **Post** /v1/ach/depositories/{depositoryID}/micro-deposits/confirm | Confirm micro-deposits
+*DepositoriesApi* | [**DeleteDepository**](docs/DepositoriesApi.md#deletedepository) | **Delete** /v1/ach/depositories/{depositoryID} | Delete Depository
+*DepositoriesApi* | [**GetDepositories**](docs/DepositoriesApi.md#getdepositories) | **Get** /v1/ach/depositories | List Depositories
+*DepositoriesApi* | [**GetDepositoryByID**](docs/DepositoriesApi.md#getdepositorybyid) | **Get** /v1/ach/depositories/{depositoryID} | Get Depository
+*DepositoriesApi* | [**InitiateMicroDeposits**](docs/DepositoriesApi.md#initiatemicrodeposits) | **Post** /v1/ach/depositories/{depositoryID}/micro-deposits | Initiate micro-deposits
+*DepositoriesApi* | [**UpdateDepository**](docs/DepositoriesApi.md#updatedepository) | **Patch** /v1/ach/depositories/{depositoryID} | Update Depository
+*EventsApi* | [**GetEventByID**](docs/EventsApi.md#geteventbyid) | **Get** /v1/ach/events/{eventID} | Get Event
+*EventsApi* | [**GetEvents**](docs/EventsApi.md#getevents) | **Get** /v1/ach/events | Get Events
 *FEDApi* | [**SearchFEDACH**](docs/FEDApi.md#searchfedach) | **Get** /v1/fed/ach/search | Search FEDACH names and metadata
 *FEDApi* | [**SearchFEDWIRE**](docs/FEDApi.md#searchfedwire) | **Get** /v1/fed/wire/search | Search FEDWIRE names and metadata
-*FEDWireMessageFileApi* | [**AddFEDWireMessageToFile**](docs/FEDWireMessageFileApi.md#addfedwiremessagetofile) | **Post** /v1/wire/files/{fileID}/FEDWireMessage | Add FEDWireMessage to File
-*GatewaysApi* | [**AddGateway**](docs/GatewaysApi.md#addgateway) | **Post** /v1/ach/gateways | Create a new Gateway object
-*GatewaysApi* | [**GetGateways**](docs/GatewaysApi.md#getgateways) | **Get** /v1/ach/gateways | Gets a list of Gatways
+*GatewaysApi* | [**AddGateway**](docs/GatewaysApi.md#addgateway) | **Post** /v1/ach/gateways | Update Gateway
+*GatewaysApi* | [**GetGateways**](docs/GatewaysApi.md#getgateways) | **Get** /v1/ach/gateways | Gets Gatway
 *ImageCashLetterFilesApi* | [**AddICLToFile**](docs/ImageCashLetterFilesApi.md#addicltofile) | **Post** /v1/imagecashletter/files/{fileID}/cashLetters | Add CashLetter to File
 *ImageCashLetterFilesApi* | [**CreateICLFile**](docs/ImageCashLetterFilesApi.md#createiclfile) | **Post** /v1/imagecashletter/files/create | Create a new File object
 *ImageCashLetterFilesApi* | [**DeleteICLFile**](docs/ImageCashLetterFilesApi.md#deleteiclfile) | **Delete** /v1/imagecashletter/files/{fileID} | Permanently deletes a File and associated CashLetters and Bundles. It cannot be undone.
@@ -110,68 +108,66 @@ Class | Method | HTTP request | Description
 *ImageCashLetterFilesApi* | [**GetICLFiles**](docs/ImageCashLetterFilesApi.md#geticlfiles) | **Get** /v1/imagecashletter/files | Gets a list of Files
 *ImageCashLetterFilesApi* | [**UpdateICLFile**](docs/ImageCashLetterFilesApi.md#updateiclfile) | **Post** /v1/imagecashletter/files/{fileID} | Updates the specified File Header by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
 *ImageCashLetterFilesApi* | [**ValidateICLFile**](docs/ImageCashLetterFilesApi.md#validateiclfile) | **Get** /v1/imagecashletter/files/{fileID}/validate | Validates the existing file. You need only supply the unique File identifier that was returned upon creation.
-*MonitorApi* | [**PingACH**](docs/MonitorApi.md#pingach) | **Get** /v1/ach/ping | Check that the moov-io/ach service is running
-*MonitorApi* | [**PingAccounts**](docs/MonitorApi.md#pingaccounts) | **Get** /v1/accounts/ping | Check that the moov-io/accounts service is running
-*MonitorApi* | [**PingAuth**](docs/MonitorApi.md#pingauth) | **Get** /v1/auth/ping | Check that the moov-io/auth service is running
-*MonitorApi* | [**PingCustomers**](docs/MonitorApi.md#pingcustomers) | **Get** /v1/customers/ping | Check that the moov-io/customers service is running
-*MonitorApi* | [**PingFED**](docs/MonitorApi.md#pingfed) | **Get** /v1/fed/ping | Check that the moov-io/fed service is running
-*MonitorApi* | [**PingImageCashLetter**](docs/MonitorApi.md#pingimagecashletter) | **Get** /v1/imagecashletter/ping | Check that the moov-io/imagecashletter service is running
-*MonitorApi* | [**PingPaygate**](docs/MonitorApi.md#pingpaygate) | **Get** /v1/paygate/ping | Check that the moov-io/paygate service is running
-*MonitorApi* | [**PingWatchman**](docs/MonitorApi.md#pingwatchman) | **Get** /v1/watchman/ping | Check that the moov-io/watchman service is running
-*MonitorApi* | [**PingWire**](docs/MonitorApi.md#pingwire) | **Get** /v1/wire/ping | Check that the moov-io/wire service is running
+*MonitorApi* | [**PingACH**](docs/MonitorApi.md#pingach) | **Get** /v1/ach/ping | Ping ACH
+*MonitorApi* | [**PingAccounts**](docs/MonitorApi.md#pingaccounts) | **Get** /v1/accounts/ping | Ping Accounts
+*MonitorApi* | [**PingAuth**](docs/MonitorApi.md#pingauth) | **Get** /v1/auth/ping | Ping Auth
+*MonitorApi* | [**PingCustomers**](docs/MonitorApi.md#pingcustomers) | **Get** /v1/customers/ping | Ping Customers
+*MonitorApi* | [**PingFED**](docs/MonitorApi.md#pingfed) | **Get** /v1/fed/ping | Ping Fed
+*MonitorApi* | [**PingImageCashLetter**](docs/MonitorApi.md#pingimagecashletter) | **Get** /v1/imagecashletter/ping | Ping ICL
+*MonitorApi* | [**PingPaygate**](docs/MonitorApi.md#pingpaygate) | **Get** /v1/paygate/ping | Ping PayGate
+*MonitorApi* | [**PingWatchman**](docs/MonitorApi.md#pingwatchman) | **Get** /v1/watchman/ping | Ping Watchman
+*MonitorApi* | [**PingWire**](docs/MonitorApi.md#pingwire) | **Get** /v1/wire/ping | Ping Wire
 *OAuth2Api* | [**CheckOAuthClientCredentials**](docs/OAuth2Api.md#checkoauthclientcredentials) | **Get** /v1/oauth2/authorize | Verify OAuth2 Bearer token
 *OAuth2Api* | [**CreateOAuth2Client**](docs/OAuth2Api.md#createoauth2client) | **Post** /v1/oauth2/client | Create OAuth2 client credentials
 *OAuth2Api* | [**CreateOAuth2Token**](docs/OAuth2Api.md#createoauth2token) | **Post** /v1/oauth2/token | Generate OAuth2 access token
 *OAuth2Api* | [**GetClientsForUserId**](docs/OAuth2Api.md#getclientsforuserid) | **Get** /v1/oauth2/clients | List OAuth2 clients for the authenticated user
-*OriginatorsApi* | [**AddOriginator**](docs/OriginatorsApi.md#addoriginator) | **Post** /v1/ach/originators | Create a new Originator object
-*OriginatorsApi* | [**DeleteOriginator**](docs/OriginatorsApi.md#deleteoriginator) | **Delete** /v1/ach/originators/{originatorID} | Permanently deletes an Originator and associated Receivers, Depositories, and Transfers. It cannot be undone. Also immediately cancels any active Transfers for the Originator.
-*OriginatorsApi* | [**GetOriginatorByID**](docs/OriginatorsApi.md#getoriginatorbyid) | **Get** /v1/ach/originators/{originatorID} | Retrieves the details of an existing Originator. You need only supply the unique Originator identifier that was returned upon receiver creation.
-*OriginatorsApi* | [**GetOriginators**](docs/OriginatorsApi.md#getoriginators) | **Get** /v1/ach/originators | Gets a list of Originators
-*OriginatorsApi* | [**UpdateOriginator**](docs/OriginatorsApi.md#updateoriginator) | **Patch** /v1/ach/originators/{originatorID} | Updates the specified Originator by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
-*ReceiversApi* | [**AddReceivers**](docs/ReceiversApi.md#addreceivers) | **Post** /v1/ach/receivers | Create a new Receiver object
-*ReceiversApi* | [**DeleteReceiver**](docs/ReceiversApi.md#deletereceiver) | **Delete** /v1/ach/receivers/{receiverID} | Permanently deletes a receiver and associated depositories and transfers. It cannot be undone. Immediately cancels any active Transfers for the receiver.
-*ReceiversApi* | [**GetDepositoriesByID**](docs/ReceiversApi.md#getdepositoriesbyid) | **Get** /v1/ach/receivers/{receiverID}/depositories/{depositoryID} | Get a Depository accounts for a Receiver based on it&#39;s ID
-*ReceiversApi* | [**GetDepositoriesByReceiverID**](docs/ReceiversApi.md#getdepositoriesbyreceiverid) | **Get** /v1/ach/receivers/{receiverID}/depositories | Get a list of Depository accounts for a Receiver
-*ReceiversApi* | [**GetReceiverByID**](docs/ReceiversApi.md#getreceiverbyid) | **Get** /v1/ach/receivers/{receiverID} | Get a Receiver by ID
-*ReceiversApi* | [**GetReceivers**](docs/ReceiversApi.md#getreceivers) | **Get** /v1/ach/receivers | Gets a list of Receivers
-*ReceiversApi* | [**UpdateReceiver**](docs/ReceiversApi.md#updatereceiver) | **Patch** /v1/ach/receivers/{receiverID} | Updates the specified Receiver by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
-*TransfersApi* | [**AddTransfer**](docs/TransfersApi.md#addtransfer) | **Post** /v1/ach/transfers | Create a new transfer between an Originator and a Receiver. Transfers cannot be modified. Instead delete the old and create a new transfer.
-*TransfersApi* | [**AddTransfers**](docs/TransfersApi.md#addtransfers) | **Post** /v1/ach/transfers/batch | Create a new list of transfer, validate, build, and process. Transfers cannot be modified.
-*TransfersApi* | [**DeleteTransferByID**](docs/TransfersApi.md#deletetransferbyid) | **Delete** /v1/ach/transfers/{transferID} | It is possible to recall (delete) a transfer before it has been released from the financial institution.
-*TransfersApi* | [**GetTransferByID**](docs/TransfersApi.md#gettransferbyid) | **Get** /v1/ach/transfers/{transferID} | Get a Transfer object for the supplied ID
-*TransfersApi* | [**GetTransferEventsByID**](docs/TransfersApi.md#gettransfereventsbyid) | **Get** /v1/ach/transfers/{transferID}/events | Get all Events associated with the Transfer object&#39;s for the supplied ID
-*TransfersApi* | [**GetTransferFiles**](docs/TransfersApi.md#gettransferfiles) | **Post** /v1/ach/transfers/{transferID}/files | Get the ACH files to be used in this transfer.
-*TransfersApi* | [**GetTransferNachaCode**](docs/TransfersApi.md#gettransfernachacode) | **Post** /v1/ach/transfers/{transferID}/failed | Get the NACHA return code and description
-*TransfersApi* | [**GetTransfers**](docs/TransfersApi.md#gettransfers) | **Get** /v1/ach/transfers | A list of all Transfer objects
+*OriginatorsApi* | [**AddOriginator**](docs/OriginatorsApi.md#addoriginator) | **Post** /v1/ach/originators | Create Originator
+*OriginatorsApi* | [**DeleteOriginator**](docs/OriginatorsApi.md#deleteoriginator) | **Delete** /v1/ach/originators/{originatorID} | Delete Originator
+*OriginatorsApi* | [**GetOriginatorByID**](docs/OriginatorsApi.md#getoriginatorbyid) | **Get** /v1/ach/originators/{originatorID} | Get Originator
+*OriginatorsApi* | [**GetOriginators**](docs/OriginatorsApi.md#getoriginators) | **Get** /v1/ach/originators | Gets Originators
+*OriginatorsApi* | [**UpdateOriginator**](docs/OriginatorsApi.md#updateoriginator) | **Patch** /v1/ach/originators/{originatorID} | Update Originator
+*ReceiversApi* | [**AddReceivers**](docs/ReceiversApi.md#addreceivers) | **Post** /v1/ach/receivers | Create Receiver
+*ReceiversApi* | [**DeleteReceiver**](docs/ReceiversApi.md#deletereceiver) | **Delete** /v1/ach/receivers/{receiverID} | Delete Receiver
+*ReceiversApi* | [**GetReceiverByID**](docs/ReceiversApi.md#getreceiverbyid) | **Get** /v1/ach/receivers/{receiverID} | Get Receiver
+*ReceiversApi* | [**GetReceivers**](docs/ReceiversApi.md#getreceivers) | **Get** /v1/ach/receivers | Get Receivers
+*ReceiversApi* | [**UpdateReceiver**](docs/ReceiversApi.md#updatereceiver) | **Patch** /v1/ach/receivers/{receiverID} | Update Receiver
+*TransfersApi* | [**AddTransfer**](docs/TransfersApi.md#addtransfer) | **Post** /v1/ach/transfers | Create Transfer
+*TransfersApi* | [**AddTransfers**](docs/TransfersApi.md#addtransfers) | **Post** /v1/ach/transfers/batch | Create Transfers
+*TransfersApi* | [**DeleteTransferByID**](docs/TransfersApi.md#deletetransferbyid) | **Delete** /v1/ach/transfers/{transferID} | Delete Transfer
+*TransfersApi* | [**GetTransferByID**](docs/TransfersApi.md#gettransferbyid) | **Get** /v1/ach/transfers/{transferID} | Get Transfer
+*TransfersApi* | [**GetTransferEventsByID**](docs/TransfersApi.md#gettransfereventsbyid) | **Get** /v1/ach/transfers/{transferID}/events | Get Transfer Events
+*TransfersApi* | [**GetTransferFiles**](docs/TransfersApi.md#gettransferfiles) | **Post** /v1/ach/transfers/{transferID}/files | Get Transfer Files
+*TransfersApi* | [**GetTransferNachaCode**](docs/TransfersApi.md#gettransfernachacode) | **Post** /v1/ach/transfers/{transferID}/failed | Validate Transfer
+*TransfersApi* | [**GetTransfers**](docs/TransfersApi.md#gettransfers) | **Get** /v1/ach/transfers | List Transfers
 *UserApi* | [**CheckUserLogin**](docs/UserApi.md#checkuserlogin) | **Get** /v1/users/login | Check if a cookie is valid and authentic for a user.
 *UserApi* | [**CreateUser**](docs/UserApi.md#createuser) | **Post** /v1/users/create | Create a new user using an email address not seen before.
 *UserApi* | [**UpdateUserProfile**](docs/UserApi.md#updateuserprofile) | **Patch** /v1/users/{userID} | Update a User&#39;s profile information
 *UserApi* | [**UserLogin**](docs/UserApi.md#userlogin) | **Post** /v1/users/login | Attempt to login with an email and password
 *UserApi* | [**UserLogout**](docs/UserApi.md#userlogout) | **Delete** /v1/users/login | Invalidat a user&#39;s cookie(s).
-*WatchmanApi* | [**AddOfacCompanyNameWatch**](docs/WatchmanApi.md#addofaccompanynamewatch) | **Post** /v1/watchman/companies/watch | Add company watch by name. The match percentage will be included in the webhook&#39;s JSON payload.
-*WatchmanApi* | [**AddOfacCompanyWatch**](docs/WatchmanApi.md#addofaccompanywatch) | **Post** /v1/watchman/companies/{companyID}/watch | Add watch on a OFAC Company
-*WatchmanApi* | [**AddOfacCustomerNameWatch**](docs/WatchmanApi.md#addofaccustomernamewatch) | **Post** /v1/watchman/ofac/customers/watch | Add customer watch by name. The match percentage will be included in the webhook&#39;s JSON payload.
-*WatchmanApi* | [**AddOfacCustomerWatch**](docs/WatchmanApi.md#addofaccustomerwatch) | **Post** /v1/watchman/ofac/customers/{customerID}/watch | Add watch on a OFAC Customer
-*WatchmanApi* | [**GetLatestDownloads**](docs/WatchmanApi.md#getlatestdownloads) | **Get** /v1/watchman/ofac/downloads | Return list of recent downloads of list data
-*WatchmanApi* | [**GetOfacCompany**](docs/WatchmanApi.md#getofaccompany) | **Get** /v1/watchman/companies/{companyID} | Get information about a company, trust or organization such as addresses, alternate names, and remarks.
-*WatchmanApi* | [**GetOfacCustomer**](docs/WatchmanApi.md#getofaccustomer) | **Get** /v1/watchman/ofac/customers/{customerID} | Get information about a customer, addresses, alternate names, and their SDN metadata.
-*WatchmanApi* | [**GetSDN**](docs/WatchmanApi.md#getsdn) | **Get** /v1/watchman/ofac/sdn/{sdnID} | Specially designated national
-*WatchmanApi* | [**GetSDNAddresses**](docs/WatchmanApi.md#getsdnaddresses) | **Get** /v1/watchman/ofac/sdn/{sdnID}/addresses | Get addresses for a given SDN
-*WatchmanApi* | [**GetSDNAltNames**](docs/WatchmanApi.md#getsdnaltnames) | **Get** /v1/watchman/ofac/sdn/{sdnID}/alts | Get alternate names for a given SDN
-*WatchmanApi* | [**RemoveOfacCompanyNameWatch**](docs/WatchmanApi.md#removeofaccompanynamewatch) | **Delete** /v1/watchman/companies/watch/{watchID} | Remove a Company name watch
+*WatchmanApi* | [**AddOfacCompanyNameWatch**](docs/WatchmanApi.md#addofaccompanynamewatch) | **Post** /v1/watchman/companies/watch | Watch company
+*WatchmanApi* | [**AddOfacCompanyWatch**](docs/WatchmanApi.md#addofaccompanywatch) | **Post** /v1/watchman/companies/{companyID}/watch | Watch OFAC company
+*WatchmanApi* | [**AddOfacCustomerNameWatch**](docs/WatchmanApi.md#addofaccustomernamewatch) | **Post** /v1/watchman/ofac/customers/watch | Watch customer
+*WatchmanApi* | [**AddOfacCustomerWatch**](docs/WatchmanApi.md#addofaccustomerwatch) | **Post** /v1/watchman/ofac/customers/{customerID}/watch | Watch OFAC customer
+*WatchmanApi* | [**GetLatestDownloads**](docs/WatchmanApi.md#getlatestdownloads) | **Get** /v1/watchman/ofac/downloads | Get latest downloads
+*WatchmanApi* | [**GetOfacCompany**](docs/WatchmanApi.md#getofaccompany) | **Get** /v1/watchman/companies/{companyID} | Get company
+*WatchmanApi* | [**GetOfacCustomer**](docs/WatchmanApi.md#getofaccustomer) | **Get** /v1/watchman/ofac/customers/{customerID} | Get Customer
+*WatchmanApi* | [**GetSDN**](docs/WatchmanApi.md#getsdn) | **Get** /v1/watchman/ofac/sdn/{sdnID} | Get SDN
+*WatchmanApi* | [**GetSDNAddresses**](docs/WatchmanApi.md#getsdnaddresses) | **Get** /v1/watchman/ofac/sdn/{sdnID}/addresses | Get SDN addresses
+*WatchmanApi* | [**GetSDNAltNames**](docs/WatchmanApi.md#getsdnaltnames) | **Get** /v1/watchman/ofac/sdn/{sdnID}/alts | Get SDN alt names
+*WatchmanApi* | [**RemoveOfacCompanyNameWatch**](docs/WatchmanApi.md#removeofaccompanynamewatch) | **Delete** /v1/watchman/companies/watch/{watchID} | Remove a company watch
 *WatchmanApi* | [**RemoveOfacCompanyWatch**](docs/WatchmanApi.md#removeofaccompanywatch) | **Delete** /v1/watchman/companies/{companyID}/watch/{watchID} | Remove company watch
-*WatchmanApi* | [**RemoveOfacCustomerNameWatch**](docs/WatchmanApi.md#removeofaccustomernamewatch) | **Delete** /v1/watchman/ofac/customers/watch/{watchID} | Remove a Customer name watch
+*WatchmanApi* | [**RemoveOfacCustomerNameWatch**](docs/WatchmanApi.md#removeofaccustomernamewatch) | **Delete** /v1/watchman/ofac/customers/watch/{watchID} | remove a customer watch
 *WatchmanApi* | [**RemoveOfacCustomerWatch**](docs/WatchmanApi.md#removeofaccustomerwatch) | **Delete** /v1/watchman/ofac/customers/{customerID}/watch/{watchID} | Remove customer watch
-*WatchmanApi* | [**Search**](docs/WatchmanApi.md#search) | **Get** /v1/watchman/ofac/search | Search SDN names and metadata
-*WatchmanApi* | [**UpdateOfacCompanyStatus**](docs/WatchmanApi.md#updateofaccompanystatus) | **Put** /v1/watchman/companies/{companyID} | Update a Companies sanction status to always block or always allow transactions.
-*WatchmanApi* | [**UpdateOfacCustomerStatus**](docs/WatchmanApi.md#updateofaccustomerstatus) | **Put** /v1/watchman/ofac/customers/{customerID} | Update a Customer&#39;s sanction status to always block or always allow transactions.
-*WireFilesApi* | [**CreateWireFile**](docs/WireFilesApi.md#createwirefile) | **Post** /v1/wire/files/create | Create a new File object
-*WireFilesApi* | [**DeleteWireFileByID**](docs/WireFilesApi.md#deletewirefilebyid) | **Delete** /v1/wire/files/{fileID} | Permanently deletes a File and associated FEDWireMessage. It cannot be undone.
-*WireFilesApi* | [**GetWireFileByID**](docs/WireFilesApi.md#getwirefilebyid) | **Get** /v1/wire/files/{fileID} | Retrieves the details of an existing File. You need only supply the unique File identifier that was returned upon creation.
-*WireFilesApi* | [**GetWireFileContents**](docs/WireFilesApi.md#getwirefilecontents) | **Get** /v1/wire/files/{fileID}/contents | Assembles the existing file witha FEDWireMessage, Returns plaintext file.
-*WireFilesApi* | [**GetWireFiles**](docs/WireFilesApi.md#getwirefiles) | **Get** /v1/wire/files | Gets a list of Files
-*WireFilesApi* | [**UpdateWireFileByID**](docs/WireFilesApi.md#updatewirefilebyid) | **Post** /v1/wire/files/{fileID} | Updates the specified FEDWire Message by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
-*WireFilesApi* | [**ValidateWireFile**](docs/WireFilesApi.md#validatewirefile) | **Get** /v1/wire/files/{fileID}/validate | Validates the existing file. You need only supply the unique File identifier that was returned upon creation.
+*WatchmanApi* | [**Search**](docs/WatchmanApi.md#search) | **Get** /v1/watchman/ofac/search | Search SDNs
+*WatchmanApi* | [**UpdateOfacCompanyStatus**](docs/WatchmanApi.md#updateofaccompanystatus) | **Put** /v1/watchman/companies/{companyID} | Update company
+*WatchmanApi* | [**UpdateOfacCustomerStatus**](docs/WatchmanApi.md#updateofaccustomerstatus) | **Put** /v1/watchman/ofac/customers/{customerID} | Update customer
+*WireFilesApi* | [**AddFEDWireMessageToFile**](docs/WireFilesApi.md#addfedwiremessagetofile) | **Post** /v1/wire/files/{fileID}/FEDWireMessage | Add FEDWireMessage to File
+*WireFilesApi* | [**CreateWireFile**](docs/WireFilesApi.md#createwirefile) | **Post** /v1/wire/files/create | Create File
+*WireFilesApi* | [**DeleteWireFileByID**](docs/WireFilesApi.md#deletewirefilebyid) | **Delete** /v1/wire/files/{fileID} | Delete file
+*WireFilesApi* | [**GetWireFileByID**](docs/WireFilesApi.md#getwirefilebyid) | **Get** /v1/wire/files/{fileID} | Retrieve a file
+*WireFilesApi* | [**GetWireFileContents**](docs/WireFilesApi.md#getwirefilecontents) | **Get** /v1/wire/files/{fileID}/contents | Get file contents
+*WireFilesApi* | [**GetWireFiles**](docs/WireFilesApi.md#getwirefiles) | **Get** /v1/wire/files | Get files
+*WireFilesApi* | [**ValidateWireFile**](docs/WireFilesApi.md#validatewirefile) | **Get** /v1/wire/files/{fileID}/validate | Validate file
 
 
 ## Documentation For Models
@@ -195,20 +191,16 @@ Class | Method | HTTP request | Description
  - [Addenda18](docs/Addenda18.md)
  - [Addenda98](docs/Addenda98.md)
  - [Addenda99](docs/Addenda99.md)
- - [Addendum](docs/Addendum.md)
  - [AdditionalFiToFi](docs/AdditionalFiToFi.md)
  - [Address](docs/Address.md)
- - [Address2](docs/Address2.md)
  - [Adjustment](docs/Adjustment.md)
+ - [AdvBatchControl](docs/AdvBatchControl.md)
+ - [AdvEntryDetail](docs/AdvEntryDetail.md)
  - [Advice](docs/Advice.md)
- - [Amount](docs/Amount.md)
  - [Amounts](docs/Amounts.md)
  - [Batch](docs/Batch.md)
- - [Batch2](docs/Batch2.md)
  - [BatchControl](docs/BatchControl.md)
- - [BatchControl2](docs/BatchControl2.md)
  - [BatchHeader](docs/BatchHeader.md)
- - [BatchHeader2](docs/BatchHeader2.md)
  - [BeneficiaryReference](docs/BeneficiaryReference.md)
  - [BisEntities](docs/BisEntities.md)
  - [Bundle](docs/Bundle.md)
@@ -227,28 +219,30 @@ Class | Method | HTTP request | Description
  - [Checks](docs/Checks.md)
  - [CoverPayment](docs/CoverPayment.md)
  - [CreateAccount](docs/CreateAccount.md)
- - [CreateAddress](docs/CreateAddress.md)
  - [CreateCustomer](docs/CreateCustomer.md)
+ - [CreateCustomerAddress](docs/CreateCustomerAddress.md)
  - [CreateDepository](docs/CreateDepository.md)
  - [CreateFile](docs/CreateFile.md)
- - [CreateFile2](docs/CreateFile2.md)
  - [CreateGateway](docs/CreateGateway.md)
+ - [CreateIclFile](docs/CreateIclFile.md)
  - [CreateOriginator](docs/CreateOriginator.md)
  - [CreatePhone](docs/CreatePhone.md)
  - [CreateReceiver](docs/CreateReceiver.md)
  - [CreateTransaction](docs/CreateTransaction.md)
  - [CreateTransfer](docs/CreateTransfer.md)
  - [CreateUser](docs/CreateUser.md)
+ - [CreateWireFile](docs/CreateWireFile.md)
  - [CreditItem](docs/CreditItem.md)
  - [CurrencyInstructedAmount](docs/CurrencyInstructedAmount.md)
  - [Customer](docs/Customer.md)
+ - [CustomerAddress](docs/CustomerAddress.md)
  - [DateRemittanceDocument](docs/DateRemittanceDocument.md)
  - [Depository](docs/Depository.md)
+ - [DepositoryStatus](docs/DepositoryStatus.md)
  - [Document](docs/Document.md)
  - [Download](docs/Download.md)
  - [Dpl](docs/Dpl.md)
  - [EntryDetail](docs/EntryDetail.md)
- - [EntryDetail2](docs/EntryDetail2.md)
  - [Error](docs/Error.md)
  - [Error2](docs/Error2.md)
  - [ErrorWire](docs/ErrorWire.md)
@@ -258,19 +252,17 @@ Class | Method | HTTP request | Description
  - [FiPaymentMethodToBeneficiary](docs/FiPaymentMethodToBeneficiary.md)
  - [FiToFi](docs/FiToFi.md)
  - [File](docs/File.md)
- - [File2](docs/File2.md)
  - [FileControl](docs/FileControl.md)
- - [FileControl2](docs/FileControl2.md)
  - [FileHeader](docs/FileHeader.md)
- - [FileHeader2](docs/FileHeader2.md)
  - [FinancialInstitution](docs/FinancialInstitution.md)
  - [Gateway](docs/Gateway.md)
  - [IatBatch](docs/IatBatch.md)
- - [IatBatch2](docs/IatBatch2.md)
  - [IatBatchHeader](docs/IatBatchHeader.md)
- - [IatBatchHeader2](docs/IatBatchHeader2.md)
  - [IatDetail](docs/IatDetail.md)
  - [IatEntryDetail](docs/IatEntryDetail.md)
+ - [IclFile](docs/IclFile.md)
+ - [IclFileControl](docs/IclFileControl.md)
+ - [IclFileHeader](docs/IclFileHeader.md)
  - [ImageViewAnalysis](docs/ImageViewAnalysis.md)
  - [ImageViewData](docs/ImageViewData.md)
  - [ImageViewDetail](docs/ImageViewDetail.md)
@@ -299,6 +291,7 @@ Class | Method | HTTP request | Description
  - [PaymentNotification](docs/PaymentNotification.md)
  - [Personal](docs/Personal.md)
  - [Phone](docs/Phone.md)
+ - [PpdDetail](docs/PpdDetail.md)
  - [PreviousMessageIdentifier](docs/PreviousMessageIdentifier.md)
  - [PrimaryRemittanceDocument](docs/PrimaryRemittanceDocument.md)
  - [ReceiptTimeStamp](docs/ReceiptTimeStamp.md)
@@ -320,6 +313,7 @@ Class | Method | HTTP request | Description
  - [RoutingNumberSummary](docs/RoutingNumberSummary.md)
  - [Search](docs/Search.md)
  - [SecondaryRemittanceDocument](docs/SecondaryRemittanceDocument.md)
+ - [SegmentedFiles](docs/SegmentedFiles.md)
  - [SenderDepositoryInstitution](docs/SenderDepositoryInstitution.md)
  - [SenderReference](docs/SenderReference.md)
  - [SenderSupplied](docs/SenderSupplied.md)
@@ -329,14 +323,19 @@ Class | Method | HTTP request | Description
  - [Transaction](docs/Transaction.md)
  - [TransactionLine](docs/TransactionLine.md)
  - [Transfer](docs/Transfer.md)
+ - [TransferStatus](docs/TransferStatus.md)
  - [TypeSubType](docs/TypeSubType.md)
  - [UnstructuredAddenda](docs/UnstructuredAddenda.md)
  - [UpdateOfacCompanyStatus](docs/UpdateOfacCompanyStatus.md)
  - [UpdateOfacCustomerStatus](docs/UpdateOfacCustomerStatus.md)
  - [User](docs/User.md)
  - [UserProfile](docs/UserProfile.md)
+ - [ValidateOpts](docs/ValidateOpts.md)
  - [WebDetail](docs/WebDetail.md)
+ - [WireAddress](docs/WireAddress.md)
+ - [WireAmount](docs/WireAmount.md)
  - [WireDictionary](docs/WireDictionary.md)
+ - [WireFile](docs/WireFile.md)
  - [WireLocation](docs/WireLocation.md)
  - [WireParticipant](docs/WireParticipant.md)
 

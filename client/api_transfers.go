@@ -34,7 +34,8 @@ type AddTransferOpts struct {
 }
 
 /*
-AddTransfer Create a new transfer between an Originator and a Receiver. Transfers cannot be modified. Instead delete the old and create a new transfer.
+AddTransfer Create Transfer
+Create a new transfer between an Originator and a Receiver. Transfers cannot be modified. Instead delete the old and create a new transfer.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param xUserID Moov User ID
  * @param createTransfer
@@ -159,7 +160,8 @@ type AddTransfersOpts struct {
 }
 
 /*
-AddTransfers Create a new list of transfer, validate, build, and process. Transfers cannot be modified.
+AddTransfers Create Transfers
+Create a new list of transfer, validate, build, and process. Transfers cannot be modified.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param xUserID Moov User ID
  * @param createTransfer
@@ -283,7 +285,8 @@ type DeleteTransferByIDOpts struct {
 }
 
 /*
-DeleteTransferByID It is possible to recall (delete) a transfer before it has been released from the financial institution.
+DeleteTransferByID Delete Transfer
+Remove a transfer for the specified userID. Its status will be updated as transfer is processed. It is only possible to delete (recall) a Transfer before it has been released from the financial institution.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param transferID Transfer ID
  * @param xUserID Moov User ID
@@ -375,7 +378,8 @@ type GetTransferByIDOpts struct {
 }
 
 /*
-GetTransferByID Get a Transfer object for the supplied ID
+GetTransferByID Get Transfer
+Get a Transfer object for the supplied userID
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param transferID Transfer ID
  * @param xUserID Moov User ID
@@ -496,7 +500,8 @@ type GetTransferEventsByIDOpts struct {
 }
 
 /*
-GetTransferEventsByID Get all Events associated with the Transfer object's for the supplied ID
+GetTransferEventsByID Get Transfer Events
+Get all Events associated with the Transfer object&#39;s for the supplied transferID
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param transferID Transfer ID
  * @param xUserID Moov User ID
@@ -616,23 +621,24 @@ type GetTransferFilesOpts struct {
 }
 
 /*
-GetTransferFiles Get the ACH files to be used in this transfer.
+GetTransferFiles Get Transfer Files
+Get the ACH files to be used in this transfer
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param transferID Transfer ID
  * @param xUserID Moov User ID
  * @param optional nil or *GetTransferFilesOpts - Optional Parameters:
  * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
  * @param "XIdempotencyKey" (optional.String) -  Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests.
-@return []File2
+@return []File
 */
-func (a *TransfersApiService) GetTransferFiles(ctx _context.Context, transferID string, xUserID string, localVarOptionals *GetTransferFilesOpts) ([]File2, *_nethttp.Response, error) {
+func (a *TransfersApiService) GetTransferFiles(ctx _context.Context, transferID string, xUserID string, localVarOptionals *GetTransferFilesOpts) ([]File, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []File2
+		localVarReturnValue  []File
 	)
 
 	// create path and map variables
@@ -701,7 +707,7 @@ func (a *TransfersApiService) GetTransferFiles(ctx _context.Context, transferID 
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 200 {
-			var v []File2
+			var v []File
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -741,21 +747,24 @@ type GetTransferNachaCodeOpts struct {
 }
 
 /*
-GetTransferNachaCode Get the NACHA return code and description
+GetTransferNachaCode Validate Transfer
+Get the NACHA return code and description of the underlying ACH file for this transfer.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param transferID Transfer ID
  * @param xUserID Moov User ID
  * @param optional nil or *GetTransferNachaCodeOpts - Optional Parameters:
  * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
  * @param "XIdempotencyKey" (optional.String) -  Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests.
+@return []File
 */
-func (a *TransfersApiService) GetTransferNachaCode(ctx _context.Context, transferID string, xUserID string, localVarOptionals *GetTransferNachaCodeOpts) (*_nethttp.Response, error) {
+func (a *TransfersApiService) GetTransferNachaCode(ctx _context.Context, transferID string, xUserID string, localVarOptionals *GetTransferNachaCodeOpts) ([]File, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
+		localVarReturnValue  []File
 	)
 
 	// create path and map variables
@@ -776,7 +785,7 @@ func (a *TransfersApiService) GetTransferNachaCode(ctx _context.Context, transfe
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
+	localVarHTTPHeaderAccepts := []string{"application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -804,18 +813,18 @@ func (a *TransfersApiService) GetTransferNachaCode(ctx _context.Context, transfe
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -823,10 +832,39 @@ func (a *TransfersApiService) GetTransferNachaCode(ctx _context.Context, transfe
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		return localVarHTTPResponse, newErr
+		if localVarHTTPResponse.StatusCode == 200 {
+			var v []File
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v Error2
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 // GetTransfersOpts Optional parameters for the method 'GetTransfers'
@@ -839,14 +877,15 @@ type GetTransfersOpts struct {
 }
 
 /*
-GetTransfers A list of all Transfer objects
+GetTransfers List Transfers
+List all Transfers created for the given userID.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param xUserID Moov User ID
  * @param optional nil or *GetTransfersOpts - Optional Parameters:
  * @param "Offset" (optional.Int32) -  The number of items to skip before starting to collect the result set
  * @param "Limit" (optional.Int32) -  The number of items to return
- * @param "StartDate" (optional.Time) -  Filter objects created after this date. ISO-8601 format YYYY-MM-DD. Can optionally be used with endDate to specify a date range.
- * @param "EndDate" (optional.Time) -  Filter objects created before this date. ISO-8601 format YYYY-MM-DD. Can optionally be used with startDate to specify a date range.
+ * @param "StartDate" (optional.Time) -  Return Transfers that are scheduled for this date or later in ISO-8601 format YYYY-MM-DD. Can optionally be used with endDate to specify a date range.
+ * @param "EndDate" (optional.Time) -  Return Transfers that are scheduled for this date or earlier in ISO-8601 format YYYY-MM-DD. Can optionally be used with startDate to specify a date range.
  * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
 @return []Transfer
 */

@@ -4,20 +4,22 @@ All URIs are relative to *https://api.moov.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AddTransfer**](TransfersApi.md#AddTransfer) | **Post** /v1/ach/transfers | Create a new transfer between an Originator and a Receiver. Transfers cannot be modified. Instead delete the old and create a new transfer.
-[**AddTransfers**](TransfersApi.md#AddTransfers) | **Post** /v1/ach/transfers/batch | Create a new list of transfer, validate, build, and process. Transfers cannot be modified.
-[**DeleteTransferByID**](TransfersApi.md#DeleteTransferByID) | **Delete** /v1/ach/transfers/{transferID} | It is possible to recall (delete) a transfer before it has been released from the financial institution.
-[**GetTransferByID**](TransfersApi.md#GetTransferByID) | **Get** /v1/ach/transfers/{transferID} | Get a Transfer object for the supplied ID
-[**GetTransferEventsByID**](TransfersApi.md#GetTransferEventsByID) | **Get** /v1/ach/transfers/{transferID}/events | Get all Events associated with the Transfer object&#39;s for the supplied ID
-[**GetTransferFiles**](TransfersApi.md#GetTransferFiles) | **Post** /v1/ach/transfers/{transferID}/files | Get the ACH files to be used in this transfer.
-[**GetTransferNachaCode**](TransfersApi.md#GetTransferNachaCode) | **Post** /v1/ach/transfers/{transferID}/failed | Get the NACHA return code and description
-[**GetTransfers**](TransfersApi.md#GetTransfers) | **Get** /v1/ach/transfers | A list of all Transfer objects
+[**AddTransfer**](TransfersApi.md#AddTransfer) | **Post** /v1/ach/transfers | Create Transfer
+[**AddTransfers**](TransfersApi.md#AddTransfers) | **Post** /v1/ach/transfers/batch | Create Transfers
+[**DeleteTransferByID**](TransfersApi.md#DeleteTransferByID) | **Delete** /v1/ach/transfers/{transferID} | Delete Transfer
+[**GetTransferByID**](TransfersApi.md#GetTransferByID) | **Get** /v1/ach/transfers/{transferID} | Get Transfer
+[**GetTransferEventsByID**](TransfersApi.md#GetTransferEventsByID) | **Get** /v1/ach/transfers/{transferID}/events | Get Transfer Events
+[**GetTransferFiles**](TransfersApi.md#GetTransferFiles) | **Post** /v1/ach/transfers/{transferID}/files | Get Transfer Files
+[**GetTransferNachaCode**](TransfersApi.md#GetTransferNachaCode) | **Post** /v1/ach/transfers/{transferID}/failed | Validate Transfer
+[**GetTransfers**](TransfersApi.md#GetTransfers) | **Get** /v1/ach/transfers | List Transfers
 
 
 
 ## AddTransfer
 
 > Transfer AddTransfer(ctx, xUserID, createTransfer, optional)
+
+Create Transfer
 
 Create a new transfer between an Originator and a Receiver. Transfers cannot be modified. Instead delete the old and create a new transfer.
 
@@ -65,6 +67,8 @@ Name | Type | Description  | Notes
 
 > []Transfer AddTransfers(ctx, xUserID, createTransfer, optional)
 
+Create Transfers
+
 Create a new list of transfer, validate, build, and process. Transfers cannot be modified.
 
 ### Required Parameters
@@ -111,7 +115,9 @@ Name | Type | Description  | Notes
 
 > DeleteTransferByID(ctx, transferID, xUserID, optional)
 
-It is possible to recall (delete) a transfer before it has been released from the financial institution.
+Delete Transfer
+
+Remove a transfer for the specified userID. Its status will be updated as transfer is processed. It is only possible to delete (recall) a Transfer before it has been released from the financial institution. 
 
 ### Required Parameters
 
@@ -156,7 +162,9 @@ Name | Type | Description  | Notes
 
 > Transfer GetTransferByID(ctx, transferID, xUserID, optional)
 
-Get a Transfer object for the supplied ID
+Get Transfer
+
+Get a Transfer object for the supplied userID
 
 ### Required Parameters
 
@@ -203,7 +211,9 @@ Name | Type | Description  | Notes
 
 > []Event GetTransferEventsByID(ctx, transferID, xUserID, optional)
 
-Get all Events associated with the Transfer object's for the supplied ID
+Get Transfer Events
+
+Get all Events associated with the Transfer object's for the supplied transferID
 
 ### Required Parameters
 
@@ -248,9 +258,11 @@ Name | Type | Description  | Notes
 
 ## GetTransferFiles
 
-> []File2 GetTransferFiles(ctx, transferID, xUserID, optional)
+> []File GetTransferFiles(ctx, transferID, xUserID, optional)
 
-Get the ACH files to be used in this transfer.
+Get Transfer Files
+
+Get the ACH files to be used in this transfer
 
 ### Required Parameters
 
@@ -276,7 +288,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]File2**](File_2.md)
+[**[]File**](File.md)
 
 ### Authorization
 
@@ -294,9 +306,11 @@ Name | Type | Description  | Notes
 
 ## GetTransferNachaCode
 
-> GetTransferNachaCode(ctx, transferID, xUserID, optional)
+> []File GetTransferNachaCode(ctx, transferID, xUserID, optional)
 
-Get the NACHA return code and description
+Validate Transfer
+
+Get the NACHA return code and description of the underlying ACH file for this transfer.
 
 ### Required Parameters
 
@@ -322,7 +336,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**[]File**](File.md)
 
 ### Authorization
 
@@ -331,7 +345,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -342,7 +356,9 @@ Name | Type | Description  | Notes
 
 > []Transfer GetTransfers(ctx, xUserID, optional)
 
-A list of all Transfer objects
+List Transfers
+
+List all Transfers created for the given userID.
 
 ### Required Parameters
 
@@ -363,8 +379,8 @@ Name | Type | Description  | Notes
 
  **offset** | **optional.Int32**| The number of items to skip before starting to collect the result set | [default to 0]
  **limit** | **optional.Int32**| The number of items to return | [default to 25]
- **startDate** | **optional.Time**| Filter objects created after this date. ISO-8601 format YYYY-MM-DD. Can optionally be used with endDate to specify a date range. | 
- **endDate** | **optional.Time**| Filter objects created before this date. ISO-8601 format YYYY-MM-DD. Can optionally be used with startDate to specify a date range. | 
+ **startDate** | **optional.Time**| Return Transfers that are scheduled for this date or later in ISO-8601 format YYYY-MM-DD. Can optionally be used with endDate to specify a date range.  | 
+ **endDate** | **optional.Time**| Return Transfers that are scheduled for this date or earlier in ISO-8601 format YYYY-MM-DD. Can optionally be used with startDate to specify a date range.  | 
  **xRequestID** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
 
 ### Return type

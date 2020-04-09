@@ -5,17 +5,16 @@ All URIs are relative to *https://api.moov.io*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**AddBatchToFile**](ACHFilesApi.md#AddBatchToFile) | **Post** /v1/ach/files/{fileID}/batches | Add Batch to File
-[**CreateFile**](ACHFilesApi.md#CreateFile) | **Post** /v1/ach/files/create | Create a new File object
-[**DeleteACHFile**](ACHFilesApi.md#DeleteACHFile) | **Delete** /v1/ach/files/{fileID} | Permanently deletes a File and associated Batches. It cannot be undone.
-[**DeleteFileBatch**](ACHFilesApi.md#DeleteFileBatch) | **Delete** /v1/ach/files/{fileID}/batches/{batchID} | Delete a Batch from a File
-[**GetFileBatch**](ACHFilesApi.md#GetFileBatch) | **Get** /v1/ach/files/{fileID}/batches/{batchID} | Get a specific Batch on a FIle
-[**GetFileBatches**](ACHFilesApi.md#GetFileBatches) | **Get** /v1/ach/files/{fileID}/batches | Get the batches on a File.
-[**GetFileByID**](ACHFilesApi.md#GetFileByID) | **Get** /v1/ach/files/{fileID} | Retrieves the details of an existing File. You need only supply the unique File identifier that was returned upon creation.
-[**GetFileContents**](ACHFilesApi.md#GetFileContents) | **Get** /v1/ach/files/{fileID}/contents | Assembles the existing file (batches and controls) records, computes sequence numbers and totals. Returns plaintext file.
-[**GetFiles**](ACHFilesApi.md#GetFiles) | **Get** /v1/ach/files | Gets a list of Files
-[**SegmentFile**](ACHFilesApi.md#SegmentFile) | **Post** /v1/ach/files/{fileID}/segment | Create a new file object
-[**UpdateFile**](ACHFilesApi.md#UpdateFile) | **Post** /v1/ach/files/{fileID} | Updates the specified File Header by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
-[**ValidateFile**](ACHFilesApi.md#ValidateFile) | **Get** /v1/ach/files/{fileID}/validate | Validates the existing file. You need only supply the unique File identifier that was returned upon creation.
+[**CreateFile**](ACHFilesApi.md#CreateFile) | **Post** /v1/ach/files/create | Create File
+[**DeleteACHFile**](ACHFilesApi.md#DeleteACHFile) | **Delete** /v1/ach/files/{fileID} | Delete file
+[**DeleteFileBatch**](ACHFilesApi.md#DeleteFileBatch) | **Delete** /v1/ach/files/{fileID}/batches/{batchID} | Delete batch
+[**GetFileBatch**](ACHFilesApi.md#GetFileBatch) | **Get** /v1/ach/files/{fileID}/batches/{batchID} | Get Batch
+[**GetFileBatches**](ACHFilesApi.md#GetFileBatches) | **Get** /v1/ach/files/{fileID}/batches | Get batches
+[**GetFileByID**](ACHFilesApi.md#GetFileByID) | **Get** /v1/ach/files/{fileID} | Retrieve a file
+[**GetFileContents**](ACHFilesApi.md#GetFileContents) | **Get** /v1/ach/files/{fileID}/contents | Get file contents
+[**GetFiles**](ACHFilesApi.md#GetFiles) | **Get** /v1/ach/files | Get ACH files
+[**SegmentFile**](ACHFilesApi.md#SegmentFile) | **Post** /v1/ach/files/{fileID}/segment | Segment file
+[**ValidateFile**](ACHFilesApi.md#ValidateFile) | **Get** /v1/ach/files/{fileID}/validate | Validate file
 
 
 
@@ -24,6 +23,8 @@ Method | HTTP request | Description
 > AddBatchToFile(ctx, fileID, batch, optional)
 
 Add Batch to File
+
+Append a Batch record to the specified file
 
 ### Required Parameters
 
@@ -69,7 +70,9 @@ Name | Type | Description  | Notes
 
 > File CreateFile(ctx, createFile, optional)
 
-Create a new File object
+Create File
+
+Create a new File object from either the plaintext or JSON representation.
 
 ### Required Parameters
 
@@ -113,6 +116,8 @@ Name | Type | Description  | Notes
 
 > DeleteACHFile(ctx, fileID, optional)
 
+Delete file
+
 Permanently deletes a File and associated Batches. It cannot be undone.
 
 ### Required Parameters
@@ -155,6 +160,8 @@ Name | Type | Description  | Notes
 ## DeleteFileBatch
 
 > DeleteFileBatch(ctx, fileID, batchID, optional)
+
+Delete batch
 
 Delete a Batch from a File
 
@@ -201,7 +208,9 @@ Name | Type | Description  | Notes
 
 > Batch GetFileBatch(ctx, fileID, batchID, optional)
 
-Get a specific Batch on a FIle
+Get Batch
+
+Get a specific Batch on a File
 
 ### Required Parameters
 
@@ -246,6 +255,8 @@ Name | Type | Description  | Notes
 
 > []Batch GetFileBatches(ctx, fileID, optional)
 
+Get batches
+
 Get the batches on a File.
 
 ### Required Parameters
@@ -289,7 +300,9 @@ Name | Type | Description  | Notes
 
 > File GetFileByID(ctx, fileID, optional)
 
-Retrieves the details of an existing File. You need only supply the unique File identifier that was returned upon creation.
+Retrieve a file
+
+Get the details of an existing File using the unique File identifier that was returned upon creation.
 
 ### Required Parameters
 
@@ -332,7 +345,9 @@ Name | Type | Description  | Notes
 
 > string GetFileContents(ctx, fileID, optional)
 
-Assembles the existing file (batches and controls) records, computes sequence numbers and totals. Returns plaintext file.
+Get file contents
+
+Assembles the existing file (batches and controls) records, computes sequence numbers and totals. Returns plaintext file. 
 
 ### Required Parameters
 
@@ -375,7 +390,9 @@ Name | Type | Description  | Notes
 
 > []File GetFiles(ctx, optional)
 
-Gets a list of Files
+Get ACH files
+
+List all ACH files created with the ACH service. These files are not persisted through multiple runs of the service.
 
 ### Required Parameters
 
@@ -414,9 +431,11 @@ Name | Type | Description  | Notes
 
 ## SegmentFile
 
-> File SegmentFile(ctx, fileID, createFile, optional)
+> SegmentedFiles SegmentFile(ctx, fileID, optional)
 
-Create a new file object
+Segment file
+
+Split one file into two. One with only debits and one with only credits.
 
 ### Required Parameters
 
@@ -425,7 +444,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **fileID** | **string**| File ID | 
-**createFile** | [**CreateFile**](CreateFile.md)| Content of the ACH file (in json or raw text) | 
  **optional** | ***SegmentFileOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -436,13 +454,12 @@ Optional parameters are passed through a pointer to a SegmentFileOpts struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
-
  **xRequestID** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
  **xIdempotencyKey** | **optional.String**| Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests. | 
 
 ### Return type
 
-[**File**](File.md)
+[**SegmentedFiles**](SegmentedFiles.md)
 
 ### Authorization
 
@@ -450,53 +467,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, text/plain
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## UpdateFile
-
-> File UpdateFile(ctx, fileID, createFile, optional)
-
-Updates the specified File Header by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
-
-### Required Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**fileID** | **string**| File ID | 
-**createFile** | [**CreateFile**](CreateFile.md)|  | 
- **optional** | ***UpdateFileOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a UpdateFileOpts struct
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
- **xRequestID** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
- **xIdempotencyKey** | **optional.String**| Idempotent key in the header which expires after 24 hours. These strings should contain enough entropy for to not collide with each other in your requests. | 
-
-### Return type
-
-[**File**](File.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth), [cookieAuth](../README.md#cookieAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -507,6 +478,8 @@ Name | Type | Description  | Notes
 ## ValidateFile
 
 > File ValidateFile(ctx, fileID, optional)
+
+Validate file
 
 Validates the existing file. You need only supply the unique File identifier that was returned upon creation.
 
@@ -528,6 +501,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **xRequestID** | **optional.String**| Optional Request ID allows application developer to trace requests through the systems logs | 
+ **validateOpts** | [**optional.Interface of ValidateOpts**](ValidateOpts.md)|  | 
 
 ### Return type
 
@@ -539,7 +513,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

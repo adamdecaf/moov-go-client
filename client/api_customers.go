@@ -35,7 +35,8 @@ type CreateCustomerOpts struct {
 }
 
 /*
-CreateCustomer Create a new customer
+CreateCustomer Create customer
+Create a Customer object from the given details of a human or business
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param createCustomer
  * @param optional nil or *CreateCustomerOpts - Optional Parameters:
@@ -146,7 +147,8 @@ type GetCustomerOpts struct {
 }
 
 /*
-GetCustomer Retrieves a Customer object associated with the customer ID.
+GetCustomer Retrieve customer
+Get the Customer object and metadata for the customer ID.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param customerID Customer ID
  * @param optional nil or *GetCustomerOpts - Optional Parameters:
@@ -248,7 +250,8 @@ type GetCustomerDocumentContentsOpts struct {
 }
 
 /*
-GetCustomerDocumentContents Retrieve the referenced document
+GetCustomerDocumentContents Get customer document
+Retrieve the referenced document
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param customerID Customer ID
  * @param documentID Document ID
@@ -352,7 +355,8 @@ type GetCustomerDocumentsOpts struct {
 }
 
 /*
-GetCustomerDocuments Get documents for a customer
+GetCustomerDocuments Get customer documents
+Get documents for a customer
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param customerID Customer ID
  * @param optional nil or *GetCustomerDocumentsOpts - Optional Parameters:
@@ -453,7 +457,8 @@ type UploadCustomerDocumentOpts struct {
 }
 
 /*
-UploadCustomerDocument Upload a document for the given customer.
+UploadCustomerDocument Upload document
+Upload a document for the given customer
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param customerID Customer ID
  * @param type_ Document type (see Document type for values)

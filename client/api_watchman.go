@@ -34,7 +34,8 @@ type AddOfacCompanyNameWatchOpts struct {
 }
 
 /*
-AddOfacCompanyNameWatch Add company watch by name. The match percentage will be included in the webhook's JSON payload.
+AddOfacCompanyNameWatch Watch company
+Watch a company by its name. The match percentage will be included in the webhook&#39;s JSON payload.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name Company name used to match and send watch notifications
  * @param ofacWatchRequest
@@ -137,7 +138,8 @@ type AddOfacCompanyWatchOpts struct {
 }
 
 /*
-AddOfacCompanyWatch Add watch on a OFAC Company
+AddOfacCompanyWatch Watch OFAC company
+Add name watch on a OFAC Company
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param companyID Company ID
  * @param ofacWatchRequest
@@ -242,7 +244,8 @@ type AddOfacCustomerNameWatchOpts struct {
 }
 
 /*
-AddOfacCustomerNameWatch Add customer watch by name. The match percentage will be included in the webhook's JSON payload.
+AddOfacCustomerNameWatch Watch customer
+Watch a customer by its name. The match percentage will be included in the webhook&#39;s JSON payload.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name Individual name used to match and send watch notifications
  * @param ofacWatchRequest
@@ -345,7 +348,8 @@ type AddOfacCustomerWatchOpts struct {
 }
 
 /*
-AddOfacCustomerWatch Add watch on a OFAC Customer
+AddOfacCustomerWatch Watch OFAC customer
+Add name watch on a OFAC Customer
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param customerID Customer ID
  * @param ofacWatchRequest
@@ -451,7 +455,8 @@ type GetLatestDownloadsOpts struct {
 }
 
 /*
-GetLatestDownloads Return list of recent downloads of list data
+GetLatestDownloads Get latest downloads
+Return list of recent downloads of list data
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *GetLatestDownloadsOpts - Optional Parameters:
  * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
@@ -553,7 +558,8 @@ type GetOfacCompanyOpts struct {
 }
 
 /*
-GetOfacCompany Get information about a company, trust or organization such as addresses, alternate names, and remarks.
+GetOfacCompany Get company
+Get information about a company, trust or organization such as addresses, alternate names, and remarks.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param companyID Company ID
  * @param optional nil or *GetOfacCompanyOpts - Optional Parameters:
@@ -654,7 +660,8 @@ type GetOfacCustomerOpts struct {
 }
 
 /*
-GetOfacCustomer Get information about a customer, addresses, alternate names, and their SDN metadata.
+GetOfacCustomer Get Customer
+Get information about a customer, addresses, alternate names, and their SDN metadata.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param customerID Customer ID
  * @param optional nil or *GetOfacCustomerOpts - Optional Parameters:
@@ -755,7 +762,8 @@ type GetSDNOpts struct {
 }
 
 /*
-GetSDN Specially designated national
+GetSDN Get SDN
+Get SDN details
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param sdnID SDN ID
  * @param optional nil or *GetSDNOpts - Optional Parameters:
@@ -856,7 +864,7 @@ type GetSDNAddressesOpts struct {
 }
 
 /*
-GetSDNAddresses Get addresses for a given SDN
+GetSDNAddresses Get SDN addresses
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param sdnID SDN ID
  * @param optional nil or *GetSDNAddressesOpts - Optional Parameters:
@@ -957,7 +965,7 @@ type GetSDNAltNamesOpts struct {
 }
 
 /*
-GetSDNAltNames Get alternate names for a given SDN
+GetSDNAltNames Get SDN alt names
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param sdnID SDN ID
  * @param optional nil or *GetSDNAltNamesOpts - Optional Parameters:
@@ -1058,7 +1066,7 @@ type RemoveOfacCompanyNameWatchOpts struct {
 }
 
 /*
-RemoveOfacCompanyNameWatch Remove a Company name watch
+RemoveOfacCompanyNameWatch Remove a company watch
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param watchID Watch ID, used to identify a specific watch
  * @param name Company name watch
@@ -1142,6 +1150,7 @@ type RemoveOfacCompanyWatchOpts struct {
 
 /*
 RemoveOfacCompanyWatch Remove company watch
+Delete a company name watch
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param companyID Company ID
  * @param watchID Watch ID, used to identify a specific watch
@@ -1225,7 +1234,7 @@ type RemoveOfacCustomerNameWatchOpts struct {
 }
 
 /*
-RemoveOfacCustomerNameWatch Remove a Customer name watch
+RemoveOfacCustomerNameWatch remove a customer watch
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param watchID Watch ID, used to identify a specific watch
  * @param name Customer or Company name watch
@@ -1309,6 +1318,7 @@ type RemoveOfacCustomerWatchOpts struct {
 
 /*
 RemoveOfacCustomerWatch Remove customer watch
+Delete a customer name watch
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param customerID Customer ID
  * @param watchID Watch ID, used to identify a specific watch
@@ -1405,7 +1415,7 @@ type SearchOpts struct {
 }
 
 /*
-Search Search SDN names and metadata
+Search Search SDNs
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *SearchOpts - Optional Parameters:
  * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
@@ -1555,7 +1565,8 @@ type UpdateOfacCompanyStatusOpts struct {
 }
 
 /*
-UpdateOfacCompanyStatus Update a Companies sanction status to always block or always allow transactions.
+UpdateOfacCompanyStatus Update company
+Update a Companies sanction status to always block or always allow transactions.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param companyID Company ID
  * @param updateOfacCompanyStatus
@@ -1639,7 +1650,8 @@ type UpdateOfacCustomerStatusOpts struct {
 }
 
 /*
-UpdateOfacCustomerStatus Update a Customer's sanction status to always block or always allow transactions.
+UpdateOfacCustomerStatus Update customer
+Update a Customer sanction status to always block or always allow transactions.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param customerID Customer ID
  * @param updateOfacCustomerStatus

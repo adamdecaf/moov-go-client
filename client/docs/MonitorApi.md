@@ -4,21 +4,23 @@ All URIs are relative to *https://api.moov.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**PingACH**](MonitorApi.md#PingACH) | **Get** /v1/ach/ping | Check that the moov-io/ach service is running
-[**PingAccounts**](MonitorApi.md#PingAccounts) | **Get** /v1/accounts/ping | Check that the moov-io/accounts service is running
-[**PingAuth**](MonitorApi.md#PingAuth) | **Get** /v1/auth/ping | Check that the moov-io/auth service is running
-[**PingCustomers**](MonitorApi.md#PingCustomers) | **Get** /v1/customers/ping | Check that the moov-io/customers service is running
-[**PingFED**](MonitorApi.md#PingFED) | **Get** /v1/fed/ping | Check that the moov-io/fed service is running
-[**PingImageCashLetter**](MonitorApi.md#PingImageCashLetter) | **Get** /v1/imagecashletter/ping | Check that the moov-io/imagecashletter service is running
-[**PingPaygate**](MonitorApi.md#PingPaygate) | **Get** /v1/paygate/ping | Check that the moov-io/paygate service is running
-[**PingWatchman**](MonitorApi.md#PingWatchman) | **Get** /v1/watchman/ping | Check that the moov-io/watchman service is running
-[**PingWire**](MonitorApi.md#PingWire) | **Get** /v1/wire/ping | Check that the moov-io/wire service is running
+[**PingACH**](MonitorApi.md#PingACH) | **Get** /v1/ach/ping | Ping ACH
+[**PingAccounts**](MonitorApi.md#PingAccounts) | **Get** /v1/accounts/ping | Ping Accounts
+[**PingAuth**](MonitorApi.md#PingAuth) | **Get** /v1/auth/ping | Ping Auth
+[**PingCustomers**](MonitorApi.md#PingCustomers) | **Get** /v1/customers/ping | Ping Customers
+[**PingFED**](MonitorApi.md#PingFED) | **Get** /v1/fed/ping | Ping Fed
+[**PingImageCashLetter**](MonitorApi.md#PingImageCashLetter) | **Get** /v1/imagecashletter/ping | Ping ICL
+[**PingPaygate**](MonitorApi.md#PingPaygate) | **Get** /v1/paygate/ping | Ping PayGate
+[**PingWatchman**](MonitorApi.md#PingWatchman) | **Get** /v1/watchman/ping | Ping Watchman
+[**PingWire**](MonitorApi.md#PingWire) | **Get** /v1/wire/ping | Ping Wire
 
 
 
 ## PingACH
 
 > string PingACH(ctx, optional)
+
+Ping ACH
 
 Check that the moov-io/ach service is running
 
@@ -61,6 +63,8 @@ No authorization required
 
 > string PingAccounts(ctx, optional)
 
+Ping Accounts
+
 Check that the moov-io/accounts service is running
 
 ### Required Parameters
@@ -101,6 +105,8 @@ No authorization required
 ## PingAuth
 
 > string PingAuth(ctx, optional)
+
+Ping Auth
 
 Check that the moov-io/auth service is running
 
@@ -143,6 +149,8 @@ No authorization required
 
 > string PingCustomers(ctx, optional)
 
+Ping Customers
+
 Check that the moov-io/customers service is running
 
 ### Required Parameters
@@ -183,6 +191,8 @@ No authorization required
 ## PingFED
 
 > string PingFED(ctx, optional)
+
+Ping Fed
 
 Check that the moov-io/fed service is running
 
@@ -225,6 +235,8 @@ No authorization required
 
 > string PingImageCashLetter(ctx, optional)
 
+Ping ICL
+
 Check that the moov-io/imagecashletter service is running
 
 ### Required Parameters
@@ -265,6 +277,8 @@ No authorization required
 ## PingPaygate
 
 > string PingPaygate(ctx, optional)
+
+Ping PayGate
 
 Check that the moov-io/paygate service is running
 
@@ -307,6 +321,8 @@ No authorization required
 
 > string PingWatchman(ctx, optional)
 
+Ping Watchman
+
 Check that the moov-io/watchman service is running
 
 ### Required Parameters
@@ -347,6 +363,8 @@ No authorization required
 ## PingWire
 
 > string PingWire(ctx, optional)
+
+Ping Wire
 
 Check that the moov-io/wire service is running
 

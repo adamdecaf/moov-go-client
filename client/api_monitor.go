@@ -32,7 +32,8 @@ type PingACHOpts struct {
 }
 
 /*
-PingACH Check that the moov-io/ach service is running
+PingACH Ping ACH
+Check that the moov-io/ach service is running
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *PingACHOpts - Optional Parameters:
  * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
@@ -125,7 +126,8 @@ type PingAccountsOpts struct {
 }
 
 /*
-PingAccounts Check that the moov-io/accounts service is running
+PingAccounts Ping Accounts
+Check that the moov-io/accounts service is running
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *PingAccountsOpts - Optional Parameters:
  * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
@@ -218,7 +220,8 @@ type PingAuthOpts struct {
 }
 
 /*
-PingAuth Check that the moov-io/auth service is running
+PingAuth Ping Auth
+Check that the moov-io/auth service is running
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *PingAuthOpts - Optional Parameters:
  * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
@@ -311,7 +314,8 @@ type PingCustomersOpts struct {
 }
 
 /*
-PingCustomers Check that the moov-io/customers service is running
+PingCustomers Ping Customers
+Check that the moov-io/customers service is running
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *PingCustomersOpts - Optional Parameters:
  * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
@@ -404,7 +408,8 @@ type PingFEDOpts struct {
 }
 
 /*
-PingFED Check that the moov-io/fed service is running
+PingFED Ping Fed
+Check that the moov-io/fed service is running
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *PingFEDOpts - Optional Parameters:
  * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
@@ -497,7 +502,8 @@ type PingImageCashLetterOpts struct {
 }
 
 /*
-PingImageCashLetter Check that the moov-io/imagecashletter service is running
+PingImageCashLetter Ping ICL
+Check that the moov-io/imagecashletter service is running
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *PingImageCashLetterOpts - Optional Parameters:
  * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
@@ -590,7 +596,8 @@ type PingPaygateOpts struct {
 }
 
 /*
-PingPaygate Check that the moov-io/paygate service is running
+PingPaygate Ping PayGate
+Check that the moov-io/paygate service is running
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *PingPaygateOpts - Optional Parameters:
  * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
@@ -683,7 +690,8 @@ type PingWatchmanOpts struct {
 }
 
 /*
-PingWatchman Check that the moov-io/watchman service is running
+PingWatchman Ping Watchman
+Check that the moov-io/watchman service is running
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *PingWatchmanOpts - Optional Parameters:
  * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
@@ -776,7 +784,8 @@ type PingWireOpts struct {
 }
 
 /*
-PingWire Check that the moov-io/wire service is running
+PingWire Ping Wire
+Check that the moov-io/wire service is running
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *PingWireOpts - Optional Parameters:
  * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs

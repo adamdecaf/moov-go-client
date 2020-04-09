@@ -4,10 +4,10 @@ All URIs are relative to *https://api.moov.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateAccount**](AccountsApi.md#CreateAccount) | **Post** /v1/accounts | Create a new account for a Customer
-[**CreateTransaction**](AccountsApi.md#CreateTransaction) | **Post** /v1/accounts/transactions | Post a transaction against multiple accounts. All transaction lines must sum to zero. No money is created or destroyed in a transaction - only moved from account to account. Accounts can be referred to in a Transaction without creating them first.
-[**GetAccountTransactions**](AccountsApi.md#GetAccountTransactions) | **Get** /v1/accounts/{accountID}/transactions | Get transactions for an account. Ordered descending from their posted date.
-[**SearchAccounts**](AccountsApi.md#SearchAccounts) | **Get** /v1/accounts/search | Search for account which matches all query parameters
+[**CreateAccount**](AccountsApi.md#CreateAccount) | **Post** /v1/accounts | Create Account
+[**CreateTransaction**](AccountsApi.md#CreateTransaction) | **Post** /v1/accounts/transactions | Create Transaction
+[**GetAccountTransactions**](AccountsApi.md#GetAccountTransactions) | **Get** /v1/accounts/{accountID}/transactions | Get Account transactions
+[**SearchAccounts**](AccountsApi.md#SearchAccounts) | **Get** /v1/accounts/search | Search for Accounts
 
 
 
@@ -15,7 +15,9 @@ Method | HTTP request | Description
 
 > Account CreateAccount(ctx, xUserID, createAccount, optional)
 
-Create a new account for a Customer
+Create Account
+
+Create an account for a Customer. Leaving the number blank will generate a random value.
 
 ### Required Parameters
 
@@ -60,7 +62,9 @@ No authorization required
 
 > Transaction CreateTransaction(ctx, xUserID, createTransaction, optional)
 
-Post a transaction against multiple accounts. All transaction lines must sum to zero. No money is created or destroyed in a transaction - only moved from account to account. Accounts can be referred to in a Transaction without creating them first.
+Create Transaction
+
+Post a transaction against multiple accounts. All transaction lines must sum to zero. No money is created or destroyed in a transaction - only moved from account to account. Accounts can be referred to in a Transaction without creating them first. 
 
 ### Required Parameters
 
@@ -104,6 +108,8 @@ No authorization required
 ## GetAccountTransactions
 
 > []Transaction GetAccountTransactions(ctx, accountID, xUserID, optional)
+
+Get Account transactions
 
 Get transactions for an account. Ordered descending from their posted date.
 
@@ -151,7 +157,9 @@ No authorization required
 
 > []Account SearchAccounts(ctx, xUserID, optional)
 
-Search for account which matches all query parameters
+Search for Accounts
+
+Find accounts which match all specified query parameters
 
 ### Required Parameters
 

@@ -4,11 +4,11 @@ All URIs are relative to *https://api.moov.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AddOriginator**](OriginatorsApi.md#AddOriginator) | **Post** /v1/ach/originators | Create a new Originator object
-[**DeleteOriginator**](OriginatorsApi.md#DeleteOriginator) | **Delete** /v1/ach/originators/{originatorID} | Permanently deletes an Originator and associated Receivers, Depositories, and Transfers. It cannot be undone. Also immediately cancels any active Transfers for the Originator.
-[**GetOriginatorByID**](OriginatorsApi.md#GetOriginatorByID) | **Get** /v1/ach/originators/{originatorID} | Retrieves the details of an existing Originator. You need only supply the unique Originator identifier that was returned upon receiver creation.
-[**GetOriginators**](OriginatorsApi.md#GetOriginators) | **Get** /v1/ach/originators | Gets a list of Originators
-[**UpdateOriginator**](OriginatorsApi.md#UpdateOriginator) | **Patch** /v1/ach/originators/{originatorID} | Updates the specified Originator by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
+[**AddOriginator**](OriginatorsApi.md#AddOriginator) | **Post** /v1/ach/originators | Create Originator
+[**DeleteOriginator**](OriginatorsApi.md#DeleteOriginator) | **Delete** /v1/ach/originators/{originatorID} | Delete Originator
+[**GetOriginatorByID**](OriginatorsApi.md#GetOriginatorByID) | **Get** /v1/ach/originators/{originatorID} | Get Originator
+[**GetOriginators**](OriginatorsApi.md#GetOriginators) | **Get** /v1/ach/originators | Gets Originators
+[**UpdateOriginator**](OriginatorsApi.md#UpdateOriginator) | **Patch** /v1/ach/originators/{originatorID} | Update Originator
 
 
 
@@ -16,7 +16,9 @@ Method | HTTP request | Description
 
 > Originator AddOriginator(ctx, xUserID, createOriginator, optional)
 
-Create a new Originator object
+Create Originator
+
+Create a new Originator object for the given x-user-id
 
 ### Required Parameters
 
@@ -62,6 +64,8 @@ Name | Type | Description  | Notes
 
 > DeleteOriginator(ctx, originatorID, xUserID, optional)
 
+Delete Originator
+
 Permanently deletes an Originator and associated Receivers, Depositories, and Transfers. It cannot be undone. Also immediately cancels any active Transfers for the Originator.
 
 ### Required Parameters
@@ -106,6 +110,8 @@ Name | Type | Description  | Notes
 ## GetOriginatorByID
 
 > Originator GetOriginatorByID(ctx, originatorID, xUserID, optional)
+
+Get Originator
 
 Retrieves the details of an existing Originator. You need only supply the unique Originator identifier that was returned upon receiver creation.
 
@@ -154,7 +160,9 @@ Name | Type | Description  | Notes
 
 > []Originator GetOriginators(ctx, xUserID, optional)
 
-Gets a list of Originators
+Gets Originators
+
+Get all Originator objects created for the given x-user-id
 
 ### Required Parameters
 
@@ -198,6 +206,8 @@ Name | Type | Description  | Notes
 ## UpdateOriginator
 
 > Originator UpdateOriginator(ctx, originatorID, xUserID, createOriginator, optional)
+
+Update Originator
 
 Updates the specified Originator by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
 

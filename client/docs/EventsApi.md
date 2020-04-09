@@ -4,8 +4,8 @@ All URIs are relative to *https://api.moov.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetEventByID**](EventsApi.md#GetEventByID) | **Get** /v1/ach/events/{eventID} | Get a Event by ID
-[**GetEvents**](EventsApi.md#GetEvents) | **Get** /v1/ach/events | Gets a list of Events
+[**GetEventByID**](EventsApi.md#GetEventByID) | **Get** /v1/ach/events/{eventID} | Get Event
+[**GetEvents**](EventsApi.md#GetEvents) | **Get** /v1/ach/events | Get Events
 
 
 
@@ -13,7 +13,9 @@ Method | HTTP request | Description
 
 > Event GetEventByID(ctx, eventID, xUserID, optional)
 
-Get a Event by ID
+Get Event
+
+Get the event metadata for the eventID and userID
 
 ### Required Parameters
 
@@ -60,7 +62,9 @@ Name | Type | Description  | Notes
 
 > []Event GetEvents(ctx, xUserID, optional)
 
-Gets a list of Events
+Get Events
+
+Gets a list of Events for the given userID
 
 ### Required Parameters
 

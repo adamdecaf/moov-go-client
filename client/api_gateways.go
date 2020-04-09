@@ -33,7 +33,8 @@ type AddGatewayOpts struct {
 }
 
 /*
-AddGateway Create a new Gateway object
+AddGateway Update Gateway
+Set the Gateway information for the specified user
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param xUserID Moov User ID
  * @param createGateway
@@ -157,7 +158,8 @@ type GetGatewaysOpts struct {
 }
 
 /*
-GetGateways Gets a list of Gatways
+GetGateways Gets Gatway
+Get the Gateway information for the specified user
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param xUserID Moov User ID
  * @param optional nil or *GetGatewaysOpts - Optional Parameters:
