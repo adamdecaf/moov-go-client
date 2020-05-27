@@ -10,7 +10,7 @@ client:
 # Checkout https://github.com/OpenAPITools/openapi-generator/releases
 	@chmod +x ./openapi-generator
 	@rm -rf ./client
-	OPENAPI_GENERATOR_VERSION=4.3.0 ./openapi-generator generate --package-name client -i openapi.yaml -g go -o ./client
+	OPENAPI_GENERATOR_VERSION=4.3.1 ./openapi-generator generate --package-name client -i openapi.yaml -g go -o ./client
 	rm -f client/go.mod client/go.sum
 	go fmt ./...
 	go build github.com/moov-io/go-client/client

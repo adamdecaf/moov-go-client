@@ -4,33 +4,28 @@ _Note_: The Moov API and services are under development and could introduce brea
 
 The Moov API is organized around [REST](http://en.wikipedia.org/wiki/Representational_State_Transfer). Our API has predictable, resource-oriented URLs, and uses HTTP response codes to indicate API errors. We use built-in HTTP features, like HTTP authentication and HTTP verbs, which are understood by off-the-shelf HTTP clients. We support [cross-origin resource sharing](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing), allowing you to interact securely with our API from client-side web applications (never expose your secret API key in any public website's client-side code). [JSON](http://www.json.org/) is returned by all API responses, including errors, although you can generate client code via [OpenAPI code generation](https://github.com/OpenAPITools/openapi-generator) or the [OpenAPI editor](https://editor.swagger.io/) to convert responses to appropriate language-specific objects.
 
-The Moov API offers two methods of authentication, Cookie and OAuth2 access tokens. The cookie auth is designed for web browsers while the OAuth2 authentication is designed for automated access of our API.
+The Moov API offers one method of authentication -- OAuth2 access tokens. The OAuth2 authentication is designed for automated access of our API. When an API requires a token generated using OAuth (2-legged), no end user is involved. You generate the token by passing your client credentials (Client ID and Client Secret) in a simple call to Create access token (`/oauth2/token`). The operation returns a token that is valid for a few hours and can be renewed; when it expires, you just repeat the call and get a new token. Making additional token requests will keep generating tokens. There are no hard or soft limits.
 
-When an API requires a token generated using OAuth (2-legged), no end user is involved. You generate the token by passing your client credentials (Client ID and Client Secret) in a simple call to Create access token (`/oauth2/token`). The operation returns a token that is valid for a few hours and can be renewed; when it expires, you just repeat the call and get a new token. Making additional token requests will keep generating tokens. There are no hard or soft limits.
-
-Cookie auth is setup by provided (`/users/login`) a valid email and password combination. A `Set-Cookie` header is returned on success, which can be used in later calls. Cookie auth is required to generate OAuth2 client credentials.
+The Moov API offers many services:
+  - Automated Clearing House (ACH) origination and file management
+  - Transfers management
+  <!-- - Image Cash Ledger (ICL) file creation and modification API -->
+  <!-- - Fed WIRE file creation and modification API -->
 
 The following order of API operations is suggested to start developing against the Moov API:
 
-1. [Create a Moov API user](#operation/createUser) with a unique email address
-1. [Login with user/password credentials](#operation/userLogin)
-1. [Create an OAuth2 client](#operation/createOAuth2Client) and [Generate an OAuth access token](#operation/createOAuth2Token)
-1. Using the OAuth credentials create:
-   - [Originator](#operation/addOriginator) and [Originator Depository](#operation/addDepository) (requires micro deposit setup)
-   - [Receiver](#operation/addReceivers) and [Receiver Depository](#operation/addDepository) (requires micro deposit setup)
-1. [Submit the Transfer](#operation/addTransfer)
+  1. [Create a Moov API user](#operation/...) with a unique email address
+  1. Create a source Customer
+     1. Approve
+     1. Create an Account
+        1. Verify or Approve
+  1. Create a destination Customer
+     1. Approve
+     1. Create an Account
+        1. Verify or Approve
+  1. Initiate a Transfer
 
-After signup clients can [submit ACH files](#operation/addFile) (either in JSON or plaintext) for [validation](#operation/validateFile) and [tabulation](#operation/getFileContents).
-
-The Moov API offers many services:
-- Automated Clearing House (ACH) origination and file management
-- Transfers and ACH Receiver management
-- Image Cash Ledger (ICL) file creation and modification API
-- Fed WIRE file creation and modification API
-
-ACH is implemented a RESTful API enabling ACH transactions to be submitted and received without a deep understanding of a full NACHA file specification.
-
-An `Originator` can initiate a `Transfer` as either a push (credit) or pull (debit) to a `Receiver`. Originators and Receivers must have a valid `Depository` account for a `Transfer`. A `Transfer` is initiated by an `Originator` to a `Receiver` with an amount and flow of funds.
+ACH is implemented a RESTful API enabling ACH transactions to be submitted and received without a deep understanding of a full NACHA file specification. A `Customer` can initiate a `Transfer` as either a push (credit) or pull (debit) to another `Customer`. Customers must have a valid `Account` account for a `Transfer`.
 
 If you find a security related problem please contact us at [`security@moov.io`](mailto:security@moov.io).
 
@@ -41,7 +36,7 @@ This API client was generated by the [OpenAPI Generator](https://openapi-generat
 - API version: v1
 - Package version: 1.0.0
 - Build package: org.openapitools.codegen.languages.GoClientCodegen
-For more information, please visit [https://groups.google.com/forum/#!forum/moov-users](https://groups.google.com/forum/#!forum/moov-users)
+For more information, please visit [https://github.com/moov-io/api](https://github.com/moov-io/api)
 
 ## Installation
 
@@ -62,329 +57,80 @@ import "./client"
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://api.moov.io*
+All URIs are relative to *http://localhost:9999*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*ACHFilesApi* | [**AddBatchToFile**](docs/ACHFilesApi.md#addbatchtofile) | **Post** /v1/ach/files/{fileID}/batches | Add Batch to File
-*ACHFilesApi* | [**CreateFile**](docs/ACHFilesApi.md#createfile) | **Post** /v1/ach/files/create | Create File
-*ACHFilesApi* | [**DeleteACHFile**](docs/ACHFilesApi.md#deleteachfile) | **Delete** /v1/ach/files/{fileID} | Delete file
-*ACHFilesApi* | [**DeleteFileBatch**](docs/ACHFilesApi.md#deletefilebatch) | **Delete** /v1/ach/files/{fileID}/batches/{batchID} | Delete batch
-*ACHFilesApi* | [**GetFileBatch**](docs/ACHFilesApi.md#getfilebatch) | **Get** /v1/ach/files/{fileID}/batches/{batchID} | Get Batch
-*ACHFilesApi* | [**GetFileBatches**](docs/ACHFilesApi.md#getfilebatches) | **Get** /v1/ach/files/{fileID}/batches | Get batches
-*ACHFilesApi* | [**GetFileByID**](docs/ACHFilesApi.md#getfilebyid) | **Get** /v1/ach/files/{fileID} | Retrieve a file
-*ACHFilesApi* | [**GetFileContents**](docs/ACHFilesApi.md#getfilecontents) | **Get** /v1/ach/files/{fileID}/contents | Get file contents
-*ACHFilesApi* | [**GetFiles**](docs/ACHFilesApi.md#getfiles) | **Get** /v1/ach/files | Get ACH files
-*ACHFilesApi* | [**SegmentFile**](docs/ACHFilesApi.md#segmentfile) | **Post** /v1/ach/files/{fileID}/segment | Segment file
-*ACHFilesApi* | [**ValidateFile**](docs/ACHFilesApi.md#validatefile) | **Get** /v1/ach/files/{fileID}/validate | Validate file
-*AccountsApi* | [**CreateAccount**](docs/AccountsApi.md#createaccount) | **Post** /v1/accounts | Create Account
-*AccountsApi* | [**CreateTransaction**](docs/AccountsApi.md#createtransaction) | **Post** /v1/accounts/transactions | Create Transaction
-*AccountsApi* | [**GetAccountTransactions**](docs/AccountsApi.md#getaccounttransactions) | **Get** /v1/accounts/{accountID}/transactions | Get Account transactions
-*AccountsApi* | [**SearchAccounts**](docs/AccountsApi.md#searchaccounts) | **Get** /v1/accounts/search | Search for Accounts
+*CustomersApi* | [**AddCustomerAddress**](docs/CustomersApi.md#addcustomeraddress) | **Post** /v1/customers/{customerID}/address | Add customer address
 *CustomersApi* | [**CreateCustomer**](docs/CustomersApi.md#createcustomer) | **Post** /v1/customers | Create customer
+*CustomersApi* | [**CreateCustomerAccount**](docs/CustomersApi.md#createcustomeraccount) | **Post** /v1/customers/{customerID}/accounts | Create Customer Account
+*CustomersApi* | [**DecryptAccountNumber**](docs/CustomersApi.md#decryptaccountnumber) | **Post** /v1/customers/{customerID}/accounts/{accountID}/decrypt | Decrypt Account Number
+*CustomersApi* | [**DeleteCustomerAccount**](docs/CustomersApi.md#deletecustomeraccount) | **Delete** /v1/customers/{customerID}/accounts | Delete Customer Account
 *CustomersApi* | [**GetCustomer**](docs/CustomersApi.md#getcustomer) | **Get** /v1/customers/{customerID} | Retrieve customer
+*CustomersApi* | [**GetCustomerAccounts**](docs/CustomersApi.md#getcustomeraccounts) | **Get** /v1/customers/{customerID}/accounts | Get Customer Accounts
+*CustomersApi* | [**GetCustomerDisclaimers**](docs/CustomersApi.md#getcustomerdisclaimers) | **Get** /v1/customers/{customerID}/disclaimers | Get customer disclaimers
 *CustomersApi* | [**GetCustomerDocumentContents**](docs/CustomersApi.md#getcustomerdocumentcontents) | **Get** /v1/customers/{customerID}/documents/{documentID} | Get customer document
 *CustomersApi* | [**GetCustomerDocuments**](docs/CustomersApi.md#getcustomerdocuments) | **Get** /v1/customers/{customerID}/documents | Get customer documents
+*CustomersApi* | [**GetLatestOFACSearch**](docs/CustomersApi.md#getlatestofacsearch) | **Get** /v1/customers/{customerID}/ofac | Get latest OFAC search
+*CustomersApi* | [**RefreshOFACSearch**](docs/CustomersApi.md#refreshofacsearch) | **Put** /v1/customers/{customerID}/refresh/ofac | Refresh customer OFAC search
+*CustomersApi* | [**ReplaceCustomerMetadata**](docs/CustomersApi.md#replacecustomermetadata) | **Put** /v1/customers/{customerID}/metadata | Update customer metadata
+*CustomersApi* | [**UpdateCustomerStatus**](docs/CustomersApi.md#updatecustomerstatus) | **Put** /v1/customers/{customerID}/status | Update customer status
 *CustomersApi* | [**UploadCustomerDocument**](docs/CustomersApi.md#uploadcustomerdocument) | **Post** /v1/customers/{customerID}/documents | Upload document
-*DepositoriesApi* | [**AddDepository**](docs/DepositoriesApi.md#adddepository) | **Post** /v1/ach/depositories | Create Depository
-*DepositoriesApi* | [**ConfirmMicroDeposits**](docs/DepositoriesApi.md#confirmmicrodeposits) | **Post** /v1/ach/depositories/{depositoryID}/micro-deposits/confirm | Confirm micro-deposits
-*DepositoriesApi* | [**DeleteDepository**](docs/DepositoriesApi.md#deletedepository) | **Delete** /v1/ach/depositories/{depositoryID} | Delete Depository
-*DepositoriesApi* | [**GetDepositories**](docs/DepositoriesApi.md#getdepositories) | **Get** /v1/ach/depositories | List Depositories
-*DepositoriesApi* | [**GetDepositoryByID**](docs/DepositoriesApi.md#getdepositorybyid) | **Get** /v1/ach/depositories/{depositoryID} | Get Depository
-*DepositoriesApi* | [**InitiateMicroDeposits**](docs/DepositoriesApi.md#initiatemicrodeposits) | **Post** /v1/ach/depositories/{depositoryID}/micro-deposits | Initiate micro-deposits
-*DepositoriesApi* | [**UpdateDepository**](docs/DepositoriesApi.md#updatedepository) | **Patch** /v1/ach/depositories/{depositoryID} | Update Depository
-*EventsApi* | [**GetEventByID**](docs/EventsApi.md#geteventbyid) | **Get** /v1/ach/events/{eventID} | Get Event
-*EventsApi* | [**GetEvents**](docs/EventsApi.md#getevents) | **Get** /v1/ach/events | Get Events
-*FEDApi* | [**SearchFEDACH**](docs/FEDApi.md#searchfedach) | **Get** /v1/fed/ach/search | Search FEDACH names and metadata
-*FEDApi* | [**SearchFEDWIRE**](docs/FEDApi.md#searchfedwire) | **Get** /v1/fed/wire/search | Search FEDWIRE names and metadata
-*GatewaysApi* | [**AddGateway**](docs/GatewaysApi.md#addgateway) | **Post** /v1/ach/gateways | Update Gateway
-*GatewaysApi* | [**GetGateways**](docs/GatewaysApi.md#getgateways) | **Get** /v1/ach/gateways | Gets Gatway
-*ImageCashLetterFilesApi* | [**AddICLToFile**](docs/ImageCashLetterFilesApi.md#addicltofile) | **Post** /v1/imagecashletter/files/{fileID}/cashLetters | Add CashLetter to File
-*ImageCashLetterFilesApi* | [**CreateICLFile**](docs/ImageCashLetterFilesApi.md#createiclfile) | **Post** /v1/imagecashletter/files/create | Create a new File object
-*ImageCashLetterFilesApi* | [**DeleteICLFile**](docs/ImageCashLetterFilesApi.md#deleteiclfile) | **Delete** /v1/imagecashletter/files/{fileID} | Permanently deletes a File and associated CashLetters and Bundles. It cannot be undone.
-*ImageCashLetterFilesApi* | [**DeleteICLFromFile**](docs/ImageCashLetterFilesApi.md#deleteiclfromfile) | **Delete** /v1/imagecashletter/files/{fileID}/cashLetters/{cashLetterID} | Delete a CashLetter from a File
-*ImageCashLetterFilesApi* | [**GetICLFileByID**](docs/ImageCashLetterFilesApi.md#geticlfilebyid) | **Get** /v1/imagecashletter/files/{fileID} | Retrieves the details of an existing File. You need only supply the unique File identifier that was returned upon creation.
-*ImageCashLetterFilesApi* | [**GetICLFileContents**](docs/ImageCashLetterFilesApi.md#geticlfilecontents) | **Get** /v1/imagecashletter/files/{fileID}/contents | Assembles the existing file (Cash Letters, Bundles and Controls) records, computes sequence numbers and totals. Returns plaintext file.
-*ImageCashLetterFilesApi* | [**GetICLFiles**](docs/ImageCashLetterFilesApi.md#geticlfiles) | **Get** /v1/imagecashletter/files | Gets a list of Files
-*ImageCashLetterFilesApi* | [**UpdateICLFile**](docs/ImageCashLetterFilesApi.md#updateiclfile) | **Post** /v1/imagecashletter/files/{fileID} | Updates the specified File Header by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
-*ImageCashLetterFilesApi* | [**ValidateICLFile**](docs/ImageCashLetterFilesApi.md#validateiclfile) | **Get** /v1/imagecashletter/files/{fileID}/validate | Validates the existing file. You need only supply the unique File identifier that was returned upon creation.
-*MonitorApi* | [**PingACH**](docs/MonitorApi.md#pingach) | **Get** /v1/ach/ping | Ping ACH
-*MonitorApi* | [**PingAccounts**](docs/MonitorApi.md#pingaccounts) | **Get** /v1/accounts/ping | Ping Accounts
-*MonitorApi* | [**PingAuth**](docs/MonitorApi.md#pingauth) | **Get** /v1/auth/ping | Ping Auth
-*MonitorApi* | [**PingCustomers**](docs/MonitorApi.md#pingcustomers) | **Get** /v1/customers/ping | Ping Customers
-*MonitorApi* | [**PingFED**](docs/MonitorApi.md#pingfed) | **Get** /v1/fed/ping | Ping Fed
-*MonitorApi* | [**PingImageCashLetter**](docs/MonitorApi.md#pingimagecashletter) | **Get** /v1/imagecashletter/ping | Ping ICL
-*MonitorApi* | [**PingPaygate**](docs/MonitorApi.md#pingpaygate) | **Get** /v1/paygate/ping | Ping PayGate
-*MonitorApi* | [**PingWatchman**](docs/MonitorApi.md#pingwatchman) | **Get** /v1/watchman/ping | Ping Watchman
-*MonitorApi* | [**PingWire**](docs/MonitorApi.md#pingwire) | **Get** /v1/wire/ping | Ping Wire
-*OAuth2Api* | [**CheckOAuthClientCredentials**](docs/OAuth2Api.md#checkoauthclientcredentials) | **Get** /v1/oauth2/authorize | Verify OAuth2 Bearer token
-*OAuth2Api* | [**CreateOAuth2Client**](docs/OAuth2Api.md#createoauth2client) | **Post** /v1/oauth2/client | Create OAuth2 client credentials
-*OAuth2Api* | [**CreateOAuth2Token**](docs/OAuth2Api.md#createoauth2token) | **Post** /v1/oauth2/token | Generate OAuth2 access token
-*OAuth2Api* | [**GetClientsForUserId**](docs/OAuth2Api.md#getclientsforuserid) | **Get** /v1/oauth2/clients | List OAuth2 clients for the authenticated user
-*OriginatorsApi* | [**AddOriginator**](docs/OriginatorsApi.md#addoriginator) | **Post** /v1/ach/originators | Create Originator
-*OriginatorsApi* | [**DeleteOriginator**](docs/OriginatorsApi.md#deleteoriginator) | **Delete** /v1/ach/originators/{originatorID} | Delete Originator
-*OriginatorsApi* | [**GetOriginatorByID**](docs/OriginatorsApi.md#getoriginatorbyid) | **Get** /v1/ach/originators/{originatorID} | Get Originator
-*OriginatorsApi* | [**GetOriginators**](docs/OriginatorsApi.md#getoriginators) | **Get** /v1/ach/originators | Gets Originators
-*OriginatorsApi* | [**UpdateOriginator**](docs/OriginatorsApi.md#updateoriginator) | **Patch** /v1/ach/originators/{originatorID} | Update Originator
-*ReceiversApi* | [**AddReceivers**](docs/ReceiversApi.md#addreceivers) | **Post** /v1/ach/receivers | Create Receiver
-*ReceiversApi* | [**DeleteReceiver**](docs/ReceiversApi.md#deletereceiver) | **Delete** /v1/ach/receivers/{receiverID} | Delete Receiver
-*ReceiversApi* | [**GetReceiverByID**](docs/ReceiversApi.md#getreceiverbyid) | **Get** /v1/ach/receivers/{receiverID} | Get Receiver
-*ReceiversApi* | [**GetReceivers**](docs/ReceiversApi.md#getreceivers) | **Get** /v1/ach/receivers | Get Receivers
-*ReceiversApi* | [**UpdateReceiver**](docs/ReceiversApi.md#updatereceiver) | **Patch** /v1/ach/receivers/{receiverID} | Update Receiver
-*TransfersApi* | [**AddTransfer**](docs/TransfersApi.md#addtransfer) | **Post** /v1/ach/transfers | Create Transfer
-*TransfersApi* | [**AddTransfers**](docs/TransfersApi.md#addtransfers) | **Post** /v1/ach/transfers/batch | Create Transfers
-*TransfersApi* | [**DeleteTransferByID**](docs/TransfersApi.md#deletetransferbyid) | **Delete** /v1/ach/transfers/{transferID} | Delete Transfer
-*TransfersApi* | [**GetTransferByID**](docs/TransfersApi.md#gettransferbyid) | **Get** /v1/ach/transfers/{transferID} | Get Transfer
-*TransfersApi* | [**GetTransferEventsByID**](docs/TransfersApi.md#gettransfereventsbyid) | **Get** /v1/ach/transfers/{transferID}/events | Get Transfer Events
-*TransfersApi* | [**GetTransferFiles**](docs/TransfersApi.md#gettransferfiles) | **Post** /v1/ach/transfers/{transferID}/files | Get Transfer Files
-*TransfersApi* | [**GetTransferNachaCode**](docs/TransfersApi.md#gettransfernachacode) | **Post** /v1/ach/transfers/{transferID}/failed | Validate Transfer
-*TransfersApi* | [**GetTransfers**](docs/TransfersApi.md#gettransfers) | **Get** /v1/ach/transfers | List Transfers
-*UserApi* | [**CheckUserLogin**](docs/UserApi.md#checkuserlogin) | **Get** /v1/users/login | Check if a cookie is valid and authentic for a user.
-*UserApi* | [**CreateUser**](docs/UserApi.md#createuser) | **Post** /v1/users/create | Create a new user using an email address not seen before.
-*UserApi* | [**UpdateUserProfile**](docs/UserApi.md#updateuserprofile) | **Patch** /v1/users/{userID} | Update a User&#39;s profile information
-*UserApi* | [**UserLogin**](docs/UserApi.md#userlogin) | **Post** /v1/users/login | Attempt to login with an email and password
-*UserApi* | [**UserLogout**](docs/UserApi.md#userlogout) | **Delete** /v1/users/login | Invalidat a user&#39;s cookie(s).
-*WatchmanApi* | [**AddOfacCompanyNameWatch**](docs/WatchmanApi.md#addofaccompanynamewatch) | **Post** /v1/watchman/companies/watch | Watch company
-*WatchmanApi* | [**AddOfacCompanyWatch**](docs/WatchmanApi.md#addofaccompanywatch) | **Post** /v1/watchman/companies/{companyID}/watch | Watch OFAC company
-*WatchmanApi* | [**AddOfacCustomerNameWatch**](docs/WatchmanApi.md#addofaccustomernamewatch) | **Post** /v1/watchman/ofac/customers/watch | Watch customer
-*WatchmanApi* | [**AddOfacCustomerWatch**](docs/WatchmanApi.md#addofaccustomerwatch) | **Post** /v1/watchman/ofac/customers/{customerID}/watch | Watch OFAC customer
-*WatchmanApi* | [**GetLatestDownloads**](docs/WatchmanApi.md#getlatestdownloads) | **Get** /v1/watchman/ofac/downloads | Get latest downloads
-*WatchmanApi* | [**GetOfacCompany**](docs/WatchmanApi.md#getofaccompany) | **Get** /v1/watchman/companies/{companyID} | Get company
-*WatchmanApi* | [**GetOfacCustomer**](docs/WatchmanApi.md#getofaccustomer) | **Get** /v1/watchman/ofac/customers/{customerID} | Get Customer
-*WatchmanApi* | [**GetSDN**](docs/WatchmanApi.md#getsdn) | **Get** /v1/watchman/ofac/sdn/{sdnID} | Get SDN
-*WatchmanApi* | [**GetSDNAddresses**](docs/WatchmanApi.md#getsdnaddresses) | **Get** /v1/watchman/ofac/sdn/{sdnID}/addresses | Get SDN addresses
-*WatchmanApi* | [**GetSDNAltNames**](docs/WatchmanApi.md#getsdnaltnames) | **Get** /v1/watchman/ofac/sdn/{sdnID}/alts | Get SDN alt names
-*WatchmanApi* | [**RemoveOfacCompanyNameWatch**](docs/WatchmanApi.md#removeofaccompanynamewatch) | **Delete** /v1/watchman/companies/watch/{watchID} | Remove a company watch
-*WatchmanApi* | [**RemoveOfacCompanyWatch**](docs/WatchmanApi.md#removeofaccompanywatch) | **Delete** /v1/watchman/companies/{companyID}/watch/{watchID} | Remove company watch
-*WatchmanApi* | [**RemoveOfacCustomerNameWatch**](docs/WatchmanApi.md#removeofaccustomernamewatch) | **Delete** /v1/watchman/ofac/customers/watch/{watchID} | remove a customer watch
-*WatchmanApi* | [**RemoveOfacCustomerWatch**](docs/WatchmanApi.md#removeofaccustomerwatch) | **Delete** /v1/watchman/ofac/customers/{customerID}/watch/{watchID} | Remove customer watch
-*WatchmanApi* | [**Search**](docs/WatchmanApi.md#search) | **Get** /v1/watchman/ofac/search | Search SDNs
-*WatchmanApi* | [**UpdateOfacCompanyStatus**](docs/WatchmanApi.md#updateofaccompanystatus) | **Put** /v1/watchman/companies/{companyID} | Update company
-*WatchmanApi* | [**UpdateOfacCustomerStatus**](docs/WatchmanApi.md#updateofaccustomerstatus) | **Put** /v1/watchman/ofac/customers/{customerID} | Update customer
-*WireFilesApi* | [**AddFEDWireMessageToFile**](docs/WireFilesApi.md#addfedwiremessagetofile) | **Post** /v1/wire/files/{fileID}/FEDWireMessage | Add FEDWireMessage to File
-*WireFilesApi* | [**CreateWireFile**](docs/WireFilesApi.md#createwirefile) | **Post** /v1/wire/files/create | Create File
-*WireFilesApi* | [**DeleteWireFileByID**](docs/WireFilesApi.md#deletewirefilebyid) | **Delete** /v1/wire/files/{fileID} | Delete file
-*WireFilesApi* | [**GetWireFileByID**](docs/WireFilesApi.md#getwirefilebyid) | **Get** /v1/wire/files/{fileID} | Retrieve a file
-*WireFilesApi* | [**GetWireFileContents**](docs/WireFilesApi.md#getwirefilecontents) | **Get** /v1/wire/files/{fileID}/contents | Get file contents
-*WireFilesApi* | [**GetWireFiles**](docs/WireFilesApi.md#getwirefiles) | **Get** /v1/wire/files | Get files
-*WireFilesApi* | [**ValidateWireFile**](docs/WireFilesApi.md#validatewirefile) | **Get** /v1/wire/files/{fileID}/validate | Validate file
+*CustomersApi* | [**ValidateAccount**](docs/CustomersApi.md#validateaccount) | **Post** /v1/customers/{customerID}/accounts/{accountID}/validate | Validate Account
+*OrganizationsApi* | [**CreateOrganization**](docs/OrganizationsApi.md#createorganization) | **Post** /v1/organizations | Create Organization
+*OrganizationsApi* | [**GetOrganizations**](docs/OrganizationsApi.md#getorganizations) | **Get** /v1/organizations | Get Organizations
+*OrganizationsApi* | [**UpdateOrganization**](docs/OrganizationsApi.md#updateorganization) | **Put** /v1/organizations/{organizationID} | Update Organization
+*TenantsApi* | [**GetTenants**](docs/TenantsApi.md#gettenants) | **Get** /v1/tenants | Get Tenants
+*TenantsApi* | [**UpdateTenant**](docs/TenantsApi.md#updatetenant) | **Put** /v1/tenants/{tenantID} | Update Tenant
+*TransfersApi* | [**AddTransfer**](docs/TransfersApi.md#addtransfer) | **Post** /v1/transfers | Create Transfer
+*TransfersApi* | [**DeleteTransferByID**](docs/TransfersApi.md#deletetransferbyid) | **Delete** /v1/transfers/{transferID} | Delete Transfer
+*TransfersApi* | [**GetTransferByID**](docs/TransfersApi.md#gettransferbyid) | **Get** /v1/transfers/{transferID} | Get Transfer
+*TransfersApi* | [**GetTransfers**](docs/TransfersApi.md#gettransfers) | **Get** /v1/transfers | List Transfers
+*ValidationApi* | [**GetAccountMicroDeposits**](docs/ValidationApi.md#getaccountmicrodeposits) | **Get** /accounts/{accountID}/micro-deposits | Get micro-deposits for a specified accountID
+*ValidationApi* | [**GetMicroDeposits**](docs/ValidationApi.md#getmicrodeposits) | **Get** /micro-deposits/{microDepositID} | Get micro-deposit information
+*ValidationApi* | [**InitiateMicroDeposits**](docs/ValidationApi.md#initiatemicrodeposits) | **Post** /micro-deposits | Create
 
 
 ## Documentation For Models
 
  - [Account](docs/Account.md)
- - [AccountCreditedDrawdown](docs/AccountCreditedDrawdown.md)
- - [AccountDebitedDrawdown](docs/AccountDebitedDrawdown.md)
- - [AchDictionary](docs/AchDictionary.md)
- - [AchLocation](docs/AchLocation.md)
- - [AchParticipant](docs/AchParticipant.md)
- - [Addenda02](docs/Addenda02.md)
- - [Addenda05](docs/Addenda05.md)
- - [Addenda10](docs/Addenda10.md)
- - [Addenda11](docs/Addenda11.md)
- - [Addenda12](docs/Addenda12.md)
- - [Addenda13](docs/Addenda13.md)
- - [Addenda14](docs/Addenda14.md)
- - [Addenda15](docs/Addenda15.md)
- - [Addenda16](docs/Addenda16.md)
- - [Addenda17](docs/Addenda17.md)
- - [Addenda18](docs/Addenda18.md)
- - [Addenda98](docs/Addenda98.md)
- - [Addenda99](docs/Addenda99.md)
- - [AdditionalFiToFi](docs/AdditionalFiToFi.md)
- - [Address](docs/Address.md)
- - [Adjustment](docs/Adjustment.md)
- - [AdvBatchControl](docs/AdvBatchControl.md)
- - [AdvEntryDetail](docs/AdvEntryDetail.md)
- - [Advice](docs/Advice.md)
- - [Amounts](docs/Amounts.md)
- - [Batch](docs/Batch.md)
- - [BatchControl](docs/BatchControl.md)
- - [BatchHeader](docs/BatchHeader.md)
- - [BeneficiaryReference](docs/BeneficiaryReference.md)
- - [BisEntities](docs/BisEntities.md)
- - [Bundle](docs/Bundle.md)
- - [BundleControl](docs/BundleControl.md)
- - [BundleHeader](docs/BundleHeader.md)
- - [BusinessFunctionCode](docs/BusinessFunctionCode.md)
- - [CashLetter](docs/CashLetter.md)
- - [CashLetterControl](docs/CashLetterControl.md)
- - [CashLetterHeader](docs/CashLetterHeader.md)
- - [CcdDetail](docs/CcdDetail.md)
- - [Charges](docs/Charges.md)
- - [CheckDetail](docs/CheckDetail.md)
- - [CheckDetailAddendumA](docs/CheckDetailAddendumA.md)
- - [CheckDetailAddendumB](docs/CheckDetailAddendumB.md)
- - [CheckDetailAddendumC](docs/CheckDetailAddendumC.md)
- - [Checks](docs/Checks.md)
- - [CoverPayment](docs/CoverPayment.md)
+ - [AccountStatus](docs/AccountStatus.md)
+ - [AccountType](docs/AccountType.md)
  - [CreateAccount](docs/CreateAccount.md)
  - [CreateCustomer](docs/CreateCustomer.md)
  - [CreateCustomerAddress](docs/CreateCustomerAddress.md)
- - [CreateDepository](docs/CreateDepository.md)
- - [CreateFile](docs/CreateFile.md)
- - [CreateGateway](docs/CreateGateway.md)
- - [CreateIclFile](docs/CreateIclFile.md)
- - [CreateOriginator](docs/CreateOriginator.md)
+ - [CreateMicroDeposits](docs/CreateMicroDeposits.md)
+ - [CreateOrganization](docs/CreateOrganization.md)
  - [CreatePhone](docs/CreatePhone.md)
- - [CreateReceiver](docs/CreateReceiver.md)
- - [CreateTransaction](docs/CreateTransaction.md)
  - [CreateTransfer](docs/CreateTransfer.md)
- - [CreateUser](docs/CreateUser.md)
- - [CreateWireFile](docs/CreateWireFile.md)
- - [CreditItem](docs/CreditItem.md)
- - [CurrencyInstructedAmount](docs/CurrencyInstructedAmount.md)
  - [Customer](docs/Customer.md)
  - [CustomerAddress](docs/CustomerAddress.md)
- - [DateRemittanceDocument](docs/DateRemittanceDocument.md)
- - [Depository](docs/Depository.md)
- - [DepositoryStatus](docs/DepositoryStatus.md)
+ - [CustomerMetadata](docs/CustomerMetadata.md)
+ - [CustomerStatus](docs/CustomerStatus.md)
+ - [CustomerType](docs/CustomerType.md)
+ - [Destination](docs/Destination.md)
+ - [Disclaimer](docs/Disclaimer.md)
  - [Document](docs/Document.md)
- - [Download](docs/Download.md)
- - [Dpl](docs/Dpl.md)
- - [EntryDetail](docs/EntryDetail.md)
  - [Error](docs/Error.md)
- - [Error2](docs/Error2.md)
- - [ErrorWire](docs/ErrorWire.md)
- - [Event](docs/Event.md)
- - [ExchangeRate](docs/ExchangeRate.md)
- - [FedWireMessage](docs/FedWireMessage.md)
- - [FiPaymentMethodToBeneficiary](docs/FiPaymentMethodToBeneficiary.md)
- - [FiToFi](docs/FiToFi.md)
- - [File](docs/File.md)
- - [FileControl](docs/FileControl.md)
- - [FileHeader](docs/FileHeader.md)
- - [FinancialInstitution](docs/FinancialInstitution.md)
- - [Gateway](docs/Gateway.md)
- - [IatBatch](docs/IatBatch.md)
- - [IatBatchHeader](docs/IatBatchHeader.md)
- - [IatDetail](docs/IatDetail.md)
- - [IatEntryDetail](docs/IatEntryDetail.md)
- - [IclFile](docs/IclFile.md)
- - [IclFileControl](docs/IclFileControl.md)
- - [IclFileHeader](docs/IclFileHeader.md)
- - [ImageViewAnalysis](docs/ImageViewAnalysis.md)
- - [ImageViewData](docs/ImageViewData.md)
- - [ImageViewDetail](docs/ImageViewDetail.md)
  - [InlineObject](docs/InlineObject.md)
- - [InputMessageAccountabilityData](docs/InputMessageAccountabilityData.md)
- - [InstructedAmount](docs/InstructedAmount.md)
- - [LocalInstrument](docs/LocalInstrument.md)
- - [Login](docs/Login.md)
- - [MessageDisposition](docs/MessageDisposition.md)
- - [OAuth2Client](docs/OAuth2Client.md)
- - [OAuth2Token](docs/OAuth2Token.md)
- - [OfacAlt](docs/OfacAlt.md)
- - [OfacCompany](docs/OfacCompany.md)
- - [OfacCompanyStatus](docs/OfacCompanyStatus.md)
- - [OfacCustomer](docs/OfacCustomer.md)
- - [OfacCustomerStatus](docs/OfacCustomerStatus.md)
- - [OfacEntityAddress](docs/OfacEntityAddress.md)
- - [OfacSdn](docs/OfacSdn.md)
- - [OfacWatch](docs/OfacWatch.md)
- - [OfacWatchRequest](docs/OfacWatchRequest.md)
- - [Offset](docs/Offset.md)
- - [Originator](docs/Originator.md)
- - [OriginatorOptionF](docs/OriginatorOptionF.md)
- - [OriginatorToBeneficiary](docs/OriginatorToBeneficiary.md)
- - [OutputMessageAccountabilityData](docs/OutputMessageAccountabilityData.md)
- - [PaymentNotification](docs/PaymentNotification.md)
- - [Personal](docs/Personal.md)
+ - [MicroDeposits](docs/MicroDeposits.md)
+ - [OfacSearch](docs/OfacSearch.md)
+ - [Organization](docs/Organization.md)
  - [Phone](docs/Phone.md)
- - [PpdDetail](docs/PpdDetail.md)
- - [PreviousMessageIdentifier](docs/PreviousMessageIdentifier.md)
- - [PrimaryRemittanceDocument](docs/PrimaryRemittanceDocument.md)
- - [ReceiptTimeStamp](docs/ReceiptTimeStamp.md)
- - [Receiver](docs/Receiver.md)
- - [ReceiverDepositoryInstitution](docs/ReceiverDepositoryInstitution.md)
- - [RelatedRemittance](docs/RelatedRemittance.md)
- - [RemittanceAmount](docs/RemittanceAmount.md)
- - [RemittanceBeneficiary](docs/RemittanceBeneficiary.md)
- - [RemittanceData](docs/RemittanceData.md)
- - [RemittanceFreeText](docs/RemittanceFreeText.md)
- - [RemittanceOriginator](docs/RemittanceOriginator.md)
  - [ReturnCode](docs/ReturnCode.md)
- - [ReturnDetail](docs/ReturnDetail.md)
- - [ReturnDetailAddendumA](docs/ReturnDetailAddendumA.md)
- - [ReturnDetailAddendumB](docs/ReturnDetailAddendumB.md)
- - [ReturnDetailAddendumC](docs/ReturnDetailAddendumC.md)
- - [ReturnDetailAddendumD](docs/ReturnDetailAddendumD.md)
- - [Returns](docs/Returns.md)
- - [RoutingNumberSummary](docs/RoutingNumberSummary.md)
- - [Search](docs/Search.md)
- - [SecondaryRemittanceDocument](docs/SecondaryRemittanceDocument.md)
- - [SegmentedFiles](docs/SegmentedFiles.md)
- - [SenderDepositoryInstitution](docs/SenderDepositoryInstitution.md)
- - [SenderReference](docs/SenderReference.md)
- - [SenderSupplied](docs/SenderSupplied.md)
- - [ServiceMessage](docs/ServiceMessage.md)
- - [Ssi](docs/Ssi.md)
- - [TelDetail](docs/TelDetail.md)
- - [Transaction](docs/Transaction.md)
- - [TransactionLine](docs/TransactionLine.md)
+ - [Source](docs/Source.md)
+ - [Tenant](docs/Tenant.md)
  - [Transfer](docs/Transfer.md)
  - [TransferStatus](docs/TransferStatus.md)
- - [TypeSubType](docs/TypeSubType.md)
- - [UnstructuredAddenda](docs/UnstructuredAddenda.md)
- - [UpdateOfacCompanyStatus](docs/UpdateOfacCompanyStatus.md)
- - [UpdateOfacCustomerStatus](docs/UpdateOfacCustomerStatus.md)
- - [User](docs/User.md)
- - [UserProfile](docs/UserProfile.md)
- - [ValidateOpts](docs/ValidateOpts.md)
- - [WebDetail](docs/WebDetail.md)
- - [WireAddress](docs/WireAddress.md)
- - [WireAmount](docs/WireAmount.md)
- - [WireDictionary](docs/WireDictionary.md)
- - [WireFile](docs/WireFile.md)
- - [WireLocation](docs/WireLocation.md)
- - [WireParticipant](docs/WireParticipant.md)
+ - [TransitAccountNumber](docs/TransitAccountNumber.md)
+ - [UpdateCustomerStatus](docs/UpdateCustomerStatus.md)
+ - [UpdateTenant](docs/UpdateTenant.md)
+ - [UpdateValidation](docs/UpdateValidation.md)
 
 
 ## Documentation For Authorization
 
-
-
-## bearerAuth
-
-
-- **Type**: OAuth
-- **Flow**: application
-- **Authorization URL**: 
-- **Scopes**: N/A
-
-Example
-
-```golang
-auth := context.WithValue(context.Background(), sw.ContextAccessToken, "ACCESSTOKENSTRING")
-r, err := client.Service.Operation(auth, args)
-```
-
-Or via OAuth2 module to automatically refresh tokens and perform user authentication.
-
-```golang
-import "golang.org/x/oauth2"
-
-/* Perform OAuth2 round trip request and obtain a token */
-
-tokenSource := oauth2cfg.TokenSource(createContext(httpClient), &token)
-auth := context.WithValue(oauth2.NoContext, sw.ContextOAuth2, tokenSource)
-r, err := client.Service.Operation(auth, args)
-```
-
-
-## cookieAuth
-
-- **Type**: API key
-
-Example
-
-```golang
-auth := context.WithValue(context.Background(), sw.ContextAPIKey, sw.APIKey{
-    Key: "APIKEY",
-    Prefix: "Bearer", // Omit if not necessary.
-})
-r, err := client.Service.Operation(auth, args)
-```
+ Endpoints do not require authorization.
 
 
 
