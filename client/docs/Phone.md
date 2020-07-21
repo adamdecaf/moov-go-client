@@ -4,9 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Number** | **string** | phone number | 
-**Valid** | **bool** | phone number has been validated to connect with customer | 
-**Type** | **string** |  | 
+**IdentityID** | **string** | UUID v4 | [optional] 
+**PhoneID** | **string** | UUID v4 | [optional] 
+**Number** | **string** |  | [optional] 
+**Validated** | **bool** |  | [optional] 
+**Type** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

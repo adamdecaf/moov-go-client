@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **BirthDate** | [**time.Time**](time.Time.md) | Legal date of birth | [optional] 
 **Status** | [**CustomerStatus**](CustomerStatus.md) |  | 
 **Email** | **string** | Primary email address of customer name@domain.com | 
-**Phones** | [**[]Phone**](Phone.md) |  | [optional] 
+**Phones** | [**[]Phone2**](Phone_2.md) |  | [optional] 
 **Addresses** | [**[]CustomerAddress**](CustomerAddress.md) |  | [optional] 
 **Metadata** | **map[string]string** | Map of unique keys associated to values to act as foreign key relationships or arbitrary data associated to a Customer. | [optional] 
 **CreatedAt** | [**time.Time**](time.Time.md) |  | 

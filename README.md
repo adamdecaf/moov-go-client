@@ -18,6 +18,7 @@ If you're just looking to use this client in your project simply `go get -u gith
 
 | go-client version | paygate version |
 |-----|-----|
+| `master` | `master` / `v0.8.x` |
 | `v2020.01.22.1` | `v0.7.1` |
 | `v0.3.0` | `v0.6.0` |
 

@@ -59,7 +59,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[GatewayAuth](../README.md#GatewayAuth), [LoginAuth](../README.md#LoginAuth)
 
 ### HTTP request headers
 
@@ -105,7 +105,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[GatewayAuth](../README.md#GatewayAuth), [LoginAuth](../README.md#LoginAuth)
 
 ### HTTP request headers
 
@@ -152,7 +152,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[GatewayAuth](../README.md#GatewayAuth), [LoginAuth](../README.md#LoginAuth)
 
 ### HTTP request headers
 
@@ -200,7 +200,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[GatewayAuth](../README.md#GatewayAuth), [LoginAuth](../README.md#LoginAuth)
 
 ### HTTP request headers
 
@@ -246,7 +246,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[GatewayAuth](../README.md#GatewayAuth), [LoginAuth](../README.md#LoginAuth)
 
 ### HTTP request headers
 
@@ -292,7 +292,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[GatewayAuth](../README.md#GatewayAuth), [LoginAuth](../README.md#LoginAuth)
 
 ### HTTP request headers
 
@@ -338,7 +338,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[GatewayAuth](../README.md#GatewayAuth), [LoginAuth](../README.md#LoginAuth)
 
 ### HTTP request headers
 
@@ -384,7 +384,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[GatewayAuth](../README.md#GatewayAuth), [LoginAuth](../README.md#LoginAuth)
 
 ### HTTP request headers
 
@@ -432,7 +432,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[GatewayAuth](../README.md#GatewayAuth), [LoginAuth](../README.md#LoginAuth)
 
 ### HTTP request headers
 
@@ -478,7 +478,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[GatewayAuth](../README.md#GatewayAuth), [LoginAuth](../README.md#LoginAuth)
 
 ### HTTP request headers
 
@@ -524,7 +524,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[GatewayAuth](../README.md#GatewayAuth), [LoginAuth](../README.md#LoginAuth)
 
 ### HTTP request headers
 
@@ -570,7 +570,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[GatewayAuth](../README.md#GatewayAuth), [LoginAuth](../README.md#LoginAuth)
 
 ### HTTP request headers
 
@@ -618,7 +618,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[GatewayAuth](../README.md#GatewayAuth), [LoginAuth](../README.md#LoginAuth)
 
 ### HTTP request headers
 
@@ -666,7 +666,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[GatewayAuth](../README.md#GatewayAuth), [LoginAuth](../README.md#LoginAuth)
 
 ### HTTP request headers
 
@@ -716,7 +716,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[GatewayAuth](../README.md#GatewayAuth), [LoginAuth](../README.md#LoginAuth)
 
 ### HTTP request headers
 
@@ -765,7 +765,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[GatewayAuth](../README.md#GatewayAuth), [LoginAuth](../README.md#LoginAuth)
 
 ### HTTP request headers
 

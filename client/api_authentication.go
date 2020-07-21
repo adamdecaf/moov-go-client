@@ -1,10 +1,10 @@
 /*
  * Moov API
  *
- * _Note_: The Moov API and services are under development and could introduce breaking changes while reaching a stable status. We are looking for community feedback so please try out our code, [join the slack organization](https://slack.moov.io/) and give us some feedback! We announce releases on the [mailing list](https://groups.google.com/forum/#!forum/moov-users).  The Moov API is organized around [REST](http://en.wikipedia.org/wiki/Representational_State_Transfer). Our API has predictable, resource-oriented URLs, and uses HTTP response codes to indicate API errors. We use built-in HTTP features, like HTTP authentication and HTTP verbs, which are understood by off-the-shelf HTTP clients. We support [cross-origin resource sharing](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing), allowing you to interact securely with our API from client-side web applications (never expose your secret API key in any public website's client-side code). [JSON](http://www.json.org/) is returned by all API responses, including errors, although you can generate client code via [OpenAPI code generation](https://github.com/OpenAPITools/openapi-generator) or the [OpenAPI editor](https://editor.swagger.io/) to convert responses to appropriate language-specific objects.  The Moov API offers one method of authentication -- OAuth2 access tokens. The OAuth2 authentication is designed for automated access of our API. When an API requires a token generated using OAuth (2-legged), no end user is involved. You generate the token by passing your client credentials (Client ID and Client Secret) in a simple call to Create access token (`/oauth2/token`). The operation returns a token that is valid for a few hours and can be renewed; when it expires, you just repeat the call and get a new token. Making additional token requests will keep generating tokens. There are no hard or soft limits.  The Moov API offers many services:   - Automated Clearing House (ACH) origination and file management   - Transfers management   <!-- - Image Cash Ledger (ICL) file creation and modification API -->   <!-- - Fed WIRE file creation and modification API -->  The following order of API operations is suggested to start developing against the Moov API:    1. [Create a Moov API user](#operation/...) with a unique email address   1. Create a source Customer      1. Approve      1. Create an Account         1. Verify or Approve   1. Create a destination Customer      1. Approve      1. Create an Account         1. Verify or Approve   1. Initiate a Transfer  ACH is implemented a RESTful API enabling ACH transactions to be submitted and received without a deep understanding of a full NACHA file specification. A `Customer` can initiate a `Transfer` as either a push (credit) or pull (debit) to another `Customer`. Customers must have a valid `Account` account for a `Transfer`.  If you find a security related problem please contact us at [`security@moov.io`](mailto:security@moov.io).
+ * The Moov API is an HTTP API served by Moov Financial, Inc for initiating money movements across the ACH payment rail. We follow [RESTful](http://en.wikipedia.org/wiki/Representational_State_Transfer) operations and naming conventions with predictable and standard HTTP status codes. We are available to help with onboarding or issues related to our services on [the Moov slack organization](https://slack.moov.io/) or via [support email](mailto:support@moov.io).  ## Tenants and Organizations  The Moov API offers two groups for organizating `Customer` records. A `Tenant` is the largest grouping which covers an entire business entity such as an LCC or corporation. Login credentials are tied to a Tenant and is extracted from the credentials provided on each request. An `Organization` is a grouping within a Tenant designed to represent a department (sales, marketing) and can be used for the entire LLC. On signup a Tenant is created with an Organization within through the web UI.  Organizations allow for custom underwriting, additional risk tolerances, and advanced access controls for Customer and Account objects. They can be used to keep departments of your company separate or restrict specific underwriting conditions. For more information [see popular use-cases of Moov](https://docs.moov.io/how/examples/) on each suggested setup.  <a href=\"https://raw.githubusercontent.com/moov-io/paygate/master/docs/images/tenant-in-paygate.png\" target=\"_blank\">   <img src=\"https://raw.githubusercontent.com/moov-io/paygate/master/docs/images/tenant-in-paygate.png\" /> </a>  ## Errors  The API will respond with various standard HTTP status codes for errors which indicate how to resolve the request's problem. All errors will be in the `application/json` Content-Type with the below structure.  ``` {   \"error\": \"Descriptive message\" } ```  | Status Code | Summary           | Description                                                                                                       | |:-----------:|-------------------|-------------------------------------------------------------------------------------------------------------------| | 200         | OK                | The request was successful.                                                                                       | | 400         | Bad Request       | The request could not be understood by the server. The Incoming parameters might not be valid.                    | | 404         | Not Found         | The requested resource is not found or the credentials are not authorized to access it.                           | | 429         | Too Many Requests | Too many requests have been made in a short period of time. Please make requests at a slower rate or contact us.  | | 500         | Server Error      | The server could not return the representation due to an internal server error.                                   | | 501         | Not Implemented   | The requested operation is not supported (e.g. supports PUT but not POST etc.)                                    |  ## Content-Type  All requests and responses will be in the `application/json` MIME Content-Type unless otherwise specified.  ## Cross-Origin Request Sharing  We support [cross-origin resource sharing](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing), allowing you to interact securely with our API from client-side web applications (never expose your secret API key in any public website's client-side code).  ## Versioning  The Moov API is currently using `/v1/` as the versioning prefix for all endpoints. This results in a base URI of `https://api.moov.io/v1/`.  ## Clients  Currently Moov offers a generated [Go client](https://github.com/moov-io/go-client) for usage with our API. The [OpenAPI specification](https://github.com/moov-io/api/blob/master/openapi.yaml) can be used to generate clients in other languages and we are open to supporting additonal languages. Please [contact us](mailto:support@moov.io) with feedback or suggestions.  ## Authorization  The Moov API offers one authorization method via a configured OIDC provider for your Tenant. This provider can be Google, Github, LDAP, or another vendor. We leverage OIDC becasue it allows immediate credential revocation, two-factor verification with that provider and a faster signup flow for users.  ## Security  Moov continiously monitors and scans our API services for security and privacy issues, but if you find a security related problem please contact us at [`security@moov.io`](mailto:security@moov.io).
  *
  * API version: v1
- * Contact: security@moov.io
+ * Contact: support@moov.io
  * Generated by: OpenAPI Generator (https://openapi-generator.tech)
  */
 
@@ -15,7 +15,6 @@ import (
 	_ioutil "io/ioutil"
 	_nethttp "net/http"
 	_neturl "net/url"
-	"strings"
 )
 
 // Linger please
@@ -23,204 +22,199 @@ var (
 	_ _context.Context
 )
 
-// ValidationApiService ValidationApi service
-type ValidationApiService service
+// AuthenticationApiService AuthenticationApi service
+type AuthenticationApiService service
 
 /*
-GetAccountMicroDeposits Get micro-deposits for a specified accountID
+Authenticated Complete a login via a OIDC. Once the OIDC client service has authenticated their identity the client service redirect to this endpoint.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param accountID accountID identifier from Customers service
- * @param xUserID Unique userID set by an auth proxy or client to identify and isolate objects.
-@return MicroDeposits
+@return LoggedIn
 */
-func (a *ValidationApiService) GetAccountMicroDeposits(ctx _context.Context, accountID string, xUserID string) (MicroDeposits, *_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  MicroDeposits
-	)
-
-	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/accounts/{accountID}/micro-deposits"
-	localVarPath = strings.Replace(localVarPath, "{"+"accountID"+"}", _neturl.QueryEscape(parameterToString(accountID, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	localVarHeaderParams["X-User-ID"] = parameterToString(xUserID, "")
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(r)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-/*
-GetMicroDeposits Get micro-deposit information
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param microDepositID Identifier for micro-deposits
- * @param xUserID Unique userID set by an auth proxy or client to identify and isolate objects.
-@return MicroDeposits
-*/
-func (a *ValidationApiService) GetMicroDeposits(ctx _context.Context, microDepositID string, xUserID string) (MicroDeposits, *_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  MicroDeposits
-	)
-
-	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/micro-deposits/{microDepositID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"microDepositID"+"}", _neturl.QueryEscape(parameterToString(microDepositID, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	localVarHeaderParams["X-User-ID"] = parameterToString(xUserID, "")
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(r)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-/*
-InitiateMicroDeposits Create
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param xUserID Unique userID set by an auth proxy or client to identify and isolate objects.
- * @param createMicroDeposits
-@return MicroDeposits
-*/
-func (a *ValidationApiService) InitiateMicroDeposits(ctx _context.Context, xUserID string, createMicroDeposits CreateMicroDeposits) (MicroDeposits, *_nethttp.Response, error) {
+func (a *AuthenticationApiService) Authenticated(ctx _context.Context) (LoggedIn, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  MicroDeposits
+		localVarReturnValue  LoggedIn
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/micro-deposits"
+	localVarPath := a.client.cfg.BasePath + "/v1/authenticated"
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json", "text/plain"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v string
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		var v string
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+/*
+Register Returns the partially completed registration details that were pulled by AuthN service.
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+@return Register
+*/
+func (a *AuthenticationApiService) Register(ctx _context.Context) (Register, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  Register
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/v1/register"
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json", "text/plain"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		var v string
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+/*
+RegisterWithCredentials Called when the user is registering for the first time. It requires that they have authenticated with a supported OIDC provider and recieved a valid invite code.
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param register Arguments needed register a user with OIDC credentials.
+@return LoggedIn
+*/
+func (a *AuthenticationApiService) RegisterWithCredentials(ctx _context.Context, register Register) (LoggedIn, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  LoggedIn
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/v1/register"
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
@@ -235,16 +229,15 @@ func (a *ValidationApiService) InitiateMicroDeposits(ctx _context.Context, xUser
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/json", "text/plain"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	localVarHeaderParams["X-User-ID"] = parameterToString(xUserID, "")
 	// body params
-	localVarPostBody = &createMicroDeposits
+	localVarPostBody = &register
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -267,14 +260,22 @@ func (a *ValidationApiService) InitiateMicroDeposits(ctx _context.Context, xUser
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v RegisterErrors
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
+		var v string
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 

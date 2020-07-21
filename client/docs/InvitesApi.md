@@ -1,20 +1,20 @@
-# \ValidationApi
+# \InvitesApi
 
 All URIs are relative to *http://localhost:9999*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetAccountMicroDeposits**](ValidationApi.md#GetAccountMicroDeposits) | **Get** /accounts/{accountID}/micro-deposits | Get micro-deposits for a specified accountID
-[**GetMicroDeposits**](ValidationApi.md#GetMicroDeposits) | **Get** /micro-deposits/{microDepositID} | Get micro-deposit information
-[**InitiateMicroDeposits**](ValidationApi.md#InitiateMicroDeposits) | **Post** /micro-deposits | Create
+[**DisableInvite**](InvitesApi.md#DisableInvite) | **Delete** /v1/invites/{inviteID} | Delete an invite that was sent and invalidate the token.
+[**ListInvites**](InvitesApi.md#ListInvites) | **Get** /v1/invites | List outstanding invites
+[**SendInvite**](InvitesApi.md#SendInvite) | **Post** /v1/invites | Send an email invite to a new user
 
 
 
-## GetAccountMicroDeposits
+## DisableInvite
 
-> MicroDeposits GetAccountMicroDeposits(ctx, accountID, xUserID)
+> DisableInvite(ctx, inviteID)
 
-Get micro-deposits for a specified accountID
+Delete an invite that was sent and invalidate the token.
 
 ### Required Parameters
 
@@ -22,32 +22,31 @@ Get micro-deposits for a specified accountID
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountID** | **string**| accountID identifier from Customers service | 
-**xUserID** | **string**| Unique userID set by an auth proxy or client to identify and isolate objects. | 
+**inviteID** | [**string**](.md)| ID of the invite to delete | 
 
 ### Return type
 
-[**MicroDeposits**](MicroDeposits.md)
+ (empty response body)
 
 ### Authorization
 
-No authorization required
+[GatewayAuth](../README.md#GatewayAuth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: text/plain
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
 
-## GetMicroDeposits
+## ListInvites
 
-> MicroDeposits GetMicroDeposits(ctx, microDepositID, xUserID)
+> []Invite ListInvites(ctx, optional)
 
-Get micro-deposit information
+List outstanding invites
 
 ### Required Parameters
 
@@ -55,32 +54,40 @@ Get micro-deposit information
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**microDepositID** | **string**| Identifier for micro-deposits | 
-**xUserID** | **string**| Unique userID set by an auth proxy or client to identify and isolate objects. | 
+ **optional** | ***ListInvitesOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a ListInvitesOpts struct
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **orgID** | [**optional.Interface of string**](.md)| Filter in only for specific Organization | 
 
 ### Return type
 
-[**MicroDeposits**](MicroDeposits.md)
+[**[]Invite**](Invite.md)
 
 ### Authorization
 
-No authorization required
+[GatewayAuth](../README.md#GatewayAuth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, text/plain
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
 
-## InitiateMicroDeposits
+## SendInvite
 
-> MicroDeposits InitiateMicroDeposits(ctx, xUserID, createMicroDeposits)
+> Invite SendInvite(ctx, sendInvite)
 
-Create
+Send an email invite to a new user
 
 ### Required Parameters
 
@@ -88,21 +95,20 @@ Create
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**xUserID** | **string**| Unique userID set by an auth proxy or client to identify and isolate objects. | 
-**createMicroDeposits** | [**CreateMicroDeposits**](CreateMicroDeposits.md)|  | 
+**sendInvite** | [**SendInvite**](SendInvite.md)|  | 
 
 ### Return type
 
-[**MicroDeposits**](MicroDeposits.md)
+[**Invite**](Invite.md)
 
 ### Authorization
 
-No authorization required
+[GatewayAuth](../README.md#GatewayAuth)
 
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: application/json, text/plain
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

@@ -1,33 +1,59 @@
 # Go API client for client
 
-_Note_: The Moov API and services are under development and could introduce breaking changes while reaching a stable status. We are looking for community feedback so please try out our code, [join the slack organization](https://slack.moov.io/) and give us some feedback! We announce releases on the [mailing list](https://groups.google.com/forum/#!forum/moov-users).
+The Moov API is an HTTP API served by Moov Financial, Inc for initiating money movements across the ACH payment rail. We follow [RESTful](http://en.wikipedia.org/wiki/Representational_State_Transfer) operations and naming conventions with predictable and standard HTTP status codes. We are available to help with onboarding or issues related to our services on [the Moov slack organization](https://slack.moov.io/) or via [support email](mailto:support@moov.io).
 
-The Moov API is organized around [REST](http://en.wikipedia.org/wiki/Representational_State_Transfer). Our API has predictable, resource-oriented URLs, and uses HTTP response codes to indicate API errors. We use built-in HTTP features, like HTTP authentication and HTTP verbs, which are understood by off-the-shelf HTTP clients. We support [cross-origin resource sharing](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing), allowing you to interact securely with our API from client-side web applications (never expose your secret API key in any public website's client-side code). [JSON](http://www.json.org/) is returned by all API responses, including errors, although you can generate client code via [OpenAPI code generation](https://github.com/OpenAPITools/openapi-generator) or the [OpenAPI editor](https://editor.swagger.io/) to convert responses to appropriate language-specific objects.
+## Tenants and Organizations
 
-The Moov API offers one method of authentication -- OAuth2 access tokens. The OAuth2 authentication is designed for automated access of our API. When an API requires a token generated using OAuth (2-legged), no end user is involved. You generate the token by passing your client credentials (Client ID and Client Secret) in a simple call to Create access token (`/oauth2/token`). The operation returns a token that is valid for a few hours and can be renewed; when it expires, you just repeat the call and get a new token. Making additional token requests will keep generating tokens. There are no hard or soft limits.
+The Moov API offers two groups for organizating `Customer` records. A `Tenant` is the largest grouping which covers an entire business entity such as an LCC or corporation. Login credentials are tied to a Tenant and is extracted from the credentials provided on each request. An `Organization` is a grouping within a Tenant designed to represent a department (sales, marketing) and can be used for the entire LLC. On signup a Tenant is created with an Organization within through the web UI.
 
-The Moov API offers many services:
-  - Automated Clearing House (ACH) origination and file management
-  - Transfers management
-  <!-- - Image Cash Ledger (ICL) file creation and modification API -->
-  <!-- - Fed WIRE file creation and modification API -->
+Organizations allow for custom underwriting, additional risk tolerances, and advanced access controls for Customer and Account objects. They can be used to keep departments of your company separate or restrict specific underwriting conditions. For more information [see popular use-cases of Moov](https://docs.moov.io/how/examples/) on each suggested setup.
 
-The following order of API operations is suggested to start developing against the Moov API:
+<a href=\"https://raw.githubusercontent.com/moov-io/paygate/master/docs/images/tenant-in-paygate.png\" target=\"_blank\">
+  <img src=\"https://raw.githubusercontent.com/moov-io/paygate/master/docs/images/tenant-in-paygate.png\" />
+</a>
 
-  1. [Create a Moov API user](#operation/...) with a unique email address
-  1. Create a source Customer
-     1. Approve
-     1. Create an Account
-        1. Verify or Approve
-  1. Create a destination Customer
-     1. Approve
-     1. Create an Account
-        1. Verify or Approve
-  1. Initiate a Transfer
+## Errors
 
-ACH is implemented a RESTful API enabling ACH transactions to be submitted and received without a deep understanding of a full NACHA file specification. A `Customer` can initiate a `Transfer` as either a push (credit) or pull (debit) to another `Customer`. Customers must have a valid `Account` account for a `Transfer`.
+The API will respond with various standard HTTP status codes for errors which indicate how to resolve the request's problem. All errors will be in the `application/json` Content-Type with the below structure.
 
-If you find a security related problem please contact us at [`security@moov.io`](mailto:security@moov.io).
+```
+{
+  \"error\": \"Descriptive message\"
+}
+```
+
+| Status Code | Summary           | Description                                                                                                       |
+|:-----------:|-------------------|-------------------------------------------------------------------------------------------------------------------|
+| 200         | OK                | The request was successful.                                                                                       |
+| 400         | Bad Request       | The request could not be understood by the server. The Incoming parameters might not be valid.                    |
+| 404         | Not Found         | The requested resource is not found or the credentials are not authorized to access it.                           |
+| 429         | Too Many Requests | Too many requests have been made in a short period of time. Please make requests at a slower rate or contact us.  |
+| 500         | Server Error      | The server could not return the representation due to an internal server error.                                   |
+| 501         | Not Implemented   | The requested operation is not supported (e.g. supports PUT but not POST etc.)                                    |
+
+## Content-Type
+
+All requests and responses will be in the `application/json` MIME Content-Type unless otherwise specified.
+
+## Cross-Origin Request Sharing
+
+We support [cross-origin resource sharing](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing), allowing you to interact securely with our API from client-side web applications (never expose your secret API key in any public website's client-side code).
+
+## Versioning
+
+The Moov API is currently using `/v1/` as the versioning prefix for all endpoints. This results in a base URI of `https://api.moov.io/v1/`.
+
+## Clients
+
+Currently Moov offers a generated [Go client](https://github.com/moov-io/go-client) for usage with our API. The [OpenAPI specification](https://github.com/moov-io/api/blob/master/openapi.yaml) can be used to generate clients in other languages and we are open to supporting additonal languages. Please [contact us](mailto:support@moov.io) with feedback or suggestions.
+
+## Authorization
+
+The Moov API offers one authorization method via a configured OIDC provider for your Tenant. This provider can be Google, Github, LDAP, or another vendor. We leverage OIDC becasue it allows immediate credential revocation, two-factor verification with that provider and a faster signup flow for users.
+
+## Security
+
+Moov continiously monitors and scans our API services for security and privacy issues, but if you find a security related problem please contact us at [`security@moov.io`](mailto:security@moov.io).
 
 
 ## Overview
@@ -36,7 +62,7 @@ This API client was generated by the [OpenAPI Generator](https://openapi-generat
 - API version: v1
 - Package version: 1.0.0
 - Build package: org.openapitools.codegen.languages.GoClientCodegen
-For more information, please visit [https://github.com/moov-io/api](https://github.com/moov-io/api)
+For more information, please visit [https://moov.io](https://moov.io)
 
 ## Installation
 
@@ -61,6 +87,11 @@ All URIs are relative to *http://localhost:9999*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AuthenticationApi* | [**Authenticated**](docs/AuthenticationApi.md#authenticated) | **Post** /v1/authenticated | Complete a login via a OIDC. Once the OIDC client service has authenticated their identity the client service redirect to this endpoint. 
+*AuthenticationApi* | [**Register**](docs/AuthenticationApi.md#register) | **Get** /v1/register | Returns the partially completed registration details that were pulled by AuthN service. 
+*AuthenticationApi* | [**RegisterWithCredentials**](docs/AuthenticationApi.md#registerwithcredentials) | **Post** /v1/register | Called when the user is registering for the first time. It requires that they have authenticated with a supported OIDC provider and recieved a valid invite code. 
+*CredentialsApi* | [**DisableCredentials**](docs/CredentialsApi.md#disablecredentials) | **Delete** /v1/identities/{identityID}/credentials/{credentialID} | Disables a credential so it can&#39;t be used anymore to login
+*CredentialsApi* | [**ListCredentials**](docs/CredentialsApi.md#listcredentials) | **Get** /v1/identities/{identityID}/credentials | List the credentials this user has used.
 *CustomersApi* | [**AddCustomerAddress**](docs/CustomersApi.md#addcustomeraddress) | **Post** /v1/customers/{customerID}/address | Add customer address
 *CustomersApi* | [**CreateCustomer**](docs/CustomersApi.md#createcustomer) | **Post** /v1/customers | Create customer
 *CustomersApi* | [**CreateCustomerAccount**](docs/CustomersApi.md#createcustomeraccount) | **Post** /v1/customers/{customerID}/accounts | Create Customer Account
@@ -77,6 +108,13 @@ Class | Method | HTTP request | Description
 *CustomersApi* | [**UpdateCustomerStatus**](docs/CustomersApi.md#updatecustomerstatus) | **Put** /v1/customers/{customerID}/status | Update customer status
 *CustomersApi* | [**UploadCustomerDocument**](docs/CustomersApi.md#uploadcustomerdocument) | **Post** /v1/customers/{customerID}/documents | Upload document
 *CustomersApi* | [**ValidateAccount**](docs/CustomersApi.md#validateaccount) | **Post** /v1/customers/{customerID}/accounts/{accountID}/validate | Validate Account
+*IdentitiesApi* | [**DisableIdentity**](docs/IdentitiesApi.md#disableidentity) | **Delete** /v1/identities/{identityID} | Disable an identity. Its left around for historical reporting
+*IdentitiesApi* | [**GetIdentity**](docs/IdentitiesApi.md#getidentity) | **Get** /v1/identities/{identityID} | List identities and associates userId
+*IdentitiesApi* | [**ListIdentities**](docs/IdentitiesApi.md#listidentities) | **Get** /v1/identities | List identities and associates userId
+*IdentitiesApi* | [**UpdateIdentity**](docs/IdentitiesApi.md#updateidentity) | **Put** /v1/identities/{identityID} | Update a specific Identity
+*InvitesApi* | [**DisableInvite**](docs/InvitesApi.md#disableinvite) | **Delete** /v1/invites/{inviteID} | Delete an invite that was sent and invalidate the token.
+*InvitesApi* | [**ListInvites**](docs/InvitesApi.md#listinvites) | **Get** /v1/invites | List outstanding invites
+*InvitesApi* | [**SendInvite**](docs/InvitesApi.md#sendinvite) | **Post** /v1/invites | Send an email invite to a new user
 *OrganizationsApi* | [**CreateOrganization**](docs/OrganizationsApi.md#createorganization) | **Post** /v1/organizations | Create Organization
 *OrganizationsApi* | [**GetOrganizations**](docs/OrganizationsApi.md#getorganizations) | **Get** /v1/organizations | Get Organizations
 *OrganizationsApi* | [**UpdateOrganization**](docs/OrganizationsApi.md#updateorganization) | **Put** /v1/organizations/{organizationID} | Update Organization
@@ -86,9 +124,6 @@ Class | Method | HTTP request | Description
 *TransfersApi* | [**DeleteTransferByID**](docs/TransfersApi.md#deletetransferbyid) | **Delete** /v1/transfers/{transferID} | Delete Transfer
 *TransfersApi* | [**GetTransferByID**](docs/TransfersApi.md#gettransferbyid) | **Get** /v1/transfers/{transferID} | Get Transfer
 *TransfersApi* | [**GetTransfers**](docs/TransfersApi.md#gettransfers) | **Get** /v1/transfers | List Transfers
-*ValidationApi* | [**GetAccountMicroDeposits**](docs/ValidationApi.md#getaccountmicrodeposits) | **Get** /accounts/{accountID}/micro-deposits | Get micro-deposits for a specified accountID
-*ValidationApi* | [**GetMicroDeposits**](docs/ValidationApi.md#getmicrodeposits) | **Get** /micro-deposits/{microDepositID} | Get micro-deposit information
-*ValidationApi* | [**InitiateMicroDeposits**](docs/ValidationApi.md#initiatemicrodeposits) | **Post** /micro-deposits | Create
 
 
 ## Documentation For Models
@@ -96,13 +131,14 @@ Class | Method | HTTP request | Description
  - [Account](docs/Account.md)
  - [AccountStatus](docs/AccountStatus.md)
  - [AccountType](docs/AccountType.md)
+ - [Address](docs/Address.md)
  - [CreateAccount](docs/CreateAccount.md)
  - [CreateCustomer](docs/CreateCustomer.md)
  - [CreateCustomerAddress](docs/CreateCustomerAddress.md)
- - [CreateMicroDeposits](docs/CreateMicroDeposits.md)
  - [CreateOrganization](docs/CreateOrganization.md)
  - [CreatePhone](docs/CreatePhone.md)
  - [CreateTransfer](docs/CreateTransfer.md)
+ - [Credential](docs/Credential.md)
  - [Customer](docs/Customer.md)
  - [CustomerAddress](docs/CustomerAddress.md)
  - [CustomerMetadata](docs/CustomerMetadata.md)
@@ -112,29 +148,72 @@ Class | Method | HTTP request | Description
  - [Disclaimer](docs/Disclaimer.md)
  - [Document](docs/Document.md)
  - [Error](docs/Error.md)
+ - [Identity](docs/Identity.md)
  - [InlineObject](docs/InlineObject.md)
- - [MicroDeposits](docs/MicroDeposits.md)
+ - [Invite](docs/Invite.md)
+ - [LastLogin](docs/LastLogin.md)
+ - [LoggedIn](docs/LoggedIn.md)
  - [OfacSearch](docs/OfacSearch.md)
  - [Organization](docs/Organization.md)
  - [Phone](docs/Phone.md)
+ - [Phone2](docs/Phone2.md)
+ - [Register](docs/Register.md)
+ - [RegisterAddress](docs/RegisterAddress.md)
+ - [RegisterAddressErrors](docs/RegisterAddressErrors.md)
+ - [RegisterErrors](docs/RegisterErrors.md)
+ - [RegisterPhone](docs/RegisterPhone.md)
+ - [RegisterPhoneErrors](docs/RegisterPhoneErrors.md)
  - [ReturnCode](docs/ReturnCode.md)
+ - [SendInvite](docs/SendInvite.md)
  - [Source](docs/Source.md)
  - [Tenant](docs/Tenant.md)
  - [Transfer](docs/Transfer.md)
  - [TransferStatus](docs/TransferStatus.md)
  - [TransitAccountNumber](docs/TransitAccountNumber.md)
+ - [UpdateAddress](docs/UpdateAddress.md)
  - [UpdateCustomerStatus](docs/UpdateCustomerStatus.md)
+ - [UpdateIdentity](docs/UpdateIdentity.md)
+ - [UpdatePhone](docs/UpdatePhone.md)
  - [UpdateTenant](docs/UpdateTenant.md)
  - [UpdateValidation](docs/UpdateValidation.md)
 
 
 ## Documentation For Authorization
 
- Endpoints do not require authorization.
+
+
+## GatewayAuth
+
+- **Type**: HTTP basic authentication
+
+Example
+
+```golang
+auth := context.WithValue(context.Background(), sw.ContextBasicAuth, sw.BasicAuth{
+    UserName: "username",
+    Password: "password",
+})
+r, err := client.Service.Operation(auth, args)
+```
+
+
+## LoginAuth
+
+- **Type**: API key
+
+Example
+
+```golang
+auth := context.WithValue(context.Background(), sw.ContextAPIKey, sw.APIKey{
+    Key: "APIKEY",
+    Prefix: "Bearer", // Omit if not necessary.
+})
+r, err := client.Service.Operation(auth, args)
+```
 
 
 
 ## Author
 
-security@moov.io
+support@moov.io
 
