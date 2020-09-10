@@ -16,7 +16,6 @@ import (
 	_ioutil "io/ioutil"
 	_nethttp "net/http"
 	_neturl "net/url"
-	"strings"
 )
 
 // Linger please
@@ -24,43 +23,71 @@ var (
 	_ _context.Context
 )
 
-// TenantsApiService TenantsApi service
-type TenantsApiService service
+// FEDApiService FEDApi service
+type FEDApiService service
 
-// UpdateTenantOpts Optional parameters for the method 'UpdateTenant'
-type UpdateTenantOpts struct {
-	XRequestID optional.String
+// SearchFEDACHOpts Optional parameters for the method 'SearchFEDACH'
+type SearchFEDACHOpts struct {
+	XRequestID    optional.String
+	XUserID       optional.String
+	Name          optional.String
+	RoutingNumber optional.String
+	State         optional.String
+	City          optional.String
+	PostalCode    optional.String
+	Limit         optional.Int32
 }
 
 /*
-UpdateTenant Update Tenant
-Update information for a Tenant
+SearchFEDACH Search FEDACH names and metadata
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param tenantID tenantID to identify which Tenant to update
- * @param xUserID Unique userID set by an auth proxy or client to identify and isolate objects.
- * @param updateTenant
- * @param optional nil or *UpdateTenantOpts - Optional Parameters:
- * @param "XRequestID" (optional.String) -  Optional requestID allows application developer to trace requests through the systems logs
+ * @param optional nil or *SearchFEDACHOpts - Optional Parameters:
+ * @param "XRequestID" (optional.String) -  Optional Request ID allows application developer to trace requests through the systems logs
+ * @param "XUserID" (optional.String) -  Optional User ID used to perform this search
+ * @param "Name" (optional.String) -  FEDACH Financial Institution Name
+ * @param "RoutingNumber" (optional.String) -  FEDACH Routing Number for a Financial Institution
+ * @param "State" (optional.String) -  FEDACH Financial Institution State
+ * @param "City" (optional.String) -  FEDACH Financial Institution City
+ * @param "PostalCode" (optional.String) -  FEDACH Financial Institution Postal Code
+ * @param "Limit" (optional.Int32) -  Maximum results returned by a search
+@return AchDictionary
 */
-func (a *TenantsApiService) UpdateTenant(ctx _context.Context, tenantID string, xUserID string, updateTenant UpdateTenant, localVarOptionals *UpdateTenantOpts) (*_nethttp.Response, error) {
+func (a *FEDApiService) SearchFEDACH(ctx _context.Context, localVarOptionals *SearchFEDACHOpts) (AchDictionary, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
+		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
+		localVarReturnValue  AchDictionary
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/v1/tenants/{tenantID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"tenantID"+"}", _neturl.QueryEscape(parameterToString(tenantID, "")), -1)
-
+	localVarPath := a.client.cfg.BasePath + "/v1/fed/ach/search"
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if localVarOptionals != nil && localVarOptionals.Name.IsSet() {
+		localVarQueryParams.Add("name", parameterToString(localVarOptionals.Name.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.RoutingNumber.IsSet() {
+		localVarQueryParams.Add("routingNumber", parameterToString(localVarOptionals.RoutingNumber.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.State.IsSet() {
+		localVarQueryParams.Add("state", parameterToString(localVarOptionals.State.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.City.IsSet() {
+		localVarQueryParams.Add("city", parameterToString(localVarOptionals.City.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.PostalCode.IsSet() {
+		localVarQueryParams.Add("postalCode", parameterToString(localVarOptionals.PostalCode.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.Limit.IsSet() {
+		localVarQueryParams.Add("limit", parameterToString(localVarOptionals.Limit.Value(), ""))
+	}
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
+	localVarHTTPContentTypes := []string{}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -79,23 +106,23 @@ func (a *TenantsApiService) UpdateTenant(ctx _context.Context, tenantID string, 
 	if localVarOptionals != nil && localVarOptionals.XRequestID.IsSet() {
 		localVarHeaderParams["X-Request-ID"] = parameterToString(localVarOptionals.XRequestID.Value(), "")
 	}
-	localVarHeaderParams["X-User-ID"] = parameterToString(xUserID, "")
-	// body params
-	localVarPostBody = &updateTenant
+	if localVarOptionals != nil && localVarOptionals.XUserID.IsSet() {
+		localVarHeaderParams["X-User-ID"] = parameterToString(localVarOptionals.XUserID.Value(), "")
+	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -108,12 +135,22 @@ func (a *TenantsApiService) UpdateTenant(ctx _context.Context, tenantID string, 
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }

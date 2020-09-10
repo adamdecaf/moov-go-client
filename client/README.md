@@ -6,7 +6,7 @@ The Moov API is an HTTP API served by Moov Financial, Inc for initiating money m
 
 The Moov API offers two groups for organizating `Customer` records. A `Tenant` is the largest grouping which covers an entire business entity such as an LCC or corporation. Login credentials are tied to a Tenant and is extracted from the credentials provided on each request. An `Organization` is a grouping within a Tenant designed to represent a department (sales, marketing) and can be used for the entire LLC. On signup a Tenant is created with an Organization within through the web UI.
 
-Organizations allow for custom underwriting, additional risk tolerances, and advanced access controls for Customer and Account objects. They can be used to keep departments of your company separate or restrict specific underwriting conditions. For more information [see popular use-cases of Moov](https://docs.moov.io/how/examples/) on each suggested setup.
+Organizations allow for custom underwriting, additional risk tolerances, and advanced access controls for Customer and Account objects. They can be used to keep departments of your company separate or restrict specific underwriting conditions.
 
 <a href=\"https://raw.githubusercontent.com/moov-io/paygate/master/docs/images/tenant-in-paygate.png\" target=\"_blank\">
   <img src=\"https://raw.githubusercontent.com/moov-io/paygate/master/docs/images/tenant-in-paygate.png\" />
@@ -105,9 +105,11 @@ Class | Method | HTTP request | Description
 *CustomersApi* | [**GetLatestOFACSearch**](docs/CustomersApi.md#getlatestofacsearch) | **Get** /v1/customers/{customerID}/ofac | Get latest OFAC search
 *CustomersApi* | [**RefreshOFACSearch**](docs/CustomersApi.md#refreshofacsearch) | **Put** /v1/customers/{customerID}/refresh/ofac | Refresh customer OFAC search
 *CustomersApi* | [**ReplaceCustomerMetadata**](docs/CustomersApi.md#replacecustomermetadata) | **Put** /v1/customers/{customerID}/metadata | Update customer metadata
+*CustomersApi* | [**SearchCustomers**](docs/CustomersApi.md#searchcustomers) | **Get** /v1/customers | Get customers
 *CustomersApi* | [**UpdateCustomerStatus**](docs/CustomersApi.md#updatecustomerstatus) | **Put** /v1/customers/{customerID}/status | Update customer status
 *CustomersApi* | [**UploadCustomerDocument**](docs/CustomersApi.md#uploadcustomerdocument) | **Post** /v1/customers/{customerID}/documents | Upload document
 *CustomersApi* | [**ValidateAccount**](docs/CustomersApi.md#validateaccount) | **Post** /v1/customers/{customerID}/accounts/{accountID}/validate | Validate Account
+*FEDApi* | [**SearchFEDACH**](docs/FEDApi.md#searchfedach) | **Get** /v1/fed/ach/search | Search FEDACH names and metadata
 *IdentitiesApi* | [**DisableIdentity**](docs/IdentitiesApi.md#disableidentity) | **Delete** /v1/identities/{identityID} | Disable an identity. Its left around for historical reporting
 *IdentitiesApi* | [**GetIdentity**](docs/IdentitiesApi.md#getidentity) | **Get** /v1/identities/{identityID} | List identities and associates userId
 *IdentitiesApi* | [**ListIdentities**](docs/IdentitiesApi.md#listidentities) | **Get** /v1/identities | List identities and associates userId
@@ -118,7 +120,6 @@ Class | Method | HTTP request | Description
 *OrganizationsApi* | [**CreateOrganization**](docs/OrganizationsApi.md#createorganization) | **Post** /v1/organizations | Create Organization
 *OrganizationsApi* | [**GetOrganizations**](docs/OrganizationsApi.md#getorganizations) | **Get** /v1/organizations | Get Organizations
 *OrganizationsApi* | [**UpdateOrganization**](docs/OrganizationsApi.md#updateorganization) | **Put** /v1/organizations/{organizationID} | Update Organization
-*TenantsApi* | [**GetTenants**](docs/TenantsApi.md#gettenants) | **Get** /v1/tenants | Get Tenants
 *TenantsApi* | [**UpdateTenant**](docs/TenantsApi.md#updatetenant) | **Put** /v1/tenants/{tenantID} | Update Tenant
 *TransfersApi* | [**AddTransfer**](docs/TransfersApi.md#addtransfer) | **Post** /v1/transfers | Create Transfer
 *TransfersApi* | [**DeleteTransferByID**](docs/TransfersApi.md#deletetransferbyid) | **Delete** /v1/transfers/{transferID} | Delete Transfer
@@ -131,6 +132,9 @@ Class | Method | HTTP request | Description
  - [Account](docs/Account.md)
  - [AccountStatus](docs/AccountStatus.md)
  - [AccountType](docs/AccountType.md)
+ - [AchDictionary](docs/AchDictionary.md)
+ - [AchLocation](docs/AchLocation.md)
+ - [AchParticipant](docs/AchParticipant.md)
  - [Address](docs/Address.md)
  - [CreateAccount](docs/CreateAccount.md)
  - [CreateCustomer](docs/CreateCustomer.md)
@@ -150,6 +154,8 @@ Class | Method | HTTP request | Description
  - [Error](docs/Error.md)
  - [Identity](docs/Identity.md)
  - [InlineObject](docs/InlineObject.md)
+ - [InstitutionAddress](docs/InstitutionAddress.md)
+ - [InstitutionDetails](docs/InstitutionDetails.md)
  - [Invite](docs/Invite.md)
  - [LastLogin](docs/LastLogin.md)
  - [LoggedIn](docs/LoggedIn.md)
@@ -166,7 +172,6 @@ Class | Method | HTTP request | Description
  - [ReturnCode](docs/ReturnCode.md)
  - [SendInvite](docs/SendInvite.md)
  - [Source](docs/Source.md)
- - [Tenant](docs/Tenant.md)
  - [Transfer](docs/Transfer.md)
  - [TransferStatus](docs/TransferStatus.md)
  - [TransitAccountNumber](docs/TransitAccountNumber.md)

@@ -1,7 +1,7 @@
 /*
  * Moov API
  *
- * The Moov API is an HTTP API served by Moov Financial, Inc for initiating money movements across the ACH payment rail. We follow [RESTful](http://en.wikipedia.org/wiki/Representational_State_Transfer) operations and naming conventions with predictable and standard HTTP status codes. We are available to help with onboarding or issues related to our services on [the Moov slack organization](https://slack.moov.io/) or via [support email](mailto:support@moov.io).  ## Tenants and Organizations  The Moov API offers two groups for organizating `Customer` records. A `Tenant` is the largest grouping which covers an entire business entity such as an LCC or corporation. Login credentials are tied to a Tenant and is extracted from the credentials provided on each request. An `Organization` is a grouping within a Tenant designed to represent a department (sales, marketing) and can be used for the entire LLC. On signup a Tenant is created with an Organization within through the web UI.  Organizations allow for custom underwriting, additional risk tolerances, and advanced access controls for Customer and Account objects. They can be used to keep departments of your company separate or restrict specific underwriting conditions. For more information [see popular use-cases of Moov](https://docs.moov.io/how/examples/) on each suggested setup.  <a href=\"https://raw.githubusercontent.com/moov-io/paygate/master/docs/images/tenant-in-paygate.png\" target=\"_blank\">   <img src=\"https://raw.githubusercontent.com/moov-io/paygate/master/docs/images/tenant-in-paygate.png\" /> </a>  ## Errors  The API will respond with various standard HTTP status codes for errors which indicate how to resolve the request's problem. All errors will be in the `application/json` Content-Type with the below structure.  ``` {   \"error\": \"Descriptive message\" } ```  | Status Code | Summary           | Description                                                                                                       | |:-----------:|-------------------|-------------------------------------------------------------------------------------------------------------------| | 200         | OK                | The request was successful.                                                                                       | | 400         | Bad Request       | The request could not be understood by the server. The Incoming parameters might not be valid.                    | | 404         | Not Found         | The requested resource is not found or the credentials are not authorized to access it.                           | | 429         | Too Many Requests | Too many requests have been made in a short period of time. Please make requests at a slower rate or contact us.  | | 500         | Server Error      | The server could not return the representation due to an internal server error.                                   | | 501         | Not Implemented   | The requested operation is not supported (e.g. supports PUT but not POST etc.)                                    |  ## Content-Type  All requests and responses will be in the `application/json` MIME Content-Type unless otherwise specified.  ## Cross-Origin Request Sharing  We support [cross-origin resource sharing](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing), allowing you to interact securely with our API from client-side web applications (never expose your secret API key in any public website's client-side code).  ## Versioning  The Moov API is currently using `/v1/` as the versioning prefix for all endpoints. This results in a base URI of `https://api.moov.io/v1/`.  ## Clients  Currently Moov offers a generated [Go client](https://github.com/moov-io/go-client) for usage with our API. The [OpenAPI specification](https://github.com/moov-io/api/blob/master/openapi.yaml) can be used to generate clients in other languages and we are open to supporting additonal languages. Please [contact us](mailto:support@moov.io) with feedback or suggestions.  ## Authorization  The Moov API offers one authorization method via a configured OIDC provider for your Tenant. This provider can be Google, Github, LDAP, or another vendor. We leverage OIDC becasue it allows immediate credential revocation, two-factor verification with that provider and a faster signup flow for users.  ## Security  Moov continiously monitors and scans our API services for security and privacy issues, but if you find a security related problem please contact us at [`security@moov.io`](mailto:security@moov.io).
+ * The Moov API is an HTTP API served by Moov Financial, Inc for initiating money movements across the ACH payment rail. We follow [RESTful](http://en.wikipedia.org/wiki/Representational_State_Transfer) operations and naming conventions with predictable and standard HTTP status codes. We are available to help with onboarding or issues related to our services on [the Moov slack organization](https://slack.moov.io/) or via [support email](mailto:support@moov.io).  ## Tenants and Organizations  The Moov API offers two groups for organizating `Customer` records. A `Tenant` is the largest grouping which covers an entire business entity such as an LCC or corporation. Login credentials are tied to a Tenant and is extracted from the credentials provided on each request. An `Organization` is a grouping within a Tenant designed to represent a department (sales, marketing) and can be used for the entire LLC. On signup a Tenant is created with an Organization within through the web UI.  Organizations allow for custom underwriting, additional risk tolerances, and advanced access controls for Customer and Account objects. They can be used to keep departments of your company separate or restrict specific underwriting conditions.  <a href=\"https://raw.githubusercontent.com/moov-io/paygate/master/docs/images/tenant-in-paygate.png\" target=\"_blank\">   <img src=\"https://raw.githubusercontent.com/moov-io/paygate/master/docs/images/tenant-in-paygate.png\" /> </a>  ## Errors  The API will respond with various standard HTTP status codes for errors which indicate how to resolve the request's problem. All errors will be in the `application/json` Content-Type with the below structure.  ``` {   \"error\": \"Descriptive message\" } ```  | Status Code | Summary           | Description                                                                                                       | |:-----------:|-------------------|-------------------------------------------------------------------------------------------------------------------| | 200         | OK                | The request was successful.                                                                                       | | 400         | Bad Request       | The request could not be understood by the server. The Incoming parameters might not be valid.                    | | 404         | Not Found         | The requested resource is not found or the credentials are not authorized to access it.                           | | 429         | Too Many Requests | Too many requests have been made in a short period of time. Please make requests at a slower rate or contact us.  | | 500         | Server Error      | The server could not return the representation due to an internal server error.                                   | | 501         | Not Implemented   | The requested operation is not supported (e.g. supports PUT but not POST etc.)                                    |  ## Content-Type  All requests and responses will be in the `application/json` MIME Content-Type unless otherwise specified.  ## Cross-Origin Request Sharing  We support [cross-origin resource sharing](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing), allowing you to interact securely with our API from client-side web applications (never expose your secret API key in any public website's client-side code).  ## Versioning  The Moov API is currently using `/v1/` as the versioning prefix for all endpoints. This results in a base URI of `https://api.moov.io/v1/`.  ## Clients  Currently Moov offers a generated [Go client](https://github.com/moov-io/go-client) for usage with our API. The [OpenAPI specification](https://github.com/moov-io/api/blob/master/openapi.yaml) can be used to generate clients in other languages and we are open to supporting additonal languages. Please [contact us](mailto:support@moov.io) with feedback or suggestions.  ## Authorization  The Moov API offers one authorization method via a configured OIDC provider for your Tenant. This provider can be Google, Github, LDAP, or another vendor. We leverage OIDC becasue it allows immediate credential revocation, two-factor verification with that provider and a faster signup flow for users.  ## Security  Moov continiously monitors and scans our API services for security and privacy issues, but if you find a security related problem please contact us at [`security@moov.io`](mailto:security@moov.io).
  *
  * API version: v1
  * Contact: support@moov.io
@@ -237,9 +237,8 @@ func (a *CustomersApiService) CreateCustomer(ctx _context.Context, createCustome
 
 // CreateCustomerAccountOpts Optional parameters for the method 'CreateCustomerAccount'
 type CreateCustomerAccountOpts struct {
-	XRequestID    optional.String
-	XUserID       optional.String
-	CreateAccount optional.Interface
+	XRequestID optional.String
+	XUserID    optional.String
 }
 
 /*
@@ -247,13 +246,13 @@ CreateCustomerAccount Create Customer Account
 Create an account for the given customer
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param customerID customerID of the Customer to add an Account onto
+ * @param createAccount
  * @param optional nil or *CreateCustomerAccountOpts - Optional Parameters:
  * @param "XRequestID" (optional.String) -  Optional requestID allows application developer to trace requests through the systems logs
  * @param "XUserID" (optional.String) -  Unique userID set by an auth proxy or client to identify and isolate objects.
- * @param "CreateAccount" (optional.Interface of CreateAccount) -
 @return Account
 */
-func (a *CustomersApiService) CreateCustomerAccount(ctx _context.Context, customerID string, localVarOptionals *CreateCustomerAccountOpts) (Account, *_nethttp.Response, error) {
+func (a *CustomersApiService) CreateCustomerAccount(ctx _context.Context, customerID string, createAccount CreateAccount, localVarOptionals *CreateCustomerAccountOpts) (Account, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
@@ -295,14 +294,7 @@ func (a *CustomersApiService) CreateCustomerAccount(ctx _context.Context, custom
 		localVarHeaderParams["X-User-ID"] = parameterToString(localVarOptionals.XUserID.Value(), "")
 	}
 	// body params
-	if localVarOptionals != nil && localVarOptionals.CreateAccount.IsSet() {
-		localVarOptionalCreateAccount, localVarOptionalCreateAccountok := localVarOptionals.CreateAccount.Value().(CreateAccount)
-		if !localVarOptionalCreateAccountok {
-			return localVarReturnValue, nil, reportError("createAccount should be CreateAccount")
-		}
-		localVarPostBody = &localVarOptionalCreateAccount
-	}
-
+	localVarPostBody = &createAccount
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -621,6 +613,16 @@ func (a *CustomersApiService) GetCustomer(ctx _context.Context, customerID strin
 		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1312,6 +1314,125 @@ func (a *CustomersApiService) ReplaceCustomerMetadata(ctx _context.Context, cust
 	}
 	// body params
 	localVarPostBody = &customerMetadata
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+// SearchCustomersOpts Optional parameters for the method 'SearchCustomers'
+type SearchCustomersOpts struct {
+	Query  optional.String
+	Email  optional.String
+	Status optional.String
+	Type_  optional.String
+	Skip   optional.String
+	Count  optional.String
+}
+
+/*
+SearchCustomers Get customers
+Search for customers using different filter parameters
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param optional nil or *SearchCustomersOpts - Optional Parameters:
+ * @param "Query" (optional.String) -  Optional parameter for searching by customer name
+ * @param "Email" (optional.String) -  Optional parameter for searching by customer email
+ * @param "Status" (optional.String) -  Optional parameter for searching by customer status
+ * @param "Type_" (optional.String) -  Optional parameter for searching by customer type
+ * @param "Skip" (optional.String) -  Optional parameter for searching for customers by skipping over an initial group
+ * @param "Count" (optional.String) -  Optional parameter for searching for customers by specifying the amount to return
+@return []Customer
+*/
+func (a *CustomersApiService) SearchCustomers(ctx _context.Context, localVarOptionals *SearchCustomersOpts) ([]Customer, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  []Customer
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/v1/customers"
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	if localVarOptionals != nil && localVarOptionals.Query.IsSet() {
+		localVarQueryParams.Add("query", parameterToString(localVarOptionals.Query.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.Email.IsSet() {
+		localVarQueryParams.Add("email", parameterToString(localVarOptionals.Email.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.Status.IsSet() {
+		localVarQueryParams.Add("status", parameterToString(localVarOptionals.Status.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.Type_.IsSet() {
+		localVarQueryParams.Add("type", parameterToString(localVarOptionals.Type_.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.Skip.IsSet() {
+		localVarQueryParams.Add("skip", parameterToString(localVarOptionals.Skip.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.Count.IsSet() {
+		localVarQueryParams.Add("count", parameterToString(localVarOptionals.Count.Value(), ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err

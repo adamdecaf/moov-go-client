@@ -17,6 +17,7 @@ Method | HTTP request | Description
 [**GetLatestOFACSearch**](CustomersApi.md#GetLatestOFACSearch) | **Get** /v1/customers/{customerID}/ofac | Get latest OFAC search
 [**RefreshOFACSearch**](CustomersApi.md#RefreshOFACSearch) | **Put** /v1/customers/{customerID}/refresh/ofac | Refresh customer OFAC search
 [**ReplaceCustomerMetadata**](CustomersApi.md#ReplaceCustomerMetadata) | **Put** /v1/customers/{customerID}/metadata | Update customer metadata
+[**SearchCustomers**](CustomersApi.md#SearchCustomers) | **Get** /v1/customers | Get customers
 [**UpdateCustomerStatus**](CustomersApi.md#UpdateCustomerStatus) | **Put** /v1/customers/{customerID}/status | Update customer status
 [**UploadCustomerDocument**](CustomersApi.md#UploadCustomerDocument) | **Post** /v1/customers/{customerID}/documents | Upload document
 [**ValidateAccount**](CustomersApi.md#ValidateAccount) | **Post** /v1/customers/{customerID}/accounts/{accountID}/validate | Validate Account
@@ -119,7 +120,7 @@ Name | Type | Description  | Notes
 
 ## CreateCustomerAccount
 
-> Account CreateCustomerAccount(ctx, customerID, optional)
+> Account CreateCustomerAccount(ctx, customerID, createAccount, optional)
 
 Create Customer Account
 
@@ -132,6 +133,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **customerID** | **string**| customerID of the Customer to add an Account onto | 
+**createAccount** | [**CreateAccount**](CreateAccount.md)|  | 
  **optional** | ***CreateCustomerAccountOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -142,9 +144,9 @@ Optional parameters are passed through a pointer to a CreateCustomerAccountOpts 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+
  **xRequestID** | **optional.String**| Optional requestID allows application developer to trace requests through the systems logs | 
  **xUserID** | **optional.String**| Unique userID set by an auth proxy or client to identify and isolate objects. | 
- **createAccount** | [**optional.Interface of CreateAccount**](CreateAccount.md)|  | 
 
 ### Return type
 
@@ -623,6 +625,54 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SearchCustomers
+
+> []Customer SearchCustomers(ctx, optional)
+
+Get customers
+
+Search for customers using different filter parameters
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **optional** | ***SearchCustomersOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a SearchCustomersOpts struct
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **query** | **optional.String**| Optional parameter for searching by customer name | 
+ **email** | **optional.String**| Optional parameter for searching by customer email | 
+ **status** | **optional.String**| Optional parameter for searching by customer status | 
+ **type_** | **optional.String**| Optional parameter for searching by customer type | 
+ **skip** | **optional.String**| Optional parameter for searching for customers by skipping over an initial group | 
+ **count** | **optional.String**| Optional parameter for searching for customers by specifying the amount to return | 
+
+### Return type
+
+[**[]Customer**](Customer.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth), [LoginAuth](../README.md#LoginAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

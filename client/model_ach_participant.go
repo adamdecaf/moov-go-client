@@ -10,20 +10,27 @@
 
 package client
 
-// CustomerAddress struct for CustomerAddress
-type CustomerAddress struct {
-	// Unique identifier for this Address
-	AddressID string `json:"addressID"`
-	Type      string `json:"type"`
-	// First line of the address
-	Address1 string `json:"address1"`
-	// Second line of the address
-	Address2 string `json:"address2,omitempty"`
-	City     string `json:"city"`
-	// two charcer code of US state
-	State      string `json:"state"`
-	PostalCode string `json:"postalCode"`
-	Country    string `json:"country"`
-	// Address has been validated for customer
-	Validated bool `json:"validated,omitempty"`
+// AchParticipant ACHParticipant holds a FedACH dir routing record as defined by Fed ACH Format.  https://www.frbservices.org/EPaymentsDirectory/achFormat.html
+type AchParticipant struct {
+	// The institution's routing number
+	RoutingNumber string `json:"routingNumber,omitempty"`
+	// Main/Head Office or Branch  * `O` - Main * `B` - Branch
+	OfficeCode string `json:"officeCode,omitempty"`
+	// Servicing Fed's main office routing number
+	ServicingFRBNumber string `json:"servicingFRBNumber,omitempty"`
+	// The code indicating the ABA number to be used to route or send ACH items to the RDFI  * `0` - Institution is a Federal Reserve Bank * `1` - Send items to customer routing number * `2` - Send items to customer using new routing number field
+	RecordTypeCode string `json:"recordTypeCode,omitempty"`
+	// Date of last revision  * YYYYMMDD * Blank
+	Revised string `json:"revised,omitempty"`
+	// Financial Institution's new routing number resulting from a merger or renumber
+	NewRoutingNumber string `json:"newRoutingNumber,omitempty"`
+	// Financial Institution Name
+	CustomerName string      `json:"customerName,omitempty"`
+	AchLocation  AchLocation `json:"achLocation,omitempty"`
+	// The Financial Institution's phone number
+	PhoneNumber string `json:"phoneNumber,omitempty"`
+	// Code is based on the customers receiver code  * `1` - Receives Gov/Comm
+	StatusCode string `json:"statusCode,omitempty"`
+	// Code is current view  * `1` - Current view
+	ViewCode string `json:"viewCode,omitempty"`
 }

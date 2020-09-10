@@ -10,20 +10,16 @@
 
 package client
 
-// CustomerAddress struct for CustomerAddress
-type CustomerAddress struct {
-	// Unique identifier for this Address
-	AddressID string `json:"addressID"`
-	Type      string `json:"type"`
-	// First line of the address
-	Address1 string `json:"address1"`
-	// Second line of the address
-	Address2 string `json:"address2,omitempty"`
-	City     string `json:"city"`
-	// two charcer code of US state
-	State      string `json:"state"`
-	PostalCode string `json:"postalCode"`
-	Country    string `json:"country"`
-	// Address has been validated for customer
-	Validated bool `json:"validated,omitempty"`
+// AchLocation ACHLocation is the FEDACH delivery address
+type AchLocation struct {
+	// Street Address
+	Address string `json:"address,omitempty"`
+	// City
+	City string `json:"city,omitempty"`
+	// State
+	State string `json:"state,omitempty"`
+	// Postal Code
+	PostalCode string `json:"postalCode,omitempty"`
+	// Postal Code Extension
+	PostalExtension string `json:"postalExtension,omitempty"`
 }

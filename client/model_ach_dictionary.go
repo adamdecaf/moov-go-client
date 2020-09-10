@@ -10,20 +10,7 @@
 
 package client
 
-// CustomerAddress struct for CustomerAddress
-type CustomerAddress struct {
-	// Unique identifier for this Address
-	AddressID string `json:"addressID"`
-	Type      string `json:"type"`
-	// First line of the address
-	Address1 string `json:"address1"`
-	// Second line of the address
-	Address2 string `json:"address2,omitempty"`
-	City     string `json:"city"`
-	// two charcer code of US state
-	State      string `json:"state"`
-	PostalCode string `json:"postalCode"`
-	Country    string `json:"country"`
-	// Address has been validated for customer
-	Validated bool `json:"validated,omitempty"`
+// AchDictionary Search results containing ACHDictionary of Participants
+type AchDictionary struct {
+	ACHParticipants []AchParticipant `json:"ACHParticipants,omitempty"`
 }
